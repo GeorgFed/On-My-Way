@@ -1,0 +1,512 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5619A4B22186248200718C50 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5619A4B12186248200718C50 /* ShadowView.swift */; };
+		5619A4B5218711CE00718C50 /* AddPresentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5619A4B3218711CE00718C50 /* AddPresentsVC.swift */; };
+		5619A4B6218711CE00718C50 /* AddPresentsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5619A4B4218711CE00718C50 /* AddPresentsVC.xib */; };
+		5619A4BA218768AB00718C50 /* UIButtonBorderExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5619A4B9218768AB00718C50 /* UIButtonBorderExt.swift */; };
+		5619A4BD21876AEF00718C50 /* RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5619A4BC21876AEE00718C50 /* RoundedCorners.swift */; };
+		5619A4BF2187BD4D00718C50 /* UIViewBindingExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5619A4BE2187BD4D00718C50 /* UIViewBindingExt.swift */; };
+		561D719A21A17D2F002B2378 /* FriendsPresentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561D719921A17D2F002B2378 /* FriendsPresentCell.swift */; };
+		563F0A3C216D20B500A27CA5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563F0A3B216D20B500A27CA5 /* AppDelegate.swift */; };
+		563F0A3E216D20B500A27CA5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563F0A3D216D20B500A27CA5 /* ViewController.swift */; };
+		563F0A41216D20B500A27CA5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 563F0A3F216D20B500A27CA5 /* Main.storyboard */; };
+		563F0A44216D20B500A27CA5 /* tableView_Test_for_iPresent.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 563F0A42216D20B500A27CA5 /* tableView_Test_for_iPresent.xcdatamodeld */; };
+		563F0A46216D20B700A27CA5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 563F0A45216D20B700A27CA5 /* Assets.xcassets */; };
+		563F0A49216D20B700A27CA5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 563F0A47216D20B700A27CA5 /* LaunchScreen.storyboard */; };
+		563F0A51216D221100A27CA5 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563F0A50216D221100A27CA5 /* SearchVC.swift */; };
+		563F0A55216D225300A27CA5 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563F0A54216D225300A27CA5 /* DataService.swift */; };
+		563F0A5A216D22F700A27CA5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563F0A59216D22F700A27CA5 /* User.swift */; };
+		563F0A5C216D231F00A27CA5 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563F0A5B216D231F00A27CA5 /* UserCell.swift */; };
+		563F0A61216D238800A27CA5 /* TapToHideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563F0A60216D238800A27CA5 /* TapToHideKeyboard.swift */; };
+		568A53C5219E089D00772ED1 /* PresentInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568A53C3219E089D00772ED1 /* PresentInfoVC.swift */; };
+		568A53C6219E089D00772ED1 /* PresentInfoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 568A53C4219E089D00772ED1 /* PresentInfoVC.xib */; };
+		568A53C8219E090000772ED1 /* UserInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568A53C7219E090000772ED1 /* UserInfoVC.swift */; };
+		568A53CB219E179800772ED1 /* ReservePresentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568A53C9219E179800772ED1 /* ReservePresentVC.swift */; };
+		568A53CC219E179800772ED1 /* ReservePresentVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 568A53CA219E179800772ED1 /* ReservePresentVC.xib */; };
+		568FE7FD217CD57A004E893B /* PresentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568FE7FC217CD57A004E893B /* PresentsVC.swift */; };
+		568FE7FF217CD831004E893B /* Present.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568FE7FE217CD831004E893B /* Present.swift */; };
+		568FE801217CDC3E004E893B /* assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 568FE800217CDC3E004E893B /* assets.xcassets */; };
+		568FE803217CDF14004E893B /* PresentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568FE802217CDF14004E893B /* PresentCell.swift */; };
+		56F41B1C218B6B4A0070B2CC /* PhoneSignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F41B1B218B6B4A0070B2CC /* PhoneSignInVC.swift */; };
+		56F41B1E218B6BC50070B2CC /* PhoneVerifyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F41B1D218B6BC50070B2CC /* PhoneVerifyVC.swift */; };
+		56F41B20218B6C130070B2CC /* PhoneSignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F41B1F218B6C130070B2CC /* PhoneSignUpVC.swift */; };
+		56F41B24218B6C750070B2CC /* ProfileSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F41B23218B6C750070B2CC /* ProfileSettingsVC.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		5619A4B12186248200718C50 /* ShadowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
+		5619A4B3218711CE00718C50 /* AddPresentsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPresentsVC.swift; sourceTree = "<group>"; };
+		5619A4B4218711CE00718C50 /* AddPresentsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddPresentsVC.xib; sourceTree = "<group>"; };
+		5619A4B9218768AB00718C50 /* UIButtonBorderExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonBorderExt.swift; sourceTree = "<group>"; };
+		5619A4BC21876AEE00718C50 /* RoundedCorners.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedCorners.swift; sourceTree = "<group>"; };
+		5619A4BE2187BD4D00718C50 /* UIViewBindingExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewBindingExt.swift; sourceTree = "<group>"; };
+		561D719921A17D2F002B2378 /* FriendsPresentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsPresentCell.swift; sourceTree = "<group>"; };
+		563F0A38216D20B500A27CA5 /* tableView Test for iPresent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tableView Test for iPresent.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		563F0A3B216D20B500A27CA5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		563F0A3D216D20B500A27CA5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		563F0A40216D20B500A27CA5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		563F0A43216D20B500A27CA5 /* tableView_Test_for_iPresent.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = tableView_Test_for_iPresent.xcdatamodel; sourceTree = "<group>"; };
+		563F0A45216D20B700A27CA5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		563F0A48216D20B700A27CA5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		563F0A4A216D20B700A27CA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		563F0A50216D221100A27CA5 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
+		563F0A54216D225300A27CA5 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		563F0A59216D22F700A27CA5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		563F0A5B216D231F00A27CA5 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		563F0A60216D238800A27CA5 /* TapToHideKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TapToHideKeyboard.swift; sourceTree = "<group>"; };
+		568A53C3219E089D00772ED1 /* PresentInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentInfoVC.swift; sourceTree = "<group>"; };
+		568A53C4219E089D00772ED1 /* PresentInfoVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PresentInfoVC.xib; sourceTree = "<group>"; };
+		568A53C7219E090000772ED1 /* UserInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoVC.swift; sourceTree = "<group>"; };
+		568A53C9219E179800772ED1 /* ReservePresentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservePresentVC.swift; sourceTree = "<group>"; };
+		568A53CA219E179800772ED1 /* ReservePresentVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReservePresentVC.xib; sourceTree = "<group>"; };
+		568FE7FC217CD57A004E893B /* PresentsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentsVC.swift; sourceTree = "<group>"; };
+		568FE7FE217CD831004E893B /* Present.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Present.swift; sourceTree = "<group>"; };
+		568FE800217CDC3E004E893B /* assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = assets.xcassets; sourceTree = "<group>"; };
+		568FE802217CDF14004E893B /* PresentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentCell.swift; sourceTree = "<group>"; };
+		56F41B1B218B6B4A0070B2CC /* PhoneSignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneSignInVC.swift; sourceTree = "<group>"; };
+		56F41B1D218B6BC50070B2CC /* PhoneVerifyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneVerifyVC.swift; sourceTree = "<group>"; };
+		56F41B1F218B6C130070B2CC /* PhoneSignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneSignUpVC.swift; sourceTree = "<group>"; };
+		56F41B23218B6C750070B2CC /* ProfileSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsVC.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		563F0A35216D20B500A27CA5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5619A4B7218711D900718C50 /* XIBs */ = {
+			isa = PBXGroup;
+			children = (
+				5619A4B4218711CE00718C50 /* AddPresentsVC.xib */,
+				568A53C4219E089D00772ED1 /* PresentInfoVC.xib */,
+				568A53CA219E179800772ED1 /* ReservePresentVC.xib */,
+			);
+			path = XIBs;
+			sourceTree = "<group>";
+		};
+		5619A4B8218711E300718C50 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				563F0A54216D225300A27CA5 /* DataService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		563F0A2F216D20B500A27CA5 = {
+			isa = PBXGroup;
+			children = (
+				563F0A3A216D20B500A27CA5 /* tableView Test for iPresent */,
+				563F0A39216D20B500A27CA5 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		563F0A39216D20B500A27CA5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				563F0A38216D20B500A27CA5 /* tableView Test for iPresent.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		563F0A3A216D20B500A27CA5 /* tableView Test for iPresent */ = {
+			isa = PBXGroup;
+			children = (
+				563F0A58216D22D500A27CA5 /* Initial Controller */,
+				5619A4B8218711E300718C50 /* Services */,
+				5619A4B7218711D900718C50 /* XIBs */,
+				563F0A5D216D234E00A27CA5 /* Extension */,
+				563F0A56216D22A300A27CA5 /* Model */,
+				563F0A57216D22B800A27CA5 /* View */,
+				563F0A52216D221D00A27CA5 /* Controller */,
+				563F0A3F216D20B500A27CA5 /* Main.storyboard */,
+				563F0A47216D20B700A27CA5 /* LaunchScreen.storyboard */,
+				563F0A4A216D20B700A27CA5 /* Info.plist */,
+				563F0A42216D20B500A27CA5 /* tableView_Test_for_iPresent.xcdatamodeld */,
+				568FE800217CDC3E004E893B /* assets.xcassets */,
+			);
+			path = "tableView Test for iPresent";
+			sourceTree = "<group>";
+		};
+		563F0A52216D221D00A27CA5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				56F41B1B218B6B4A0070B2CC /* PhoneSignInVC.swift */,
+				56F41B1D218B6BC50070B2CC /* PhoneVerifyVC.swift */,
+				56F41B1F218B6C130070B2CC /* PhoneSignUpVC.swift */,
+				56F41B23218B6C750070B2CC /* ProfileSettingsVC.swift */,
+				568FE7FC217CD57A004E893B /* PresentsVC.swift */,
+				563F0A50216D221100A27CA5 /* SearchVC.swift */,
+				568A53C3219E089D00772ED1 /* PresentInfoVC.swift */,
+				5619A4B3218711CE00718C50 /* AddPresentsVC.swift */,
+				568A53C7219E090000772ED1 /* UserInfoVC.swift */,
+				568A53C9219E179800772ED1 /* ReservePresentVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		563F0A56216D22A300A27CA5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				563F0A59216D22F700A27CA5 /* User.swift */,
+				568FE7FE217CD831004E893B /* Present.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		563F0A57216D22B800A27CA5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5619A4BC21876AEE00718C50 /* RoundedCorners.swift */,
+				563F0A60216D238800A27CA5 /* TapToHideKeyboard.swift */,
+				5619A4B12186248200718C50 /* ShadowView.swift */,
+				563F0A5B216D231F00A27CA5 /* UserCell.swift */,
+				568FE802217CDF14004E893B /* PresentCell.swift */,
+				561D719921A17D2F002B2378 /* FriendsPresentCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		563F0A58216D22D500A27CA5 /* Initial Controller */ = {
+			isa = PBXGroup;
+			children = (
+				563F0A45216D20B700A27CA5 /* Assets.xcassets */,
+				563F0A3B216D20B500A27CA5 /* AppDelegate.swift */,
+				563F0A3D216D20B500A27CA5 /* ViewController.swift */,
+			);
+			path = "Initial Controller";
+			sourceTree = "<group>";
+		};
+		563F0A5D216D234E00A27CA5 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				5619A4BE2187BD4D00718C50 /* UIViewBindingExt.swift */,
+				5619A4B9218768AB00718C50 /* UIButtonBorderExt.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		563F0A37216D20B500A27CA5 /* tableView Test for iPresent */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 563F0A4D216D20B700A27CA5 /* Build configuration list for PBXNativeTarget "tableView Test for iPresent" */;
+			buildPhases = (
+				563F0A34216D20B500A27CA5 /* Sources */,
+				563F0A35216D20B500A27CA5 /* Frameworks */,
+				563F0A36216D20B500A27CA5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "tableView Test for iPresent";
+			productName = "tableView Test for iPresent";
+			productReference = 563F0A38216D20B500A27CA5 /* tableView Test for iPresent.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		563F0A30216D20B500A27CA5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0940;
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = Georg;
+				TargetAttributes = {
+					563F0A37216D20B500A27CA5 = {
+						CreatedOnToolsVersion = 9.4.1;
+					};
+				};
+			};
+			buildConfigurationList = 563F0A33216D20B500A27CA5 /* Build configuration list for PBXProject "tableView Test for iPresent" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 563F0A2F216D20B500A27CA5;
+			productRefGroup = 563F0A39216D20B500A27CA5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				563F0A37216D20B500A27CA5 /* tableView Test for iPresent */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		563F0A36216D20B500A27CA5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				568A53C6219E089D00772ED1 /* PresentInfoVC.xib in Resources */,
+				563F0A49216D20B700A27CA5 /* LaunchScreen.storyboard in Resources */,
+				5619A4B6218711CE00718C50 /* AddPresentsVC.xib in Resources */,
+				563F0A46216D20B700A27CA5 /* Assets.xcassets in Resources */,
+				568FE801217CDC3E004E893B /* assets.xcassets in Resources */,
+				563F0A41216D20B500A27CA5 /* Main.storyboard in Resources */,
+				568A53CC219E179800772ED1 /* ReservePresentVC.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		563F0A34216D20B500A27CA5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5619A4B22186248200718C50 /* ShadowView.swift in Sources */,
+				5619A4BA218768AB00718C50 /* UIButtonBorderExt.swift in Sources */,
+				563F0A51216D221100A27CA5 /* SearchVC.swift in Sources */,
+				568FE803217CDF14004E893B /* PresentCell.swift in Sources */,
+				568FE7FF217CD831004E893B /* Present.swift in Sources */,
+				568A53C5219E089D00772ED1 /* PresentInfoVC.swift in Sources */,
+				563F0A3E216D20B500A27CA5 /* ViewController.swift in Sources */,
+				5619A4BF2187BD4D00718C50 /* UIViewBindingExt.swift in Sources */,
+				563F0A5A216D22F700A27CA5 /* User.swift in Sources */,
+				56F41B20218B6C130070B2CC /* PhoneSignUpVC.swift in Sources */,
+				568FE7FD217CD57A004E893B /* PresentsVC.swift in Sources */,
+				56F41B24218B6C750070B2CC /* ProfileSettingsVC.swift in Sources */,
+				563F0A3C216D20B500A27CA5 /* AppDelegate.swift in Sources */,
+				56F41B1E218B6BC50070B2CC /* PhoneVerifyVC.swift in Sources */,
+				563F0A44216D20B500A27CA5 /* tableView_Test_for_iPresent.xcdatamodeld in Sources */,
+				568A53CB219E179800772ED1 /* ReservePresentVC.swift in Sources */,
+				56F41B1C218B6B4A0070B2CC /* PhoneSignInVC.swift in Sources */,
+				5619A4BD21876AEF00718C50 /* RoundedCorners.swift in Sources */,
+				563F0A61216D238800A27CA5 /* TapToHideKeyboard.swift in Sources */,
+				568A53C8219E090000772ED1 /* UserInfoVC.swift in Sources */,
+				563F0A55216D225300A27CA5 /* DataService.swift in Sources */,
+				563F0A5C216D231F00A27CA5 /* UserCell.swift in Sources */,
+				5619A4B5218711CE00718C50 /* AddPresentsVC.swift in Sources */,
+				561D719A21A17D2F002B2378 /* FriendsPresentCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		563F0A3F216D20B500A27CA5 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				563F0A40216D20B500A27CA5 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		563F0A47216D20B700A27CA5 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				563F0A48216D20B700A27CA5 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		563F0A4B216D20B700A27CA5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		563F0A4C216D20B700A27CA5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		563F0A4E216D20B700A27CA5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4ZLBWEC93L;
+				INFOPLIST_FILE = "tableView Test for iPresent/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Egor.inc.tableView-Test-for-iPresent";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		563F0A4F216D20B700A27CA5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4ZLBWEC93L;
+				INFOPLIST_FILE = "tableView Test for iPresent/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Egor.inc.tableView-Test-for-iPresent";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		563F0A33216D20B500A27CA5 /* Build configuration list for PBXProject "tableView Test for iPresent" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				563F0A4B216D20B700A27CA5 /* Debug */,
+				563F0A4C216D20B700A27CA5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		563F0A4D216D20B700A27CA5 /* Build configuration list for PBXNativeTarget "tableView Test for iPresent" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				563F0A4E216D20B700A27CA5 /* Debug */,
+				563F0A4F216D20B700A27CA5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		563F0A42216D20B500A27CA5 /* tableView_Test_for_iPresent.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				563F0A43216D20B500A27CA5 /* tableView_Test_for_iPresent.xcdatamodel */,
+			);
+			currentVersion = 563F0A43216D20B500A27CA5 /* tableView_Test_for_iPresent.xcdatamodel */;
+			path = tableView_Test_for_iPresent.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 563F0A30216D20B500A27CA5 /* Project object */;
+}
