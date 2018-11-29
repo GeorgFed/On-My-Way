@@ -120,7 +120,7 @@
                                     <action selector="backBtnPressed:" destination="Dgf-2W-IPP" eventType="touchUpInside" id="SyE-Ei-FN7"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="c-p-p" translatesAutoresizingMaskIntoConstraints="NO" id="Rn7-dU-5KY">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultProfilePicture" translatesAutoresizingMaskIntoConstraints="NO" id="Rn7-dU-5KY">
                                 <rect key="frame" x="139.66666666666666" y="80" width="96" height="96"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="96" id="Y1f-PB-qzP"/>
@@ -457,7 +457,7 @@
                                     <action selector="backBtnTapped:" destination="oBO-k2-m57" eventType="touchUpInside" id="oHN-pM-hLK"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="c-p-p" translatesAutoresizingMaskIntoConstraints="NO" id="0Rj-6Q-hgd">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultProfilePicture" translatesAutoresizingMaskIntoConstraints="NO" id="0Rj-6Q-hgd">
                                 <rect key="frame" x="123.66666666666669" y="164" width="128" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="1Wh-70-JyS"/>
@@ -862,7 +862,7 @@
     </scenes>
     <resources>
         <image name="backImg1" width="450" height="450"/>
-        <image name="c-p-p" width="512" height="512"/>
+        <image name="defaultProfilePicture" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="vTD-Cr-hON"/>

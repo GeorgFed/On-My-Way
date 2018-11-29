@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class AddPresentsVC: UIViewController {
     
@@ -19,6 +20,9 @@ class AddPresentsVC: UIViewController {
     @IBOutlet weak var linkTF: UITextField!
     
     @IBOutlet weak var baseView: RoundedCorners!
+    
+    let user = Auth.auth().currentUser
+    var imgName = "BackImg2"
     
     var initial_position: CGFloat = 0.0
     var desc_position: CGFloat = 0.0
@@ -67,6 +71,12 @@ class AddPresentsVC: UIViewController {
     func check_input() -> Bool {
         if presentNameTF.text != "" && priceTF.text != "" {
             // OK
+            DataService.instance.uploadPresent(name: presentNameTF.text!, description: descriptionTF.text ?? "-", price: priceTF.text!, image: imgName, senderid: user!.uid) { (success) in
+                if success {
+                    NotificationCenter.default.post(name: Notification.Name("PresentAdded"), object: nil)
+                    self.dismiss(animated: true, completion: nil)
+                }
+            }
             return true
         } else {
             // SHOW ALERT

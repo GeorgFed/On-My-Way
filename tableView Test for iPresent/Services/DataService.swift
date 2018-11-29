@@ -83,21 +83,22 @@ class DataService {
         }
     }
     
-    func getName(forSearchQuery query: String, handler: @escaping(_ nameArray: [String]) -> ()) {
-        var nameArray = [String]()
+    func getName(forSearchQuery query: String, handler: @escaping(_ nameArray: [User]) -> ()) {
+        var userArray = [User]()
         REF_USERS.observe(.value) { (userSnapshot) in
             guard let userSnapshot = userSnapshot.children.allObjects as? [DataSnapshot] else { return }
             for user in userSnapshot {
                 guard let name = user.childSnapshot(forPath: "name").value as? String else { continue }
+                guard let birthdate = user.childSnapshot(forPath: "birthdate").value as? String else { continue }
                 
                 if query.isAlphanumeric {
                     if name.contains(query) && name != Auth.auth().currentUser?.displayName {
-                        nameArray.append(name)
+                        let returned_user = User(name: name, birthdate: birthdate)
+                        userArray.append(returned_user)
                     }
                 }
-                //               nameArray.append(name)
             }
-            handler(nameArray)
+            handler(userArray)
         }
     }
     

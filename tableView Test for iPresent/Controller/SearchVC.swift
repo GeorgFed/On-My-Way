@@ -17,7 +17,7 @@ class SearchVC: UIViewController {
     
     // Variables
     var users = [User]()
-    var init_query = "."
+    var init_query = " "
     var presentArray = [Present]()
     var chosen_user: User?
     
@@ -54,11 +54,15 @@ class SearchVC: UIViewController {
     
     // MARK: Requires DB UPD
     func get_users(forQuery _query: String) {
-        TestDataService.instance.getName(forSearchQuery: _query) {
-            ( returned_users ) in
+        DataService.instance.getName(forSearchQuery: _query) { (returned_users) in
             self.users = returned_users
             self.tableView.reloadData()
         }
+//        TestDataService.instance.getName(forSearchQuery: _query) {
+//            ( returned_users ) in
+//            self.users = returned_users
+//            self.tableView.reloadData()
+//        }
     }
 }
 
@@ -79,8 +83,8 @@ extension SearchVC: UISearchResultsUpdating {
             return
         }
         
-        if searchText!.isAlphanumeric { self.init_query = searchText!}
-        else { self.init_query = "." }
+        if searchText!.isAlphanumeric { self.init_query = searchText! }
+        else { self.init_query = " " }
         
         get_users(forQuery: self.init_query)
     }
@@ -116,20 +120,3 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
         _userInfoVC.user = chosen_user
     }
 }
-
-// MARK: .isAlphanumeric
-/*
-extension String {
-    public var isAlphanumeric: Bool {
-        guard !isEmpty else {
-            return false
-        }
-        let allowed = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
-        let characterSet = CharacterSet(charactersIn: allowed)
-        guard rangeOfCharacter(from: characterSet.inverted) == nil else {
-            return false
-        }
-        return true
-    }
-}
-*/
