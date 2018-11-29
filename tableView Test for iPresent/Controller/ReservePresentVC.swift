@@ -35,12 +35,12 @@ class ReservePresentVC: UIViewController {
     
     func setUpView() {
         // Method #1
-        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.extraLight)
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.extraLight)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = view.bounds
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(blurEffectView)
-        view.sendSubview(toBack: blurEffectView)
+        view.sendSubviewToBack(blurEffectView)
     }
     
     @IBAction func cancelBtnPressed(_ sender: Any) {

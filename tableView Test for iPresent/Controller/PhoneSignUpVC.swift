@@ -7,29 +7,77 @@
 //
 
 import UIKit
+import Firebase
 
 class PhoneSignUpVC: UIViewController {
-
+    @IBOutlet weak var firstName: UITextField!
+    @IBOutlet weak var lastName: UITextField!
+    @IBOutlet weak var birthdate: UITextField!
+    
+    let datePicker = UIDatePicker()
+    let segueId = "presentsVCSegueId"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        firstName.delegate = self
+        lastName.delegate = self
+        birthdate.delegate = self
+        
+        hideKeyboard()
+        createDatePicker()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func donePressed(_ sender: Any) {
+        DataService.instance.updateDBUser(withUid: (Auth.auth().currentUser?.uid)!, firstName: firstName.text!, lastName: lastName.text!, birthdate: birthdate.text!, updateComplete: { (isUpdated) in
+            if isUpdated {
+                let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                let PresentsVC = storyboard.instantiateViewController(withIdentifier: self.segueId)
+                self.show(PresentsVC, sender: nil)
+            } else {
+                print("UPDATE ERROR !")
+            }
+        })
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func createDatePicker() {
+        
+        // Создание метода назначения даты рождения
+        
+        birthdate.inputView = datePicker
+        datePicker.datePickerMode = .date
+        
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(pickerDonePressed))
+        
+        toolbar.setItems([doneButton], animated: true)
+        birthdate.inputAccessoryView = toolbar
     }
-    */
+    
+    @objc func pickerDonePressed(){
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .none
+        dateFormatter.dateFormat = "dd MMM yyyy"
+        
+        birthdate.text = dateFormatter.string(from: datePicker.date)
+        birthdate.resignFirstResponder()
+        self.view.endEditing(true)
+    }
+}
 
+extension PhoneSignUpVC: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == firstName {
+            textField.resignFirstResponder()
+            lastName.becomeFirstResponder()
+        } else if textField == lastName {
+            textField.resignFirstResponder()
+            birthdate.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+        }
+        return true
+    }
 }

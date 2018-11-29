@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ProfileSettingsVC: UIViewController {
 
@@ -15,17 +16,28 @@ class ProfileSettingsVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    let userid = Auth.auth().currentUser?.uid
+    
     let profile_settings = ["Personal Information", "Friend Request", "About", "Sign Out"]
+    
+    override func viewWillAppear(_ animated: Bool) {
+        setUpView()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        setUpView()
     }
     
     func setUpView() {
-        fullNameTxt.text = "George Fed"
+        if userid == nil {
+            fullNameTxt.text = "George Test"
+        } else {
+            DataService.instance.getUserInfo(forUid: userid!) { (user) in
+                self.fullNameTxt.text = user.name
+            }
+        }
     }
     
     @IBAction func backBtnTapped(_ sender: Any) {
@@ -42,10 +54,10 @@ extension ProfileSettingsVC: UITableViewDelegate, UITableViewDataSource {
         var cell = tableView.dequeueReusableCell(withIdentifier: "_settings")
         if cell == nil {
             if indexPath.row == 3 {
-                cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "_signout")
+                cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "_signout")
                 cell?.textLabel?.textColor = #colorLiteral(red: 0.8078431373, green: 0.3294117647, blue: 0.2392156863, alpha: 1)
             } else {
-                cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "_settings")
+                cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "_settings")
                 cell?.accessoryType = .disclosureIndicator
             }
         }
@@ -54,4 +66,3 @@ extension ProfileSettingsVC: UITableViewDelegate, UITableViewDataSource {
         return cell!
     }
 }
-

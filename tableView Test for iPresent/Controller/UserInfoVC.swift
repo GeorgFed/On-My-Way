@@ -29,8 +29,9 @@ class UserInfoVC: UIViewController {
         setUpView()
     }
     
+    // MARK: Requires DB UPD
     func getPresents() {
-        DataService.instance.getPresent(forUid: "666") { (returnedArray) in
+        TestDataService.instance.getPresent(forUid: "666") { (returnedArray) in
             self.presentArray = returnedArray
         }
     }

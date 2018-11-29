@@ -7,51 +7,113 @@
 //
 
 import Foundation
+import Firebase
+import FirebaseDatabase
+import FirebaseAuth
 
-let userDataBase = [
-    User.init(name: "John Brown", birthdate: "12.02.03"),
-    User.init(name: "Eva White", birthdate: "15.01.98"),
-    User.init(name: "Steve Brown", birthdate: "29.05.81"),
-    User.init(name: "Andrew Mann", birthdate: "12.02.03"),
-    User.init(name: "Jane Drake", birthdate: "29.05.81"),
-    User.init(name: "John Stevens", birthdate: "15.01.98"),
-    User.init(name: "Jack Bo", birthdate: "29.05.81"),
-    User.init(name: "John Carol", birthdate: "12.02.03"),
-    User.init(name: "Alex Donovan", birthdate: "15.01.98"),
-    User.init(name: "Isa Cengiz", birthdate: "12.02.03")
-]
-
-let presentDataBase = [
-    Present.init(name: "iPhone 6", price: "900 $", details: "Space Gray", imageName: "backImg1"),
-    Present.init(name: "Macbook Pro", price: "1200 $", details: "Space Gray", imageName: "BackImg2"),
-    Present.init(name: "AirPods", price: "500 $", details: " - ", imageName: "BackImg2"),
-    Present.init(name: "Go Pro Hero 6", price: "500 $", details: "Black", imageName: "backImg1"),
-    Present.init(name: "Macbook Pro", price: "900 $", details: "Silver", imageName: "backImg1"),
-    Present.init(name: "AirPods", price: "500 $", details: " - ", imageName: "BackImg2"),
-    Present.init(name: "Macbook Pro", price: "900 $", details: "Silver", imageName: "BackImg2"),
-    Present.init(name: "AirPods", price: "500 $", details: " - ", imageName: "backImg1")
-]
+let DB_BASE = Database.database().reference()
 
 class DataService {
     static let instance = DataService()
     
-    func getName(forSearchQuery query: String, handler: @escaping(_ nameArray: [User]) -> ()) {
-        var nameArray = [User]()
-        
-        for user in userDataBase {
-            if user.name.contains(query) || query == "." {
-                nameArray.append(user)
-            }
-        }
-        handler(nameArray)
+    private var _REF_BASE = DB_BASE
+    private var _REF_USERS = DB_BASE.child("users")
+    private var _REF_PRESENTS = DB_BASE.child("users").child("presents")
+    
+    var REF_BASE: DatabaseReference {
+        return _REF_BASE
     }
     
-    func getPresent(forUid uid: String, handler: @escaping(_ presentArray: [Present]) -> ()) {
-        var presentArray = [Present]()
+    var REF_USERS: DatabaseReference {
+        return _REF_USERS
+    }
+    
+    var REF_PRESENTS: DatabaseReference {
+        return _REF_PRESENTS
+    }
+    
+    func createDBUser(uid: String, userData: Dictionary<String, Any>) {
+        REF_USERS.child(uid).updateChildValues(userData)
+    }
+    
+    func updateDBUser(withUid uid: String, firstName: String, lastName: String, birthdate: String, updateComplete: @escaping (_ status: Bool) -> ()) {
+        let fullName = firstName + " " + lastName
+        REF_USERS.child(uid).updateChildValues(["userId": uid, "name": fullName, "birthdate": birthdate])
+        updateComplete(true)
+    }
+    
+    func getUserInfo(forUid uid: String, handler: @escaping (_ user: User) -> ())  {
         
-        for present in presentDataBase {
-            presentArray.append(present)
+        REF_USERS.child(uid).observeSingleEvent(of: .value) { ( snapshot ) in
+            let value = snapshot.value as? NSDictionary
+            let fullName = value?["name"] as? String ?? ""
+            let birthdate = value?["birthdate"] as? String ?? ""
+            var user: User
+            user = User(name: fullName, birthdate: birthdate)
+            handler(user)
         }
-        handler(presentArray)
+        
+    }
+    
+    func uploadPresent(name: String, description: String, price: String, image: String, senderid: String, sendComplete: @escaping(_ status: Bool) -> ()) {
+        REF_USERS.child(senderid).child("presents").childByAutoId().updateChildValues(["present_name":name, "description": description, "price": price, "image": image, "senderId": senderid])
+        sendComplete(true)
+    }
+    
+    func getPresents(forUid uid: String, handler: @escaping (_ presents: [Present]) -> ()) {
+        var presentArray = [Present]()
+        REF_USERS.child(uid).child("presents").observeSingleEvent(of: .value) { (presentSnapshot) in
+            guard let presentSnapshot = presentSnapshot.children.allObjects as? [DataSnapshot] else { return }
+            print(presentSnapshot)
+            
+            presentSnapshot.forEach(
+                { (dataSnap) in
+                    
+                    let present_name = dataSnap.childSnapshot(forPath: "present_name").value as? String
+                    let descript = dataSnap.childSnapshot(forPath: "description").value as? String
+                    let price = dataSnap.childSnapshot(forPath: "price").value as? String
+                    let image_name = dataSnap.childSnapshot(forPath: "image").value as? String
+                    
+                    let present = Present(name: present_name!, price: price!, details: descript!, imageName: image_name!)
+                    print(present)
+                    presentArray.append(present)
+            } )
+            
+            handler(presentArray)
+        }
+    }
+    
+    func getName(forSearchQuery query: String, handler: @escaping(_ nameArray: [String]) -> ()) {
+        var nameArray = [String]()
+        REF_USERS.observe(.value) { (userSnapshot) in
+            guard let userSnapshot = userSnapshot.children.allObjects as? [DataSnapshot] else { return }
+            for user in userSnapshot {
+                guard let name = user.childSnapshot(forPath: "name").value as? String else { continue }
+                
+                if query.isAlphanumeric {
+                    if name.contains(query) && name != Auth.auth().currentUser?.displayName {
+                        nameArray.append(name)
+                    }
+                }
+                //               nameArray.append(name)
+            }
+            handler(nameArray)
+        }
+    }
+    
+}
+
+
+extension String {
+    public var isAlphanumeric: Bool {
+        guard !isEmpty else {
+            return false
+        }
+        let allowed = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+        let characterSet = CharacterSet(charactersIn: allowed)
+        guard rangeOfCharacter(from: characterSet.inverted) == nil else {
+            return false
+        }
+        return true
     }
 }

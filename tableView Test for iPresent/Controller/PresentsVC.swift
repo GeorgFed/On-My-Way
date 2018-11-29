@@ -14,7 +14,7 @@ class PresentsVC: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var toolBar: UIToolbar!
     
-    private let imageView = UIImageView(image: UIImage(named: "c-p-p"))
+    private let imageView = UIImageView(image: UIImage(named: "c-p-p")) // MARK: Change to User.Image
     
     // MARK: Profile Image Constants
     private struct Const {
@@ -130,8 +130,9 @@ class PresentsVC: UIViewController, UIScrollViewDelegate {
             .translatedBy(x: xTranslation, y: yTranslation)
     }
     
+    // MARK: Requires DB UPD
     func getPresents() {
-        DataService.instance.getPresent(forUid: "666") { (returnedArray) in
+        TestDataService.instance.getPresent(forUid: "666") { (returnedArray) in
             self.presentArray = returnedArray
             self.collectionView.reloadData()
         }

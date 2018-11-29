@@ -45,16 +45,16 @@ class SearchVC: UIViewController {
         tableView.dataSource = self
     }
     
-    // MARK: Additional Request for test
+    // MARK: Requires DB UPD + CHECK UID
     func getPresents() {
-        DataService.instance.getPresent(forUid: "666") { (returnedArray) in
+        TestDataService.instance.getPresent(forUid: "666") { (returnedArray) in
             self.presentArray = returnedArray
         }
     }
     
-    // MARK: DataService user request
+    // MARK: Requires DB UPD
     func get_users(forQuery _query: String) {
-        DataService.instance.getName(forSearchQuery: _query) {
+        TestDataService.instance.getName(forSearchQuery: _query) {
             ( returned_users ) in
             self.users = returned_users
             self.tableView.reloadData()
@@ -97,7 +97,7 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
         
         var cell = tableView.dequeueReusableCell(withIdentifier: "user_cell")
         if cell == nil {
-            cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "user_cell")
+            cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "user_cell")
         }
         
         cell!.textLabel?.text = self.users[indexPath.row].name
@@ -118,6 +118,7 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
 }
 
 // MARK: .isAlphanumeric
+/*
 extension String {
     public var isAlphanumeric: Bool {
         guard !isEmpty else {
@@ -131,3 +132,4 @@ extension String {
         return true
     }
 }
+*/
