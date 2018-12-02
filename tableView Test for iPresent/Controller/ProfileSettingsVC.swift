@@ -65,4 +65,19 @@ extension ProfileSettingsVC: UITableViewDelegate, UITableViewDataSource {
         cell!.textLabel?.text = self.profile_settings[indexPath.row]
         return cell!
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 3 {
+            let firebaseAuth = Auth.auth()
+            do {
+                try firebaseAuth.signOut()
+                let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                let PhoneSignInVC = storyboard.instantiateViewController(withIdentifier: "PhoneSignInVC")
+                self.show(PhoneSignInVC, sender: nil)
+            } catch let signOutError as NSError {
+                print ("Error signing out: %@", signOutError)
+            }
+        }
+    }
+    
 }

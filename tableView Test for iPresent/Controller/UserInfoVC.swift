@@ -31,11 +31,15 @@ class UserInfoVC: UIViewController {
     
     // MARK: Requires DB UPD
     func getPresents() {
-        TestDataService.instance.getPresent(forUid: "666") { (returnedArray) in
+//        TestDataService.instance.getPresent(forUid: "666") { (returnedArray) in
+//            self.presentArray = returnedArray
+//        }
+        DataService.instance.getPresents(forUid: user?.uid ?? "") { ( returnedArray ) in
             self.presentArray = returnedArray
+            self.collectionView.reloadData()
         }
     }
-    
+
     func setUpView() {
         fullName.text = user?.name
     }
@@ -47,8 +51,6 @@ class UserInfoVC: UIViewController {
 
 extension UserInfoVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(presentArray.count)
-        getPresents()
         return presentArray.count
     }
     

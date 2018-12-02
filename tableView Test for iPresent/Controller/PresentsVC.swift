@@ -162,10 +162,6 @@ class PresentsVC: UIViewController, UIScrollViewDelegate {
         present(_addPresentsVC, animated: true, completion: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(getPresents), name: NSNotification.Name("PresentAdded"), object: nil)
     }
-    
-    @IBAction func EditBtnPressed(_ sender: Any) {
-        
-    }
 }
 
 // MARK: Collection View Delegate

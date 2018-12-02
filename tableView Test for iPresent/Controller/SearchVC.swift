@@ -105,7 +105,7 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
         }
         
         cell!.textLabel?.text = self.users[indexPath.row].name
-        cell!.detailTextLabel?.text = self.users[indexPath.row].birthdate
+        cell!.detailTextLabel?.text = String(self.users[indexPath.row].birthdate.prefix(6)) // String(str[..<index])
         
         return cell!
     }

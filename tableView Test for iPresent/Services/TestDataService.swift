@@ -9,16 +9,9 @@
 import Foundation
 
 let userDataBase = [
-    User.init(name: "John Brown", birthdate: "12.02.03"),
-    User.init(name: "Eva White", birthdate: "15.01.98"),
-    User.init(name: "Steve Brown", birthdate: "29.05.81"),
-    User.init(name: "Andrew Mann", birthdate: "12.02.03"),
-    User.init(name: "Jane Drake", birthdate: "29.05.81"),
-    User.init(name: "John Stevens", birthdate: "15.01.98"),
-    User.init(name: "Jack Bo", birthdate: "29.05.81"),
-    User.init(name: "John Carol", birthdate: "12.02.03"),
-    User.init(name: "Alex Donovan", birthdate: "15.01.98"),
-    User.init(name: "Isa Cengiz", birthdate: "12.02.03")
+    User.init(name: "John Brown", birthdate: "12.02.03", uid: "123"),
+    User.init(name: "Eva White", birthdate: "15.01.98", uid: "123"),
+    User.init(name: "Steve Brown", birthdate: "29.05.81", uid: "123"),
 ]
 
 let presentDataBase = [

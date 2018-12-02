@@ -11,6 +11,7 @@ import Foundation
 class User {
     private var _name: String
     private var _birthdate: String
+    private var _uid: String
     
     var name: String {
         return _name
@@ -20,8 +21,13 @@ class User {
         return _birthdate
     }
     
-    init(name: String, birthdate: String) {
+    var uid: String {
+        return _uid
+    }
+    
+    init(name: String, birthdate: String, uid: String) {
         self._name = name
         self._birthdate = birthdate
+        self._uid = uid
     }
 }

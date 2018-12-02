@@ -150,8 +150,8 @@
                                                         <constraint firstAttribute="width" secondItem="uCi-Ng-BqF" secondAttribute="height" multiplier="1:1" id="vi1-4u-4OB"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="iPhone Xr" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o5H-5m-ixA">
-                                                    <rect key="frame" x="20" y="245" width="89" height="24"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iPhone Xr" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o5H-5m-ixA">
+                                                    <rect key="frame" x="16" y="244" width="212" height="24"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -163,8 +163,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vce-oo-FSy">
-                                                    <rect key="frame" x="20" y="269" width="53" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vce-oo-FSy">
+                                                    <rect key="frame" x="8" y="270" width="204" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -175,9 +175,11 @@
                                         <constraints>
                                             <constraint firstItem="vce-oo-FSy" firstAttribute="top" secondItem="o5H-5m-ixA" secondAttribute="bottom" constant="2" id="1E7-HZ-oEo"/>
                                             <constraint firstItem="vce-oo-FSy" firstAttribute="leading" secondItem="NDH-bn-Xl1" secondAttribute="leading" constant="8" id="DGy-Ug-GyS"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="vce-oo-FSy" secondAttribute="trailing" constant="8" id="EVC-q5-Fqi"/>
                                             <constraint firstItem="o5H-5m-ixA" firstAttribute="leading" secondItem="NDH-bn-Xl1" secondAttribute="leadingMargin" constant="8" id="Fwz-qy-vxi"/>
                                             <constraint firstItem="uCi-Ng-BqF" firstAttribute="leading" secondItem="NDH-bn-Xl1" secondAttribute="leading" id="VaE-yD-pvc"/>
                                             <constraint firstItem="dm6-dR-i3W" firstAttribute="top" secondItem="NDH-bn-Xl1" secondAttribute="topMargin" constant="16" id="dg7-hT-Dw7"/>
+                                            <constraint firstItem="o5H-5m-ixA" firstAttribute="trailing" secondItem="NDH-bn-Xl1" secondAttribute="trailingMargin" constant="8" id="hLZ-OK-rvE"/>
                                             <constraint firstAttribute="trailing" secondItem="uCi-Ng-BqF" secondAttribute="trailing" id="nSI-Wg-PTy"/>
                                             <constraint firstItem="uCi-Ng-BqF" firstAttribute="top" secondItem="NDH-bn-Xl1" secondAttribute="top" id="p3I-XL-dP8"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="dm6-dR-i3W" secondAttribute="trailing" constant="16" id="pBN-xp-SJZ"/>
@@ -311,12 +313,6 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OtC-KQ-qNd">
                                 <rect key="frame" x="0.0" y="729" width="375" height="49"/>
                                 <items>
-                                    <barButtonItem systemItem="compose" id="Zgf-SZ-oZ3">
-                                        <color key="tintColor" red="0.42352941179999998" green="0.50588235290000005" blue="0.60784313729999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <connections>
-                                            <action selector="EditBtnPressed:" destination="S6u-o1-drc" id="K01-u7-ZnP"/>
-                                        </connections>
-                                    </barButtonItem>
                                     <barButtonItem systemItem="flexibleSpace" id="GOt-tF-Mi1"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="qse-Te-EDd"/>
                                     <barButtonItem systemItem="add" id="ztR-L7-uau">
@@ -527,7 +523,7 @@
         <!--Phone Sign InVC-->
         <scene sceneID="DvJ-vB-Wvj">
             <objects>
-                <viewController id="TYr-fI-kiO" customClass="PhoneSignInVC" customModule="tableView_Test_for_iPresent" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PhoneSignInVC" id="TYr-fI-kiO" customClass="PhoneSignInVC" customModule="tableView_Test_for_iPresent" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6mJ-2i-ywe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

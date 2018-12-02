@@ -48,8 +48,9 @@ class DataService {
             let value = snapshot.value as? NSDictionary
             let fullName = value?["name"] as? String ?? ""
             let birthdate = value?["birthdate"] as? String ?? ""
+            let uid = value?["userId"] as? String ?? ""
             var user: User
-            user = User(name: fullName, birthdate: birthdate)
+            user = User(name: fullName, birthdate: birthdate, uid: uid)
             handler(user)
         }
         
@@ -90,10 +91,11 @@ class DataService {
             for user in userSnapshot {
                 guard let name = user.childSnapshot(forPath: "name").value as? String else { continue }
                 guard let birthdate = user.childSnapshot(forPath: "birthdate").value as? String else { continue }
+                guard let uid = user.childSnapshot(forPath: "userId").value as? String else { continue }
                 
                 if query.isAlphanumeric {
                     if name.contains(query) && name != Auth.auth().currentUser?.displayName {
-                        let returned_user = User(name: name, birthdate: birthdate)
+                        let returned_user = User(name: name, birthdate: birthdate, uid: uid)
                         userArray.append(returned_user)
                     }
                 }
