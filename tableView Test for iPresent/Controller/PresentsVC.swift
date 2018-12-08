@@ -8,6 +8,8 @@
 
 import UIKit
 import Firebase
+import Contacts
+import ContactsUI
 
 class PresentsVC: UIViewController, UIScrollViewDelegate {
     
@@ -16,6 +18,16 @@ class PresentsVC: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var toolBar: UIToolbar!
     
     private let imageView = UIImageView(image: UIImage(named: "defaultProfilePicture")) // MARK: Change to User.Image
+    var store = CNContactStore()
+    var contacts = [CNContact]()
+    var phoneNumbers = [String]()
+    var filteredNumbers = [String]()
+    
+    let keys = [
+        CNContactFormatter.descriptorForRequiredKeys(for: .fullName),
+        CNContactPhoneNumbersKey,
+        CNContactEmailAddressesKey
+        ] as [Any]
     
     // MARK: Profile Image Constants
     private struct Const {
@@ -41,13 +53,26 @@ class PresentsVC: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
-        imageView.isUserInteractionEnabled = true
-        imageView.addGestureRecognizer(tapGestureRecognizer)
+        // let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        // imageView.isUserInteractionEnabled = true
+        // imageView.addGestureRecognizer(tapGestureRecognizer)
         
         collectionView.delegate = self
         collectionView.dataSource = self
         
+        self.requestAccess { ( accessGranted ) in
+            if accessGranted == true {
+                self.getContacts()
+                print(self.phoneNumbers)
+                
+                self.filteredNumbers = self.phoneNumbers.filter {
+                    $0.contains("+")
+                }
+                print(self.filteredNumbers)
+            } else {
+                print("error")
+            }
+        }
         setUpView()
         getPresents()
     }
@@ -60,12 +85,65 @@ class PresentsVC: UIViewController, UIScrollViewDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         showImage(true)
+        setImage()
     }
     
     private func showImage(_ show: Bool) {
         UIView.animate(withDuration: 0.2) {
             self.imageView.alpha = show ? 1.0 : 0.0
         }
+    }
+    
+    func getContacts() {
+        let request = CNContactFetchRequest(keysToFetch: keys as! [CNKeyDescriptor])
+        do {
+            try store.enumerateContacts(with: request){
+                (contact, stop) in
+                // Array containing all unified contacts from everywhere
+                self.contacts.append(contact)
+                for phoneNumber in contact.phoneNumbers {
+                    if let number = phoneNumber.value as? CNPhoneNumber, let label = phoneNumber.label {
+                        let localizedLabel = CNLabeledValue<CNPhoneNumber>.localizedString(forLabel: label)
+                        // print("\(contact.givenName) \(contact.familyName) tel:\(localizedLabel) -- \(number.stringValue), email: \(contact.emailAddresses)")
+                        self.phoneNumbers.append(number.stringValue)
+                    }
+                }
+            }
+            // print(contacts)
+        } catch {
+            print("unable to fetch contacts")
+        }
+    }
+    
+    func requestAccess(completionHandler: @escaping (_ accessGranted: Bool) -> Void) {
+        switch CNContactStore.authorizationStatus(for: .contacts) {
+        case .authorized:
+            completionHandler(true)
+        case .denied:
+            showSettingsAlert(completionHandler)
+        case .restricted, .notDetermined:
+            store.requestAccess(for: .contacts) { granted, error in
+                if granted {
+                    completionHandler(true)
+                } else {
+                    DispatchQueue.main.async {
+                        self.showSettingsAlert(completionHandler)
+                    }
+                }
+            }
+        }
+    }
+    
+    private func showSettingsAlert(_ completionHandler: @escaping (_ accessGranted: Bool) -> Void) {
+        let alert = UIAlertController(title: nil, message: "This app requires access to Contacts to proceed. Would you like to open settings and grant permission to contacts?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Open Settings", style: .default) { action in
+            completionHandler(false)
+            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+        })
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { action in
+            completionHandler(false)
+        })
+        present(alert, animated: true)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -92,6 +170,18 @@ class PresentsVC: UIViewController, UIScrollViewDelegate {
             ])
     }
     
+    func setImage() {
+        DataService.instance.getUserImg(forUid: Auth.auth().currentUser!.uid) { ( data ) in
+            if data != nil {
+                self.imageView.image = UIImage(data: data!)
+            } else {
+                self.imageView.image = UIImage(named: "defaultProfilePicture")
+                print("error!")
+            }
+        }
+    }
+    
+    /*
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
         let tappedImage = tapGestureRecognizer.view as! UIImageView
@@ -99,7 +189,7 @@ class PresentsVC: UIViewController, UIScrollViewDelegate {
         // MARK: Profile View Controller ??
         print("Profile Info")
     }
-    
+    */
     // MARK: Profile Image Animation
     private func moveAndResizeImage(for height: CGFloat) {
         let coeff: CGFloat = {
@@ -219,6 +309,7 @@ extension PresentsVC: UICollectionViewDelegate, UICollectionViewDataSource, UICo
         _presentInfoVC.selected_item = current_present
         _presentInfoVC.modalPresentationStyle = .custom
         present(_presentInfoVC, animated: true, completion: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(getPresents), name: NSNotification.Name("PresentDeleted"), object: nil)
     }
     
     // Screen width.

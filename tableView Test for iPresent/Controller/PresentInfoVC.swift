@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class PresentInfoVC: UIViewController {
     
@@ -15,8 +16,10 @@ class PresentInfoVC: UIViewController {
     @IBOutlet weak var presentDescription: UILabel!
     
     public var selected_item: Present?
+    let uid = Auth.auth().currentUser?.uid
     
     override func viewWillAppear(_ animated: Bool) {
+        
         if selected_item != nil {
             presentName.text = selected_item!.name
             presentDescription.text = selected_item!.details
@@ -47,7 +50,15 @@ class PresentInfoVC: UIViewController {
     }
     
     @IBAction func deletePresentBtnPressed(_ sender: Any) {
-        
+        let key = selected_item!.uuid
+        if key != "" {
+            DataService.instance.removePresent(uid: uid!, uuid: key) { ( deleted ) in
+                if deleted {
+                    NotificationCenter.default.post(name: Notification.Name("PresentDeleted"), object: nil)
+                    self.dismiss(animated: true, completion: nil)
+                }
+            }
+        }
     }
     
 }

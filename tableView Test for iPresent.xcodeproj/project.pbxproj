@@ -17,6 +17,7 @@
 		561D719A21A17D2F002B2378 /* FriendsPresentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561D719921A17D2F002B2378 /* FriendsPresentCell.swift */; };
 		5628DEEE21A6176400DEC488 /* TestDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5628DEED21A6176400DEC488 /* TestDataService.swift */; };
 		5628DEF021A6190700DEC488 /* PhoneAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5628DEEF21A6190600DEC488 /* PhoneAuthService.swift */; };
+		563217CA21BC0D330012F75B /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563217C921BC0D330012F75B /* StringExtensions.swift */; };
 		563F0A3C216D20B500A27CA5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563F0A3B216D20B500A27CA5 /* AppDelegate.swift */; };
 		563F0A3E216D20B500A27CA5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563F0A3D216D20B500A27CA5 /* ViewController.swift */; };
 		563F0A41216D20B500A27CA5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 563F0A3F216D20B500A27CA5 /* Main.storyboard */; };
@@ -55,6 +56,7 @@
 		561D719921A17D2F002B2378 /* FriendsPresentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsPresentCell.swift; sourceTree = "<group>"; };
 		5628DEED21A6176400DEC488 /* TestDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDataService.swift; sourceTree = "<group>"; };
 		5628DEEF21A6190600DEC488 /* PhoneAuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneAuthService.swift; sourceTree = "<group>"; };
+		563217C921BC0D330012F75B /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		563F0A38216D20B500A27CA5 /* tableView Test for iPresent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tableView Test for iPresent.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		563F0A3B216D20B500A27CA5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		563F0A3D216D20B500A27CA5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 			children = (
 				5619A4BE2187BD4D00718C50 /* UIViewBindingExt.swift */,
 				5619A4B9218768AB00718C50 /* UIButtonBorderExt.swift */,
+				563217C921BC0D330012F75B /* StringExtensions.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 				5619A4BD21876AEF00718C50 /* RoundedCorners.swift in Sources */,
 				563F0A61216D238800A27CA5 /* TapToHideKeyboard.swift in Sources */,
 				568A53C8219E090000772ED1 /* UserInfoVC.swift in Sources */,
+				563217CA21BC0D330012F75B /* StringExtensions.swift in Sources */,
 				563F0A55216D225300A27CA5 /* DataService.swift in Sources */,
 				563F0A5C216D231F00A27CA5 /* UserCell.swift in Sources */,
 				5619A4B5218711CE00718C50 /* AddPresentsVC.swift in Sources */,
@@ -554,7 +558,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Egor.inc.tableView-Test-for-iPresent";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -574,7 +578,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Egor.inc.tableView-Test-for-iPresent";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

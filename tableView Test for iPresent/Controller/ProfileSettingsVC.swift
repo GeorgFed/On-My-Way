@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import Photos
 
 class ProfileSettingsVC: UIViewController {
 
@@ -17,8 +18,11 @@ class ProfileSettingsVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     let userid = Auth.auth().currentUser?.uid
-    
     let profile_settings = ["Personal Information", "Friend Request", "About", "Sign Out"]
+    let picker = UIImagePickerController()
+    
+    let user = Auth.auth().currentUser
+    var profileImgURL = "defaultProfilePicture"
     
     override func viewWillAppear(_ animated: Bool) {
         setUpView()
@@ -28,6 +32,30 @@ class ProfileSettingsVC: UIViewController {
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        self.picker.delegate = self
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(changeImage(tapGestureRecognizer:)))
+        userImg.isUserInteractionEnabled = true
+        userImg.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    func checkPermission() {
+        let photoAuthorizationStatus = PHPhotoLibrary.authorizationStatus()
+        
+        switch photoAuthorizationStatus {
+        case .authorized: self.present(self.picker, animated: true, completion: nil)
+        case .notDetermined:
+            PHPhotoLibrary.requestAuthorization({ (newStatus) in print("status is \(newStatus)"); if newStatus == PHAuthorizationStatus.authorized { self.present(self.picker, animated: true, completion: nil) }})
+                case .restricted: print("User do not have access to photo album.")
+                case .denied: print("User has denied the permission.")
+        }
+    }
+            
+    @objc func changeImage(tapGestureRecognizer: UITapGestureRecognizer) {
+        self.picker.sourceType = .photoLibrary
+        self.picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+        self.picker.allowsEditing = true
+        checkPermission()
     }
     
     func setUpView() {
@@ -36,8 +64,43 @@ class ProfileSettingsVC: UIViewController {
         } else {
             DataService.instance.getUserInfo(forUid: userid!) { (user) in
                 self.fullNameTxt.text = user.name
+                self.profileImgURL = user.profileImgURL
             }
+            
+            DataService.instance.getUserImg(forUid: userid!) { ( data ) in
+                if data != nil {
+                    self.userImg.image = UIImage(data: data!)
+                } else {
+                    self.userImg.image = UIImage(named: "defaultProfilePicture")
+                    print("error!")
+                }
+            }
+            
+//            if self.profileImgURL == "defaultProfilePicture" {
+//                self.userImg.image = UIImage(named: "defaultProfilePicture")
+//            } else {
+//                DataService.instance.getUserImg(forUid: userid!) { ( data ) in
+//                    if data != nil {
+//                        self.userImg.image = UIImage(data: data!)
+//                    } else {
+//                        self.userImg.image = UIImage(named: "defaultProfilePicture")
+//                        print("error!")
+//                    }
+//                }
+//            }
+            // MARK: Photos
+//            if profileImgURL == "defaultProfilePicture" || profileImgURL == nil {
+//                self.userImg.image = UIImage(named: "defaultProfilePicture")
+//            } else {
+//                DataService.instance.getUserPhoto(forUid: userid!) { (data) in
+//                    self.userImg.image = UIImage(data: data)
+//                }
+//            }
+//            self.userImg.image = UIImage(named: "defaultProfilePicture")
         }
+        userImg.layer.cornerRadius = userImg.frame.height / 2
+        userImg.clipsToBounds = true
+        
     }
     
     @IBAction func backBtnTapped(_ sender: Any) {
@@ -80,4 +143,37 @@ extension ProfileSettingsVC: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+}
+
+extension ProfileSettingsVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        var selectedPickerImg: UIImage?
+        if let editedImg = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            selectedPickerImg = editedImg
+        } else if let originalImg = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            selectedPickerImg = originalImg
+        }
+        
+        userImg.layer.cornerRadius = userImg.frame.height * 0.5
+        userImg.clipsToBounds = true
+        
+        if let selectedImg = selectedPickerImg {
+            self.userImg.image = selectedImg
+            DataService.instance.addUserImg(forUid: userid!, img: selectedImg)
+            // MARK: Photos
+//            DataService.instance.addUserPhoto(forUid: userid!, image: selectedImg) { (success) in
+//                if success {
+//                    print("Complete")
+//                }
+//            }
+        }
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        print("canceled")
+        self.dismiss(animated: true, completion: nil)
+    }
 }
