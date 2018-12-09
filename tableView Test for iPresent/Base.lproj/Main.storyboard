@@ -323,20 +323,12 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Present List" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v6R-Ew-gkJ">
-                                <rect key="frame" x="135" y="742" width="102" height="24"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="OtC-KQ-qNd" firstAttribute="leading" secondItem="O0s-8I-qoO" secondAttribute="leading" id="670-7h-csw"/>
                             <constraint firstItem="IU4-6F-Q4C" firstAttribute="leading" secondItem="k1b-iL-bAv" secondAttribute="leading" id="M4v-MY-bRy"/>
                             <constraint firstItem="OtC-KQ-qNd" firstAttribute="trailing" secondItem="k1b-iL-bAv" secondAttribute="trailing" id="MFn-GU-D9N"/>
-                            <constraint firstItem="v6R-Ew-gkJ" firstAttribute="centerX" secondItem="OtC-KQ-qNd" secondAttribute="centerX" id="YEN-sD-eir"/>
-                            <constraint firstItem="v6R-Ew-gkJ" firstAttribute="centerY" secondItem="OtC-KQ-qNd" secondAttribute="centerY" id="g9S-VS-Qj0"/>
                             <constraint firstItem="k1b-iL-bAv" firstAttribute="trailing" secondItem="IU4-6F-Q4C" secondAttribute="trailing" id="hAM-Kk-fK0"/>
                             <constraint firstItem="IU4-6F-Q4C" firstAttribute="top" secondItem="k1b-iL-bAv" secondAttribute="top" id="ox6-vI-LPd"/>
                             <constraint firstItem="OtC-KQ-qNd" firstAttribute="top" secondItem="IU4-6F-Q4C" secondAttribute="bottom" id="pMP-yA-s6w"/>
@@ -352,7 +344,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Friends" id="rsz-8j-Vpc">
                             <connections>
-                                <segue destination="BYZ-38-t0r" kind="show" id="RXP-a9-mj7"/>
+                                <segue destination="BYZ-38-t0r" kind="show" identifier="searchVCSegue" id="RXP-a9-mj7"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

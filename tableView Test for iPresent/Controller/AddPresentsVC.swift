@@ -8,6 +8,8 @@
 
 import UIKit
 import Firebase
+import Photos
+import PhotosUI
 
 class AddPresentsVC: UIViewController {
     
@@ -21,12 +23,15 @@ class AddPresentsVC: UIViewController {
     
     @IBOutlet weak var baseView: RoundedCorners!
     
+    let picker = UIImagePickerController()
     let user = Auth.auth().currentUser
+    var img: UIImage!
     var imgName = "BackImg2"
     
     var initial_position: CGFloat = 0.0
     var desc_position: CGFloat = 0.0
     var link_price_position: CGFloat = 0.0
+    
     
     override func viewWillAppear(_ animated: Bool) {
         initial_position = self.baseView.frame.origin.y
@@ -41,6 +46,7 @@ class AddPresentsVC: UIViewController {
         descriptionTF.delegate = self
         priceTF.delegate = self
         linkTF.delegate = self
+        self.picker.delegate = self
         
         setUpView()
         hideKeyboard()
@@ -48,12 +54,33 @@ class AddPresentsVC: UIViewController {
     
     func setUpView() {
         // Method #1
+        img = UIImage(named: imgName)
+        
         let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.extraLight)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = view.bounds
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(blurEffectView)
         view.sendSubviewToBack(blurEffectView)
+    }
+    
+    func checkPermission() {
+        let photoAuthorizationStatus = PHPhotoLibrary.authorizationStatus()
+        
+        switch photoAuthorizationStatus {
+        case .authorized: self.present(self.picker, animated: true, completion: nil)
+        case .notDetermined:
+            PHPhotoLibrary.requestAuthorization({ (newStatus) in print("status is \(newStatus)"); if newStatus == PHAuthorizationStatus.authorized { self.present(self.picker, animated: true, completion: nil) }})
+        case .restricted: print("User do not have access to photo album.")
+        case .denied: print("User has denied the permission.")
+        }
+    }
+    
+    func changeImage() {
+        self.picker.sourceType = .photoLibrary
+        self.picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+        self.picker.allowsEditing = true
+        checkPermission()
     }
     
     func add_new_present() {
@@ -71,10 +98,16 @@ class AddPresentsVC: UIViewController {
     func check_input() -> Bool {
         if presentNameTF.text != "" && priceTF.text != "" {
             // OK
-            DataService.instance.uploadPresent(name: presentNameTF.text!, description: descriptionTF.text ?? "-", price: priceTF.text!, image: imgName, senderid: user!.uid) { (success) in
-                if success {
-                    NotificationCenter.default.post(name: Notification.Name("PresentAdded"), object: nil)
-                    self.dismiss(animated: true, completion: nil)
+            if priceTF.text?.last != "$" {
+                priceTF.text?.append("$")
+            }
+            
+            DataService.instance.uploadMedia(img: img, imgType: "present.jpeg") { ( url ) in
+                DataService.instance.uploadPresent(name: self.presentNameTF.text!, description: self.descriptionTF.text ?? "-", price: self.priceTF.text!, image: url!, senderid: self.user!.uid) { (success) in
+                    if success {
+                        NotificationCenter.default.post(name: Notification.Name("PresentAdded"), object: nil)
+                        self.dismiss(animated: true, completion: nil)
+                    }
                 }
             }
             return true
@@ -96,7 +129,7 @@ class AddPresentsVC: UIViewController {
     }
     
     @IBAction func addPhotoBtnPressed(_ sender: Any) {
-        
+        changeImage()
     }
 }
 
@@ -144,6 +177,32 @@ extension AddPresentsVC: UITextFieldDelegate {
         UIView.setAnimationDuration(movementDuration )
         self.view.frame = self.view.frame.offsetBy(dx: 0, dy: movement)
         UIView.commitAnimations()
+    }
+}
+
+extension AddPresentsVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        var selectedPickerImg: UIImage?
+        if let editedImg = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            selectedPickerImg = editedImg
+        } else if let originalImg = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            selectedPickerImg = originalImg
+        }
+        
+        //userImg.layer.cornerRadius = userImg.frame.height * 0.5
+        //userImg.clipsToBounds = true
+        
+        if let selectedImg = selectedPickerImg {
+            self.img = selectedImg
+        }
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        print("canceled")
+        self.dismiss(animated: true, completion: nil)
     }
 }
 

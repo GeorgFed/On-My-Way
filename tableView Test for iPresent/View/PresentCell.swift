@@ -18,10 +18,11 @@ class PresentCell: UICollectionViewCell {
     override func awakeFromNib() {
     }
     
-    public func configureCell(name: String, price: String, details: String, imageName: String) {
+    public func configureCell(name: String, price: String, details: String, imageName: Data) {
         self.name.text = name
         self.price.text = price
         self.details.text = details
-        self.backgroundImg.image = UIImage(named: imageName)
+        self.backgroundImg.image = UIImage(data: imageName)
+        // self.backgroundImg.image = UIImage(named: imageName)
     }
 }

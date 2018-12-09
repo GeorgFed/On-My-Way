@@ -43,7 +43,7 @@ class DataService {
     }
     
     func addUserImg(forUid uid: String, img: UIImage) {
-        uploadMedia(img: img) { (url) in
+        uploadMedia(img: img, imgType: "profile_images.jpeg") { (url) in
             print(url)
             guard let url = url else { return }
             let ref = self.REF_USERS.child(uid)
@@ -53,9 +53,22 @@ class DataService {
         }
     }
     
+    /*
+    func addPresentImg(uid: String, uuid: String, img: UIImage) {
+        uploadMedia(img: img, imgType: "present_images.jpeg") { (url) in
+            print(url)
+            guard let url = url else { return }
+            let ref = self.REF_USERS.child(uid).child(uuid)
+            let key = "profileImgURL"
+            // let img_child = "\(uid).jpeg"
+            ref.updateChildValues([key: url])
+        }
+    }
+    */
+    
     func getUserImg(forUid uid: String, handler: @escaping (_ data: Data?) -> ()) {
         REF_USERS.child(uid).observeSingleEvent(of: .value) { ( snap ) in
-            print(snap)
+            // print(snap)
             let value = snap.value as? NSDictionary
             guard let imageUrl = value?["profileImgURL"] as? String else { return }
             print(imageUrl)
@@ -73,9 +86,54 @@ class DataService {
         }
     }
     
-    func uploadMedia(img: UIImage, handler: @escaping (_ url: String?) -> Void) {
+    func getUserImgForURL(forURL imageUrl: String, handler: @escaping (_ data: Data?) -> ()) {
+        let storage = Storage.storage()
+        _ = storage.reference()
+        let ref = storage.reference(forURL: imageUrl)
+        ref.getData(maxSize: 1 * 1024 * 1024) { data, error in
+            if error != nil {
+                print(error?.localizedDescription)
+                return
+            } else {
+                handler(data!)
+            }
+        }
+    }
+    
+    func getPresentImg(forUid uid: String, imageUrl: String, handler: @escaping (_ data: Data?) -> ()) {
+//        REF_USERS.child(uid).child(uuid).observeSingleEvent(of: .value) { ( snap ) in
+//            print(snap)
+//            let value = snap.value as? NSDictionary
+//            guard let imageUrl = value?["image"] as? String else { return }
+//            print(imageUrl)
+//            let storage = Storage.storage()
+//            _ = storage.reference()
+//            let ref = storage.reference(forURL: imageUrl)
+//            ref.getData(maxSize: 1 * 1024 * 1024) { data, error in
+//                if error != nil {
+//                    print(error?.localizedDescription)
+//                    return
+//                } else {
+//                    handler(data!)
+//                }
+//            }
+//        }
+        let storage = Storage.storage()
+        _ = storage.reference()
+        let ref = storage.reference(forURL: imageUrl)
+        ref.getData(maxSize: 1 * 1024 * 1024) { data, error in
+            if error != nil {
+                print(error?.localizedDescription)
+                return
+            } else {
+                handler(data!)
+            }
+        }
+    }
+    
+    func uploadMedia(img: UIImage, imgType: String, handler: @escaping (_ url: String?) -> Void) {
         let uuid = NSUUID().uuidString.lowercased()
-        let storageRef = STORAGE_REF.child("profile_images.jpeg").child("\(uuid).jpeg")
+        let storageRef = STORAGE_REF.child(imgType).child("\(uuid).jpeg")
         
         if let uploadData = img.jpegData(compressionQuality: 0.5) {
             storageRef.putData(uploadData, metadata: nil) { (metadata, error) in

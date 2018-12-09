@@ -16,13 +16,15 @@ class SearchVC: UIViewController {
     
     
     // Variables
+    var phoneNumbers = [String]()
     var users = [User]()
     var init_query = " "
     var presentArray = [Present]()
     var chosen_user: User?
     
     override func viewWillAppear(_ animated: Bool) {
-        get_users(forQuery: init_query)
+        //get_users(forQuery: init_query)
+        getUsersWithPhoneNumbers(query: phoneNumbers)
     }
     
     override func viewDidLoad() {
@@ -63,6 +65,13 @@ class SearchVC: UIViewController {
 //            self.users = returned_users
 //            self.tableView.reloadData()
 //        }
+    }
+    
+    func getUsersWithPhoneNumbers(query: [String]) {
+        DataService.instance.getUsersByPhoneNumber(phoneNumbers: query) { (returnedUsers) in
+            self.users = returnedUsers
+            self.tableView.reloadData()
+        }
     }
 }
 

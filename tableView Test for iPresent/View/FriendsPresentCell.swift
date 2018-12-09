@@ -19,10 +19,10 @@ class FriendsPresentCell: UICollectionViewCell {
         
     }
     
-    public func configureCell(name: String, price: String, details: String, imageName: String) {
+    public func configureCell(name: String, price: String, details: String, imageName: Data) {
         self.name.text = name
         self.details.text = details
         self.price.text = price
-        self.backgroundImg.image = UIImage(named: imageName)
+        self.backgroundImg.image = UIImage(data: imageName)
     }
 }

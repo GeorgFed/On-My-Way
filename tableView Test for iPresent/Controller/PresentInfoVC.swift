@@ -23,7 +23,17 @@ class PresentInfoVC: UIViewController {
         if selected_item != nil {
             presentName.text = selected_item!.name
             presentDescription.text = selected_item!.details
-            presentImg.image = UIImage(named: selected_item!.imageName)
+            if (selected_item!.imageName != "BackImg2" && selected_item!.imageName != "DefaultProfileImage") {
+                DataService.instance.getUserImgForURL(forURL: selected_item!.imageName) { (data) in
+                    if data != nil {
+                        self.presentImg.image = UIImage(data: data!)
+                    } else {
+                        print("error!!")
+                    }
+                }
+            } else {
+                presentImg.image = UIImage(named: selected_item!.imageName)
+            }
         } else {
             print("error")
             return

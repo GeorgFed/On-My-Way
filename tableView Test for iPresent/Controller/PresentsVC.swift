@@ -65,9 +65,14 @@ class PresentsVC: UIViewController, UIScrollViewDelegate {
                 self.getContacts()
                 print(self.phoneNumbers)
                 
-                self.filteredNumbers = self.phoneNumbers.filter {
+                self.phoneNumbers = self.phoneNumbers.filter {
                     $0.contains("+")
                 }
+                for string in self.phoneNumbers {
+                    let string_filtered = string.replacingOccurrences( of:"[^0-9]", with: "", options: .regularExpression)
+                    self.filteredNumbers.append("+" + string_filtered)
+                }
+                
                 print(self.filteredNumbers)
             } else {
                 print("error")
@@ -88,6 +93,13 @@ class PresentsVC: UIViewController, UIScrollViewDelegate {
         setImage()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "searchVCSegue" {
+            if let vc = segue.destination as? SearchVC {
+                vc.phoneNumbers = self.filteredNumbers
+            }
+        }
+    }
     private func showImage(_ show: Bool) {
         UIView.animate(withDuration: 0.2) {
             self.imageView.alpha = show ? 1.0 : 0.0
@@ -263,8 +275,20 @@ extension PresentsVC: UICollectionViewDelegate, UICollectionViewDataSource, UICo
             let details = presentArray[indexPath.row].details
             let price = presentArray[indexPath.row].price
             let img = presentArray[indexPath.row].imageName
-            
-            cell.configureCell(name: name, price: price, details: details, imageName: img)
+            // print(uuid)
+            if (img != "BackImg2" && img != "DefaultProfileImage") {
+                DataService.instance.getPresentImg(forUid: (Auth.auth().currentUser?.uid)!, imageUrl: img) { ( imgData ) in
+                    if imgData != nil {
+                        cell.configureCell(name: name, price: price, details: details, imageName: imgData!)
+                    } else {
+                        let defImgData = UIImage(named: "BackImg2")!.jpegData(compressionQuality: 0.5)
+                        cell.configureCell(name: name, price: price, details: details, imageName: defImgData!)
+                    }
+                }
+            } else {
+                let defImgData = UIImage(named: "BackImg2")!.jpegData(compressionQuality: 0.5)
+                cell.configureCell(name: name, price: price, details: details, imageName: defImgData!)
+            }
             
             cell.contentView.layer.cornerRadius = 3.0
             cell.contentView.layer.borderWidth = 1.0
