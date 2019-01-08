@@ -53,19 +53,6 @@ class DataService {
         }
     }
     
-    /*
-    func addPresentImg(uid: String, uuid: String, img: UIImage) {
-        uploadMedia(img: img, imgType: "present_images.jpeg") { (url) in
-            print(url)
-            guard let url = url else { return }
-            let ref = self.REF_USERS.child(uid).child(uuid)
-            let key = "profileImgURL"
-            // let img_child = "\(uid).jpeg"
-            ref.updateChildValues([key: url])
-        }
-    }
-    */
-    
     func getUserImg(forUid uid: String, handler: @escaping (_ data: Data?) -> ()) {
         REF_USERS.child(uid).observeSingleEvent(of: .value) { ( snap ) in
             // print(snap)
@@ -101,26 +88,11 @@ class DataService {
     }
     
     func getPresentImg(forUid uid: String, imageUrl: String, handler: @escaping (_ data: Data?) -> ()) {
-//        REF_USERS.child(uid).child(uuid).observeSingleEvent(of: .value) { ( snap ) in
-//            print(snap)
-//            let value = snap.value as? NSDictionary
-//            guard let imageUrl = value?["image"] as? String else { return }
-//            print(imageUrl)
-//            let storage = Storage.storage()
-//            _ = storage.reference()
-//            let ref = storage.reference(forURL: imageUrl)
-//            ref.getData(maxSize: 1 * 1024 * 1024) { data, error in
-//                if error != nil {
-//                    print(error?.localizedDescription)
-//                    return
-//                } else {
-//                    handler(data!)
-//                }
-//            }
-//        }
+
         let storage = Storage.storage()
         _ = storage.reference()
         let ref = storage.reference(forURL: imageUrl)
+        
         ref.getData(maxSize: 1 * 1024 * 1024) { data, error in
             if error != nil {
                 print(error?.localizedDescription)
@@ -153,53 +125,12 @@ class DataService {
             }
         }
     }
-        
-    // MARK: Photos
-    /*
-    func addUserPhoto(forUid uid: String, image: UIImage, updateComplete: @escaping (_ status: Bool) -> ()) {
-        let profileImgStorage = STORAGE_REF.child("profile_images").child("\(uid).png")
-        if let uploadData = image.jpegData(compressionQuality: 0.5) {
-            profileImgStorage.putData(uploadData, metadata: nil) { (metadata, error) in
-                if let error = error {
-                    print(error.localizedDescription)
-                    return
-                }
-                
-                metadata?.storageReference?.downloadURL(completion: { (url, error) in
-                    if let error = error {
-                        print(error.localizedDescription)
-                        return
-                    }
-                    self.REF_USERS.child(uid).updateChildValues(["profileImg": url ?? "defaultProfileImg"])
-                })
-            }
-        }
-    }
-    
-    func getUserPhoto(forUid uid: String, handler: @escaping(_ data: Data) -> ()) {
-        let ref = REF_USERS.child(uid)
-        ref.child("profileImg").observe(.value, with: {(snap: DataSnapshot) in
-            let imageUrl = snap.value
-            
-            let storage = Storage.storage()
-            _ = storage.reference()
-            let ref = storage.reference(forURL: imageUrl as! String)
-            ref.getData(maxSize: 1 * 1024 * 1024) { data, error in
-                if error != nil {
-                    print(error)
-                    return
-                } else {
-                    handler(data!)
-                }
-            }
-        })
-    }
-    */
     
     func getUserInfo(forUid uid: String, handler: @escaping (_ user: User) -> ())  {
         
         REF_USERS.child(uid).observeSingleEvent(of: .value) { ( snapshot ) in
             let value = snapshot.value as? NSDictionary
+            print(value)
             let fullName = value?["name"] as? String ?? ""
             let birthdate = value?["birthdate"] as? String ?? ""
             let uid = value?["userId"] as? String ?? ""
@@ -211,11 +142,11 @@ class DataService {
         
     }
     
-    func uploadPresent(name: String, description: String, price: String, image: String, senderid: String, sendComplete: @escaping(_ status: Bool) -> ()) {
+    func uploadPresent(name: String, description: String, price: String, image: String, senderid: String, link: String, sendComplete: @escaping(_ status: Bool) -> ()) {
         let ref = REF_USERS.child(senderid).child("presents").childByAutoId()
         let key = ref.key
         
-        ref.updateChildValues(["present_name":name, "description": description, "price": price, "image": image, "senderId": senderid, "uuid": key!])
+        ref.updateChildValues(["present_name":name, "description": description, "price": price, "image": image, "senderId": senderid, "uuid": key!, "link": link])
         sendComplete(true)
     }
     
@@ -233,8 +164,8 @@ class DataService {
                     let price = dataSnap.childSnapshot(forPath: "price").value as? String
                     let image_name = dataSnap.childSnapshot(forPath: "image").value as? String
                     let uuid = dataSnap.childSnapshot(forPath: "uuid").value as? String
-                    
-                    let present = Present(name: present_name!, price: price!, details: descript!, imageName: image_name!, uuid: uuid ?? "")
+                    let link = dataSnap.childSnapshot(forPath: "link").value as? String
+                    let present = Present(name: present_name!, price: price!, details: descript!, imageName: image_name!, uuid: uuid ?? "", link: link ?? "")
                     //print(present)
                     presentArray.append(present)
             } )

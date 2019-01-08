@@ -14,6 +14,8 @@ class Present {
     private var _details: String
     private var _imageName: String
     private var _uuid: String
+    private var _link: String
+    
     var name: String {
         return _name
     }
@@ -32,11 +34,15 @@ class Present {
         return _uuid
     }
     
-    init(name: String, price: String, details: String, imageName: String, uuid: String) {
+    var link: String {
+        return _link
+    }
+    init(name: String, price: String, details: String, imageName: String, uuid: String, link: String) {
         self._name = name
         self._price = price
         self._details = details
         self._imageName = imageName
         self._uuid = uuid
+        self._link = link
     }
 }

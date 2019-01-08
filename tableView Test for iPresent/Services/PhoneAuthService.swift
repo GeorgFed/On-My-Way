@@ -26,6 +26,19 @@ class PhoneAuthService {
                 return
             }
             print(user)
+            var query = [String]()
+            query.append(user.phoneNumber!)
+            
+            DataService.instance.getUsersByPhoneNumber(phoneNumbers: query) { (returnedUsers) in
+                print(returnedUsers.count)
+                if returnedUsers.count == 0 {
+                    
+                    NotificationCenter.default.post(name: Notification.Name("NewUser"), object: nil)
+                } else {
+                    NotificationCenter.default.post(name: Notification.Name("UserExists"), object: nil)
+                }
+            }
+            
             let userData = ["provider" : user.providerID, "phoneNumber" : user.phoneNumber]
             DataService.instance.createDBUser(uid: user.uid, userData: userData)
             userCreationComplete(true, nil)

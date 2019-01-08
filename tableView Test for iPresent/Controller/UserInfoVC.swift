@@ -42,12 +42,18 @@ class UserInfoVC: UIViewController {
 
     func setUpView() {
         fullName.text = user?.name
+        profileImg.layer.cornerRadius = profileImg.frame.height / 2
+        profileImg.clipsToBounds = true
+        
         if let url = user?.profileImgURL {
+            /*
             DataService.instance.getUserImgForURL(forURL: url) { ( data ) in
                 if data != nil {
                     self.profileImg.image = UIImage(data: data!)
                 }
             }
+             */
+            profileImg.loadImgWithURLString(urlString: url)
         }
         
     }
@@ -68,6 +74,7 @@ extension UserInfoVC: UICollectionViewDelegate, UICollectionViewDataSource {
             let details = presentArray[indexPath.row].details
             let price = presentArray[indexPath.row].price
             let img = presentArray[indexPath.row].imageName
+            /*
             if (img != "BackImg2" && img != "DefaultProfileImage") {
                 DataService.instance.getUserImgForURL(forURL: img) { (data) in
                     if data != nil {
@@ -81,7 +88,8 @@ extension UserInfoVC: UICollectionViewDelegate, UICollectionViewDataSource {
                 let data = UIImage(named: img)?.jpegData(compressionQuality: 0.5)
                 cell.configureCell(name: name, price: price, details: details, imageName: data!)
             }
-            
+            */
+            cell.configureCell(name: name, price: price, details: details, imageName: img)
             cell.contentView.layer.cornerRadius = 3.0
             cell.contentView.layer.borderWidth = 1.0
             cell.contentView.layer.borderColor = UIColor.clear.cgColor

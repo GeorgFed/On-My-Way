@@ -15,14 +15,14 @@ let userDataBase = [
 ]
 
 let presentDataBase = [
-    Present.init(name: "iPhone 6", price: "900 $", details: "Space Gray", imageName: "backImg1", uuid: "1"),
-    Present.init(name: "Macbook Pro", price: "1200 $", details: "Space Gray", imageName: "BackImg2", uuid: "1"),
-    Present.init(name: "AirPods", price: "500 $", details: " - ", imageName: "BackImg2", uuid: "1"),
-    Present.init(name: "Go Pro Hero 6", price: "500 $", details: "Black", imageName: "backImg1", uuid: "1"),
-    Present.init(name: "Macbook Pro", price: "900 $", details: "Silver", imageName: "backImg1", uuid: "1"),
-    Present.init(name: "AirPods", price: "500 $", details: " - ", imageName: "BackImg2", uuid: "1"),
-    Present.init(name: "Macbook Pro", price: "900 $", details: "Silver", imageName: "BackImg2", uuid: "1"),
-    Present.init(name: "AirPods", price: "500 $", details: " - ", imageName: "backImg1", uuid: "1")
+    Present.init(name: "iPhone 6", price: "900 $", details: "Space Gray", imageName: "backImg1", uuid: "1", link: ""),
+    Present.init(name: "Macbook Pro", price: "1200 $", details: "Space Gray", imageName: "BackImg2", uuid: "1", link: ""),
+    Present.init(name: "AirPods", price: "500 $", details: " - ", imageName: "BackImg2", uuid: "1", link: ""),
+    Present.init(name: "Go Pro Hero 6", price: "500 $", details: "Black", imageName: "backImg1", uuid: "1", link: ""),
+    Present.init(name: "Macbook Pro", price: "900 $", details: "Silver", imageName: "backImg1", uuid: "1", link: ""),
+    Present.init(name: "AirPods", price: "500 $", details: " - ", imageName: "BackImg2", uuid: "1", link: ""),
+    Present.init(name: "Macbook Pro", price: "900 $", details: "Silver", imageName: "BackImg2", uuid: "1", link: ""),
+    Present.init(name: "AirPods", price: "500 $", details: " - ", imageName: "backImg1", uuid: "1", link: "")
 ]
 
 class TestDataService {

@@ -47,9 +47,10 @@ class PresentsVC: UIViewController, UIScrollViewDelegate {
         static let NavBarHeightLargeState: CGFloat = 96.5
     }
     
+    let userKey = "mainUser"
     
     var presentArray = [Present]()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -59,6 +60,17 @@ class PresentsVC: UIViewController, UIScrollViewDelegate {
         
         collectionView.delegate = self
         collectionView.dataSource = self
+
+        if let cachedUser = mainUserPhotoURLCache.object(forKey: userKey as NSString) {
+            self.imageView.loadImgWithURLString(urlString: cachedUser as String)
+        } else {
+            if let userid = Auth.auth().currentUser?.uid {
+                DataService.instance.getUserInfo(forUid: userid) { (user) in
+                    self.imageView.loadImgWithURLString(urlString: user.profileImgURL)
+                    mainUserPhotoURLCache.setObject(user.profileImgURL as NSString, forKey: self.userKey as NSString)
+                }
+            }
+        }
         
         self.requestAccess { ( accessGranted ) in
             if accessGranted == true {
@@ -90,7 +102,7 @@ class PresentsVC: UIViewController, UIScrollViewDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         showImage(true)
-        setImage()
+        //setImage()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -116,7 +128,7 @@ class PresentsVC: UIViewController, UIScrollViewDelegate {
                 for phoneNumber in contact.phoneNumbers {
                     if let number = phoneNumber.value as? CNPhoneNumber, let label = phoneNumber.label {
                         let localizedLabel = CNLabeledValue<CNPhoneNumber>.localizedString(forLabel: label)
-                        // print("\(contact.givenName) \(contact.familyName) tel:\(localizedLabel) -- \(number.stringValue), email: \(contact.emailAddresses)")
+                         //print("\(contact.givenName) \(contact.familyName) tel:\(localizedLabel) -- \(number.stringValue), email: \(contact.emailAddresses)")
                         self.phoneNumbers.append(number.stringValue)
                     }
                 }
@@ -182,6 +194,9 @@ class PresentsVC: UIViewController, UIScrollViewDelegate {
             ])
     }
     
+    
+    // MARK: IMAGE SETUP
+    /*
     func setImage() {
         DataService.instance.getUserImg(forUid: Auth.auth().currentUser!.uid) { ( data ) in
             if data != nil {
@@ -192,6 +207,7 @@ class PresentsVC: UIViewController, UIScrollViewDelegate {
             }
         }
     }
+    */
     
     /*
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
@@ -276,6 +292,7 @@ extension PresentsVC: UICollectionViewDelegate, UICollectionViewDataSource, UICo
             let price = presentArray[indexPath.row].price
             let img = presentArray[indexPath.row].imageName
             // print(uuid)
+            /*
             if (img != "BackImg2" && img != "DefaultProfileImage") {
                 DataService.instance.getPresentImg(forUid: (Auth.auth().currentUser?.uid)!, imageUrl: img) { ( imgData ) in
                     if imgData != nil {
@@ -289,6 +306,8 @@ extension PresentsVC: UICollectionViewDelegate, UICollectionViewDataSource, UICo
                 let defImgData = UIImage(named: "BackImg2")!.jpegData(compressionQuality: 0.5)
                 cell.configureCell(name: name, price: price, details: details, imageName: defImgData!)
             }
+            */
+            cell.configureCell(name: name, price: price, details: details, imageName: img)
             
             cell.contentView.layer.cornerRadius = 3.0
             cell.contentView.layer.borderWidth = 1.0

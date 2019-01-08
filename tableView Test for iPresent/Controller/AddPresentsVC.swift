@@ -103,7 +103,7 @@ class AddPresentsVC: UIViewController {
             }
             
             DataService.instance.uploadMedia(img: img, imgType: "present.jpeg") { ( url ) in
-                DataService.instance.uploadPresent(name: self.presentNameTF.text!, description: self.descriptionTF.text ?? "-", price: self.priceTF.text!, image: url!, senderid: self.user!.uid) { (success) in
+                DataService.instance.uploadPresent(name: self.presentNameTF.text!, description: self.descriptionTF.text ?? "-", price: self.priceTF.text!, image: url!, senderid: self.user!.uid, link: self.linkTF.text!) { (success) in
                     if success {
                         NotificationCenter.default.post(name: Notification.Name("PresentAdded"), object: nil)
                         self.dismiss(animated: true, completion: nil)

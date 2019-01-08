@@ -18,7 +18,7 @@ class ProfileSettingsVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     let userid = Auth.auth().currentUser?.uid
-    let profile_settings = ["Personal Information", "Friend Request", "About", "Sign Out"]
+    let profile_settings = ["Sign Out"]
     let picker = UIImagePickerController()
     
     let user = Auth.auth().currentUser
@@ -59,6 +59,16 @@ class ProfileSettingsVC: UIViewController {
     }
     
     func setUpView() {
+        let userKey = "mainUser"
+        
+        if let username = mainUserNameCache.object(forKey: userKey as NSString) {
+            self.fullNameTxt.text = username as String
+        }
+        
+        if let photourl = mainUserPhotoURLCache.object(forKey: userKey as NSString) {
+            self.userImg.loadImgWithURLString(urlString: (photourl as NSString) as String)
+        }
+        
         if userid == nil {
             fullNameTxt.text = "George Test"
         } else {
@@ -110,19 +120,19 @@ class ProfileSettingsVC: UIViewController {
 
 extension ProfileSettingsVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: "_settings")
         if cell == nil {
-            if indexPath.row == 3 {
+           // if indexPath.row == 3 {
                 cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "_signout")
                 cell?.textLabel?.textColor = #colorLiteral(red: 0.8078431373, green: 0.3294117647, blue: 0.2392156863, alpha: 1)
-            } else {
-                cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "_settings")
-                cell?.accessoryType = .disclosureIndicator
-            }
+           // } else {
+//                cell = UITableViewCell(style: UITableViewCell.CellStyle.default,      reuseIdentifier: "_settings")
+//                cell?.accessoryType = .disclosureIndicator
+//            }
         }
         
         cell!.textLabel?.text = self.profile_settings[indexPath.row]
@@ -130,7 +140,7 @@ extension ProfileSettingsVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 3 {
+        // if indexPath.row == 3 {
             let firebaseAuth = Auth.auth()
             do {
                 try firebaseAuth.signOut()
@@ -140,7 +150,7 @@ extension ProfileSettingsVC: UITableViewDelegate, UITableViewDataSource {
             } catch let signOutError as NSError {
                 print ("Error signing out: %@", signOutError)
             }
-        }
+        // }
     }
     
 }
