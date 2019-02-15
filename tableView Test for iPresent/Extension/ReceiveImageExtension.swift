@@ -15,9 +15,9 @@ extension UIImageView {
             self.image = cachedImg
             return
         }
-        
-        let url = URL(string: urlString)
-        URLSession.shared.dataTask(with: url! ) { (data, response, error) in
+        // MARK: ERROR
+        guard let url = URL(string: urlString) else { return }
+        URLSession.shared.dataTask(with: url ) { (data, response, error) in
             if error != nil {
                 print(error!.localizedDescription)
                 return

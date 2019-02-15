@@ -33,12 +33,14 @@ class DataService {
     func createDBUser(uid: String, userData: Dictionary<String, Any>) {
         REF_USERS.child(uid).updateChildValues(userData)
     }
-    
+    // https://firebasestorage.googleapis.com/v0/b/ipresent-upd.appspot.com/o/profile_images.jpeg%2Faa6adde0-4d48-454d-9bd9-a66a16559009.jpeg?alt=media&token=18b230be-e847-4c0b-b797-2025744e6909
     func updateDBUser(withUid uid: String, firstName: String, lastName: String, birthdate: String, updateComplete: @escaping (_ status: Bool) -> ()) {
         let fullName = firstName + " " + lastName
-        let default_img = UIImage(named: "defaultProfilePicture")
-        REF_USERS.child(uid).updateChildValues(["userId": uid, "name": fullName, "birthdate": birthdate])
-        addUserImg(forUid: uid, img: default_img!)
+        let defURL = "https://firebasestorage.googleapis.com/v0/b/ipresent-upd.appspot.com/o/profile_images.jpeg%2Faa6adde0-4d48-454d-9bd9-a66a16559009.jpeg?alt=media&token=18b230be-e847-4c0b-b797-2025744e6909"
+        //let default_img = UIImage(named: "defaultProfilePicture")
+        let key = "profileImgURL"
+        REF_USERS.child(uid).updateChildValues(["userId": uid, "name": fullName, "birthdate": birthdate, key:defURL])
+        //addUserImg(forUid: uid, img: default_img!)
         updateComplete(true)
     }
     

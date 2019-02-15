@@ -9,10 +9,11 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import PhoneNumberKit
 
 class PhoneSignInVC: UIViewController {
 
-    @IBOutlet weak var phoneNumber: UITextField!
+    @IBOutlet weak var phoneNumber: PhoneNumberTextField!
     
     let segueId = "ShowPhoneVerifyVC"
     
