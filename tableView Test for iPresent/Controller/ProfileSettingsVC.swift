@@ -14,13 +14,11 @@ class ProfileSettingsVC: UIViewController {
 
     @IBOutlet weak var userImg: UIImageView!
     @IBOutlet weak var fullNameTxt: UILabel!
-    
     @IBOutlet weak var tableView: UITableView!
     
     let userid = Auth.auth().currentUser?.uid
     let profile_settings = ["Sign Out"]
     let picker = UIImagePickerController()
-    
     let user = Auth.auth().currentUser
     var profileImgURL = "defaultProfilePicture"
     
@@ -39,9 +37,9 @@ class ProfileSettingsVC: UIViewController {
         userImg.addGestureRecognizer(tapGestureRecognizer)
     }
     
+    // MARK: PHOTO ACCESS PERMISSION
     func checkPermission() {
         let photoAuthorizationStatus = PHPhotoLibrary.authorizationStatus()
-        
         switch photoAuthorizationStatus {
         case .authorized: self.present(self.picker, animated: true, completion: nil)
         case .notDetermined:
@@ -60,11 +58,9 @@ class ProfileSettingsVC: UIViewController {
     
     func setUpView() {
         let userKey = "mainUser"
-        
         if let username = mainUserNameCache.object(forKey: userKey as NSString) {
             self.fullNameTxt.text = username as String
         }
-        
         if let photourl = mainUserPhotoURLCache.object(forKey: userKey as NSString) {
             self.userImg.loadImgWithURLString(urlString: (photourl as NSString) as String)
         }
@@ -76,41 +72,9 @@ class ProfileSettingsVC: UIViewController {
                 self.fullNameTxt.text = user.name
                 self.profileImgURL = user.profileImgURL
             }
-            
-            DataService.instance.getUserImg(forUid: userid!) { ( data ) in
-                if data != nil {
-                    self.userImg.image = UIImage(data: data!)
-                } else {
-                    self.userImg.image = UIImage(named: "defaultProfilePicture")
-                    print("error!")
-                }
-            }
-            
-//            if self.profileImgURL == "defaultProfilePicture" {
-//                self.userImg.image = UIImage(named: "defaultProfilePicture")
-//            } else {
-//                DataService.instance.getUserImg(forUid: userid!) { ( data ) in
-//                    if data != nil {
-//                        self.userImg.image = UIImage(data: data!)
-//                    } else {
-//                        self.userImg.image = UIImage(named: "defaultProfilePicture")
-//                        print("error!")
-//                    }
-//                }
-//            }
-            // MARK: Photos
-//            if profileImgURL == "defaultProfilePicture" || profileImgURL == nil {
-//                self.userImg.image = UIImage(named: "defaultProfilePicture")
-//            } else {
-//                DataService.instance.getUserPhoto(forUid: userid!) { (data) in
-//                    self.userImg.image = UIImage(data: data)
-//                }
-//            }
-//            self.userImg.image = UIImage(named: "defaultProfilePicture")
         }
         userImg.layer.cornerRadius = userImg.frame.height / 2
         userImg.clipsToBounds = true
-        
     }
     
     @IBAction func backBtnTapped(_ sender: Any) {
@@ -118,6 +82,7 @@ class ProfileSettingsVC: UIViewController {
     }
 }
 
+// TODO: CHANGE TABLE VIEW
 extension ProfileSettingsVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
@@ -126,13 +91,8 @@ extension ProfileSettingsVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: "_settings")
         if cell == nil {
-           // if indexPath.row == 3 {
                 cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "_signout")
                 cell?.textLabel?.textColor = #colorLiteral(red: 0.8078431373, green: 0.3294117647, blue: 0.2392156863, alpha: 1)
-           // } else {
-//                cell = UITableViewCell(style: UITableViewCell.CellStyle.default,      reuseIdentifier: "_settings")
-//                cell?.accessoryType = .disclosureIndicator
-//            }
         }
         
         cell!.textLabel?.text = self.profile_settings[indexPath.row]
@@ -140,17 +100,15 @@ extension ProfileSettingsVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // if indexPath.row == 3 {
-            let firebaseAuth = Auth.auth()
-            do {
-                try firebaseAuth.signOut()
-                let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-                let PhoneSignInVC = storyboard.instantiateViewController(withIdentifier: "PhoneSignInVC")
-                self.show(PhoneSignInVC, sender: nil)
-            } catch let signOutError as NSError {
-                print ("Error signing out: %@", signOutError)
-            }
-        // }
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+            let PhoneSignInVC = storyboard.instantiateViewController(withIdentifier: "PhoneSignInVC")
+            self.show(PhoneSignInVC, sender: nil)
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
     }
     
 }

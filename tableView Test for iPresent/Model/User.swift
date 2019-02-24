@@ -29,6 +29,7 @@ class User {
     var profileImgURL: String {
         return _profileImgURL
     }
+    
     init(name: String, birthdate: String, uid: String, profileImgURL: String) {
         self._name = name
         self._birthdate = birthdate

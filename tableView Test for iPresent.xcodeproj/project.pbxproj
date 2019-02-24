@@ -36,6 +36,9 @@
 		568A53C8219E090000772ED1 /* UserInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568A53C7219E090000772ED1 /* UserInfoVC.swift */; };
 		568A53CB219E179800772ED1 /* ReservePresentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568A53C9219E179800772ED1 /* ReservePresentVC.swift */; };
 		568A53CC219E179800772ED1 /* ReservePresentVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 568A53CA219E179800772ED1 /* ReservePresentVC.xib */; };
+		568E5821221ED609008337C7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568E5820221ED609008337C7 /* Constants.swift */; };
+		568E5823221ED6BE008337C7 /* UserDataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568E5822221ED6BE008337C7 /* UserDataExtension.swift */; };
+		568E5825221EDB05008337C7 /* PresentDataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568E5824221EDB05008337C7 /* PresentDataExtension.swift */; };
 		568FE7FD217CD57A004E893B /* PresentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568FE7FC217CD57A004E893B /* PresentsVC.swift */; };
 		568FE7FF217CD831004E893B /* Present.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568FE7FE217CD831004E893B /* Present.swift */; };
 		568FE801217CDC3E004E893B /* assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 568FE800217CDC3E004E893B /* assets.xcassets */; };
@@ -79,6 +82,9 @@
 		568A53C7219E090000772ED1 /* UserInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoVC.swift; sourceTree = "<group>"; };
 		568A53C9219E179800772ED1 /* ReservePresentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservePresentVC.swift; sourceTree = "<group>"; };
 		568A53CA219E179800772ED1 /* ReservePresentVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReservePresentVC.xib; sourceTree = "<group>"; };
+		568E5820221ED609008337C7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		568E5822221ED6BE008337C7 /* UserDataExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataExtension.swift; sourceTree = "<group>"; };
+		568E5824221EDB05008337C7 /* PresentDataExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentDataExtension.swift; sourceTree = "<group>"; };
 		568FE7FC217CD57A004E893B /* PresentsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentsVC.swift; sourceTree = "<group>"; };
 		568FE7FE217CD831004E893B /* Present.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Present.swift; sourceTree = "<group>"; };
 		568FE800217CDC3E004E893B /* assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = assets.xcassets; sourceTree = "<group>"; };
@@ -130,6 +136,9 @@
 				563F0A54216D225300A27CA5 /* DataService.swift */,
 				5628DEED21A6176400DEC488 /* TestDataService.swift */,
 				5628DEEF21A6190600DEC488 /* PhoneAuthService.swift */,
+				568E5822221ED6BE008337C7 /* UserDataExtension.swift */,
+				568E5824221EDB05008337C7 /* PresentDataExtension.swift */,
+				565B04CA21E405C800409319 /* ReceiveImageExtension.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -155,12 +164,12 @@
 		563F0A3A216D20B500A27CA5 /* tableView Test for iPresent */ = {
 			isa = PBXGroup;
 			children = (
-				56DD8D8521AAF06600CF3570 /* tableView Test for iPresent.entitlements */,
+				568E5820221ED609008337C7 /* Constants.swift */,
 				5695D6C121A612D9002608DB /* Resources */,
+				568E581E221ED576008337C7 /* Helpers */,
 				563F0A58216D22D500A27CA5 /* Initial Controller */,
 				5619A4B8218711E300718C50 /* Services */,
 				5619A4B7218711D900718C50 /* XIBs */,
-				563F0A5D216D234E00A27CA5 /* Extension */,
 				563F0A56216D22A300A27CA5 /* Model */,
 				563F0A57216D22B800A27CA5 /* View */,
 				563F0A52216D221D00A27CA5 /* Controller */,
@@ -202,12 +211,10 @@
 		563F0A57216D22B800A27CA5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				568E5826221EE628008337C7 /* Cells */,
 				5619A4BC21876AEE00718C50 /* RoundedCorners.swift */,
 				563F0A60216D238800A27CA5 /* TapToHideKeyboard.swift */,
 				5619A4B12186248200718C50 /* ShadowView.swift */,
-				563F0A5B216D231F00A27CA5 /* UserCell.swift */,
-				568FE802217CDF14004E893B /* PresentCell.swift */,
-				561D719921A17D2F002B2378 /* FriendsPresentCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -215,9 +222,9 @@
 		563F0A58216D22D500A27CA5 /* Initial Controller */ = {
 			isa = PBXGroup;
 			children = (
-				563F0A45216D20B700A27CA5 /* Assets.xcassets */,
 				563F0A3B216D20B500A27CA5 /* AppDelegate.swift */,
 				563F0A3D216D20B500A27CA5 /* ViewController.swift */,
+				563F0A45216D20B700A27CA5 /* Assets.xcassets */,
 			);
 			path = "Initial Controller";
 			sourceTree = "<group>";
@@ -228,15 +235,41 @@
 				5619A4BE2187BD4D00718C50 /* UIViewBindingExt.swift */,
 				5619A4B9218768AB00718C50 /* UIButtonBorderExt.swift */,
 				563217C921BC0D330012F75B /* StringExtensions.swift */,
-				565B04CA21E405C800409319 /* ReceiveImageExtension.swift */,
-				565B04CC21E41F7500409319 /* CacheExtension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		568E581E221ED576008337C7 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				563F0A5D216D234E00A27CA5 /* Extension */,
+				568E581F221ED592008337C7 /* Cache */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		568E581F221ED592008337C7 /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				565B04CC21E41F7500409319 /* CacheExtension.swift */,
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
+		568E5826221EE628008337C7 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				563F0A5B216D231F00A27CA5 /* UserCell.swift */,
+				568FE802217CDF14004E893B /* PresentCell.swift */,
+				561D719921A17D2F002B2378 /* FriendsPresentCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		5695D6C121A612D9002608DB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				56DD8D8521AAF06600CF3570 /* tableView Test for iPresent.entitlements */,
 				5695D6BF21A61288002608DB /* GoogleService-Info.plist */,
 			);
 			path = Resources;
@@ -384,6 +417,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				568E5823221ED6BE008337C7 /* UserDataExtension.swift in Sources */,
 				5619A4B22186248200718C50 /* ShadowView.swift in Sources */,
 				5619A4BA218768AB00718C50 /* UIButtonBorderExt.swift in Sources */,
 				563F0A51216D221100A27CA5 /* SearchVC.swift in Sources */,
@@ -396,6 +430,7 @@
 				565B04CB21E405C800409319 /* ReceiveImageExtension.swift in Sources */,
 				5628DEEE21A6176400DEC488 /* TestDataService.swift in Sources */,
 				56F41B20218B6C130070B2CC /* PhoneSignUpVC.swift in Sources */,
+				568E5825221EDB05008337C7 /* PresentDataExtension.swift in Sources */,
 				568FE7FD217CD57A004E893B /* PresentsVC.swift in Sources */,
 				56F41B24218B6C750070B2CC /* ProfileSettingsVC.swift in Sources */,
 				563F0A3C216D20B500A27CA5 /* AppDelegate.swift in Sources */,
@@ -409,6 +444,7 @@
 				568A53C8219E090000772ED1 /* UserInfoVC.swift in Sources */,
 				563217CA21BC0D330012F75B /* StringExtensions.swift in Sources */,
 				563F0A55216D225300A27CA5 /* DataService.swift in Sources */,
+				568E5821221ED609008337C7 /* Constants.swift in Sources */,
 				563F0A5C216D231F00A27CA5 /* UserCell.swift in Sources */,
 				5619A4B5218711CE00718C50 /* AddPresentsVC.swift in Sources */,
 				5628DEF021A6190700DEC488 /* PhoneAuthService.swift in Sources */,
@@ -557,7 +593,7 @@
 			baseConfigurationReference = 256533A6AD605242D9B7C457 /* Pods-tableView Test for iPresent.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "tableView Test for iPresent/tableView Test for iPresent.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4ZLBWEC93L;
 				INFOPLIST_FILE = "tableView Test for iPresent/Info.plist";
@@ -577,7 +613,7 @@
 			baseConfigurationReference = A2D190A08AC1B833C20C4B2C /* Pods-tableView Test for iPresent.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "tableView Test for iPresent/tableView Test for iPresent.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4ZLBWEC93L;
 				INFOPLIST_FILE = "tableView Test for iPresent/Info.plist";

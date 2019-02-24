@@ -15,7 +15,6 @@ class UserInfoVC: UIViewController {
     
     @IBOutlet weak var fullName: UILabel!
     @IBOutlet weak var profileImg: UIImageView!
-    
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewWillAppear(_ animated: Bool) {
@@ -29,11 +28,7 @@ class UserInfoVC: UIViewController {
         setUpView()
     }
     
-    // MARK: Requires DB UPD
     func getPresents() {
-//        TestDataService.instance.getPresent(forUid: "666") { (returnedArray) in
-//            self.presentArray = returnedArray
-//        }
         DataService.instance.getPresents(forUid: user?.uid ?? "") { ( returnedArray ) in
             self.presentArray = returnedArray
             self.collectionView.reloadData()
@@ -44,18 +39,9 @@ class UserInfoVC: UIViewController {
         fullName.text = user?.name
         profileImg.layer.cornerRadius = profileImg.frame.height / 2
         profileImg.clipsToBounds = true
-        
         if let url = user?.profileImgURL {
-            /*
-            DataService.instance.getUserImgForURL(forURL: url) { ( data ) in
-                if data != nil {
-                    self.profileImg.image = UIImage(data: data!)
-                }
-            }
-             */
             profileImg.loadImgWithURLString(urlString: url)
         }
-        
     }
     
     @IBAction func backBtnPressed(_ sender: Any) {
@@ -74,22 +60,8 @@ extension UserInfoVC: UICollectionViewDelegate, UICollectionViewDataSource {
             let details = presentArray[indexPath.row].details
             let price = presentArray[indexPath.row].price
             let img = presentArray[indexPath.row].imageName
-            /*
-            if (img != "BackImg2" && img != "DefaultProfileImage") {
-                DataService.instance.getUserImgForURL(forURL: img) { (data) in
-                    if data != nil {
-                        cell.configureCell(name: name, price: price, details: details, imageName: data!)
-                    } else {
-                        print("error")
-                        return
-                    }
-                }
-            } else {
-                let data = UIImage(named: img)?.jpegData(compressionQuality: 0.5)
-                cell.configureCell(name: name, price: price, details: details, imageName: data!)
-            }
-            */
             cell.configureCell(name: name, price: price, details: details, imageName: img)
+            
             cell.contentView.layer.cornerRadius = 3.0
             cell.contentView.layer.borderWidth = 1.0
             cell.contentView.layer.borderColor = UIColor.clear.cgColor
@@ -109,7 +81,6 @@ extension UserInfoVC: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         // return CGSize(width: screenWidth / 2 - 2, height: screenWidth / 2 - 2)
-        
         let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
         let totalSpace = flowLayout.sectionInset.left
             + flowLayout.sectionInset.right

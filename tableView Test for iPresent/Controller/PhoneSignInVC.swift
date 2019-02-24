@@ -38,7 +38,7 @@ class PhoneSignInVC: UIViewController {
                 print(error)
                 return
             } else {
-                UserDefaults.standard.set(verify, forKey: "authVerificationID")
+                UserDefaults.standard.set(verify, forKey: UserDefaultsKeys.authentificationId)
                 self.showVerifyVC()
             }
         }

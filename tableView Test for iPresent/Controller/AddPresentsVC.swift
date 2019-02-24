@@ -53,9 +53,7 @@ class AddPresentsVC: UIViewController {
     }
     
     func setUpView() {
-        // Method #1
         img = UIImage(named: imgName)
-        
         let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.extraLight)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = view.bounds
@@ -64,9 +62,9 @@ class AddPresentsVC: UIViewController {
         view.sendSubviewToBack(blurEffectView)
     }
     
+    // MARK: PHOTO ACCESS PERMISSION
     func checkPermission() {
         let photoAuthorizationStatus = PHPhotoLibrary.authorizationStatus()
-        
         switch photoAuthorizationStatus {
         case .authorized: self.present(self.picker, animated: true, completion: nil)
         case .notDetermined:
@@ -84,26 +82,18 @@ class AddPresentsVC: UIViewController {
     }
     
     func add_new_present() {
-        // check_input()
-        // add present to database
-        // add notification
-        
         if check_input() {
-            self.dismiss(animated: true) {
-                // New Present Notification
-            }
+            self.dismiss(animated: true)
         }
     }
     
     func check_input() -> Bool {
         if presentNameTF.text != "" && priceTF.text != "" {
-            // OK
             if priceTF.text?.last != "$" {
                 priceTF.text?.append("$")
             }
-            
-            DataService.instance.uploadMedia(img: img, imgType: "present.jpeg") { ( url ) in
-                DataService.instance.uploadPresent(name: self.presentNameTF.text!, description: self.descriptionTF.text ?? "-", price: self.priceTF.text!, image: url!, senderid: self.user!.uid, link: self.linkTF.text!) { (success) in
+            DataService.instance.uploadMedia(img: img, imgType: MediaType.img) { ( url ) in
+                DataService.instance.uploadPresent(name: self.presentNameTF.text!, description: self.descriptionTF.text ?? " ", price: self.priceTF.text!, image: url!, senderid: self.user!.uid, link: self.linkTF.text!) { (success) in
                     if success {
                         NotificationCenter.default.post(name: Notification.Name("PresentAdded"), object: nil)
                         self.dismiss(animated: true, completion: nil)
@@ -112,7 +102,7 @@ class AddPresentsVC: UIViewController {
             }
             return true
         } else {
-            // SHOW ALERT
+            // TODO: SHOW ALERT
             return false
         }
     }
@@ -123,9 +113,7 @@ class AddPresentsVC: UIViewController {
     }
     
     @IBAction func cancelBtnPressed(_ sender: Any) {
-        self.dismiss(animated: true) {
-            // TODO: No Present Added - No Notification
-        }
+        self.dismiss(animated: true)
     }
     
     @IBAction func addPhotoBtnPressed(_ sender: Any) {
@@ -135,9 +123,7 @@ class AddPresentsVC: UIViewController {
 
 // MARK: TextFieldDelegate
 extension AddPresentsVC: UITextFieldDelegate {
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
         switch textField {
         case presentNameTF:
             textField.resignFirstResponder()
@@ -190,9 +176,6 @@ extension AddPresentsVC: UIImagePickerControllerDelegate, UINavigationController
             selectedPickerImg = originalImg
         }
         
-        //userImg.layer.cornerRadius = userImg.frame.height * 0.5
-        //userImg.clipsToBounds = true
-        
         if let selectedImg = selectedPickerImg {
             self.img = selectedImg
         }
@@ -205,9 +188,3 @@ extension AddPresentsVC: UIImagePickerControllerDelegate, UINavigationController
         self.dismiss(animated: true, completion: nil)
     }
 }
-
-// Method #2
-//        let blurView = UIVisualEffectView(frame: UIScreen.main.bounds)
-//        blurEffect.setValue(1, forKeyPath: "blurRadius")
-//        blurView.effect = blurEffect
-//        view.addSubview(blurView)

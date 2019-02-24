@@ -15,10 +15,6 @@ class FriendsPresentCell: UICollectionViewCell {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var price: UILabel!
     
-    override func awakeFromNib() {
-        
-    }
-    
     public func configureCell(name: String, price: String, details: String, imageName: String) {
         self.name.text = name
         self.details.text = details

@@ -9,12 +9,10 @@
 import UIKit
 
 class SearchVC: UIViewController {
-    
     // MARK: Outlets
     let searchController = UISearchController(searchResultsController: nil)
     @IBOutlet weak var tableView: UITableView!
-    
-    
+
     // Variables
     var phoneNumbers = [String]()
     var users = [User]()
@@ -47,24 +45,12 @@ class SearchVC: UIViewController {
         tableView.dataSource = self
     }
     
-    // MARK: Requires DB UPD + CHECK UID
-    func getPresents() {
-        TestDataService.instance.getPresent(forUid: "666") { (returnedArray) in
-            self.presentArray = returnedArray
-        }
-    }
-    
-    // MARK: Requires DB UPD
+    // MARK: All users??
     func get_users(forQuery _query: String) {
-        DataService.instance.getName(forSearchQuery: _query) { (returned_users) in
+        DataService.instance.getUsersByName(forSearchQuery: _query) { (returned_users) in
             self.users = returned_users
             self.tableView.reloadData()
         }
-//        TestDataService.instance.getName(forSearchQuery: _query) {
-//            ( returned_users ) in
-//            self.users = returned_users
-//            self.tableView.reloadData()
-//        }
     }
     
     func getUsersWithPhoneNumbers(query: [String]) {
@@ -76,15 +62,6 @@ class SearchVC: UIViewController {
 }
 
 extension SearchVC: UISearchResultsUpdating {
-    
-    // MARK: UISearchBarDelegate
-//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//
-//        if searchText.isAlphanumeric { self.init_query = searchText }
-//        else { self.init_query = "." }
-//
-//        get_users(forQuery: self.init_query)
-//    }
     func updateSearchResults(for searchController: UISearchController) {
         let searchText = searchController.searchBar.text
         if searchText == nil {
@@ -100,22 +77,19 @@ extension SearchVC: UISearchResultsUpdating {
 }
 
 extension SearchVC: UITableViewDelegate, UITableViewDataSource {
-    
     // MARK: UITableViewDelegate, UITableViewDataSource
+    // TODO: EDIT APPEANCE, ADD PHOTOS
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.users.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         var cell = tableView.dequeueReusableCell(withIdentifier: "user_cell")
         if cell == nil {
             cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "user_cell")
         }
-        
         cell!.textLabel?.text = self.users[indexPath.row].name
         cell!.detailTextLabel?.text = String(self.users[indexPath.row].birthdate.prefix(6)) // String(str[..<index])
-        
         return cell!
     }
     

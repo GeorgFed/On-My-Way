@@ -10,21 +10,18 @@ import UIKit
 
 @IBDesignable
 class RoundedCorners: UIView {
-
     @IBInspectable var cornerRadius: CGFloat = 3.0 {
         didSet {
             self.layer.cornerRadius = cornerRadius
         }
     }
+    
     override func awakeFromNib() {
-        self.setUpView()
-    }
-    func setUpView() {
         self.layer.cornerRadius = cornerRadius
-        
     }
+    
     override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
-        self.setUpView()
+        self.layer.cornerRadius = cornerRadius
     }
 }

@@ -34,23 +34,17 @@ class PhoneSignUpVC: UIViewController {
                 let PresentsVC = storyboard.instantiateViewController(withIdentifier: self.segueId)
                 self.show(PresentsVC, sender: nil)
             } else {
-                print("UPDATE ERROR !")
+                print("UPDATE ERROR!")
             }
         })
     }
     
     func createDatePicker() {
-        
-        // Создание метода назначения даты рождения
-        
         birthdate.inputView = datePicker
         datePicker.datePickerMode = .date
-        
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
-        
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(pickerDonePressed))
-        
         toolbar.setItems([doneButton], animated: true)
         birthdate.inputAccessoryView = toolbar
     }
@@ -60,7 +54,6 @@ class PhoneSignUpVC: UIViewController {
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .none
         dateFormatter.dateFormat = "dd MMM yyyy"
-        
         birthdate.text = dateFormatter.string(from: datePicker.date)
         birthdate.resignFirstResponder()
         self.view.endEditing(true)

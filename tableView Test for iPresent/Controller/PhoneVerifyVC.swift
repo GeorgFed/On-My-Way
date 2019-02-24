@@ -14,6 +14,7 @@ class PhoneVerifyVC: UIViewController {
     
     let newUserSegue = "newUserSegueId"
     let userExistsSegue = "presentsVCSegueId"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         codeTF.becomeFirstResponder()
@@ -24,18 +25,16 @@ class PhoneVerifyVC: UIViewController {
         if codeTF.text != "" {
             PhoneAuthService.instance.regiserUser(verificationCode: codeTF.text!) { (success, error) in
                 if success {
-                    // UserExists
-                    NotificationCenter.default.addObserver(self, selector: #selector(self.showPresentsVC), name: NSNotification.Name("UserExists"), object: nil)
-                    
-                    // NewUser
-                    NotificationCenter.default.addObserver(self, selector: #selector(self.showRegisterVC), name: NSNotification.Name("NewUser"), object: nil)
-                    
-                    /*
-                    let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-                    let PhoneSignUpVC = storyboard.instantiateViewController(withIdentifier: self.newUserSegue)
-                    self.show(PhoneSignUpVC, sender: nil)
-                    */
+                    NotificationCenter.default.addObserver(self,
+                                                           selector: #selector(self.showPresentsVC),
+                                                           name: NSNotification.Name(Notifications.userExists),
+                                                           object: nil)
+                    NotificationCenter.default.addObserver(self,
+                                                           selector: #selector(self.showRegisterVC),
+                                                           name: NSNotification.Name(Notifications.newUser),
+                                                           object: nil)
                 } else {
+                    // MARK: VALIDTION ERROR
                     print("Validation Error")
                     self.showWrongCodeAlert()
                 }
