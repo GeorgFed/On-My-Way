@@ -17,7 +17,6 @@ class ProfileSettingsVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     let userid = Auth.auth().currentUser?.uid
-    let profile_settings = ["Sign Out"]
     let picker = UIImagePickerController()
     let user = Auth.auth().currentUser
     var profileImgURL = "defaultProfilePicture"
@@ -28,8 +27,8 @@ class ProfileSettingsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
+        //self.tableView.delegate = self
+        //self.tableView.dataSource = self
         self.picker.delegate = self
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(changeImage(tapGestureRecognizer:)))
@@ -66,7 +65,7 @@ class ProfileSettingsVC: UIViewController {
         }
         
         if userid == nil {
-            fullNameTxt.text = "George Test"
+            fullNameTxt.text = "Test Test"
         } else {
             DataService.instance.getUserInfo(forUid: userid!) { (user) in
                 self.fullNameTxt.text = user.name
@@ -77,12 +76,22 @@ class ProfileSettingsVC: UIViewController {
         userImg.clipsToBounds = true
     }
     
-    @IBAction func backBtnTapped(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+    @IBAction func signOutBtnPressed(_ sender: Any) {
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+            let PhoneSignInVC = storyboard.instantiateViewController(withIdentifier: "PhoneSignInVC")
+            //self.show(PhoneSignInVC, sender: nil)
+            self.present(PhoneSignInVC, animated: true, completion: nil)
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
     }
 }
 
 // TODO: CHANGE TABLE VIEW
+/*
 extension ProfileSettingsVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
@@ -112,6 +121,7 @@ extension ProfileSettingsVC: UITableViewDelegate, UITableViewDataSource {
     }
     
 }
+ */
 
 extension ProfileSettingsVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -129,12 +139,6 @@ extension ProfileSettingsVC: UIImagePickerControllerDelegate, UINavigationContro
         if let selectedImg = selectedPickerImg {
             self.userImg.image = selectedImg
             DataService.instance.addUserImg(forUid: userid!, img: selectedImg)
-            // MARK: Photos
-//            DataService.instance.addUserPhoto(forUid: userid!, image: selectedImg) { (success) in
-//                if success {
-//                    print("Complete")
-//                }
-//            }
         }
         
         self.dismiss(animated: true, completion: nil)

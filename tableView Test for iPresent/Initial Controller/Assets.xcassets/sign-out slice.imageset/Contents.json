@@ -2,22 +2,28 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "sign-out slice.pdf",
-      "scale" : "1x"
+      "filename" : "sign-out slice.pdf"
     },
     {
       "idiom" : "universal",
       "filename" : "sign-out slice@2x.pdf",
+      "unassigned" : true,
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
       "filename" : "sign-out slice@3x.pdf",
+      "unassigned" : true,
       "scale" : "3x"
     }
   ],
   "info" : {
     "version" : 1,
     "author" : "xcode"
+  },
+  "properties" : {
+    "template-rendering-intent" : "template",
+    "preserves-vector-representation" : true,
+    "auto-scaling" : "auto"
   }
 }

@@ -10,12 +10,12 @@ import UIKit
 import Firebase
 import Contacts
 import ContactsUI
+import PhoneNumberKit
 
 class PresentsVC: UIViewController, UIScrollViewDelegate {
     
     //MARK: Outlets
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var toolBar: UIToolbar!
     var store = CNContactStore()
     var contacts = [CNContact]()
     var phoneNumbers = [String]()
@@ -29,36 +29,20 @@ class PresentsVC: UIViewController, UIScrollViewDelegate {
         CNContactPhoneNumbersKey,
         CNContactEmailAddressesKey
         ] as [Any]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = self
 
         if mainUserPhotoURLCache.object(forKey: userKey as NSString) == nil {
-            guard let _uid = uid else { print(Auth.auth().currentUser); return }
+            guard uid != nil else { print(Auth.auth().currentUser ?? print("no uid error")); return }
             DataService.instance.getUserInfo(forUid: uid!) { (user) in
                 mainUserPhotoURLCache.setObject(user.profileImgURL as NSString, forKey: self.userKey as NSString)
             }
         }
-        
-        self.requestAccess { ( accessGranted ) in
-            if accessGranted == true {
-                self.getContacts()
-                print(self.phoneNumbers)
-                
-                self.phoneNumbers = self.phoneNumbers.filter {
-                    $0.contains("+")
-                }
-                for string in self.phoneNumbers {
-                    let string_filtered = string.replacingOccurrences( of:"[^0-9]", with: "", options: .regularExpression)
-                    self.filteredNumbers.append("+" + string_filtered)
-                }
-                print(self.filteredNumbers)
-            } else {
-                print("error")
-            }
-        }
         navigationController?.navigationBar.prefersLargeTitles = true
+        getPhoneNumbers()
         getPresents()
     }
     
@@ -74,6 +58,25 @@ class PresentsVC: UIViewController, UIScrollViewDelegate {
         if segue.identifier == "searchVCSegue" {
             if let vc = segue.destination as? SearchVC {
                 vc.phoneNumbers = self.filteredNumbers
+            }
+        }
+    }
+    
+    func getPhoneNumbers() {
+        self.requestAccess { ( accessGranted ) in
+            if accessGranted == true {
+                self.getContacts()
+                print(self.phoneNumbers)
+                self.phoneNumbers = self.phoneNumbers.filter {
+                    $0.contains("+")
+                }
+                for string in self.phoneNumbers {
+                    let string_filtered = string.replacingOccurrences( of:"[^0-9]", with: "", options: .regularExpression)
+                    self.filteredNumbers.append("+" + string_filtered)
+                }
+                print(self.filteredNumbers)
+            } else {
+                print("error")
             }
         }
     }
@@ -185,8 +188,8 @@ extension PresentsVC: UICollectionViewDelegate, UICollectionViewDataSource, UICo
             
             cell.layer.shadowColor = UIColor.lightGray.cgColor
             cell.layer.shadowOffset = CGSize(width:0,height: 2.0)
-            cell.layer.shadowRadius = 2.0
-            cell.layer.shadowOpacity = 1.0
+            cell.layer.shadowRadius = 6.0
+            cell.layer.shadowOpacity = 0.15
             cell.layer.masksToBounds = false;
             cell.layer.shadowPath = UIBezierPath(roundedRect:cell.bounds,
                                                  cornerRadius:cell.contentView.layer.cornerRadius).cgPath
@@ -203,6 +206,7 @@ extension PresentsVC: UICollectionViewDelegate, UICollectionViewDataSource, UICo
         return presentArray.count
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         // return CGSize(width: screenWidth / 2 - 2, height: screenWidth / 2 - 2)
         let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
@@ -210,8 +214,9 @@ extension PresentsVC: UICollectionViewDelegate, UICollectionViewDataSource, UICo
             + flowLayout.sectionInset.right
             + flowLayout.minimumInteritemSpacing
         let size = Int((collectionView.bounds.width - totalSpace) / CGFloat(2))
-        return CGSize(width: size, height: size)
+        return CGSize(width: size, height: Int(Double(size) * 1.5))
     }
+ 
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // TODO: ADDITTIONAL PRESENT INFO APPEARENCE

@@ -13,7 +13,7 @@ extension String {
         guard !isEmpty else {
             return false
         }
-        let allowed = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+        let allowed = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZАаБбВвГгДдЕеЁёЖжЗзИиЙйКкЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЩщЪъЫыЬьЭэЮюЯя "
         let characterSet = CharacterSet(charactersIn: allowed)
         guard rangeOfCharacter(from: characterSet.inverted) == nil else {
             return false

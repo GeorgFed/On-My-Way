@@ -24,7 +24,7 @@ class PhoneSignInVC: UIViewController {
     }
     
     @IBAction func receiveCodePressed(_ sender: Any) {
-        if phoneNumber.text != "" {
+        if phoneNumber.text != "" && phoneNumber.isValidNumber {
             authenticate(phone_number: phoneNumber.text!)
         } else {
             showEnterPhoneNumberAlert()

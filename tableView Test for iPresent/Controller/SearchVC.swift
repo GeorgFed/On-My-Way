@@ -23,26 +23,32 @@ class SearchVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         //get_users(forQuery: init_query)
         getUsersWithPhoneNumbers(query: phoneNumbers)
+        searchBarAppearenceSetup()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // MARK: searchContoller setup
-        self.searchController.obscuresBackgroundDuringPresentation = false
-        self.searchController.searchBar.placeholder = "Search Friends"
-        self.searchController.searchBar.barStyle = .blackOpaque
-        self.searchController.searchResultsUpdater = self
-        
-        UISearchBar.appearance().barTintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        UISearchBar.appearance().tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        
-        self.definesPresentationContext = true
-        self.navigationItem.searchController = searchController
-        
         // MARK: Delegate setup
         tableView.delegate = self
         tableView.dataSource = self
+    }
+    
+    func searchBarAppearenceSetup() {
+        self.searchController.obscuresBackgroundDuringPresentation = false
+        self.searchController.searchResultsUpdater = self
+        
+        let scb = self.searchController.searchBar
+        scb.setTextField(color: UIColor.white)
+        scb.setText(color: UIColor.black)
+        scb.setPlaceholderText(color: UIColor.lightGray)
+        scb.setSearchImage(color: UIColor.lightGray)
+        scb.tintColor = UIColor.white
+        scb.barTintColor = UIColor.white
+        
+        scb.searchBarStyle = .default
+        self.definesPresentationContext = true
+        self.navigationItem.searchController = searchController
+        self.navigationItem.hidesSearchBarWhenScrolling = true
     }
     
     // MARK: All users??
@@ -64,22 +70,20 @@ class SearchVC: UIViewController {
 extension SearchVC: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         let searchText = searchController.searchBar.text
-        if searchText == nil {
-            get_users(forQuery: self.init_query)
-            return
-        }
-        
         if searchText!.isAlphanumeric { self.init_query = searchText! }
-        else { self.init_query = " " }
-        
         get_users(forQuery: self.init_query)
     }
 }
 
 extension SearchVC: UITableViewDelegate, UITableViewDataSource {
     // MARK: UITableViewDelegate, UITableViewDataSource
-    // TODO: EDIT APPEANCE, ADD PHOTOS
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        searchBarAppearenceSetup()
+        if self.users.count == 0 {
+            tableView.setEmptyView(title: "You don't have any friends yet.", message: "Your friends will be in here.")
+        } else {
+            tableView.restore()
+        }
         return self.users.count
     }
     
@@ -89,7 +93,14 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
             cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "user_cell")
         }
         cell!.textLabel?.text = self.users[indexPath.row].name
-        cell!.detailTextLabel?.text = String(self.users[indexPath.row].birthdate.prefix(6)) // String(str[..<index])
+        let url = self.users[indexPath.row].profileImgURL
+        cell!.imageView?.loadImgWithURLString(urlString: url)
+        if cell!.imageView != nil {
+            let cellImageLayer: CALayer?  = cell?.imageView!.layer
+            cellImageLayer!.cornerRadius = 35
+            cellImageLayer!.masksToBounds = true
+
+        }
         return cell!
     }
     

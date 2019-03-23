@@ -13,7 +13,7 @@ class PhoneVerifyVC: UIViewController {
     @IBOutlet weak var codeTF: UITextField!
     
     let newUserSegue = "newUserSegueId"
-    let userExistsSegue = "presentsVCSegueId"
+    let userExistsSegue = "TabBarMain"
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddEventVC" customModule="tableView_Test_for_iPresent" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tjf-sL-wBv" customClass="RoundedCorners" customModule="tableView_Test_for_iPresent" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Event" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wwo-1a-3Eu">
+                            <rect key="frame" x="16" y="52" width="87" height="25"/>
+                            <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="18"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3fy-Ie-AA7">
+                            <rect key="frame" x="335" y="52" width="24" height="24"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="24" id="cPa-qj-ccH"/>
+                                <constraint firstAttribute="height" constant="24" id="g4p-4h-L6J"/>
+                            </constraints>
+                            <state key="normal" image="camera" backgroundImage="camera">
+                                <color key="titleColor" red="0.42352941179999998" green="0.50588235290000005" blue="0.60784313729999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                    <real key="value" value="0.0"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </button>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="keX-Ic-FDA">
+                            <rect key="frame" x="16" y="89" width="359" height="121"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="fuK-pi-nfc">
+                                    <rect key="frame" x="0.0" y="0.0" width="359" height="35"/>
+                                    <subviews>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Event Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aXy-kc-dgb">
+                                            <rect key="frame" x="0.0" y="0.0" width="350" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="yK5-QK-Db3"/>
+                                            </constraints>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textField>
+                                        <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IJz-Zx-g2s">
+                                            <rect key="frame" x="0.0" y="34" width="359" height="1"/>
+                                            <color key="backgroundColor" red="0.42352941179999998" green="0.50588235290000005" blue="0.60784313729999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="1" id="qNc-qr-Z0S"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="IJz-Zx-g2s" secondAttribute="trailing" id="AM2-Ry-LVc"/>
+                                        <constraint firstAttribute="trailing" secondItem="aXy-kc-dgb" secondAttribute="trailing" constant="9" id="bMU-3w-bAW"/>
+                                    </constraints>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="haD-XZ-Ykd">
+                                    <rect key="frame" x="0.0" y="43" width="359" height="35"/>
+                                    <subviews>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Description" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vbg-qu-Tzp">
+                                            <rect key="frame" x="0.0" y="0.0" width="359" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="W59-na-aS1"/>
+                                            </constraints>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textField>
+                                        <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="27b-jF-p3O">
+                                            <rect key="frame" x="0.0" y="34" width="359" height="1"/>
+                                            <color key="backgroundColor" red="0.42352941179999998" green="0.50588235290000005" blue="0.60784313729999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="1" id="B6G-3y-5at"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="27b-jF-p3O" secondAttribute="trailing" id="0cr-JS-qzA"/>
+                                        <constraint firstAttribute="trailing" secondItem="vbg-qu-Tzp" secondAttribute="trailing" id="Mwd-bP-b4M"/>
+                                    </constraints>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="mjv-qS-btH">
+                                    <rect key="frame" x="0.0" y="86" width="359" height="35"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="RcL-mj-TwS">
+                                            <rect key="frame" x="0.0" y="0.0" width="359" height="35"/>
+                                            <subviews>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nwo-eT-IPZ">
+                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="RrO-s5-lJs"/>
+                                                    </constraints>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                                <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KFr-Ju-wBT">
+                                                    <rect key="frame" x="0.0" y="34" width="359" height="1"/>
+                                                    <color key="backgroundColor" red="0.42352941179999998" green="0.50588235290000005" blue="0.60784313729999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="JKe-Pd-usz"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="nwo-eT-IPZ" secondAttribute="trailing" id="g7T-V9-V5h"/>
+                                            </constraints>
+                                        </stackView>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                        </stackView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KSf-qY-1Dn">
+                            <rect key="frame" x="8" y="535" width="359" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="Q0g-JV-qdH"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
+                            <state key="normal" title="Cancel">
+                                <color key="titleColor" red="0.51284855600000001" green="0.64894634490000003" blue="0.77802687879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Ru-X7-8W5">
+                            <rect key="frame" x="8" y="483" width="359" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="Ocn-q8-lrD"/>
+                            </constraints>
+                            <state key="normal" image="Add Event Button Slice">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="0.0"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                    <real key="value" value="0.0"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="2Ru-X7-8W5" secondAttribute="trailing" constant="8" id="47D-9S-dae"/>
+                        <constraint firstItem="2Ru-X7-8W5" firstAttribute="leading" secondItem="tjf-sL-wBv" secondAttribute="leading" constant="8" id="85J-tv-flR"/>
+                        <constraint firstAttribute="trailing" secondItem="3fy-Ie-AA7" secondAttribute="trailing" constant="16" id="8RJ-I1-xr6"/>
+                        <constraint firstAttribute="trailing" secondItem="KSf-qY-1Dn" secondAttribute="trailing" constant="8" id="8bE-T7-gj9"/>
+                        <constraint firstItem="wwo-1a-3Eu" firstAttribute="top" secondItem="tjf-sL-wBv" secondAttribute="top" constant="52" id="AeX-76-Ne9"/>
+                        <constraint firstItem="keX-Ic-FDA" firstAttribute="leading" secondItem="tjf-sL-wBv" secondAttribute="leading" constant="16" id="BQ4-gV-2Sc"/>
+                        <constraint firstItem="KSf-qY-1Dn" firstAttribute="leading" secondItem="tjf-sL-wBv" secondAttribute="leading" constant="8" id="DtW-AN-2Tf"/>
+                        <constraint firstAttribute="trailing" secondItem="keX-Ic-FDA" secondAttribute="trailing" id="H6K-IH-2yp"/>
+                        <constraint firstItem="wwo-1a-3Eu" firstAttribute="leading" secondItem="tjf-sL-wBv" secondAttribute="leading" constant="16" id="aXj-Qk-6Hk"/>
+                        <constraint firstItem="KSf-qY-1Dn" firstAttribute="top" secondItem="2Ru-X7-8W5" secondAttribute="bottom" constant="8" id="nBv-g6-mQS"/>
+                        <constraint firstAttribute="bottom" secondItem="KSf-qY-1Dn" secondAttribute="bottom" constant="44" id="uv9-ff-qF9"/>
+                        <constraint firstItem="keX-Ic-FDA" firstAttribute="top" secondItem="wwo-1a-3Eu" secondAttribute="bottom" constant="12" id="xdA-XQ-F6m"/>
+                        <constraint firstItem="3fy-Ie-AA7" firstAttribute="top" secondItem="tjf-sL-wBv" secondAttribute="top" constant="52" id="yV7-xD-Ux3"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="tjf-sL-wBv" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="44" id="XZY-07-KBa"/>
+                <constraint firstAttribute="bottom" secondItem="tjf-sL-wBv" secondAttribute="bottom" id="esa-aY-3mP"/>
+                <constraint firstAttribute="trailing" secondItem="tjf-sL-wBv" secondAttribute="trailing" id="nKC-MS-eWQ"/>
+                <constraint firstItem="tjf-sL-wBv" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="uxC-Xl-K8Y"/>
+            </constraints>
+            <point key="canvasLocation" x="-372" y="54.422788605697157"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Add Event Button Slice" width="718" height="88"/>
+        <image name="camera" width="48" height="48"/>
+    </resources>
+</document>

@@ -8,6 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		1A5FCC43DC25286F7047F017 /* Pods_tableView_Test_for_iPresent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CCDDBC14B2B3277D519A257 /* Pods_tableView_Test_for_iPresent.framework */; };
+		560C43932242E8BC009B836E /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560C43922242E8BB009B836E /* Event.swift */; };
+		560C43952242F975009B836E /* UITableViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560C43942242F975009B836E /* UITableViewExt.swift */; };
+		560C439822430B2A009B836E /* AddEventVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560C439622430B2A009B836E /* AddEventVC.swift */; };
+		560C439922430B2A009B836E /* AddEventVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 560C439722430B2A009B836E /* AddEventVC.xib */; };
+		560C439B2244050A009B836E /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560C439A2244050A009B836E /* EventCell.swift */; };
+		560C439D224407CE009B836E /* PresentCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560C439C224407CE009B836E /* PresentCollectionCell.swift */; };
+		560C439F224407EA009B836E /* EventHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560C439E224407EA009B836E /* EventHeaderCell.swift */; };
+		560C43A1224407FD009B836E /* EventTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560C43A0224407FD009B836E /* EventTitleCell.swift */; };
+		560C43A52244625A009B836E /* PresentEventCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560C43A42244625A009B836E /* PresentEventCollectionCell.swift */; };
+		560C43A72245342B009B836E /* UISearchBarExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560C43A62245342B009B836E /* UISearchBarExt.swift */; };
 		5619A4B22186248200718C50 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5619A4B12186248200718C50 /* ShadowView.swift */; };
 		5619A4B5218711CE00718C50 /* AddPresentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5619A4B3218711CE00718C50 /* AddPresentsVC.swift */; };
 		5619A4B6218711CE00718C50 /* AddPresentsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5619A4B4218711CE00718C50 /* AddPresentsVC.xib */; };
@@ -29,6 +39,7 @@
 		563F0A5A216D22F700A27CA5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563F0A59216D22F700A27CA5 /* User.swift */; };
 		563F0A5C216D231F00A27CA5 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563F0A5B216D231F00A27CA5 /* UserCell.swift */; };
 		563F0A61216D238800A27CA5 /* TapToHideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563F0A60216D238800A27CA5 /* TapToHideKeyboard.swift */; };
+		5644883F223E796400948694 /* EventsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5644883E223E796300948694 /* EventsVC.swift */; };
 		565B04CB21E405C800409319 /* ReceiveImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565B04CA21E405C800409319 /* ReceiveImageExtension.swift */; };
 		565B04CD21E41F7500409319 /* CacheExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565B04CC21E41F7500409319 /* CacheExtension.swift */; };
 		568A53C5219E089D00772ED1 /* PresentInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568A53C3219E089D00772ED1 /* PresentInfoVC.swift */; };
@@ -52,6 +63,16 @@
 
 /* Begin PBXFileReference section */
 		256533A6AD605242D9B7C457 /* Pods-tableView Test for iPresent.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tableView Test for iPresent.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tableView Test for iPresent/Pods-tableView Test for iPresent.debug.xcconfig"; sourceTree = "<group>"; };
+		560C43922242E8BB009B836E /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		560C43942242F975009B836E /* UITableViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExt.swift; sourceTree = "<group>"; };
+		560C439622430B2A009B836E /* AddEventVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventVC.swift; sourceTree = "<group>"; };
+		560C439722430B2A009B836E /* AddEventVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddEventVC.xib; sourceTree = "<group>"; };
+		560C439A2244050A009B836E /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
+		560C439C224407CE009B836E /* PresentCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentCollectionCell.swift; sourceTree = "<group>"; };
+		560C439E224407EA009B836E /* EventHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventHeaderCell.swift; sourceTree = "<group>"; };
+		560C43A0224407FD009B836E /* EventTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTitleCell.swift; sourceTree = "<group>"; };
+		560C43A42244625A009B836E /* PresentEventCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentEventCollectionCell.swift; sourceTree = "<group>"; };
+		560C43A62245342B009B836E /* UISearchBarExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISearchBarExt.swift; sourceTree = "<group>"; };
 		5619A4B12186248200718C50 /* ShadowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		5619A4B3218711CE00718C50 /* AddPresentsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPresentsVC.swift; sourceTree = "<group>"; };
 		5619A4B4218711CE00718C50 /* AddPresentsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddPresentsVC.xib; sourceTree = "<group>"; };
@@ -75,6 +96,7 @@
 		563F0A59216D22F700A27CA5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		563F0A5B216D231F00A27CA5 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		563F0A60216D238800A27CA5 /* TapToHideKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TapToHideKeyboard.swift; sourceTree = "<group>"; };
+		5644883E223E796300948694 /* EventsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsVC.swift; sourceTree = "<group>"; };
 		565B04CA21E405C800409319 /* ReceiveImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveImageExtension.swift; sourceTree = "<group>"; };
 		565B04CC21E41F7500409319 /* CacheExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheExtension.swift; sourceTree = "<group>"; };
 		568A53C3219E089D00772ED1 /* PresentInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentInfoVC.swift; sourceTree = "<group>"; };
@@ -124,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				5619A4B4218711CE00718C50 /* AddPresentsVC.xib */,
+				560C439722430B2A009B836E /* AddEventVC.xib */,
 				568A53C4219E089D00772ED1 /* PresentInfoVC.xib */,
 				568A53CA219E179800772ED1 /* ReservePresentVC.xib */,
 			);
@@ -164,7 +187,6 @@
 		563F0A3A216D20B500A27CA5 /* tableView Test for iPresent */ = {
 			isa = PBXGroup;
 			children = (
-				568E5820221ED609008337C7 /* Constants.swift */,
 				5695D6C121A612D9002608DB /* Resources */,
 				568E581E221ED576008337C7 /* Helpers */,
 				563F0A58216D22D500A27CA5 /* Initial Controller */,
@@ -195,6 +217,8 @@
 				5619A4B3218711CE00718C50 /* AddPresentsVC.swift */,
 				568A53C7219E090000772ED1 /* UserInfoVC.swift */,
 				568A53C9219E179800772ED1 /* ReservePresentVC.swift */,
+				5644883E223E796300948694 /* EventsVC.swift */,
+				560C439622430B2A009B836E /* AddEventVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -204,6 +228,7 @@
 			children = (
 				563F0A59216D22F700A27CA5 /* User.swift */,
 				568FE7FE217CD831004E893B /* Present.swift */,
+				560C43922242E8BB009B836E /* Event.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -235,6 +260,8 @@
 				5619A4BE2187BD4D00718C50 /* UIViewBindingExt.swift */,
 				5619A4B9218768AB00718C50 /* UIButtonBorderExt.swift */,
 				563217C921BC0D330012F75B /* StringExtensions.swift */,
+				560C43942242F975009B836E /* UITableViewExt.swift */,
+				560C43A62245342B009B836E /* UISearchBarExt.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -242,6 +269,7 @@
 		568E581E221ED576008337C7 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				568E5820221ED609008337C7 /* Constants.swift */,
 				563F0A5D216D234E00A27CA5 /* Extension */,
 				568E581F221ED592008337C7 /* Cache */,
 			);
@@ -262,6 +290,11 @@
 				563F0A5B216D231F00A27CA5 /* UserCell.swift */,
 				568FE802217CDF14004E893B /* PresentCell.swift */,
 				561D719921A17D2F002B2378 /* FriendsPresentCell.swift */,
+				560C439A2244050A009B836E /* EventCell.swift */,
+				560C439C224407CE009B836E /* PresentCollectionCell.swift */,
+				560C439E224407EA009B836E /* EventHeaderCell.swift */,
+				560C43A0224407FD009B836E /* EventTitleCell.swift */,
+				560C43A42244625A009B836E /* PresentEventCollectionCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -358,6 +391,7 @@
 				5619A4B6218711CE00718C50 /* AddPresentsVC.xib in Resources */,
 				563F0A46216D20B700A27CA5 /* Assets.xcassets in Resources */,
 				568FE801217CDC3E004E893B /* assets.xcassets in Resources */,
+				560C439922430B2A009B836E /* AddEventVC.xib in Resources */,
 				563F0A41216D20B500A27CA5 /* Main.storyboard in Resources */,
 				568A53CC219E179800772ED1 /* ReservePresentVC.xib in Resources */,
 			);
@@ -420,12 +454,16 @@
 				568E5823221ED6BE008337C7 /* UserDataExtension.swift in Sources */,
 				5619A4B22186248200718C50 /* ShadowView.swift in Sources */,
 				5619A4BA218768AB00718C50 /* UIButtonBorderExt.swift in Sources */,
+				560C439D224407CE009B836E /* PresentCollectionCell.swift in Sources */,
 				563F0A51216D221100A27CA5 /* SearchVC.swift in Sources */,
 				568FE803217CDF14004E893B /* PresentCell.swift in Sources */,
 				568FE7FF217CD831004E893B /* Present.swift in Sources */,
 				568A53C5219E089D00772ED1 /* PresentInfoVC.swift in Sources */,
 				563F0A3E216D20B500A27CA5 /* ViewController.swift in Sources */,
+				560C43932242E8BC009B836E /* Event.swift in Sources */,
 				5619A4BF2187BD4D00718C50 /* UIViewBindingExt.swift in Sources */,
+				560C43A72245342B009B836E /* UISearchBarExt.swift in Sources */,
+				560C43A1224407FD009B836E /* EventTitleCell.swift in Sources */,
 				563F0A5A216D22F700A27CA5 /* User.swift in Sources */,
 				565B04CB21E405C800409319 /* ReceiveImageExtension.swift in Sources */,
 				5628DEEE21A6176400DEC488 /* TestDataService.swift in Sources */,
@@ -433,12 +471,17 @@
 				568E5825221EDB05008337C7 /* PresentDataExtension.swift in Sources */,
 				568FE7FD217CD57A004E893B /* PresentsVC.swift in Sources */,
 				56F41B24218B6C750070B2CC /* ProfileSettingsVC.swift in Sources */,
+				560C43952242F975009B836E /* UITableViewExt.swift in Sources */,
 				563F0A3C216D20B500A27CA5 /* AppDelegate.swift in Sources */,
 				565B04CD21E41F7500409319 /* CacheExtension.swift in Sources */,
 				56F41B1E218B6BC50070B2CC /* PhoneVerifyVC.swift in Sources */,
+				560C43A52244625A009B836E /* PresentEventCollectionCell.swift in Sources */,
+				560C439B2244050A009B836E /* EventCell.swift in Sources */,
 				563F0A44216D20B500A27CA5 /* tableView_Test_for_iPresent.xcdatamodeld in Sources */,
 				568A53CB219E179800772ED1 /* ReservePresentVC.swift in Sources */,
+				560C439822430B2A009B836E /* AddEventVC.swift in Sources */,
 				56F41B1C218B6B4A0070B2CC /* PhoneSignInVC.swift in Sources */,
+				560C439F224407EA009B836E /* EventHeaderCell.swift in Sources */,
 				5619A4BD21876AEF00718C50 /* RoundedCorners.swift in Sources */,
 				563F0A61216D238800A27CA5 /* TapToHideKeyboard.swift in Sources */,
 				568A53C8219E090000772ED1 /* UserInfoVC.swift in Sources */,
@@ -446,6 +489,7 @@
 				563F0A55216D225300A27CA5 /* DataService.swift in Sources */,
 				568E5821221ED609008337C7 /* Constants.swift in Sources */,
 				563F0A5C216D231F00A27CA5 /* UserCell.swift in Sources */,
+				5644883F223E796400948694 /* EventsVC.swift in Sources */,
 				5619A4B5218711CE00718C50 /* AddPresentsVC.swift in Sources */,
 				5628DEF021A6190700DEC488 /* PhoneAuthService.swift in Sources */,
 				561D719A21A17D2F002B2378 /* FriendsPresentCell.swift in Sources */,

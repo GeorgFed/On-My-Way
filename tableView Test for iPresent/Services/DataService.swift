@@ -62,6 +62,7 @@ class DataService {
                     let profileImgURL = user.childSnapshot(forPath: "profileImgURL").value as? String ?? "defaultProfileImg"
                     
                     let returned_user = User(name: name, birthdate: birthdate, uid: uid, profileImgURL: profileImgURL)
+                    print("User found with phone number:\(name)!!")
                     userArray.append(returned_user)
                 }
             }

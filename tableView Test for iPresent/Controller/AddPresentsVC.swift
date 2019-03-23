@@ -21,6 +21,7 @@ class AddPresentsVC: UIViewController {
     @IBOutlet weak var priceTF: UITextField!
     @IBOutlet weak var linkTF: UITextField!
     
+    @IBOutlet weak var addPresentBtnView: UIButton!
     @IBOutlet weak var baseView: RoundedCorners!
     
     let picker = UIImagePickerController()
@@ -49,6 +50,7 @@ class AddPresentsVC: UIViewController {
         self.picker.delegate = self
         
         setUpView()
+        // addPresentBtnView.bindToKeyboard()
         hideKeyboard()
     }
     

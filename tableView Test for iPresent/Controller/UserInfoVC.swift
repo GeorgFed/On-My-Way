@@ -43,10 +43,6 @@ class UserInfoVC: UIViewController {
             profileImg.loadImgWithURLString(urlString: url)
         }
     }
-    
-    @IBAction func backBtnPressed(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
 }
 
 extension UserInfoVC: UICollectionViewDelegate, UICollectionViewDataSource {
