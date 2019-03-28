@@ -13,9 +13,12 @@ class UserInfoVC: UIViewController {
     var user: User?
     var presentArray = [Present]()
     
-    @IBOutlet weak var fullName: UILabel!
     @IBOutlet weak var profileImg: UIImageView!
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    @IBOutlet weak var declineBtn: UIButton!
+    @IBOutlet weak var acceptBtn: UIButton!
+    @IBOutlet weak var sendRequestBtn: UIButton!
     
     override func viewWillAppear(_ animated: Bool) {
         getPresents()
@@ -36,12 +39,20 @@ class UserInfoVC: UIViewController {
     }
 
     func setUpView() {
-        fullName.text = user?.name
+        self.navigationItem.title = user?.name
         profileImg.layer.cornerRadius = profileImg.frame.height / 2
         profileImg.clipsToBounds = true
         if let url = user?.profileImgURL {
             profileImg.loadImgWithURLString(urlString: url)
         }
+    }
+    @IBAction func sendRequestBtnPressed(_ sender: Any) {
+    }
+    
+    @IBAction func acceptBtnPressed(_ sender: Any) {
+    }
+    
+    @IBAction func declineBtnPressed(_ sender: Any) {
     }
 }
 
@@ -65,10 +76,11 @@ extension UserInfoVC: UICollectionViewDelegate, UICollectionViewDataSource {
             
             cell.layer.shadowColor = UIColor.lightGray.cgColor
             cell.layer.shadowOffset = CGSize(width:0,height: 2.0)
-            cell.layer.shadowRadius = 2.0
-            cell.layer.shadowOpacity = 1.0
+            cell.layer.shadowRadius = 6.0
+            cell.layer.shadowOpacity = 0.15
             cell.layer.masksToBounds = false;
-            cell.layer.shadowPath = UIBezierPath(roundedRect:cell.bounds, cornerRadius:cell.contentView.layer.cornerRadius).cgPath
+            cell.layer.shadowPath = UIBezierPath(roundedRect:cell.bounds,
+                                                 cornerRadius:cell.contentView.layer.cornerRadius).cgPath
             
             return cell
         }
@@ -83,6 +95,7 @@ extension UserInfoVC: UICollectionViewDelegate, UICollectionViewDataSource {
             + flowLayout.minimumInteritemSpacing
         let size = Int((collectionView.bounds.width - totalSpace) / CGFloat(2))
         return CGSize(width: size, height: size)
+        // Int(Double(size) * 1.5)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

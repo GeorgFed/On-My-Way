@@ -9,9 +9,10 @@
 import Foundation
 
 struct UserKeys {
+    static let path = "users"
     static let provider = "provider"
     static let phoneNumber = "phoneNumber"
-    static let userId = "useruserId"
+    static let userId = "userId"
     static let name = "name"
     static let birthdate = "birthdate"
     static let profileImg = "profileImgURL"
@@ -36,11 +37,27 @@ struct PresentKeys {
     static let link = "link"
 }
 
+struct FriendKeys {
+    static let path = "friends"
+    static let requests = "requests"
+    static let friendUid = "fuid"
+}
+
+struct EventKeys {
+    static let path = "events"
+    static let eventTitle = "event_title"
+    static let description = "description"
+    static let date = "date"
+    static let uuid = "uuid"
+    static let senderId = "senderId"
+}
+
 struct Notifications {
     static let newUser = "NewUser"
     static let userExists = "UserExists"
     static let presentAdded = "PresentAdded"
     static let presentDeleted = "PresentDeleted"
+    static let firstEntry = "FirstEntry"
 }
 
 struct UserDefaultsKeys {

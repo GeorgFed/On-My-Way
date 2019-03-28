@@ -45,5 +45,4 @@ extension DataService {
             ref.updateChildValues([UserKeys.profileImg : url])
         }
     }
-    
 }

@@ -29,7 +29,7 @@ class DataService {
         return _REF_USERS
     }
     
-    func getUsersByName(forSearchQuery query: String, handler: @escaping(_ nameArray: [User]) -> ()) {
+    func getUsersByName(forSearchQuery query: String, allUsers: Bool, handler: @escaping(_ nameArray: [User]) -> ()) {
         var userArray = [User]()
         REF_USERS.observe(.value) { (userSnapshot) in
             guard let userSnapshot = userSnapshot.children.allObjects as? [DataSnapshot] else { return }
@@ -38,8 +38,17 @@ class DataService {
                 guard let birthdate = user.childSnapshot(forPath: "birthdate").value as? String else { continue }
                 guard let uid = user.childSnapshot(forPath: "userId").value as? String else { continue }
                 let profileImgURL = user.childSnapshot(forPath: "profileImgURL").value as? String ?? "defaultProfileImg"
-                if query.isAlphanumeric {
-                    if name.contains(query) && name != Auth.auth().currentUser?.displayName {
+//                if query.isAlphanumeric {
+//                    if name.contains(query) && name != Auth.auth().currentUser?.displayName {
+//                        let returned_user = User(name: name, birthdate: birthdate, uid: uid, profileImgURL: profileImgURL)
+//                        userArray.append(returned_user)
+//                    }
+//                }
+                if allUsers {
+                    let returned_user = User(name: name, birthdate: birthdate, uid: uid, profileImgURL: profileImgURL)
+                    userArray.append(returned_user)
+                } else {
+                    if name.contains(query) {
                         let returned_user = User(name: name, birthdate: birthdate, uid: uid, profileImgURL: profileImgURL)
                         userArray.append(returned_user)
                     }
@@ -49,12 +58,14 @@ class DataService {
         }
     }
     
-    func getUsersByPhoneNumber(phoneNumbers query: [String], handler: @escaping(_ nameArray: [User]) -> ()) {
-        var userArray = [User]()
+    func getUsersByPhoneNumber(phoneNumbers query: [String], handler: @escaping(_ uidArray: [String]) -> ()) {
+        // var userArray = [User]()
+        var uidArray = [String]()
         REF_USERS.observe(.value) { (userSnapshot) in
             guard let userSnapshot = userSnapshot.children.allObjects as? [DataSnapshot] else { return }
             for user in userSnapshot {
                 guard let phoneNum = user.childSnapshot(forPath: "phoneNumber").value as? String else { continue }
+                /*
                 if query.contains(phoneNum) {
                     guard let name = user.childSnapshot(forPath: "name").value as? String else { continue }
                     guard let birthdate = user.childSnapshot(forPath: "birthdate").value as? String else { continue }
@@ -65,8 +76,14 @@ class DataService {
                     print("User found with phone number:\(name)!!")
                     userArray.append(returned_user)
                 }
+                */
+                if query.contains(phoneNum) {
+                    guard let uid = user.childSnapshot(forPath: "userId").value as? String else { continue }
+                    print("User found with uid:\(uid)!!")
+                    uidArray.append(uid)
+                }
             }
-            handler(userArray)
+            handler(uidArray)
         }
     }
     

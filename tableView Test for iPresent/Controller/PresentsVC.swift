@@ -16,19 +16,10 @@ class PresentsVC: UIViewController, UIScrollViewDelegate {
     
     //MARK: Outlets
     @IBOutlet weak var collectionView: UICollectionView!
-    var store = CNContactStore()
-    var contacts = [CNContact]()
-    var phoneNumbers = [String]()
-    var filteredNumbers = [String]()
     var presentArray = [Present]()
-    
+
     let userKey = "mainUser"
     let uid = Auth.auth().currentUser?.uid
-    let keys = [
-        CNContactFormatter.descriptorForRequiredKeys(for: .fullName),
-        CNContactPhoneNumbersKey,
-        CNContactEmailAddressesKey
-        ] as [Any]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +33,6 @@ class PresentsVC: UIViewController, UIScrollViewDelegate {
             }
         }
         navigationController?.navigationBar.prefersLargeTitles = true
-        getPhoneNumbers()
         getPresents()
     }
     
@@ -52,85 +42,6 @@ class PresentsVC: UIViewController, UIScrollViewDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "searchVCSegue" {
-            if let vc = segue.destination as? SearchVC {
-                vc.phoneNumbers = self.filteredNumbers
-            }
-        }
-    }
-    
-    func getPhoneNumbers() {
-        self.requestAccess { ( accessGranted ) in
-            if accessGranted == true {
-                self.getContacts()
-                print(self.phoneNumbers)
-                self.phoneNumbers = self.phoneNumbers.filter {
-                    $0.contains("+")
-                }
-                for string in self.phoneNumbers {
-                    let string_filtered = string.replacingOccurrences( of:"[^0-9]", with: "", options: .regularExpression)
-                    self.filteredNumbers.append("+" + string_filtered)
-                }
-                print(self.filteredNumbers)
-            } else {
-                print("error")
-            }
-        }
-    }
-    
-    func getContacts() {
-        let request = CNContactFetchRequest(keysToFetch: keys as! [CNKeyDescriptor])
-        do {
-            try store.enumerateContacts(with: request){
-                (contact, stop) in
-                // Array containing all unified contacts from everywhere
-                self.contacts.append(contact)
-                for phoneNumber in contact.phoneNumbers {
-                    if let number = phoneNumber.value as? CNPhoneNumber, let label = phoneNumber.label {
-                        let localizedLabel = CNLabeledValue<CNPhoneNumber>.localizedString(forLabel: label)
-                        self.phoneNumbers.append(number.stringValue)
-                    }
-                }
-            }
-        } catch {
-            print("unable to fetch contacts")
-        }
-    }
-    
-    func requestAccess(completionHandler: @escaping (_ accessGranted: Bool) -> Void) {
-        switch CNContactStore.authorizationStatus(for: .contacts) {
-        case .authorized:
-            completionHandler(true)
-        case .denied:
-            showSettingsAlert(completionHandler)
-        case .restricted, .notDetermined:
-            store.requestAccess(for: .contacts) { granted, error in
-                if granted {
-                    completionHandler(true)
-                } else {
-                    DispatchQueue.main.async {
-                        self.showSettingsAlert(completionHandler)
-                    }
-                }
-            }
-        }
-    }
-    
-    private func showSettingsAlert(_ completionHandler: @escaping (_ accessGranted: Bool) -> Void) {
-        let alert = UIAlertController(title: nil,
-                                      message: "This app requires access to Contacts to proceed. Would you like to open settings and grant permission to contacts?",
-                                      preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Open Settings", style: .default) { action in
-            completionHandler(false)
-            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
-        })
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { action in
-            completionHandler(false)
-        })
-        present(alert, animated: true)
     }
     
     @objc func getPresents() {

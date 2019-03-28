@@ -30,6 +30,7 @@ class PhoneSignUpVC: UIViewController {
     @IBAction func donePressed(_ sender: Any) {
         DataService.instance.updateDBUser(withUid: (Auth.auth().currentUser?.uid)!, firstName: firstName.text!, lastName: lastName.text!, birthdate: birthdate.text!, updateComplete: { (isUpdated) in
             if isUpdated {
+                NotificationCenter.default.post(name: Notification.Name(Notifications.firstEntry), object: nil)
                 let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
                 let PresentsVC = storyboard.instantiateViewController(withIdentifier: self.segueId)
                 self.show(PresentsVC, sender: nil)

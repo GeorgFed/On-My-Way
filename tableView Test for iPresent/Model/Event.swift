@@ -9,14 +9,18 @@
 import UIKit
 
 class Event {
-    var _user: [User]
+    var _uuid: String
+    var _senderId: String
     var _title: String
     var _description: String
     var _date: String
-    var _collection: [Present]
 
-    var user: [User] {
-        return _user
+    var senderId: String {
+        return _senderId
+    }
+    
+    var uuid: String {
+        return _uuid
     }
     
     var title: String {
@@ -31,16 +35,11 @@ class Event {
         return _date
     }
     
-    var collection: [Present] {
-        return _collection
-    }
-    
-    
-    init(user: [User], title: String, description: String, date: String, collection: [Present]) {
-        self._user = user
+    init(uuid: String, title: String, description: String, date: String, senderId: String) {
+        self._uuid = uuid
         self._title = title
         self._description = description
         self._date = date
-        self._collection = collection
+        self._senderId = senderId
     }
 }
