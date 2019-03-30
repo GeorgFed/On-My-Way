@@ -11,14 +11,17 @@ import UIKit
 class UserInfoVC: UIViewController {
 
     var user: User?
+    var status: userStatus?
     var presentArray = [Present]()
-    
+    var requestArray = [User]()
+
     @IBOutlet weak var profileImg: UIImageView!
     @IBOutlet weak var collectionView: UICollectionView!
     
     @IBOutlet weak var declineBtn: UIButton!
     @IBOutlet weak var acceptBtn: UIButton!
     @IBOutlet weak var sendRequestBtn: UIButton!
+    @IBOutlet weak var removeFriendBtn: UIButton!
     
     override func viewWillAppear(_ animated: Bool) {
         getPresents()
@@ -45,14 +48,98 @@ class UserInfoVC: UIViewController {
         if let url = user?.profileImgURL {
             profileImg.loadImgWithURLString(urlString: url)
         }
+        
+        collectionView.isHidden = true
+        
+        declineBtn.isHidden = true
+        declineBtn.isEnabled = false
+        acceptBtn.isHidden = true
+        acceptBtn.isEnabled = false
+        
+        sendRequestBtn.isHidden = true
+        sendRequestBtn.isEnabled = false
+        
+        removeFriendBtn.isHidden = true
+        removeFriendBtn.isEnabled = false
+        
+        if status == nil {
+            if FriendSystem.instance.friendList.contains(user!) {
+                status = userStatus.friend
+            } else {
+                checkRequests()
+                if requestArray.contains(user!) {
+                    status = userStatus.sentRequest
+                } else {
+                    status = userStatus.neutral
+                }
+            }
+        }
+        
+        switch status! {
+        case .friend:
+            print("friend")
+            removeFriendBtn.isHidden = false
+            removeFriendBtn.isEnabled = true
+            collectionView.isHidden = false
+        case .requested:
+            print("you requested")
+        case .sentRequest:
+            print("user requested")
+            declineBtn.isHidden = false
+            declineBtn.isEnabled = true
+            acceptBtn.isHidden = false
+            acceptBtn.isEnabled = true
+        default:
+            print("neutral")
+            sendRequestBtn.isHidden = false
+            sendRequestBtn.isEnabled = true
+        }
+        
     }
+    
+    func  checkRequests() {
+        FriendSystem.instance.addRequestObserver {
+            self.requestArray = FriendSystem.instance.requestList
+        }
+    }
+
+    func sendFriendRequest() {
+        FriendSystem.instance.sendRequestToUser(user!.uid)
+    }
+    
+    func removeFriend() {
+        FriendSystem.instance.removeFriend(user!.uid)
+    }
+    
+    func acceptRequest() {
+        FriendSystem.instance.acceptFriendRequest(user!.uid)
+    }
+    
     @IBAction func sendRequestBtnPressed(_ sender: Any) {
+        sendFriendRequest()
     }
     
     @IBAction func acceptBtnPressed(_ sender: Any) {
+        acceptRequest()
     }
     
     @IBAction func declineBtnPressed(_ sender: Any) {
+        // TODO: - Add Decline
+        print("declined")
+        
+    }
+    
+    @IBAction func removeFriendBtnPressed(_ sender: Any) {
+        friendDeleteAlert()
+    }
+    
+    func friendDeleteAlert() {
+        let alert = UIAlertController(title: "Remove \(user!.name) from friend list", message: "This user will no longer be able to see your personal information", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Remove", style: .destructive, handler: { action in
+            self.removeFriend()
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil ))
+        self.present(alert, animated: true, completion: nil)
     }
 }
 

@@ -28,7 +28,7 @@ class FriendSystem {
     
     /** The Firebase reference to the current user's friend tree */
     var CURRENT_USER_FRIENDS_REF: DatabaseReference {
-        return CURRENT_USER_REF.child(FriendKeys.path)
+        return CURRENT_USER_REF.child("friends")
     }
     
     /** The Firebase reference to the current user's friend request tree */
@@ -170,9 +170,11 @@ class FriendSystem {
      to update your UI. */
     func addFriendObserver(_ update: @escaping () -> Void) {
         CURRENT_USER_FRIENDS_REF.observe(DataEventType.value, with: { (snapshot) in
+            print(snapshot)
             self.friendList.removeAll()
             for child in snapshot.children.allObjects as! [DataSnapshot] {
                 let id = child.key
+                print(id)
                 self.getUser(id, handler: { (user) in
                     self.friendList.append(user)
                     update()

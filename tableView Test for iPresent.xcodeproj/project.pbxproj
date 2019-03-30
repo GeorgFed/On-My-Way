@@ -59,6 +59,7 @@
 		568FE801217CDC3E004E893B /* assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 568FE800217CDC3E004E893B /* assets.xcassets */; };
 		568FE803217CDF14004E893B /* PresentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568FE802217CDF14004E893B /* PresentCell.swift */; };
 		5695D6C021A61289002608DB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5695D6BF21A61288002608DB /* GoogleService-Info.plist */; };
+		56D94C5F224D0A8A002BFD25 /* StatusEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D94C5E224D0A8A002BFD25 /* StatusEnum.swift */; };
 		56F41B1C218B6B4A0070B2CC /* PhoneSignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F41B1B218B6B4A0070B2CC /* PhoneSignInVC.swift */; };
 		56F41B1E218B6BC50070B2CC /* PhoneVerifyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F41B1D218B6BC50070B2CC /* PhoneVerifyVC.swift */; };
 		56F41B20218B6C130070B2CC /* PhoneSignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F41B1F218B6C130070B2CC /* PhoneSignUpVC.swift */; };
@@ -120,6 +121,7 @@
 		568FE800217CDC3E004E893B /* assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = assets.xcassets; sourceTree = "<group>"; };
 		568FE802217CDF14004E893B /* PresentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentCell.swift; sourceTree = "<group>"; };
 		5695D6BF21A61288002608DB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		56D94C5E224D0A8A002BFD25 /* StatusEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusEnum.swift; sourceTree = "<group>"; };
 		56DD8D8521AAF06600CF3570 /* tableView Test for iPresent.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "tableView Test for iPresent.entitlements"; sourceTree = "<group>"; };
 		56F41B1B218B6B4A0070B2CC /* PhoneSignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneSignInVC.swift; sourceTree = "<group>"; };
 		56F41B1D218B6BC50070B2CC /* PhoneVerifyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneVerifyVC.swift; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 			isa = PBXGroup;
 			children = (
 				568E5820221ED609008337C7 /* Constants.swift */,
+				56D94C5E224D0A8A002BFD25 /* StatusEnum.swift */,
 				563F0A5D216D234E00A27CA5 /* Extension */,
 				568E581F221ED592008337C7 /* Cache */,
 			);
@@ -504,6 +507,7 @@
 				563217CA21BC0D330012F75B /* StringExtensions.swift in Sources */,
 				563F0A55216D225300A27CA5 /* DataService.swift in Sources */,
 				568E5821221ED609008337C7 /* Constants.swift in Sources */,
+				56D94C5F224D0A8A002BFD25 /* StatusEnum.swift in Sources */,
 				563F0A5C216D231F00A27CA5 /* UserCell.swift in Sources */,
 				5644883F223E796400948694 /* EventsVC.swift in Sources */,
 				5619A4B5218711CE00718C50 /* AddPresentsVC.swift in Sources */,

@@ -8,7 +8,11 @@
 
 import Foundation
 
-class User {
+class User: Equatable {
+    static func == (lhs: User, rhs: User) -> Bool {
+        return lhs.uid == rhs.uid
+    }
+    
     private var _name: String
     private var _birthdate: String
     private var _uid: String
@@ -35,5 +39,14 @@ class User {
         self._birthdate = birthdate
         self._uid = uid
         self._profileImgURL = profileImgURL
+    }
+}
+
+extension User {
+    public enum userStatus {
+        case friend
+        case requested
+        case sentRequest
+        case neutral
     }
 }

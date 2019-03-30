@@ -76,6 +76,10 @@ class ProfileSettingsVC: UIViewController {
         userImg.clipsToBounds = true
     }
     
+    @objc func getEvents() {
+        
+    }
+    
     @IBAction func signOutBtnPressed(_ sender: Any) {
         let firebaseAuth = Auth.auth()
         do {
@@ -87,6 +91,16 @@ class ProfileSettingsVC: UIViewController {
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
         }
+    }
+    
+    @IBAction func addEventBtnPressed(_ sender: Any) {
+        let _addEventVC = AddEventVC()
+        _addEventVC.modalPresentationStyle = .custom
+        present(_addEventVC, animated: true, completion: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(getEvents),
+                                               name: NSNotification.Name(Notifications.eventAdded),
+                                               object: nil)
     }
 }
 

@@ -57,6 +57,8 @@ struct Notifications {
     static let userExists = "UserExists"
     static let presentAdded = "PresentAdded"
     static let presentDeleted = "PresentDeleted"
+    static let eventAdded = "EventAdded"
+    static let eventDeleted = "EventDeleted"
     static let firstEntry = "FirstEntry"
 }
 
