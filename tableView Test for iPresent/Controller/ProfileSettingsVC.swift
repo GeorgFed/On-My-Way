@@ -19,9 +19,12 @@ class ProfileSettingsVC: UIViewController {
     let userid = Auth.auth().currentUser?.uid
     let picker = UIImagePickerController()
     let user = Auth.auth().currentUser
+    
     var profileImgURL = "defaultProfilePicture"
+    var events = [Event]()
     
     override func viewWillAppear(_ animated: Bool) {
+        getEvents()
         setUpView()
     }
     
@@ -77,7 +80,10 @@ class ProfileSettingsVC: UIViewController {
     }
     
     @objc func getEvents() {
-        
+        DataService.instance.getEvents(forUid: user!.uid) { ( returnedEvents ) in
+            self.events = returnedEvents
+            self.tableView.reloadData()
+        }
     }
     
     @IBAction func signOutBtnPressed(_ sender: Any) {
@@ -105,37 +111,26 @@ class ProfileSettingsVC: UIViewController {
 }
 
 // TODO: CHANGE TABLE VIEW
-/*
+
 extension ProfileSettingsVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "_settings")
-        if cell == nil {
-                cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "_signout")
-                cell?.textLabel?.textColor = #colorLiteral(red: 0.8078431373, green: 0.3294117647, blue: 0.2392156863, alpha: 1)
-        }
-        
-        cell!.textLabel?.text = self.profile_settings[indexPath.row]
-        return cell!
+        let cell: EventCell = tableView.dequeueReusableCell(withIdentifier: "EventCell") as! EventCell
+        cell.name.text = events[indexPath.row].title
+        cell.details.text = events[indexPath.row].description
+        cell.day.text = String(events[indexPath.row].date.prefix(2))
+        cell.month.text = String(events[indexPath.row].date.suffix(3))
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let firebaseAuth = Auth.auth()
-        do {
-            try firebaseAuth.signOut()
-            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-            let PhoneSignInVC = storyboard.instantiateViewController(withIdentifier: "PhoneSignInVC")
-            self.show(PhoneSignInVC, sender: nil)
-        } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
-        }
+        // TODO: Show information
     }
     
 }
- */
 
 extension ProfileSettingsVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -159,7 +154,6 @@ extension ProfileSettingsVC: UIImagePickerControllerDelegate, UINavigationContro
     }
     
     @objc func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        print("canceled")
         self.dismiss(animated: true, completion: nil)
     }
 }

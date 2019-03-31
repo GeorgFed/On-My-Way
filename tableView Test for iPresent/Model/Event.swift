@@ -8,13 +8,17 @@
 
 import UIKit
 
-class Event {
-    var _uuid: String
-    var _senderId: String
-    var _title: String
-    var _description: String
-    var _date: String
+class Event: Hashable {
+    private var _uuid: String
+    private var _senderId: String
+    private var _title: String
+    private var _description: String
+    private var _date: String
 
+    var hashValue: Int {
+        return uuid.hashValue
+    }
+    
     var senderId: String {
         return _senderId
     }
@@ -41,5 +45,9 @@ class Event {
         self._description = description
         self._date = date
         self._senderId = senderId
+    }
+    
+    static func == (lhs: Event, rhs: Event) -> Bool {
+        return lhs.uuid == rhs.uuid
     }
 }

@@ -23,4 +23,7 @@ class EventTitleCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    public func configureCell(title: String) {
+        self.title.text = title
+    }
 }

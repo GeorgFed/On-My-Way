@@ -25,4 +25,9 @@ class EventHeaderCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    public func configureCell(date: String, fname: String, imgURL: String) {
+        self.date.text = date
+        self.friendName.text = fname
+        self.eventImg.loadImgWithURLString(urlString: imgURL)
+    }
 }

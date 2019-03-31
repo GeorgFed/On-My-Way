@@ -22,8 +22,13 @@ class EventCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    }
+    
+    public func configureCell(name: String, details: String, day: String, month: String) {
+        self.name.text = name
+        self.details.text = details
+        self.day.text = day
+        self.month.text = month
     }
 
 }
