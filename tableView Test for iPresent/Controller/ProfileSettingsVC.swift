@@ -30,8 +30,8 @@ class ProfileSettingsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.tableView.delegate = self
-        //self.tableView.dataSource = self
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
         self.picker.delegate = self
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(changeImage(tapGestureRecognizer:)))
@@ -114,7 +114,7 @@ class ProfileSettingsVC: UIViewController {
 
 extension ProfileSettingsVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return events.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -22,8 +22,8 @@ class FriendSystem {
     
     /** The Firebase reference to the current user tree */
     var CURRENT_USER_REF: DatabaseReference {
-        let id = Auth.auth().currentUser!.uid
-        return USER_REF.child("\(id)")
+        let id = Auth.auth().currentUser?.uid
+        return USER_REF.child("\(String(describing: id))")
     }
     
     /** The Firebase reference to the current user's friend tree */
@@ -110,6 +110,22 @@ class FriendSystem {
     }
     
     // MARK: - Request System Functions
+
+    /*
+ 
+     - users
+       - id123
+         - ..
+         - requests
+           - idOfUsersThatRequestedYou = true
+           - ..
+         - requsted
+           - idOfUserYouSentRequestTo = true
+           - ..
+         - friends
+           - friendId = true
+           - ..
+    */
     
     /** Sends a friend request to the user with the specified id */
     func sendRequestToUser(_ userID: String) {
@@ -126,8 +142,10 @@ class FriendSystem {
     func acceptFriendRequest(_ userID: String) {
         CURRENT_USER_REF.child(FriendKeys.requests).child(userID).removeValue()
         CURRENT_USER_REF.child(FriendKeys.path).child(userID).setValue(true)
+        print("Here it is", CURRENT_USER_REF.child(FriendKeys.path).child(userID))
         USER_REF.child(userID).child(FriendKeys.path).child(CURRENT_USER_ID).setValue(true)
         USER_REF.child(userID).child(FriendKeys.requests).child(CURRENT_USER_ID).removeValue()
+        print("Here it is 2", USER_REF.child(userID).child(FriendKeys.path).child(CURRENT_USER_ID))
     }
     
     
@@ -186,6 +204,7 @@ class FriendSystem {
             }
         })
     }
+    
     /** Removes the friend observer. This should be done when leaving the view that uses the observer. */
     func removeFriendObserver() {
         CURRENT_USER_FRIENDS_REF.removeAllObservers()

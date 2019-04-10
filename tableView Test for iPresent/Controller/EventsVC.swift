@@ -32,32 +32,48 @@ class EventsVC: UIViewController {
     var events = [Event]()
     var friendForEvent = [Event : User]()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // findFriends()
+    override func viewWillAppear(_ animated: Bool) {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(findFriends),
                                                name: NSNotification.Name(Notifications.firstEntry),
                                                object: nil)
-        getFriends()
+         getFriends()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // findFriends()
+        tableView.delegate = self
+        tableView.dataSource = self
+        FriendSystem.instance.addFriendObserver {
+            print("observer updated")
+            self.getEvents()
+        }
     }
     
     func getFriends() {
-        FriendSystem.instance.addFriendObserver {
-            self.getEvents()
-            self.tableView.reloadData()
-        }
+        FriendSystem.instance.addFriendObserver { }
+        print("observer added")
     }
     
     func getEvents() {
+        print("MY dear dear friends \(FriendSystem.instance.friendList)")
         for friend in FriendSystem.instance.friendList {
+            print("this is my friend ", friend.name)
             DataService.instance.getEvents(forUid: friend.uid) { ( returnedEvents ) in
+                print("uid for friend - \(friend.uid)")
+                print(returnedEvents)
                 self.events.append(contentsOf: returnedEvents)
+                print(self.events)
                 for event in returnedEvents {
                     self.friendForEvent[event] = friend
+                    print("event\(event) -> friend \(friend)")
                 }
+                self.tableView.reloadData()
             }
         }
+        print("sooo", events)
+        self.tableView.reloadData()
     }
     
     @objc func findFriends() {
@@ -100,8 +116,31 @@ extension EventsVC: UITableViewDelegate, UITableViewDataSource {
             return cell
         default:
             let cell: PresentCollectionCell! = tableView.dequeueReusableCell(withIdentifier: "PresentCollectionCell") as? PresentCollectionCell
+            cell.configureCollectionCell(f: friendForEvent[events[indexPath.section]]!)
             return cell
         }
-        
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch indexPath.row {
+        case 0:
+            return 64.0
+        case 1:
+            return 44.0
+        default:
+            return 340.0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        let headerHeight: CGFloat
+        headerHeight = CGFloat.leastNonzeroMagnitude
+        return headerHeight
+    }
+
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        let footerHeight: CGFloat
+        footerHeight = 8.0
+        return footerHeight
     }
 }

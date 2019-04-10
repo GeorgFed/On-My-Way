@@ -49,4 +49,16 @@ extension User {
         case sentRequest
         case neutral
     }
+    
+    public func getStatus(user: User, friendArray: [User], requestedUsers: [User], requestsFromUsers: [User]) -> userStatus {
+        if friendArray.contains(user) {
+            return .friend
+        } else if requestedUsers.contains(user) {
+            return .requested
+        } else if requestsFromUsers.contains(user) {
+            return .sentRequest
+        } else {
+            return .neutral
+        }
+    }
 }

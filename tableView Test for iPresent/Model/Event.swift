@@ -19,6 +19,17 @@ class Event: Hashable {
         return uuid.hashValue
     }
     
+    /*
+    var convertedDate: Date {
+        var dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd MMM"
+        let date = Date()
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.year, .month, .day], from: date)
+        
+    }
+    */
+    
     var senderId: String {
         return _senderId
     }

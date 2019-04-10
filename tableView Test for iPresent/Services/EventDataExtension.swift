@@ -30,6 +30,7 @@ extension DataService {
         var eventArray = [Event]()
         ref.observeSingleEvent(of: .value) { (eventSnapshot) in
             guard let eventSnapshot = eventSnapshot.children.allObjects as? [DataSnapshot] else { return }
+            print(eventSnapshot)
             eventSnapshot.forEach({ ( dataSnap ) in
                 let title = dataSnap.childSnapshot(forPath: EventKeys.eventTitle).value as? String
                 let description = dataSnap.childSnapshot(forPath: EventKeys.description).value as? String
@@ -38,8 +39,8 @@ extension DataService {
                 let event = Event(uuid: uuid!, title: title!, description: description ?? "", date: date!, senderId: uid)
                 eventArray.append(event)
             })
+            handler(eventArray)
         }
-        handler(eventArray)
     }
     
     func removeEvents(uid: String, uuid: String, deleted: @escaping(_ success: Bool) -> ()) {

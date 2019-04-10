@@ -16,6 +16,10 @@ class EventHeaderCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        eventImg.layer.cornerRadius = eventImg.frame.height / 2
+        eventImg.clipsToBounds = true
+//        profileImg.layer.cornerRadius = profileImg.frame.height / 2
+//        profileImg.clipsToBounds = true
         // Initialization code
     }
 

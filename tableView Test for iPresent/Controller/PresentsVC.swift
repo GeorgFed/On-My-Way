@@ -49,7 +49,7 @@ class PresentsVC: UIViewController, UIScrollViewDelegate {
             DataService.instance.getPresents(forUid: user.uid) { ( returnedArray ) in
                 if returnedArray.count == 0 {
                     // MARK: No Presents
-                    self.getTestPresents()
+                    //self.getTestPresents()
                 } else {
                     self.presentArray = returnedArray
                     self.collectionView.reloadData()
@@ -57,7 +57,7 @@ class PresentsVC: UIViewController, UIScrollViewDelegate {
             }
         } else {
             // MARK: PROBLEM CONDITION
-            getTestPresents()
+            // getTestPresents()
         }
     }
     
