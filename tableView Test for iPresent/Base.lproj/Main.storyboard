@@ -80,7 +80,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FriendsPresentCell" id="NDH-bn-Xl1" customClass="FriendsPresentCell" customModule="tableView_Test_for_iPresent" customModuleProvider="target">
-                                        <rect key="frame" x="16" y="68.666666666666671" width="228" height="324"/>
+                                        <rect key="frame" x="16" y="46.666666666666664" width="228" height="324"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="228" height="324"/>
@@ -264,6 +264,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="oCo-mc-f0d"/>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem title="Item" id="0gS-xg-6A4"/>
+                    </toolbarItems>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="acceptBtn" destination="frN-pZ-HMF" id="ffR-qi-N4p"/>
                         <outlet property="collectionView" destination="u5t-I4-8o1" id="xKM-wD-uo7"/>
@@ -275,7 +279,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nyu-mO-GmR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4533.6000000000004" y="835.71428571428578"/>
+            <point key="canvasLocation" x="4466" y="137"/>
         </scene>
         <!--Events-->
         <scene sceneID="bLc-Tf-vgR">
@@ -285,7 +289,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="4" sectionFooterHeight="4" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0OP-DJ-3jH">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="4" sectionFooterHeight="4" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0OP-DJ-3jH">
                                 <rect key="frame" x="0.0" y="88" width="375" height="641"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
@@ -469,6 +473,7 @@
                     <navigationItem key="navigationItem" title="Events" id="wbw-87-asM"/>
                     <connections>
                         <outlet property="tableView" destination="0OP-DJ-3jH" id="z9I-Yd-N8G"/>
+                        <segue destination="Dgf-2W-IPP" kind="show" identifier="user_segue" id="ycV-pl-cVP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BFh-Lg-zmb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1203,5 +1208,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="gLF-j7-ZKM"/>
+        <segue reference="ycV-pl-cVP"/>
     </inferredMetricsTieBreakers>
 </document>

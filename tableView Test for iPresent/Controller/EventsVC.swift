@@ -31,6 +31,7 @@ class EventsVC: UIViewController {
     var friendsIDs = [String]()
     var events = [Event]()
     var friendForEvent = [Event : User]()
+    var chosen_user: User?
     
     override func viewWillAppear(_ animated: Bool) {
         NotificationCenter.default.addObserver(self,
@@ -132,6 +133,12 @@ extension EventsVC: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        if indexPath.row > 0 {
+            return nil
+        }
+        return indexPath
+    }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         let headerHeight: CGFloat
         headerHeight = CGFloat.leastNonzeroMagnitude
@@ -142,5 +149,20 @@ extension EventsVC: UITableViewDelegate, UITableViewDataSource {
         let footerHeight: CGFloat
         footerHeight = 8.0
         return footerHeight
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        if indexPath.row == 0 {
+            // user_segue
+            self.chosen_user = friendForEvent[events[indexPath.section]]!
+            self.performSegue(withIdentifier: "user_segue", sender: self)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard chosen_user != nil else { return }
+        let _userInfoVC = segue.destination as! UserInfoVC
+        _userInfoVC.user = chosen_user
     }
 }

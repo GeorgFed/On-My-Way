@@ -81,6 +81,15 @@ extension PresentCollectionCell: UICollectionViewDelegate, UICollectionViewDataS
         // Int(Double(size) * 1.5)
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // TODO: ADDITTIONAL PRESENT INFO APPEARENCE
+        let current_present = presentArray[indexPath.row]
+        let _ReservePresentVC = ReservePresentVC(nibName: "ReservePresentVC", bundle: nil)
+        _ReservePresentVC.chosen_present = current_present
+        _ReservePresentVC.modalPresentationStyle = .custom
+       self.window?.rootViewController?.present(_ReservePresentVC, animated: true, completion: nil)
+    }
+    
 //    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 //        let current_present = presentArray[indexPath.row]
 //        let _ReservePresentVC = ReservePresentVC(nibName: "ReservePresentVC", bundle: nil)
