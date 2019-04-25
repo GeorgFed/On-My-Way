@@ -64,14 +64,14 @@ class PhoneVerifyVC: UIViewController {
     }
     
     func showNoCodeAlert() {
-        let alertController = UIAlertController(title: "Error", message: "Please enter verification code from SMS", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Error".localized, message: "Please enter verification code from SMS".localized, preferredStyle: .alert)
         let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alertController.addAction(defaultAction)
         self.present(alertController, animated: true, completion: nil)
     }
     
     func showWrongCodeAlert() {
-        let alertController = UIAlertController(title: "Error", message: "Wrong Verification Code", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Error".localized, message: "Wrong Verification Code".localized, preferredStyle: .alert)
         let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alertController.addAction(defaultAction)
         self.present(alertController, animated: true, completion: nil)

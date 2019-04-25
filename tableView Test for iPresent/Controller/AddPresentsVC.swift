@@ -15,13 +15,16 @@ class AddPresentsVC: UIViewController {
     
     private let blurEffect = (NSClassFromString("_UICustomBlurEffect") as! UIBlurEffect.Type).init()
     
+    @IBOutlet weak var addPresentLbl: UILabel!
+    @IBOutlet weak var addPresentBtn: UIButton!
+    @IBOutlet weak var cancelBtn: UIButton!
+    
     // MARK: TextField Outlets
     @IBOutlet weak var presentNameTF: UITextField!
     @IBOutlet weak var descriptionTF: UITextField!
     @IBOutlet weak var priceTF: UITextField!
     @IBOutlet weak var linkTF: UITextField!
     
-    @IBOutlet weak var addPresentBtnView: UIButton!
     @IBOutlet weak var baseView: RoundedCorners!
     
     let picker = UIImagePickerController()
@@ -62,6 +65,16 @@ class AddPresentsVC: UIViewController {
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(blurEffectView)
         view.sendSubviewToBack(blurEffectView)
+        
+        presentNameTF.placeholder = "Present name".localized
+        descriptionTF.placeholder = "Description".localized
+        linkTF.placeholder = "Link*".localized
+        priceTF.placeholder = "Price".localized
+        addPresentLbl.text = "Add Present".localized
+//        addPresentBtn.titleLabel?.text = "Add Present".localized
+//        cancelBtn.titleLabel?.text = "Cancel".localized
+        addPresentBtn.setTitle("Add Present".localized, for: .normal)
+        cancelBtn.setTitle("Cancel".localized, for: .normal)
     }
     
     // MARK: PHOTO ACCESS PERMISSION
@@ -91,8 +104,8 @@ class AddPresentsVC: UIViewController {
     
     func check_input() -> Bool {
         if presentNameTF.text != "" && priceTF.text != "" {
-            if priceTF.text?.last != "$" {
-                priceTF.text?.append("$")
+            if priceTF.text?.last != "$" || priceTF.text?.last != "₽" {
+                priceTF.text?.append("$".localized)
             }
             DataService.instance.uploadMedia(img: img, imgType: MediaType.img) { ( url ) in
                 DataService.instance.uploadPresent(name: self.presentNameTF.text!, description: self.descriptionTF.text ?? " ", price: self.priceTF.text!, image: url!, senderid: self.user!.uid, link: self.linkTF.text!) { (success) in

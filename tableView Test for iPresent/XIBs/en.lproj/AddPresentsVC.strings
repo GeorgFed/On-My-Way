@@ -1,0 +1,18 @@
+
+/* Class = "UITextField"; placeholder = "Present Name"; ObjectID = "415-h7-4Mb"; */
+"415-h7-4Mb.placeholder" = "Present Name";
+
+/* Class = "UITextField"; placeholder = "Link*"; ObjectID = "AEs-9Y-2j7"; */
+"AEs-9Y-2j7.placeholder" = "Link*";
+
+/* Class = "UIButton"; normalTitle = "Cancel"; ObjectID = "aYV-eS-03j"; */
+"aYV-eS-03j.normalTitle" = "Cancel";
+
+/* Class = "UILabel"; text = "Add Present"; ObjectID = "hcS-dV-DFj"; */
+"hcS-dV-DFj.text" = "Add Present";
+
+/* Class = "UITextField"; placeholder = "Description"; ObjectID = "pD0-MS-g3d"; */
+"pD0-MS-g3d.placeholder" = "Description";
+
+/* Class = "UITextField"; placeholder = "Price"; ObjectID = "tqx-1s-Ary"; */
+"tqx-1s-Ary.placeholder" = "Price";

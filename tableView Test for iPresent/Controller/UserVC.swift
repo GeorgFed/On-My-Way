@@ -74,7 +74,7 @@ class UserVC: UITableViewController {
         switch indexPath.section {
         case 0:
             let cell: UserNameCell! = tableView.dequeueReusableCell(withIdentifier: "userNameCell", for: indexPath) as? UserNameCell
-            cell.configure(name: user!.name, uStatus: following ? "You are following this user":"You are not following this user", imageUrl: user!.profileImgURL)
+            cell.configure(name: user!.name, uStatus: following ? "You are following this user".localized:"You are not following this user".localized, imageUrl: user!.profileImgURL)
             return cell
         case 1:
             let cell: UserPresentsCollection! = tableView.dequeueReusableCell(withIdentifier: "CollectionCell", for: indexPath) as? UserPresentsCollection
@@ -82,7 +82,7 @@ class UserVC: UITableViewController {
             return cell
         default:
             let cell: UserActionButtonCell! = tableView.dequeueReusableCell(withIdentifier: "actionButton", for: indexPath) as? UserActionButtonCell
-            cell.configure(title: following ? "Unfollow" : "Follow")
+            cell.configure(title: following ? "Unfollow".localized : "Follow".localized)
             return cell
         }
     }

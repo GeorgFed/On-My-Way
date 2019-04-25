@@ -15,9 +15,14 @@ class AddEventVC: UIViewController {
 
     private let blurEffect = (NSClassFromString("_UICustomBlurEffect") as! UIBlurEffect.Type).init()
     
+    @IBOutlet weak var addEventLbl: UILabel!
+    
     @IBOutlet weak var eventNameTF: UITextField!
     @IBOutlet weak var eventDescriptionTF: UITextField!
     @IBOutlet weak var dateTF: UITextField!
+    
+    @IBOutlet weak var addEventBtn: UIButton!
+    @IBOutlet weak var cancelBtn: UIButton!
     
     var img: UIImage!
     var imgName = "BackImg2"
@@ -45,6 +50,16 @@ class AddEventVC: UIViewController {
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(blurEffectView)
         view.sendSubviewToBack(blurEffectView)
+        
+        eventNameTF.placeholder = "Event name".localized
+        eventDescriptionTF.placeholder = "Description".localized
+        dateTF.placeholder = "Date".localized
+        
+        addEventLbl.text = "Add Event".localized
+//        addEventBtn.titleLabel?.text = "Add Event".localized
+//        cancelBtn.title(for: .normal) = "Cancel".localized
+        addEventBtn.setTitle("Add Event".localized, for: .normal)
+        cancelBtn.setTitle("Cancel".localized, for: .normal)
     }
 
     func createDatePicker() {

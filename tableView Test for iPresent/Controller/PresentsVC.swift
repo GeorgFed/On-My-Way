@@ -18,11 +18,14 @@ class PresentsVC: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var collectionView: UICollectionView!
     var presentArray = [Present]()
 
+    @IBOutlet weak var addPresentBtn: UIButton!
     let userKey = "mainUser"
     let uid = Auth.auth().currentUser?.uid
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        addPresentBtn.setTitle("Add Present".localized, for: .normal)
+        
         collectionView.delegate = self
         collectionView.dataSource = self
 

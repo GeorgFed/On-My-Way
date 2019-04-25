@@ -28,7 +28,6 @@
 		5617EA5322678B4E00FB7A57 /* UserActionButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5617EA5222678B4E00FB7A57 /* UserActionButtonCell.swift */; };
 		5619A4B22186248200718C50 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5619A4B12186248200718C50 /* ShadowView.swift */; };
 		5619A4B5218711CE00718C50 /* AddPresentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5619A4B3218711CE00718C50 /* AddPresentsVC.swift */; };
-		5619A4B6218711CE00718C50 /* AddPresentsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5619A4B4218711CE00718C50 /* AddPresentsVC.xib */; };
 		5619A4BA218768AB00718C50 /* UIButtonBorderExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5619A4B9218768AB00718C50 /* UIButtonBorderExt.swift */; };
 		5619A4BD21876AEF00718C50 /* RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5619A4BC21876AEE00718C50 /* RoundedCorners.swift */; };
 		5619A4BF2187BD4D00718C50 /* UIViewBindingExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5619A4BE2187BD4D00718C50 /* UIViewBindingExt.swift */; };
@@ -38,7 +37,7 @@
 		563217CA21BC0D330012F75B /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563217C921BC0D330012F75B /* StringExtensions.swift */; };
 		563F0A3C216D20B500A27CA5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563F0A3B216D20B500A27CA5 /* AppDelegate.swift */; };
 		563F0A3E216D20B500A27CA5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563F0A3D216D20B500A27CA5 /* ViewController.swift */; };
-		563F0A41216D20B500A27CA5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 563F0A3F216D20B500A27CA5 /* Main.storyboard */; };
+		563F0A41216D20B500A27CA5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 563F0A3F216D20B500A27CA5 /* Main.storyboard */; settings = {ASSET_TAGS = (abc, ); }; };
 		563F0A44216D20B500A27CA5 /* tableView_Test_for_iPresent.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 563F0A42216D20B500A27CA5 /* tableView_Test_for_iPresent.xcdatamodeld */; };
 		563F0A46216D20B700A27CA5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 563F0A45216D20B700A27CA5 /* Assets.xcassets */; };
 		563F0A49216D20B700A27CA5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 563F0A47216D20B700A27CA5 /* LaunchScreen.storyboard */; };
@@ -48,6 +47,8 @@
 		563F0A5C216D231F00A27CA5 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563F0A5B216D231F00A27CA5 /* UserCell.swift */; };
 		563F0A61216D238800A27CA5 /* TapToHideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563F0A60216D238800A27CA5 /* TapToHideKeyboard.swift */; };
 		5644883F223E796400948694 /* EventsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5644883E223E796300948694 /* EventsVC.swift */; };
+		5658FE9C2272634E005463F7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5658FE9E2272634E005463F7 /* Localizable.strings */; };
+		5658FEA8227271C6005463F7 /* AddPresentsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5658FEA7227271C6005463F7 /* AddPresentsVC.xib */; };
 		565B04CB21E405C800409319 /* ReceiveImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565B04CA21E405C800409319 /* ReceiveImageExtension.swift */; };
 		565B04CD21E41F7500409319 /* CacheExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565B04CC21E41F7500409319 /* CacheExtension.swift */; };
 		568A53C5219E089D00772ED1 /* PresentInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568A53C3219E089D00772ED1 /* PresentInfoVC.swift */; };
@@ -92,7 +93,6 @@
 		5617EA5222678B4E00FB7A57 /* UserActionButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserActionButtonCell.swift; sourceTree = "<group>"; };
 		5619A4B12186248200718C50 /* ShadowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		5619A4B3218711CE00718C50 /* AddPresentsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPresentsVC.swift; sourceTree = "<group>"; };
-		5619A4B4218711CE00718C50 /* AddPresentsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddPresentsVC.xib; sourceTree = "<group>"; };
 		5619A4B9218768AB00718C50 /* UIButtonBorderExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonBorderExt.swift; sourceTree = "<group>"; };
 		5619A4BC21876AEE00718C50 /* RoundedCorners.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedCorners.swift; sourceTree = "<group>"; };
 		5619A4BE2187BD4D00718C50 /* UIViewBindingExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewBindingExt.swift; sourceTree = "<group>"; };
@@ -114,6 +114,11 @@
 		563F0A5B216D231F00A27CA5 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		563F0A60216D238800A27CA5 /* TapToHideKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TapToHideKeyboard.swift; sourceTree = "<group>"; };
 		5644883E223E796300948694 /* EventsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsVC.swift; sourceTree = "<group>"; };
+		5658FE992272625F005463F7 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		5658FE9D2272634E005463F7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5658FE9F22726356005463F7 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5658FEA1227263CF005463F7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		5658FEA7227271C6005463F7 /* AddPresentsVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddPresentsVC.xib; sourceTree = "<group>"; };
 		565B04CA21E405C800409319 /* ReceiveImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveImageExtension.swift; sourceTree = "<group>"; };
 		565B04CC21E41F7500409319 /* CacheExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheExtension.swift; sourceTree = "<group>"; };
 		568A53C3219E089D00772ED1 /* PresentInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentInfoVC.swift; sourceTree = "<group>"; };
@@ -163,7 +168,7 @@
 		5619A4B7218711D900718C50 /* XIBs */ = {
 			isa = PBXGroup;
 			children = (
-				5619A4B4218711CE00718C50 /* AddPresentsVC.xib */,
+				5658FEA7227271C6005463F7 /* AddPresentsVC.xib */,
 				560C439722430B2A009B836E /* AddEventVC.xib */,
 				568A53C4219E089D00772ED1 /* PresentInfoVC.xib */,
 				568A53CA219E179800772ED1 /* ReservePresentVC.xib */,
@@ -209,6 +214,7 @@
 		563F0A3A216D20B500A27CA5 /* tableView Test for iPresent */ = {
 			isa = PBXGroup;
 			children = (
+				5658FE9E2272634E005463F7 /* Localizable.strings */,
 				5695D6C121A612D9002608DB /* Resources */,
 				568E581E221ED576008337C7 /* Helpers */,
 				563F0A58216D22D500A27CA5 /* Initial Controller */,
@@ -371,6 +377,9 @@
 		563F0A30216D20B500A27CA5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					abc,
+				);
 				LastSwiftUpdateCheck = 0940;
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = Georg;
@@ -396,6 +405,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 563F0A2F216D20B500A27CA5;
 			productRefGroup = 563F0A39216D20B500A27CA5 /* Products */;
@@ -415,9 +425,10 @@
 				568A53C6219E089D00772ED1 /* PresentInfoVC.xib in Resources */,
 				5695D6C021A61289002608DB /* GoogleService-Info.plist in Resources */,
 				563F0A49216D20B700A27CA5 /* LaunchScreen.storyboard in Resources */,
-				5619A4B6218711CE00718C50 /* AddPresentsVC.xib in Resources */,
 				563F0A46216D20B700A27CA5 /* Assets.xcassets in Resources */,
+				5658FE9C2272634E005463F7 /* Localizable.strings in Resources */,
 				568FE801217CDC3E004E893B /* assets.xcassets in Resources */,
+				5658FEA8227271C6005463F7 /* AddPresentsVC.xib in Resources */,
 				560C439922430B2A009B836E /* AddEventVC.xib in Resources */,
 				563F0A41216D20B500A27CA5 /* Main.storyboard in Resources */,
 				568A53CC219E179800772ED1 /* ReservePresentVC.xib in Resources */,
@@ -539,6 +550,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				563F0A40216D20B500A27CA5 /* Base */,
+				5658FE992272625F005463F7 /* ru */,
+				5658FEA1227263CF005463F7 /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -551,6 +564,16 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		5658FE9E2272634E005463F7 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5658FE9D2272634E005463F7 /* en */,
+				5658FE9F22726356005463F7 /* ru */,
+			);
+			name = Localizable.strings;
+			path = ..;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -558,6 +581,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -618,6 +642,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

@@ -1,0 +1,150 @@
+
+/* Class = "UIButton"; normalTitle = "Receive Code"; ObjectID = "1J4-9N-5c7"; */
+"1J4-9N-5c7.normalTitle" = "Receive Code";
+
+/* Class = "UINavigationItem"; title = "Profile"; ObjectID = "5UG-gj-r2X"; */
+"5UG-gj-r2X.title" = "Profile";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "7Sg-hP-e49"; */
+"7Sg-hP-e49.normalTitle" = "Button";
+
+/* Class = "UINavigationItem"; title = "Presents"; ObjectID = "891-sH-rNK"; */
+"891-sH-rNK.title" = "Presents";
+
+/* Class = "UITabBarItem"; title = "Friends"; ObjectID = "AQ1-uP-rjd"; */
+"AQ1-uP-rjd.title" = "Friends";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Fll-CV-pjD"; */
+"Fll-CV-pjD.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Change Phone Number"; ObjectID = "Hcl-2I-h8D"; */
+"Hcl-2I-h8D.normalTitle" = "Change Phone Number";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "JV9-Fb-7YB"; */
+"JV9-Fb-7YB.text" = "Label";
+
+/* Class = "UITabBarItem"; title = "Presents"; ObjectID = "K6W-dY-2D0"; */
+"K6W-dY-2D0.title" = "Presents";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "MD7-JC-qxd"; */
+"MD7-JC-qxd.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "MmU-Cm-lTp"; */
+"MmU-Cm-lTp.text" = "Label";
+
+/* Class = "UILabel"; text = "iPresent"; ObjectID = "Ntw-fB-k9q"; */
+"Ntw-fB-k9q.text" = "iPresent";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "P90-1y-nDs"; */
+"P90-1y-nDs.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "PdM-Cz-n3L"; */
+"PdM-Cz-n3L.text" = "Label";
+
+/* Class = "UILabel"; text = "iPresent"; ObjectID = "PoI-Tz-SfE"; */
+"PoI-Tz-SfE.text" = "iPresent";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Q3b-ld-fTE"; */
+"Q3b-ld-fTE.text" = "Label";
+
+/* Class = "UILabel"; text = "800$"; ObjectID = "QTn-Ch-kkh"; */
+"QTn-Ch-kkh.text" = "800$";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "UUg-KP-b4C"; */
+"UUg-KP-b4C.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Follow"; ObjectID = "Uhf-He-BhJ"; */
+"Uhf-He-BhJ.normalTitle" = "Follow";
+
+/* Class = "UILabel"; text = "DD"; ObjectID = "Vsh-IL-PcY"; */
+"Vsh-IL-PcY.text" = "DD";
+
+/* Class = "UILabel"; text = "DATE OF BIRTH"; ObjectID = "WXI-cd-5g1"; */
+"WXI-cd-5g1.text" = "DATE OF BIRTH";
+
+/* Class = "UILabel"; text = "MMM"; ObjectID = "Yx8-Bz-hMa"; */
+"Yx8-Bz-hMa.text" = "MMM";
+
+/* Class = "UILabel"; text = "Follow"; ObjectID = "aVA-xb-Drf"; */
+"aVA-xb-Drf.text" = "Follow";
+
+/* Class = "UILabel"; text = "Details"; ObjectID = "b2c-vw-fhP"; */
+"b2c-vw-fhP.text" = "Details";
+
+/* Class = "UILabel"; text = "iPhone Xr"; ObjectID = "bbe-TQ-9jK"; */
+"bbe-TQ-9jK.text" = "iPhone Xr";
+
+/* Class = "UIButton"; normalTitle = "DONE"; ObjectID = "bfK-yx-47H"; */
+"bfK-yx-47H.normalTitle" = "DONE";
+
+/* Class = "UITabBarItem"; title = "Profile"; ObjectID = "cye-bR-Tb2"; */
+"cye-bR-Tb2.title" = "Profile";
+
+/* Class = "UILabel"; text = "800$"; ObjectID = "dm6-dR-i3W"; */
+"dm6-dR-i3W.text" = "800$";
+
+/* Class = "UIButton"; normalTitle = "Next"; ObjectID = "dqv-Tv-rpj"; */
+"dqv-Tv-rpj.normalTitle" = "Next";
+
+/* Class = "UITextField"; placeholder = "Last Name"; ObjectID = "dvZ-Et-pQi"; */
+"dvZ-Et-pQi.placeholder" = "Last Name";
+
+/* Class = "UINavigationItem"; title = "Friends"; ObjectID = "fOT-cW-33V"; */
+"fOT-cW-33V.title" = "Friends";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "gVu-iK-bzB"; */
+"gVu-iK-bzB.text" = "Title";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "hhE-xP-ptw"; */
+"hhE-xP-ptw.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "jai-0m-1AG"; */
+"jai-0m-1AG.text" = "Label";
+
+/* Class = "UILabel"; text = "PERSONAL INFO"; ObjectID = "ncz-A0-FNU"; */
+"ncz-A0-FNU.text" = "PERSONAL INFO";
+
+/* Class = "UILabel"; text = "iPhone Xr"; ObjectID = "o5H-5m-ixA"; */
+"o5H-5m-ixA.text" = "iPhone Xr";
+
+/* Class = "UITextField"; placeholder = "+1 650 555 3535"; ObjectID = "p8M-RP-YEQ"; */
+"p8M-RP-YEQ.placeholder" = "+1 650 555 3535";
+
+/* Class = "UITabBarItem"; title = "Events"; ObjectID = "pf4-Vx-h1M"; */
+"pf4-Vx-h1M.title" = "Events";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "qBw-bx-Qpr"; */
+"qBw-bx-Qpr.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "qNx-rz-d3M"; */
+"qNx-rz-d3M.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "rI8-fx-Ppz"; */
+"rI8-fx-Ppz.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "rdd-vR-aWq"; */
+"rdd-vR-aWq.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "uhO-WT-2kH"; */
+"uhO-WT-2kH.text" = "Label";
+
+/* Class = "UILabel"; text = "Details"; ObjectID = "vce-oo-FSy"; */
+"vce-oo-FSy.text" = "Details";
+
+/* Class = "UINavigationItem"; title = "Events"; ObjectID = "wbw-87-asM"; */
+"wbw-87-asM.title" = "Events";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "y56-nf-2X8"; */
+"y56-nf-2X8.text" = "Label";
+
+/* Class = "UITextField"; placeholder = "Enter SMS Code"; ObjectID = "yEv-rf-UsT"; */
+"yEv-rf-UsT.placeholder" = "Enter SMS Code";
+
+/* Class = "UITextField"; placeholder = "First Name"; ObjectID = "yJw-wN-4PL"; */
+"yJw-wN-4PL.placeholder" = "First Name";
+
+/* Class = "UITextField"; placeholder = "DD | MM | YYYY"; ObjectID = "zKr-XM-Flr"; */
+"zKr-XM-Flr.placeholder" = "DD | MM | YYYY";
+
+/* Class = "UILabel"; text = "iPresent"; ObjectID = "zyO-cW-OUi"; */
+"zyO-cW-OUi.text" = "iPresent";

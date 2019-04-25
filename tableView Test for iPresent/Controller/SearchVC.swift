@@ -125,7 +125,7 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
         searchBarAppearenceSetup()
         if searchActive {
             if self.filteredUsers.count == 0 {
-                tableView.setEmptyView(title: "No search results for this query", message: " ")
+                tableView.setEmptyView(title: "No search results for this query".localized, message: " ")
             } else {
                 tableView.restore()
             }
@@ -140,7 +140,7 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
             return FriendSystem.instance.friendList.count
              */
             if FriendSystem.instance.followsList.count == 0 {
-                tableView.setEmptyView(title: "You don't have any friends yet.", message: "Your friends will be in here.")
+                tableView.setEmptyView(title: "You don't have any friends yet.".localized, message: "Your friends will be in here.".localized)
             } else {
                 tableView.restore()
             }

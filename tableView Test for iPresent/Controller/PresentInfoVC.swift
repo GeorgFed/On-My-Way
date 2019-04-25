@@ -15,6 +15,9 @@ class PresentInfoVC: UIViewController {
     @IBOutlet weak var presentName: UILabel!
     @IBOutlet weak var presentDescription: UILabel!
     
+    @IBOutlet weak var deletePresentBtn: UIButton!
+    @IBOutlet weak var cancelBtn: UIButton!
+    
     public var selected_item: Present?
     let uid = Auth.auth().currentUser?.uid
     
@@ -43,6 +46,12 @@ class PresentInfoVC: UIViewController {
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(blurEffectView)
         view.sendSubviewToBack(blurEffectView)
+        
+//        deletePresentBtn.titleLabel?.text = "Delete Present".localized
+//        cancelBtn.titleLabel?.text = "Cancel".localized
+        deletePresentBtn.setTitle("Delete Present".localized, for: .normal)
+        cancelBtn.setTitle("Cancel".localized, for: .normal)
+        
     }
     
     @IBAction func cancelBtnPressed(_ sender: Any) {

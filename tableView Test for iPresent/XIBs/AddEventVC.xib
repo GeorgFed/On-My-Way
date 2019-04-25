@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddEventVC" customModule="tableView_Test_for_iPresent" customModuleProvider="target">
             <connections>
+                <outlet property="addEventBtn" destination="RE1-bM-ZIT" id="Wz7-yP-xas"/>
+                <outlet property="addEventLbl" destination="wwo-1a-3Eu" id="q4D-dt-7pU"/>
+                <outlet property="cancelBtn" destination="KSf-qY-1Dn" id="M5R-wT-WML"/>
                 <outlet property="dateTF" destination="nwo-eT-IPZ" id="u5B-PJ-SBG"/>
                 <outlet property="eventDescriptionTF" destination="vbg-qu-Tzp" id="R5o-y0-K1A"/>
                 <outlet property="eventNameTF" destination="aXy-kc-dgb" id="mqc-Pn-YuZ"/>
@@ -128,38 +131,40 @@
                                 <action selector="cancelBtnPressed:" destination="-1" eventType="touchUpInside" id="1MG-l6-ylm"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Ru-X7-8W5">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RE1-bM-ZIT">
                             <rect key="frame" x="8" y="483" width="359" height="44"/>
+                            <color key="backgroundColor" red="0.51372549020000002" green="0.64705882349999999" blue="0.77647058820000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="44" id="Ocn-q8-lrD"/>
+                                <constraint firstAttribute="height" constant="44" id="CpA-2F-p7H"/>
                             </constraints>
-                            <state key="normal" image="Add Event Button Slice">
+                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
+                            <state key="normal" title="Add Event">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                    <real key="value" value="0.0"/>
+                                    <real key="value" value="3"/>
                                 </userDefinedRuntimeAttribute>
                                 <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                     <real key="value" value="0.0"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                             <connections>
-                                <action selector="addEventBtnPressed:" destination="-1" eventType="touchUpInside" id="bUP-PJ-rsI"/>
+                                <action selector="addEventBtnPressed:" destination="-1" eventType="touchUpInside" id="mAM-qm-aFa"/>
                             </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="2Ru-X7-8W5" secondAttribute="trailing" constant="8" id="47D-9S-dae"/>
-                        <constraint firstItem="2Ru-X7-8W5" firstAttribute="leading" secondItem="tjf-sL-wBv" secondAttribute="leading" constant="8" id="85J-tv-flR"/>
+                        <constraint firstItem="RE1-bM-ZIT" firstAttribute="leading" secondItem="tjf-sL-wBv" secondAttribute="leading" constant="8" id="4FT-A3-yvd"/>
+                        <constraint firstItem="KSf-qY-1Dn" firstAttribute="top" secondItem="RE1-bM-ZIT" secondAttribute="bottom" constant="8" id="4Um-y9-2A4"/>
                         <constraint firstAttribute="trailing" secondItem="KSf-qY-1Dn" secondAttribute="trailing" constant="8" id="8bE-T7-gj9"/>
                         <constraint firstItem="wwo-1a-3Eu" firstAttribute="top" secondItem="tjf-sL-wBv" secondAttribute="top" constant="52" id="AeX-76-Ne9"/>
                         <constraint firstItem="keX-Ic-FDA" firstAttribute="leading" secondItem="tjf-sL-wBv" secondAttribute="leading" constant="16" id="BQ4-gV-2Sc"/>
                         <constraint firstItem="KSf-qY-1Dn" firstAttribute="leading" secondItem="tjf-sL-wBv" secondAttribute="leading" constant="8" id="DtW-AN-2Tf"/>
                         <constraint firstAttribute="trailing" secondItem="keX-Ic-FDA" secondAttribute="trailing" id="H6K-IH-2yp"/>
+                        <constraint firstAttribute="trailing" secondItem="RE1-bM-ZIT" secondAttribute="trailing" constant="8" id="Meg-8p-rIG"/>
                         <constraint firstItem="wwo-1a-3Eu" firstAttribute="leading" secondItem="tjf-sL-wBv" secondAttribute="leading" constant="16" id="aXj-Qk-6Hk"/>
-                        <constraint firstItem="KSf-qY-1Dn" firstAttribute="top" secondItem="2Ru-X7-8W5" secondAttribute="bottom" constant="8" id="nBv-g6-mQS"/>
                         <constraint firstAttribute="bottom" secondItem="KSf-qY-1Dn" secondAttribute="bottom" constant="44" id="uv9-ff-qF9"/>
                         <constraint firstItem="keX-Ic-FDA" firstAttribute="top" secondItem="wwo-1a-3Eu" secondAttribute="bottom" constant="12" id="xdA-XQ-F6m"/>
                     </constraints>
@@ -179,7 +184,4 @@
             <point key="canvasLocation" x="-319" y="53"/>
         </view>
     </objects>
-    <resources>
-        <image name="Add Event Button Slice" width="718" height="88"/>
-    </resources>
 </document>

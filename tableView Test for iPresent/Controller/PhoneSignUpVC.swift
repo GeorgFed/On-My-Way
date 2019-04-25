@@ -23,6 +23,10 @@ class PhoneSignUpVC: UIViewController {
         lastName.delegate = self
         birthdate.delegate = self
         
+        firstName.placeholder = "First name".localized
+        lastName.placeholder = "Last name".localized
+        birthdate.placeholder = "Date of birth".localized
+        
         hideKeyboard()
         createDatePicker()
     }

@@ -16,6 +16,8 @@ class ProfileSettingsVC: UIViewController {
     @IBOutlet weak var fullNameTxt: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var addEventBtn: UIButton!
+    
     let userid = Auth.auth().currentUser?.uid
     let picker = UIImagePickerController()
     let user = Auth.auth().currentUser
@@ -77,6 +79,8 @@ class ProfileSettingsVC: UIViewController {
         }
         userImg.layer.cornerRadius = userImg.frame.height / 2
         userImg.clipsToBounds = true
+        
+        addEventBtn.setTitle("Add Event".localized, for: .normal)
     }
     
     @objc func getEvents() {

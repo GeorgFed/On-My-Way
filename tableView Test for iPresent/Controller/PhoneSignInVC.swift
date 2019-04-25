@@ -52,7 +52,7 @@ class PhoneSignInVC: UIViewController {
     }
     
     func showEnterPhoneNumberAlert() {
-        let alertController = UIAlertController(title: "Error", message: "Please enter your phone number", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Error".localized, message: "Please enter your phone number".localized, preferredStyle: .alert)
         let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alertController.addAction(defaultAction)
         present(alertController, animated: true, completion: nil)

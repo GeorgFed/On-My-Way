@@ -21,3 +21,7 @@ extension String {
         return true
     }
 }
+
+extension String {
+    var localized : String {return NSLocalizedString(self, comment: "")}
+}

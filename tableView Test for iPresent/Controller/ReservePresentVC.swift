@@ -14,6 +14,9 @@ class ReservePresentVC: UIViewController {
     @IBOutlet weak var presentName: UILabel!
     @IBOutlet weak var presentDescription: UILabel!
     
+    @IBOutlet weak var linkBtn: UIButton!
+    @IBOutlet weak var cancelBtn: UIButton!
+    
     var chosen_present: Present?
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,6 +41,12 @@ class ReservePresentVC: UIViewController {
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(blurEffectView)
         view.sendSubviewToBack(blurEffectView)
+        
+//        linkBtn.titleLabel?.text = "Link to Present".localized
+//        cancelBtn.titleLabel?.text = "Cancel".localized
+        
+        linkBtn.setTitle("Link to Present".localized, for: .normal)
+        cancelBtn.setTitle("Cancel".localized, for: .normal)
     }
     
     @IBAction func cancelBtnPressed(_ sender: Any) {
@@ -65,7 +74,7 @@ class ReservePresentVC: UIViewController {
     }
     
     func showAlert() {
-        let alertController = UIAlertController(title: "Error", message: "Cannot access link!", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Error".localized, message: "Cannot access link!".localized, preferredStyle: .alert)
         let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alertController.addAction(defaultAction)
         present(alertController, animated: true, completion: nil)

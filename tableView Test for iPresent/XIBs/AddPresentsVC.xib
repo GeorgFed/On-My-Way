@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddPresentsVC" customModule="tableView_Test_for_iPresent" customModuleProvider="target">
             <connections>
-                <outlet property="addPresentBtnView" destination="iNj-pr-NGU" id="7f6-2v-6Gj"/>
+                <outlet property="addPresentBtn" destination="ggL-VI-045" id="aRD-QY-QS6"/>
+                <outlet property="addPresentLbl" destination="hcS-dV-DFj" id="Vw8-tu-6jG"/>
                 <outlet property="baseView" destination="rUs-sK-feT" id="rfL-wl-ZVc"/>
+                <outlet property="cancelBtn" destination="aYV-eS-03j" id="hOZ-cK-UTg"/>
                 <outlet property="descriptionTF" destination="pD0-MS-g3d" id="hwU-6g-YQW"/>
                 <outlet property="linkTF" destination="AEs-9Y-2j7" id="nvU-F0-nXC"/>
                 <outlet property="presentNameTF" destination="415-h7-4Mb" id="8Ui-Ay-7M3"/>
@@ -40,26 +42,6 @@
                             </state>
                             <connections>
                                 <action selector="cancelBtnPressed:" destination="-1" eventType="touchUpInside" id="Cbq-1S-Fp6"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iNj-pr-NGU">
-                            <rect key="frame" x="8" y="628" width="359" height="44"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="44" id="iDV-Kk-SKV"/>
-                            </constraints>
-                            <state key="normal" image="Add Present Button Slice">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                    <real key="value" value="0.0"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                    <real key="value" value="0.0"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                            <connections>
-                                <action selector="addBtnPressed:" destination="-1" eventType="touchUpInside" id="Th6-gd-lrv"/>
                             </connections>
                         </button>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="3L1-ZN-NlX">
@@ -196,21 +178,43 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ggL-VI-045">
+                            <rect key="frame" x="8" y="628" width="359" height="44"/>
+                            <color key="backgroundColor" red="0.51372549020000002" green="0.64705882349999999" blue="0.77647058820000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="0CI-mn-VK0"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
+                            <state key="normal" title="Add Present">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="3"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                    <real key="value" value="0.0"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="addBtnPressed:" destination="-1" eventType="touchUpInside" id="V1Y-dU-hUy"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="iNj-pr-NGU" firstAttribute="leading" secondItem="rUs-sK-feT" secondAttribute="leading" constant="8" id="3A9-RU-vCX"/>
+                        <constraint firstItem="ggL-VI-045" firstAttribute="leading" secondItem="rUs-sK-feT" secondAttribute="leading" constant="8" id="09g-Yz-WiD"/>
                         <constraint firstItem="beV-gY-lnH" firstAttribute="top" secondItem="rUs-sK-feT" secondAttribute="top" constant="52" id="3z7-bJ-L13"/>
                         <constraint firstAttribute="bottom" secondItem="aYV-eS-03j" secondAttribute="bottom" constant="44" id="4jl-23-2Zp"/>
                         <constraint firstItem="hcS-dV-DFj" firstAttribute="top" secondItem="rUs-sK-feT" secondAttribute="top" constant="52" id="Eis-n2-MoX"/>
+                        <constraint firstItem="aYV-eS-03j" firstAttribute="top" secondItem="ggL-VI-045" secondAttribute="bottom" constant="8" id="GM8-Zs-D2F"/>
                         <constraint firstItem="3L1-ZN-NlX" firstAttribute="top" secondItem="beV-gY-lnH" secondAttribute="bottom" constant="12" id="Oay-7g-l6Y"/>
                         <constraint firstAttribute="trailing" secondItem="3L1-ZN-NlX" secondAttribute="trailing" id="Q5F-7n-q6m"/>
-                        <constraint firstAttribute="trailing" secondItem="iNj-pr-NGU" secondAttribute="trailing" constant="8" id="RKB-ci-nVi"/>
                         <constraint firstAttribute="trailing" secondItem="beV-gY-lnH" secondAttribute="trailing" constant="16" id="Sc8-wm-5wM"/>
                         <constraint firstItem="aYV-eS-03j" firstAttribute="leading" secondItem="rUs-sK-feT" secondAttribute="leading" constant="8" id="WJ6-bO-Uo1"/>
                         <constraint firstItem="hcS-dV-DFj" firstAttribute="leading" secondItem="rUs-sK-feT" secondAttribute="leading" constant="16" id="XfK-Oq-c5x"/>
                         <constraint firstItem="3L1-ZN-NlX" firstAttribute="leading" secondItem="rUs-sK-feT" secondAttribute="leading" constant="16" id="j11-TB-Hjf"/>
-                        <constraint firstAttribute="bottom" secondItem="iNj-pr-NGU" secondAttribute="bottom" constant="96" id="reB-4d-poC"/>
+                        <constraint firstAttribute="trailing" secondItem="ggL-VI-045" secondAttribute="trailing" constant="8" id="xFw-HW-Z4u"/>
                         <constraint firstAttribute="trailing" secondItem="aYV-eS-03j" secondAttribute="trailing" constant="8" id="xhp-U3-GBw"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
@@ -231,7 +235,6 @@
         </view>
     </objects>
     <resources>
-        <image name="Add Present Button Slice" width="1077" height="132"/>
         <image name="camera" width="72" height="72"/>
     </resources>
 </document>
