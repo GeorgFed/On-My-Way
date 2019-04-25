@@ -22,13 +22,17 @@ class FriendSystem {
     
     /** The Firebase reference to the current user tree */
     var CURRENT_USER_REF: DatabaseReference {
-        let id = Auth.auth().currentUser?.uid
-        return USER_REF.child("\(String(describing: id))")
+        let id = Auth.auth().currentUser!.uid
+        return USER_REF.child("\(id)")
     }
     
     /** The Firebase reference to the current user's friend tree */
     var CURRENT_USER_FRIENDS_REF: DatabaseReference {
         return CURRENT_USER_REF.child("friends")
+    }
+    
+    var CURRENT_USER_FOLLOWS_REF: DatabaseReference {
+        return CURRENT_USER_REF.child("following")
     }
     
     /** The Firebase reference to the current user's friend request tree */
@@ -45,6 +49,7 @@ class FriendSystem {
     // MARK: - Search Implementation
     func findUsers(forSearchQuery query: String, handler: @escaping(_ nameArray: [User]) -> ()) {
         var userArray = [User]()
+        if query == "" { return }
         USER_REF.queryOrdered(byChild: UserKeys.name).queryStarting(atValue: query).queryEnding(atValue: query + "\u{f8ff}").observeSingleEvent(of: .value) { (snapshot) in
             guard let userSnapshot = snapshot.children.allObjects as? [DataSnapshot] else { return }
             for snap in userSnapshot {
@@ -149,6 +154,10 @@ class FriendSystem {
     }
     
     
+    func followUser(_ userID: String!) {
+        CURRENT_USER_REF.child("following").child(userID).setValue(true)
+        USER_REF.child(userID).child("followers").child(CURRENT_USER_ID).setValue(true)
+    }
     
     // MARK: - All users
     /** The list of all users */
@@ -180,7 +189,6 @@ class FriendSystem {
     }
     
     
-    
     // MARK: - All friends
     /** The list of all friends of the current user. */
     var friendList = [User]()
@@ -205,12 +213,38 @@ class FriendSystem {
         })
     }
     
+    //var followsList = [User]()
+    var followsList = Set<User>()
+    func addFollowsObserver(_ update: @escaping () -> Void) {
+        CURRENT_USER_FOLLOWS_REF.observe(DataEventType.value, with: { (snapshot) in
+            self.followsList.removeAll()
+            self.friendList.removeAll()
+            for child in snapshot.children.allObjects as! [DataSnapshot] {
+                let id = child.key
+                print(id)
+                self.getUser(id, handler: { (user) in
+                    self.followsList.insert(user)
+                    print(user)
+                    self.friendList.append(user)
+                    update()
+                })
+                print("!@#!#", self.followsList.count)
+            }
+            // If there are no children, run completion here instead
+            if snapshot.childrenCount == 0 {
+                update()
+            }
+        })
+    }
+    
     /** Removes the friend observer. This should be done when leaving the view that uses the observer. */
     func removeFriendObserver() {
         CURRENT_USER_FRIENDS_REF.removeAllObservers()
     }
     
-    
+    func removeFollowsObserver() {
+        CURRENT_USER_FOLLOWS_REF.removeAllObservers()
+    }
     
     // MARK: - All requests
     /** The list of all friend requests the current user has. */

@@ -31,6 +31,7 @@ class AddEventVC: UIViewController {
         eventDescriptionTF.delegate = self
         dateTF.delegate = self
         
+        
         setupView()
         hideKeyboard()
         createDatePicker()
@@ -47,6 +48,9 @@ class AddEventVC: UIViewController {
     }
 
     func createDatePicker() {
+        datePicker.minimumDate = Date()
+        datePicker.maximumDate = Date().addingTimeInterval(60 * 60 * 24 * 366)
+        
         dateTF.inputView = datePicker
         datePicker.datePickerMode = .date
         let toolbar = UIToolbar()

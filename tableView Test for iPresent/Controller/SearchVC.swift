@@ -31,7 +31,11 @@ class SearchVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getFriends()
+        // getFriends()
+        getFollows()
+        FriendSystem.instance.addFollowsObserver {
+            self.tableView.reloadData()
+        }
         // MARK: Delegate setup
         tableView.delegate = self
         tableView.dataSource = self
@@ -84,6 +88,12 @@ class SearchVC: UIViewController {
         }
         print(friends)
     }
+    
+    func getFollows() {
+        FriendSystem.instance.addFollowsObserver {
+            self.tableView.reloadData()
+        }
+    }
 }
 
 extension SearchVC: UISearchResultsUpdating, UISearchBarDelegate {
@@ -121,12 +131,20 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
             }
             return self.filteredUsers.count
         } else {
+            /*
             if FriendSystem.instance.friendList.count == 0 {
                 tableView.setEmptyView(title: "You don't have any friends yet.", message: "Your friends will be in here.")
             } else {
                 tableView.restore()
             }
             return FriendSystem.instance.friendList.count
+             */
+            if FriendSystem.instance.followsList.count == 0 {
+                tableView.setEmptyView(title: "You don't have any friends yet.", message: "Your friends will be in here.")
+            } else {
+                tableView.restore()
+            }
+            return FriendSystem.instance.followsList.count
         }
     }
     
@@ -140,8 +158,13 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
             let url = self.filteredUsers[indexPath.row].profileImgURL
             cell!.imageView?.loadImgWithURLString(urlString: url)
         } else {
+            /*
             cell!.textLabel?.text = FriendSystem.instance.friendList[indexPath.row].name
             let url = FriendSystem.instance.friendList[indexPath.row].profileImgURL
+            cell!.imageView?.loadImgWithURLString(urlString: url)
+             */
+            cell!.textLabel?.text = FriendSystem.instance.followsList[FriendSystem.instance.followsList.index(FriendSystem.instance.followsList.startIndex, offsetBy: indexPath.row)].name
+            let url = FriendSystem.instance.followsList[FriendSystem.instance.followsList.index(FriendSystem.instance.followsList.startIndex, offsetBy: indexPath.row)].profileImgURL
             cell!.imageView?.loadImgWithURLString(urlString: url)
         }
         
@@ -158,13 +181,18 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
         if searchActive {
             self.chosen_user = self.filteredUsers[indexPath.row]
         } else {
-            self.chosen_user = FriendSystem.instance.friendList[indexPath.row]
+            // self.chosen_user = FriendSystem.instance.friendList[indexPath.row]
+            self.chosen_user = FriendSystem.instance.followsList[FriendSystem.instance.followsList.index(FriendSystem.instance.followsList.startIndex, offsetBy: indexPath.row)]
         }
-        self.performSegue(withIdentifier: "user_info_segue", sender: self)
+        // newUserSegue
+        // self.performSegue(withIdentifier: "user_info_segue", sender: self)
+        self.performSegue(withIdentifier: "newUserSegue", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let _userInfoVC = segue.destination as! UserInfoVC
-        _userInfoVC.user = chosen_user
+//        let _userInfoVC = segue.destination as! UserInfoVC
+//        _userInfoVC.user = chosen_user
+        let _UserVC = segue.destination as! UserVC
+        _UserVC.user = chosen_user
     }
 }

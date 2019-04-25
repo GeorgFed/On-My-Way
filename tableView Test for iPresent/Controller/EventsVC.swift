@@ -46,14 +46,18 @@ class EventsVC: UIViewController {
         // findFriends()
         tableView.delegate = self
         tableView.dataSource = self
-        FriendSystem.instance.addFriendObserver {
-            print("observer updated")
+//        FriendSystem.instance.addFriendObserver {
+//            print("observer updated")
+//            self.getEvents()
+//        }
+        FriendSystem.instance.addFollowsObserver {
             self.getEvents()
         }
     }
     
     func getFriends() {
-        FriendSystem.instance.addFriendObserver { }
+//        FriendSystem.instance.addFriendObserver { }
+        FriendSystem.instance.addFollowsObserver { }
         print("observer added")
     }
     
@@ -156,13 +160,17 @@ extension EventsVC: UITableViewDelegate, UITableViewDataSource {
         if indexPath.row == 0 {
             // user_segue
             self.chosen_user = friendForEvent[events[indexPath.section]]!
-            self.performSegue(withIdentifier: "user_segue", sender: self)
+            // self.performSegue(withIdentifier: "user_segue", sender: self)
+            // segueForUser
+            self.performSegue(withIdentifier: "segueForUser", sender: self)
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard chosen_user != nil else { return }
-        let _userInfoVC = segue.destination as! UserInfoVC
-        _userInfoVC.user = chosen_user
+//        let _userInfoVC = segue.destination as! UserInfoVC
+//        _userInfoVC.user = chosen_user
+        let _UserVC = segue.destination as! UserVC
+        _UserVC.user = chosen_user
     }
 }

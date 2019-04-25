@@ -1,72 +1,38 @@
 //
-//  UserInfoVC.swift
+//  UserPresentsCollection.swift
 //  tableView Test for iPresent
 //
-//  Created by Georg on 15.11.2018.
-//  Copyright © 2018 Georg. All rights reserved.
+//  Created by Georg on 17/04/2019.
+//  Copyright © 2019 Georg. All rights reserved.
 //
 
 import UIKit
 
-class UserInfoVC: UIViewController {
+class UserPresentsCollection: UITableViewCell {
 
-    var user: User?
-    var status: userStatus?
-    var presentArray = [Present]()
-    var requestArray = [User]()
-
-    @IBOutlet weak var profileImg: UIImageView!
     @IBOutlet weak var collectionView: UICollectionView!
+    var presentArray = [Present]()
     
-    @IBOutlet weak var sendRequestBtn: UIButton!
-    override func viewWillAppear(_ animated: Bool) {
-        getPresents()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
         collectionView.delegate = self
         collectionView.dataSource = self
-        setUpView()
-    }
-    
-    func getPresents() {
-        DataService.instance.getPresents(forUid: user?.uid ?? "") { ( returnedArray ) in
-            self.presentArray = returnedArray
-            self.collectionView.reloadData()
-        }
     }
 
-    func setUpView() {
-        self.navigationItem.title = user?.name
-        profileImg.layer.cornerRadius = profileImg.frame.height / 2
-        profileImg.clipsToBounds = true
-        if let url = user?.profileImgURL {
-            profileImg.loadImgWithURLString(urlString: url)
-        }
-        
-        collectionView.isHidden = true
-        
-        
-        
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
     }
-    
-    func followButtonPressed() {
-        
+
+    public func configure(presents: [Present]) {
+        self.presentArray = presents
+        self.collectionView.reloadData()
     }
-    /*
-    func friendDeleteAlert() {
-        let alert = UIAlertController(title: "Remove \(user!.name) from friend list", message: "This user will no longer be able to see your personal information", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Remove", style: .destructive, handler: { action in
-            self.removeFriend()
-        }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil ))
-        self.present(alert, animated: true, completion: nil)
-    }
- */
 }
 
-extension UserInfoVC: UICollectionViewDelegate, UICollectionViewDataSource {
+extension UserPresentsCollection: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return presentArray.count
     }
@@ -113,6 +79,6 @@ extension UserInfoVC: UICollectionViewDelegate, UICollectionViewDataSource {
         let _ReservePresentVC = ReservePresentVC(nibName: "ReservePresentVC", bundle: nil)
         _ReservePresentVC.chosen_present = current_present
         _ReservePresentVC.modalPresentationStyle = .custom
-        present(_ReservePresentVC, animated: true, completion: nil)
+        self.window?.rootViewController?.present(_ReservePresentVC, animated: true, completion: nil)
     }
 }

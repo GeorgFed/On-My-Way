@@ -22,6 +22,10 @@
 		560C43AB22469659009B836E /* EventDataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560C43AA22469659009B836E /* EventDataExtension.swift */; };
 		560C43AD22470DC5009B836E /* ContactsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560C43AC22470DC5009B836E /* ContactsService.swift */; };
 		560C43AF224AF715009B836E /* FriendSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560C43AE224AF715009B836E /* FriendSystem.swift */; };
+		5617EA4D2265D1BA00FB7A57 /* UserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5617EA4C2265D1BA00FB7A57 /* UserVC.swift */; };
+		5617EA4F22678ABD00FB7A57 /* UserNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5617EA4E22678ABD00FB7A57 /* UserNameCell.swift */; };
+		5617EA5122678B1200FB7A57 /* UserPresentsCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5617EA5022678B1200FB7A57 /* UserPresentsCollection.swift */; };
+		5617EA5322678B4E00FB7A57 /* UserActionButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5617EA5222678B4E00FB7A57 /* UserActionButtonCell.swift */; };
 		5619A4B22186248200718C50 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5619A4B12186248200718C50 /* ShadowView.swift */; };
 		5619A4B5218711CE00718C50 /* AddPresentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5619A4B3218711CE00718C50 /* AddPresentsVC.swift */; };
 		5619A4B6218711CE00718C50 /* AddPresentsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5619A4B4218711CE00718C50 /* AddPresentsVC.xib */; };
@@ -82,6 +86,10 @@
 		560C43AA22469659009B836E /* EventDataExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDataExtension.swift; sourceTree = "<group>"; };
 		560C43AC22470DC5009B836E /* ContactsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsService.swift; sourceTree = "<group>"; };
 		560C43AE224AF715009B836E /* FriendSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendSystem.swift; sourceTree = "<group>"; };
+		5617EA4C2265D1BA00FB7A57 /* UserVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserVC.swift; sourceTree = "<group>"; };
+		5617EA4E22678ABD00FB7A57 /* UserNameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameCell.swift; sourceTree = "<group>"; };
+		5617EA5022678B1200FB7A57 /* UserPresentsCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPresentsCollection.swift; sourceTree = "<group>"; };
+		5617EA5222678B4E00FB7A57 /* UserActionButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserActionButtonCell.swift; sourceTree = "<group>"; };
 		5619A4B12186248200718C50 /* ShadowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		5619A4B3218711CE00718C50 /* AddPresentsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPresentsVC.swift; sourceTree = "<group>"; };
 		5619A4B4218711CE00718C50 /* AddPresentsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddPresentsVC.xib; sourceTree = "<group>"; };
@@ -233,6 +241,7 @@
 				568A53C9219E179800772ED1 /* ReservePresentVC.swift */,
 				5644883E223E796300948694 /* EventsVC.swift */,
 				560C439622430B2A009B836E /* AddEventVC.swift */,
+				5617EA4C2265D1BA00FB7A57 /* UserVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -310,6 +319,9 @@
 				560C439E224407EA009B836E /* EventHeaderCell.swift */,
 				560C43A0224407FD009B836E /* EventTitleCell.swift */,
 				560C43A42244625A009B836E /* PresentEventCollectionCell.swift */,
+				5617EA4E22678ABD00FB7A57 /* UserNameCell.swift */,
+				5617EA5022678B1200FB7A57 /* UserPresentsCollection.swift */,
+				5617EA5222678B4E00FB7A57 /* UserActionButtonCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -479,6 +491,7 @@
 				560C43932242E8BC009B836E /* Event.swift in Sources */,
 				5619A4BF2187BD4D00718C50 /* UIViewBindingExt.swift in Sources */,
 				560C43AB22469659009B836E /* EventDataExtension.swift in Sources */,
+				5617EA4F22678ABD00FB7A57 /* UserNameCell.swift in Sources */,
 				560C43A72245342B009B836E /* UISearchBarExt.swift in Sources */,
 				560C43A1224407FD009B836E /* EventTitleCell.swift in Sources */,
 				563F0A5A216D22F700A27CA5 /* User.swift in Sources */,
@@ -488,6 +501,7 @@
 				568E5825221EDB05008337C7 /* PresentDataExtension.swift in Sources */,
 				560C43AD22470DC5009B836E /* ContactsService.swift in Sources */,
 				568FE7FD217CD57A004E893B /* PresentsVC.swift in Sources */,
+				5617EA5322678B4E00FB7A57 /* UserActionButtonCell.swift in Sources */,
 				56F41B24218B6C750070B2CC /* ProfileSettingsVC.swift in Sources */,
 				560C43952242F975009B836E /* UITableViewExt.swift in Sources */,
 				563F0A3C216D20B500A27CA5 /* AppDelegate.swift in Sources */,
@@ -497,7 +511,9 @@
 				560C439B2244050A009B836E /* EventCell.swift in Sources */,
 				563F0A44216D20B500A27CA5 /* tableView_Test_for_iPresent.xcdatamodeld in Sources */,
 				568A53CB219E179800772ED1 /* ReservePresentVC.swift in Sources */,
+				5617EA4D2265D1BA00FB7A57 /* UserVC.swift in Sources */,
 				560C439822430B2A009B836E /* AddEventVC.swift in Sources */,
+				5617EA5122678B1200FB7A57 /* UserPresentsCollection.swift in Sources */,
 				560C43AF224AF715009B836E /* FriendSystem.swift in Sources */,
 				56F41B1C218B6B4A0070B2CC /* PhoneSignInVC.swift in Sources */,
 				560C439F224407EA009B836E /* EventHeaderCell.swift in Sources */,
@@ -661,6 +677,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4ZLBWEC93L;
 				INFOPLIST_FILE = "tableView Test for iPresent/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -681,6 +698,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4ZLBWEC93L;
 				INFOPLIST_FILE = "tableView Test for iPresent/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

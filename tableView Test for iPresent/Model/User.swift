@@ -8,9 +8,13 @@
 
 import Foundation
 
-class User: Equatable {
+class User: Equatable, Hashable {
     static func == (lhs: User, rhs: User) -> Bool {
         return lhs.uid == rhs.uid
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(_uid)
     }
     
     private var _name: String

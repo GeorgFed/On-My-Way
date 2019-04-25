@@ -134,7 +134,7 @@ extension ProfileSettingsVC: UITableViewDelegate, UITableViewDataSource {
         if (editingStyle == .delete) {
             DataService.instance.removeEvents(uid: userid!, uuid: events[indexPath.row].uuid) { ( success ) in
                 if success {
-                    tableView.reloadData()
+                    self.getEvents()
                 }
             }
         }
