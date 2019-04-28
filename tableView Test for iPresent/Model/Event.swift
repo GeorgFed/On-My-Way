@@ -19,16 +19,14 @@ class Event: Hashable {
         hasher.combine(_uuid)
     }
     
-    /*
     var convertedDate: Date {
-        var dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd MMM"
-        let date = Date()
-        let calendar = Calendar.current
-        let components = calendar.dateComponents([.year, .month, .day], from: date)
-        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd MMM yyyy"
+        guard let date = dateFormatter.date(from: _date) else {
+            fatalError("ERROR: Date conversion failed due to mismatched format.")
+        }
+        return date
     }
-    */
     
     var senderId: String {
         return _senderId

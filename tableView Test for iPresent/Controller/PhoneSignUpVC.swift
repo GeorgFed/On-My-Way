@@ -47,6 +47,7 @@ class PhoneSignUpVC: UIViewController {
     func createDatePicker() {
         birthdate.inputView = datePicker
         datePicker.datePickerMode = .date
+        datePicker.maximumDate = Date()
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(pickerDonePressed))

@@ -49,6 +49,7 @@
 		5644883F223E796400948694 /* EventsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5644883E223E796300948694 /* EventsVC.swift */; };
 		5658FE9C2272634E005463F7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5658FE9E2272634E005463F7 /* Localizable.strings */; };
 		5658FEA8227271C6005463F7 /* AddPresentsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5658FEA7227271C6005463F7 /* AddPresentsVC.xib */; };
+		5658FEAA22761CC0005463F7 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5658FEA922761CC0005463F7 /* ArrayExtension.swift */; };
 		565B04CB21E405C800409319 /* ReceiveImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565B04CA21E405C800409319 /* ReceiveImageExtension.swift */; };
 		565B04CD21E41F7500409319 /* CacheExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565B04CC21E41F7500409319 /* CacheExtension.swift */; };
 		568A53C5219E089D00772ED1 /* PresentInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568A53C3219E089D00772ED1 /* PresentInfoVC.swift */; };
@@ -119,6 +120,7 @@
 		5658FE9F22726356005463F7 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5658FEA1227263CF005463F7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		5658FEA7227271C6005463F7 /* AddPresentsVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddPresentsVC.xib; sourceTree = "<group>"; };
+		5658FEA922761CC0005463F7 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		565B04CA21E405C800409319 /* ReceiveImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveImageExtension.swift; sourceTree = "<group>"; };
 		565B04CC21E41F7500409319 /* CacheExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheExtension.swift; sourceTree = "<group>"; };
 		568A53C3219E089D00772ED1 /* PresentInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentInfoVC.swift; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 				563217C921BC0D330012F75B /* StringExtensions.swift */,
 				560C43942242F975009B836E /* UITableViewExt.swift */,
 				560C43A62245342B009B836E /* UISearchBarExt.swift */,
+				5658FEA922761CC0005463F7 /* ArrayExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -540,6 +543,7 @@
 				5619A4B5218711CE00718C50 /* AddPresentsVC.swift in Sources */,
 				5628DEF021A6190700DEC488 /* PhoneAuthService.swift in Sources */,
 				561D719A21A17D2F002B2378 /* FriendsPresentCell.swift in Sources */,
+				5658FEAA22761CC0005463F7 /* ArrayExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

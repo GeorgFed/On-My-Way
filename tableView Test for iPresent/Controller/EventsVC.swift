@@ -68,7 +68,18 @@ class EventsVC: UIViewController {
             DataService.instance.getEvents(forUid: friend.uid) { ( returnedEvents ) in
                 print("uid for friend - \(friend.uid)")
                 print(returnedEvents)
+                
                 self.events.append(contentsOf: returnedEvents)
+                
+                self.events = Array(self.events.mapToSet({ $0 }))
+                
+                self.events.sort(by: { (one, two) -> Bool in
+                    one.convertedDate < two.convertedDate
+                })
+                self.events = self.events.filter({ (event) -> Bool in
+                    event.convertedDate > Date()
+                })
+                
                 print(self.events)
                 for event in returnedEvents {
                     self.friendForEvent[event] = friend
@@ -102,6 +113,11 @@ class EventsVC: UIViewController {
 
 extension EventsVC: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
+        if events.count == 0 {
+            tableView.setEmptyView(title: "No events yet".localized, message: "")
+        } else {
+            tableView.restore()
+        }
         return events.count
     }
     

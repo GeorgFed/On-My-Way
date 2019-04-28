@@ -79,7 +79,7 @@ class AddEventVC: UIViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .none
-        dateFormatter.dateFormat = "dd MMM"
+        dateFormatter.dateFormat = "dd MMM yyyy"
         dateTF.text = dateFormatter.string(from: datePicker.date)
         dateTF.resignFirstResponder()
         self.view.endEditing(true)

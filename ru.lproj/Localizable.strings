@@ -31,7 +31,7 @@
 "Follow" = "Подписаться";
 
 "Cannot access link!" = "Нет доступа к ссылке!";
-"No search results for this query" = "По вашему запросу ничего не найдено";
+"No search results for this query" = "По запросу ничего не найдено";
 "You don't have any friends yet." = "У вас еще нет друзей.";
 "Your friends will be in here." = "Ваши друзья появятся здесь";
 
@@ -41,4 +41,18 @@
 
 "Link to Present" = "Перейти к странице подарка";
 
+"No events yet" = "Нет событий";
+
+"No presents yet" = "Нет подарков";
+"Add presents to share your wishes with friends" = "Добавьте подарки, чтобы поделиться ими с друзьями";
+
 "Cancel" = "Отмена";
+
+"Sign Out" = "Выйти";
+"Delete Account" = "Удалить аккаунт";
+"Dismiss" = "Отмена";
+
+"Are you sure you want to delete your account?" = "Вы уверены, что хотите удалить аккаунт?";
+
+"Yes" = "Да";
+"No" = "Нет";

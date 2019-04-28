@@ -51,8 +51,8 @@ class PresentsVC: UIViewController, UIScrollViewDelegate {
         if let user = Auth.auth().currentUser {
             DataService.instance.getPresents(forUid: user.uid) { ( returnedArray ) in
                 if returnedArray.count == 0 {
-                    // MARK: No Presents
-                    //self.getTestPresents()
+                    self.presentArray = returnedArray
+                    self.collectionView.reloadData()
                 } else {
                     self.presentArray = returnedArray
                     self.collectionView.reloadData()
@@ -117,6 +117,12 @@ extension PresentsVC: UICollectionViewDelegate, UICollectionViewDataSource, UICo
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if presentArray.count == 0 {
+            collectionView.setEmptyView(title: "No presents yet".localized, message: "Add presents to share your wishes with friends".localized)
+        } else {
+            collectionView.restore()
+        }
+        
         return presentArray.count
     }
     

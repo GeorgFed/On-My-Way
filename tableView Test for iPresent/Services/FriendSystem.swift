@@ -159,6 +159,11 @@ class FriendSystem {
         USER_REF.child(userID).child("followers").child(CURRENT_USER_ID).setValue(true)
     }
     
+    func unfollowUser(_ userID: String!) {
+        CURRENT_USER_REF.child("following").child(userID).removeValue()
+        USER_REF.child(userID).child("followers").child(CURRENT_USER_ID).removeValue()
+    }
+    
     // MARK: - All users
     /** The list of all users */
     var userList = [User]()

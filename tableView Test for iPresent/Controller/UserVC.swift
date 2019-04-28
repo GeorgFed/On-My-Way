@@ -93,6 +93,10 @@ class UserVC: UITableViewController {
                 FriendSystem.instance.followUser(user!.uid)
                 self.tableView.reloadData()
                 following = true
+            } else {
+                FriendSystem.instance.unfollowUser(user!.uid)
+                self.tableView.reloadData()
+                following = false
             }
         }
     }

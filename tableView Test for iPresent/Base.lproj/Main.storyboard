@@ -840,14 +840,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="AmG-bT-yoK"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Profile" id="5UG-gj-r2X">
-                        <barButtonItem key="rightBarButtonItem" image="sign-out slice" id="Xjz-9W-kck">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <action selector="signOutBtnPressed:" destination="oBO-k2-m57" id="uid-mK-vWb"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Profile" id="5UG-gj-r2X"/>
                     <connections>
                         <outlet property="addEventBtn" destination="t9h-Af-mH4" id="Yyy-t8-svF"/>
                         <outlet property="fullNameTxt" destination="qBw-bx-Qpr" id="Aog-qB-Cna"/>
@@ -1322,7 +1315,6 @@
         <image name="PresentIcon" width="25" height="25"/>
         <image name="ProfileIcon" width="25" height="25"/>
         <image name="notification inactive slice" width="54" height="66"/>
-        <image name="sign-out slice" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="gLF-j7-ZKM"/>
