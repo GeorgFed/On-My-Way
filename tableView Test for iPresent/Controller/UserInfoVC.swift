@@ -116,3 +116,10 @@ extension UserInfoVC: UICollectionViewDelegate, UICollectionViewDataSource {
         present(_ReservePresentVC, animated: true, completion: nil)
     }
 }
+
+// TODO: Delete "Delete user button"
+// TODO: Change the interface, add a possibility to check followers?
+// TODO: add alert before logout
+// TODO: check big names on the interface
+// TODO: No event description?
+

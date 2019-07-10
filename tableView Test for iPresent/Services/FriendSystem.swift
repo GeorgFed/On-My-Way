@@ -90,6 +90,8 @@ class FriendSystem {
     
     // MARK: - Get User
     
+    
+    
     func getCurrentUser(_ handler: @escaping (User) -> Void) {
         CURRENT_USER_REF.observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
@@ -279,5 +281,6 @@ class FriendSystem {
     
 }
 
-
+// TODO: clear the unused functions, clean up required functions
+// TODO: use multithreading correctly
 

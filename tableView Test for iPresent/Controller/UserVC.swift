@@ -131,3 +131,10 @@ class UserVC: UITableViewController {
         return indexPath
     }
 }
+
+// TODO: change status - it is not fully shown on the screen
+// TODO: handle statuses
+// TODO: alerts if u want to unfollow user
+// TODO: show label/image if there is no content yet
+// TODO: add beutiful graphics
+

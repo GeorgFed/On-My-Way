@@ -151,3 +151,5 @@ extension AddEventVC: UITextFieldDelegate {
         UIView.commitAnimations()
     }
 }
+
+// TODO: show all alerts 

@@ -702,7 +702,7 @@
 			baseConfigurationReference = 256533A6AD605242D9B7C457 /* Pods-tableView Test for iPresent.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_ENTITLEMENTS = "tableView Test for iPresent/Resources/tableView Test for iPresent.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4ZLBWEC93L;
 				INFOPLIST_FILE = "tableView Test for iPresent/Info.plist";
@@ -723,7 +723,7 @@
 			baseConfigurationReference = A2D190A08AC1B833C20C4B2C /* Pods-tableView Test for iPresent.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_ENTITLEMENTS = "tableView Test for iPresent/Resources/tableView Test for iPresent.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4ZLBWEC93L;
 				INFOPLIST_FILE = "tableView Test for iPresent/Info.plist";

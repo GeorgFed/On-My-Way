@@ -196,3 +196,9 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
         _UserVC.user = chosen_user
     }
 }
+
+
+// TODO: async / sync + dispatch threads to show images straight ahead
+// TODO: clean up code, clear funcs that are not used
+// TODO: add right nav bar item "recommendations" -> show contacts friends
+// TODO: check the bug when the wrong user is shown

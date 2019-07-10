@@ -68,18 +68,14 @@ class EventsVC: UIViewController {
             DataService.instance.getEvents(forUid: friend.uid) { ( returnedEvents ) in
                 print("uid for friend - \(friend.uid)")
                 print(returnedEvents)
-                
                 self.events.append(contentsOf: returnedEvents)
-                
                 self.events = Array(self.events.mapToSet({ $0 }))
-                
                 self.events.sort(by: { (one, two) -> Bool in
                     one.convertedDate < two.convertedDate
                 })
                 self.events = self.events.filter({ (event) -> Bool in
                     event.convertedDate > Date()
                 })
-                
                 print(self.events)
                 for event in returnedEvents {
                     self.friendForEvent[event] = friend
@@ -190,3 +186,12 @@ extension EventsVC: UITableViewDelegate, UITableViewDataSource {
         _UserVC.user = chosen_user
     }
 }
+
+
+// TODO: clear unused functions, create a method call sequence w/ DispathThreads & Symophores
+// TODO: Handle network errors
+// TODO: check login with a new account
+// TODO: check events
+
+// TODO: GLOBAL _ STANDART EVENTS?
+
