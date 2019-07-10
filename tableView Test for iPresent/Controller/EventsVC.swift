@@ -6,61 +6,90 @@
 //  Copyright © 2019 Georg. All rights reserved.
 //
 
+/*
+ let keys = [
+ CNContactFormatter.descriptorForRequiredKeys(for: .fullName),
+ CNContactPhoneNumbersKey,
+ CNContactEmailAddressesKey
+ ] as [Any]
+ 
+ var store = CNContactStore()
+ var contacts = [CNContact]()
+ var phoneNumbers = [String]()
+ var filteredNumbers = [String]()
+ 
+*/
+
 import UIKit
 import Firebase
-import Contacts
-import ContactsUI
-import PhoneNumberKit
 
 class EventsVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    let uid = Auth.auth().currentUser?.uid
-    let keys = [
-        CNContactFormatter.descriptorForRequiredKeys(for: .fullName),
-        CNContactPhoneNumbersKey,
-        CNContactEmailAddressesKey
-        ] as [Any]
-    
-    var store = CNContactStore()
-    var contacts = [CNContact]()
-    var phoneNumbers = [String]()
-    var filteredNumbers = [String]()
+    let uid = Auth.auth().currentUser!.uid
     
     var friendsIDs = [String]()
     var events = [Event]()
     var friendForEvent = [Event : User]()
     var chosen_user: User?
     
+    let refreshControl = UIRefreshControl()
+    
     override func viewWillAppear(_ animated: Bool) {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(findFriends),
-                                               name: NSNotification.Name(Notifications.firstEntry),
-                                               object: nil)
-         getFriends()
+        // FriendSystem.instance.addFollowsObserver(uid) { }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // findFriends()
         tableView.delegate = self
         tableView.dataSource = self
-//        FriendSystem.instance.addFriendObserver {
-//            print("observer updated")
-//            self.getEvents()
-//        }
-        FriendSystem.instance.addFollowsObserver {
-            self.getEvents()
+        
+        refreshControl.addTarget(self, action: #selector(fetchData), for: .valueChanged)
+        if #available(iOS 10.0, *) {
+            tableView.refreshControl = refreshControl
+        } else {
+            tableView.addSubview(refreshControl)
+        }
+        
+        FriendSystem.instance.addFollowsObserver(uid) {
+            self.fetchData()
         }
     }
     
-    func getFriends() {
-//        FriendSystem.instance.addFriendObserver { }
-        FriendSystem.instance.addFollowsObserver { }
-        print("observer added")
+    @objc func fetchData() {
+        for friend in FriendSystem.instance.followsList {
+            DataService.instance.getEvents(forUid: friend.uid) { ( returnedEvents ) in
+                self.events.append(contentsOf: returnedEvents)
+                self.events = Array(self.events.mapToSet({ $0 }))
+                self.events.sort(by: { (one, two) -> Bool in
+                    one.convertedDate < two.convertedDate
+                })
+                self.events = self.events.filter({ (event) -> Bool in
+                    event.convertedDate > Date()
+                })
+                for event in returnedEvents {
+                    self.friendForEvent[event] = friend
+                }
+                self.tableView.reloadData()
+            }
+        }
+        refreshControl.endRefreshing()
+        self.tableView.reloadData()
     }
     
+    /*
+     getFollows() {
+        for f in followList {
+            getEvents(forUid: f.uid) {
+                reload
+            }
+        }
+        reload
+     }
+    */
+    
+    /*
     func getEvents() {
         print("MY dear dear friends \(FriendSystem.instance.friendList)")
         for friend in FriendSystem.instance.friendList {
@@ -87,24 +116,7 @@ class EventsVC: UIViewController {
         print("sooo", events)
         self.tableView.reloadData()
     }
-    
-    @objc func findFriends() {
-        guard uid != nil else { return }
-        ContactsService.instance.getPhoneNumbers(on: self) { (query, succes) in
-            self.phoneNumberSearch(query: query)
-        }
-    }
-    
-    func phoneNumberSearch(query: [String]) {
-        for number in query {
-            FriendSystem.instance.findUsers(byPhoneNumber: number) { ( returnedUsers ) in
-                for user in returnedUsers {
-                    let fuid = user.uid
-                    FriendSystem.instance.sendRequestToUser(fuid)
-                }
-            }
-        }
-    }
+    */
 }
 
 extension EventsVC: UITableViewDelegate, UITableViewDataSource {
@@ -170,18 +182,13 @@ extension EventsVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if indexPath.row == 0 {
-            // user_segue
             self.chosen_user = friendForEvent[events[indexPath.section]]!
-            // self.performSegue(withIdentifier: "user_segue", sender: self)
-            // segueForUser
             self.performSegue(withIdentifier: "segueForUser", sender: self)
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard chosen_user != nil else { return }
-//        let _userInfoVC = segue.destination as! UserInfoVC
-//        _userInfoVC.user = chosen_user
         let _UserVC = segue.destination as! UserVC
         _UserVC.user = chosen_user
     }

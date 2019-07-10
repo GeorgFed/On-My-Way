@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import Firebase
 
 class UserVC: UITableViewController {
 
+    let currentUserID = Auth.auth().currentUser?.uid
+    
     var user: User?
     var status: userStatus?
     var following: Bool!
@@ -38,10 +41,11 @@ class UserVC: UITableViewController {
     }
     
     func getFollowing() {
-        FriendSystem.instance.addFollowsObserver {
+        FriendSystem.instance.addFollowsObserver(currentUserID) {
             self.tableView.reloadData()
         }
-        FriendSystem.instance.addFollowsObserver {
+        
+        FriendSystem.instance.addFollowsObserver(currentUserID) {
             if FriendSystem.instance.followsList.contains(self.user!) {
                 self.following = true
             } else {
@@ -90,11 +94,11 @@ class UserVC: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 2 {
             if !following {
-                FriendSystem.instance.followUser(user!.uid)
+                FriendSystem.instance.followUser(currentUserID, user!.uid)
                 self.tableView.reloadData()
                 following = true
             } else {
-                FriendSystem.instance.unfollowUser(user!.uid)
+                FriendSystem.instance.unfollowUser(currentUserID, user!.uid)
                 self.tableView.reloadData()
                 following = false
             }
