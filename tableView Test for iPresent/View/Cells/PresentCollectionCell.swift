@@ -87,7 +87,20 @@ extension PresentCollectionCell: UICollectionViewDelegate, UICollectionViewDataS
         let _ReservePresentVC = ReservePresentVC(nibName: "ReservePresentVC", bundle: nil)
         _ReservePresentVC.chosen_present = current_present
         _ReservePresentVC.modalPresentationStyle = .custom
-       self.window?.rootViewController?.present(_ReservePresentVC, animated: true, completion: nil)
+       // self.window?.rootViewController?.present(_ReservePresentVC, animated: true, completion: nil)
+        DispatchQueue.main.async {
+            self.getTopMostViewController()?.present(_ReservePresentVC, animated: true, completion: nil)
+        }
+    }
+    
+    func getTopMostViewController() -> UIViewController? {
+        var topMostViewController = UIApplication.shared.keyWindow?.rootViewController
+        
+        while let presentedViewController = topMostViewController?.presentedViewController {
+            topMostViewController = presentedViewController
+        }
+        
+        return topMostViewController
     }
     
 //    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

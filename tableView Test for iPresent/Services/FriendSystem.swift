@@ -45,6 +45,10 @@ class FriendSystem {
         var userArray = [User]()
         USER_REF.queryOrdered(byChild: UserKeys.phoneNumber).queryEqual(toValue: phone).observeSingleEvent(of: .value) { (snapshot) in
             guard let userSnapshot = snapshot.children.allObjects as? [DataSnapshot] else { return }
+    
+            if userSnapshot.count > 0 {
+                print(userSnapshot)
+            }
             for snap in userSnapshot {
                 let value = snap.value as? NSDictionary
                 let uid = value?[UserKeys.userId] as? String ?? ""

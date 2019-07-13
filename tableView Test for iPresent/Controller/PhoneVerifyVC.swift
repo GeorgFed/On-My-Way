@@ -11,6 +11,7 @@ import UIKit
 class PhoneVerifyVC: UIViewController {
     
     @IBOutlet weak var codeTF: UITextField!
+    @IBOutlet weak var nextBtn: UIButton!
     
     let newUserSegue = "newUserSegueId"
     let userExistsSegue = "TabBarMain"
@@ -22,6 +23,19 @@ class PhoneVerifyVC: UIViewController {
     }
     
     @IBAction func nextPressed(_ sender: Any) {
+        nextBtn.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
+        
+        UIView.animate(withDuration: 2.0,
+                       delay: 0,
+                       usingSpringWithDamping: CGFloat(0.20),
+                       initialSpringVelocity: CGFloat(6.0),
+                       options: UIView.AnimationOptions.allowUserInteraction,
+                       animations: {
+                        self.nextBtn.transform = CGAffineTransform.identity
+        },
+                       completion: { Void in()  }
+        )
+        
         if codeTF.text != "" {
             PhoneAuthService.instance.regiserUser(verificationCode: codeTF.text!) { (success, error) in
                 if success {

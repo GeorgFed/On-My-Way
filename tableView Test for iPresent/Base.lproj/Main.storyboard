@@ -56,6 +56,7 @@
                         <outlet property="tableView" destination="zfi-1O-kYO" id="73C-p3-0ab"/>
                         <segue destination="Dgf-2W-IPP" kind="show" identifier="user_info_segue" id="6Rx-TE-kXc"/>
                         <segue destination="R6B-af-Yt3" kind="show" identifier="newUserSegue" id="FXE-Sa-Osx"/>
+                        <segue destination="WNH-BW-eGl" kind="show" identifier="recommendationsSegue" id="yg5-Un-TjE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -197,6 +198,56 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nyu-mO-GmR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4466" y="137"/>
+        </scene>
+        <!--Recommendations-->
+        <scene sceneID="fLo-ay-OEE">
+            <objects>
+                <viewController title="Recommendations" id="WNH-BW-eGl" customClass="FRecommendationsVC" customModule="tableView_Test_for_iPresent" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nU8-kQ-BSo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fet-Vf-h2z">
+                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="basicCell" textLabel="DPY-bT-veJ" style="IBUITableViewCellStyleDefault" id="2Cu-2k-GVu">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2Cu-2k-GVu" id="s7m-JL-Zps">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DPY-bT-veJ">
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="fet-Vf-h2z" firstAttribute="top" secondItem="M9m-dH-3Uj" secondAttribute="top" id="Cnl-HH-dUH"/>
+                            <constraint firstItem="fet-Vf-h2z" firstAttribute="bottom" secondItem="M9m-dH-3Uj" secondAttribute="bottom" id="Rhh-3d-j8Y"/>
+                            <constraint firstItem="fet-Vf-h2z" firstAttribute="leading" secondItem="M9m-dH-3Uj" secondAttribute="leading" id="lkj-yw-M0j"/>
+                            <constraint firstItem="fet-Vf-h2z" firstAttribute="trailing" secondItem="M9m-dH-3Uj" secondAttribute="trailing" id="ohT-5P-F0X"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="M9m-dH-3Uj"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="fet-Vf-h2z" id="QlD-hx-Dcw"/>
+                        <segue destination="R6B-af-Yt3" kind="show" identifier="showUser" id="pcS-5f-Zg3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LNA-me-1x9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4464.8000000000002" y="835.71428571428578"/>
         </scene>
         <!--UserVC-->
         <scene sceneID="Yet-kN-lUn">
@@ -368,7 +419,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eOy-Jc-Btd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5317.6000000000004" y="155.9113300492611"/>
+            <point key="canvasLocation" x="5318" y="132"/>
         </scene>
         <!--Events-->
         <scene sceneID="bLc-Tf-vgR">
@@ -953,6 +1004,7 @@
                     </view>
                     <connections>
                         <outlet property="phoneNumber" destination="p8M-RP-YEQ" id="Rpk-wC-PkZ"/>
+                        <outlet property="receiveCodeBtn" destination="1J4-9N-5c7" id="9yi-A5-XNK"/>
                         <segue destination="fsH-Nn-8JQ" kind="show" identifier="ShowPhoneVerifyVC" id="kcO-e7-dnR"/>
                     </connections>
                 </viewController>
@@ -1047,6 +1099,7 @@
                     </view>
                     <connections>
                         <outlet property="codeTF" destination="yEv-rf-UsT" id="mad-la-cdM"/>
+                        <outlet property="nextBtn" destination="dqv-Tv-rpj" id="dKP-R8-WSi"/>
                         <segue destination="7ML-tF-g4T" kind="show" identifier="newUserSegueId" id="hfP-kF-d8Y"/>
                         <segue destination="acX-7C-xIb" kind="show" identifier="EntrySegue" id="vTD-Cr-hON"/>
                     </connections>
@@ -1318,7 +1371,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="vTD-Cr-hON"/>
-        <segue reference="iMW-CE-nmR"/>
+        <segue reference="pcS-5f-Zg3"/>
         <segue reference="ycV-pl-cVP"/>
     </inferredMetricsTieBreakers>
 </document>

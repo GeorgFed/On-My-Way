@@ -14,6 +14,7 @@ import PhoneNumberKit
 class PhoneSignInVC: UIViewController {
 
     @IBOutlet weak var phoneNumber: PhoneNumberTextField!
+    @IBOutlet weak var receiveCodeBtn: UIButton!
     
     let segueId = "ShowPhoneVerifyVC"
     
@@ -24,6 +25,19 @@ class PhoneSignInVC: UIViewController {
     }
     
     @IBAction func receiveCodePressed(_ sender: Any) {
+        receiveCodeBtn.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
+        
+        UIView.animate(withDuration: 2.0,
+                       delay: 0,
+                       usingSpringWithDamping: CGFloat(0.20),
+                       initialSpringVelocity: CGFloat(6.0),
+                       options: UIView.AnimationOptions.allowUserInteraction,
+                       animations: {
+                        self.receiveCodeBtn.transform = CGAffineTransform.identity
+        },
+                       completion: { Void in()  }
+        )
+        
         if phoneNumber.text != "" && phoneNumber.isValidNumber {
             authenticate(phone_number: phoneNumber.text!)
         } else {

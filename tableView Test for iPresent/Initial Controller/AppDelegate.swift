@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         // Pass device token to auth
-        Auth.auth().setAPNSToken(deviceToken, type: .prod)
+        Auth.auth().setAPNSToken(deviceToken, type: .sandbox)
     }
     
     func application(_ application: UIApplication,
@@ -55,7 +55,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if Auth.auth().canHandle(url) {
             return true
         }
-        print("what is it")
         return false
         // URL not auth related, developer should handle it.
     }

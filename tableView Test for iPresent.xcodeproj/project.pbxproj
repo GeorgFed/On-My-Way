@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1A5FCC43DC25286F7047F017 /* Pods_tableView_Test_for_iPresent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CCDDBC14B2B3277D519A257 /* Pods_tableView_Test_for_iPresent.framework */; };
+		56095C9D22D6A42700CE3D7B /* FRecommendationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56095C9C22D6A42700CE3D7B /* FRecommendationsVC.swift */; };
 		560C43932242E8BC009B836E /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560C43922242E8BB009B836E /* Event.swift */; };
 		560C43952242F975009B836E /* UITableViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560C43942242F975009B836E /* UITableViewExt.swift */; };
 		560C439822430B2A009B836E /* AddEventVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560C439622430B2A009B836E /* AddEventVC.swift */; };
@@ -74,6 +75,7 @@
 
 /* Begin PBXFileReference section */
 		256533A6AD605242D9B7C457 /* Pods-tableView Test for iPresent.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tableView Test for iPresent.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tableView Test for iPresent/Pods-tableView Test for iPresent.debug.xcconfig"; sourceTree = "<group>"; };
+		56095C9C22D6A42700CE3D7B /* FRecommendationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FRecommendationsVC.swift; sourceTree = "<group>"; };
 		560C43922242E8BB009B836E /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		560C43942242F975009B836E /* UITableViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExt.swift; sourceTree = "<group>"; };
 		560C439622430B2A009B836E /* AddEventVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventVC.swift; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 				5644883E223E796300948694 /* EventsVC.swift */,
 				560C439622430B2A009B836E /* AddEventVC.swift */,
 				5617EA4C2265D1BA00FB7A57 /* UserVC.swift */,
+				56095C9C22D6A42700CE3D7B /* FRecommendationsVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -495,6 +498,7 @@
 				568E5823221ED6BE008337C7 /* UserDataExtension.swift in Sources */,
 				5619A4B22186248200718C50 /* ShadowView.swift in Sources */,
 				5619A4BA218768AB00718C50 /* UIButtonBorderExt.swift in Sources */,
+				56095C9D22D6A42700CE3D7B /* FRecommendationsVC.swift in Sources */,
 				560C439D224407CE009B836E /* PresentCollectionCell.swift in Sources */,
 				563F0A51216D221100A27CA5 /* SearchVC.swift in Sources */,
 				568FE803217CDF14004E893B /* PresentCell.swift in Sources */,

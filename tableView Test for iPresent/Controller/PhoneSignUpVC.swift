@@ -35,9 +35,10 @@ class PhoneSignUpVC: UIViewController {
         DataService.instance.updateDBUser(withUid: (Auth.auth().currentUser?.uid)!, firstName: firstName.text!, lastName: lastName.text!, birthdate: birthdate.text!, updateComplete: { (isUpdated) in
             if isUpdated {
                 NotificationCenter.default.post(name: Notification.Name(Notifications.firstEntry), object: nil)
-                let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-                let PresentsVC = storyboard.instantiateViewController(withIdentifier: self.segueId)
-                self.show(PresentsVC, sender: nil)
+                // let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                // let PresentsVC = storyboard.instantiateViewController(withIdentifier: self.segueId)
+                // self.show(PresentsVC, sender: nil)
+                self.performSegue(withIdentifier: self.segueId, sender: nil)
             } else {
                 print("UPDATE ERROR!")
             }

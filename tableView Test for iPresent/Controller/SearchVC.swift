@@ -13,7 +13,7 @@ import Firebase
 class SearchVC: UIViewController {
     
     let searchController = UISearchController(searchResultsController: nil)
-    let uid = Auth.auth().currentUser!.uid
+    let uid = Auth.auth().currentUser?.uid
     
     @IBOutlet weak var tableView: UITableView!
 
@@ -30,6 +30,7 @@ class SearchVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        guard let uid = uid else { return }
         getFollows()
         FriendSystem.instance.addFollowsObserver(uid) {
             self.tableView.reloadData()
@@ -56,9 +57,21 @@ class SearchVC: UIViewController {
         self.navigationItem.searchController = searchController
         self.navigationItem.hidesSearchBarWhenScrolling = true
         scb.delegate = self
+        
+        let recommendNavBtn = UIButton(type: .custom)
+        recommendNavBtn.setImage(UIImage(named: "friend_recommendation"), for: .normal)
+        recommendNavBtn.frame = CGRect(x: 0, y: 0, width: 20, height: 24)
+        recommendNavBtn.addTarget(self, action: #selector(showFriendRecommendations), for: .touchUpInside)
+        let item = UIBarButtonItem(customView: recommendNavBtn)
+        self.navigationItem.setRightBarButton(item, animated: true)
+    }
+    
+    @objc func showFriendRecommendations() {
+        self.performSegue(withIdentifier: "recommendationsSegue", sender: self)
     }
     
     func getFilteredUsers(forQuery _query: String) {
+        guard let uid = uid else { return }
         FriendSystem.instance.findUsers(uid, forSearchQuery: _query) { (returnedUsers) in
             self.filteredUsers = returnedUsers
             self.tableView.reloadData()
@@ -151,8 +164,10 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let _UserVC = segue.destination as! UserVC
-        _UserVC.user = chosen_user
+        if segue.identifier == "newUserSegue" {
+            let _UserVC = segue.destination as! UserVC
+            _UserVC.user = chosen_user
+        }
     }
 }
 

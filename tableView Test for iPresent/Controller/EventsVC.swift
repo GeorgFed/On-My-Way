@@ -27,7 +27,7 @@ class EventsVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    let uid = Auth.auth().currentUser!.uid
+    let uid = Auth.auth().currentUser?.uid
     
     var friendsIDs = [String]()
     var events = [Event]()
@@ -51,7 +51,7 @@ class EventsVC: UIViewController {
         } else {
             tableView.addSubview(refreshControl)
         }
-        
+        guard let uid = uid else { return }
         FriendSystem.instance.addFollowsObserver(uid) {
             self.fetchData()
         }
