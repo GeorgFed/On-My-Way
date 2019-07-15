@@ -60,14 +60,12 @@ class PhoneVerifyVC: UIViewController {
     }
     
     @objc func showRegisterVC() {
-        print("Register Segue")
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let PhoneSignUpVC = storyboard.instantiateViewController(withIdentifier: self.newUserSegue)
         self.show(PhoneSignUpVC, sender: nil)
     }
     
     @objc func showPresentsVC() {
-        print("Presents Segue")
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let PresentsVC = storyboard.instantiateViewController(withIdentifier: self.userExistsSegue)
         self.show(PresentsVC, sender: nil)

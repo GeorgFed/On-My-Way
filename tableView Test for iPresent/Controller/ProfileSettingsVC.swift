@@ -61,11 +61,8 @@ class ProfileSettingsVC: UIViewController {
     }
     
     func setUpView() {
-        // navigationItem.rightBarButtonItem?.image = UIImage(named: "show-more-button-with-three-dots")
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named:"More PDF"), style: .plain, target: self, action: #selector(moreTapped))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "sign-out slice"), style: .plain, target: self, action: #selector(showSignOutAlert))
         navigationItem.rightBarButtonItem?.tintColor = UIColor.white
-        
         let userKey = "mainUser"
         if let username = mainUserNameCache.object(forKey: userKey as NSString) {
             self.fullNameTxt.text = username as String
@@ -73,7 +70,6 @@ class ProfileSettingsVC: UIViewController {
         if let photourl = mainUserPhotoURLCache.object(forKey: userKey as NSString) {
             self.userImg.loadImgWithURLString(urlString: (photourl as NSString) as String)
         }
-        
         if userid == nil {
             fullNameTxt.text = "Test Test"
         } else {
@@ -84,59 +80,26 @@ class ProfileSettingsVC: UIViewController {
         }
         userImg.layer.cornerRadius = userImg.frame.height / 2
         userImg.clipsToBounds = true
-        
         addEventBtn.setTitle("Add Event".localized, for: .normal)
     }
     
-    @objc func moreTapped() {
-        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        
-        alert.addAction(UIAlertAction(title: "Sign Out".localized, style: .default , handler:{ (UIAlertAction)in
+    @objc func showSignOutAlert() {
+        let alert = UIAlertController(title: "Sign out".localized, message: "Are you sure you want to sign out?".localized, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Yes".localized, style: .destructive, handler: { [] (_) in
+            _ = self.navigationController?.popViewController(animated: true)
             self.signOut()
         }))
-        
-        alert.addAction(UIAlertAction(title: "Delete Account".localized, style: .destructive , handler:{ (UIAlertAction)in
-            // self.deleteAccount()
-            self.showDeleteAlert()
-        }))
-        
-        alert.addAction(UIAlertAction(title: "Dismiss".localized, style: .cancel, handler:{ (UIAlertAction)in
-            print("User click Dismiss button")
-        }))
-        
-        self.present(alert, animated: true, completion: {
-            print("completion block")
-        })
+        alert.addAction(UIAlertAction(title: "No".localized, style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     @objc func getEvents() {
         DataService.instance.getEvents(forUid: user!.uid) { ( returnedEvents ) in
-            self.events = returnedEvents
+            self.events = returnedEvents.sorted(by: { (one, two) -> Bool in
+                one.convertedDate < two.convertedDate
+            })
             self.tableView.reloadData()
         }
-    }
-    
-    func deleteAccount() {
-        user?.delete(completion: { (error) in
-            if let error = error {
-                print(error)
-            } else {
-                let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-                let PhoneSignInVC = storyboard.instantiateViewController(withIdentifier: "PhoneSignInVC")
-                //self.show(PhoneSignInVC, sender: nil)
-                self.present(PhoneSignInVC, animated: true, completion: nil)
-            }
-        })
-    }
-    
-    func showDeleteAlert() {
-        let alert = UIAlertController(title: "Delete Account".localized, message: "Are you sure you want to delete your account?".localized, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Yes".localized, style: .destructive, handler: { [] (_) in
-            _ = self.navigationController?.popViewController(animated: true)
-            self.deleteAccount()
-        }))
-        alert.addAction(UIAlertAction(title: "No".localized, style: .cancel, handler: nil))
-        self.present(alert, animated: true, completion: nil)
     }
     
     func signOut() {
