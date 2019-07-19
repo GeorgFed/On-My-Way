@@ -82,6 +82,8 @@ class SearchVC: UIViewController {
         FriendSystem.instance.addFollowsObserver(uid) {
             self.tableView.reloadData()
         }
+        searchController.searchBar.becomeFirstResponder()
+        searchController.searchBar.resignFirstResponder()
     }
 }
 

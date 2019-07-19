@@ -77,46 +77,6 @@ class EventsVC: UIViewController {
         refreshControl.endRefreshing()
         self.tableView.reloadData()
     }
-    
-    /*
-     getFollows() {
-        for f in followList {
-            getEvents(forUid: f.uid) {
-                reload
-            }
-        }
-        reload
-     }
-    */
-    
-    /*
-    func getEvents() {
-        print("MY dear dear friends \(FriendSystem.instance.friendList)")
-        for friend in FriendSystem.instance.friendList {
-            print("this is my friend ", friend.name)
-            DataService.instance.getEvents(forUid: friend.uid) { ( returnedEvents ) in
-                print("uid for friend - \(friend.uid)")
-                print(returnedEvents)
-                self.events.append(contentsOf: returnedEvents)
-                self.events = Array(self.events.mapToSet({ $0 }))
-                self.events.sort(by: { (one, two) -> Bool in
-                    one.convertedDate < two.convertedDate
-                })
-                self.events = self.events.filter({ (event) -> Bool in
-                    event.convertedDate > Date()
-                })
-                print(self.events)
-                for event in returnedEvents {
-                    self.friendForEvent[event] = friend
-                    print("event\(event) -> friend \(friend)")
-                }
-                self.tableView.reloadData()
-            }
-        }
-        print("sooo", events)
-        self.tableView.reloadData()
-    }
-    */
 }
 
 extension EventsVC: UITableViewDelegate, UITableViewDataSource {

@@ -61,7 +61,8 @@ class ProfileSettingsVC: UIViewController {
     }
     
     func setUpView() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "sign-out slice"), style: .plain, target: self, action: #selector(showSignOutAlert))
+        // navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "sign-out slice"), style: .plain, target: self, action: #selector(showSignOutAlert))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "More PDF"), style: .plain, target: self, action: #selector(moreTapped))
         navigationItem.rightBarButtonItem?.tintColor = UIColor.white
         let userKey = "mainUser"
         if let username = mainUserNameCache.object(forKey: userKey as NSString) {
@@ -83,11 +84,29 @@ class ProfileSettingsVC: UIViewController {
         addEventBtn.setTitle("Add Event".localized, for: .normal)
     }
     
-    @objc func showSignOutAlert() {
-        let alert = UIAlertController(title: "Sign out".localized, message: "Are you sure you want to sign out?".localized, preferredStyle: .alert)
+    @objc func moreTapped() {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        alert.addAction(UIAlertAction(title: "Sign Out".localized, style: .default , handler:{ (UIAlertAction)in
+            self.showSignOutAlert()
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Delete Account".localized, style: .destructive , handler:{ (UIAlertAction)in
+            self.showDeleteAlert()
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Dismiss".localized, style: .cancel, handler:{ (UIAlertAction)in
+            print("User click Dismiss button")
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func showDeleteAlert() {
+        let alert = UIAlertController(title: "Delete Account".localized, message: "Are you sure you want to delete your account?".localized, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Yes".localized, style: .destructive, handler: { [] (_) in
             _ = self.navigationController?.popViewController(animated: true)
-            self.signOut()
+            self.deleteAccount()
         }))
         alert.addAction(UIAlertAction(title: "No".localized, style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
@@ -100,6 +119,29 @@ class ProfileSettingsVC: UIViewController {
             })
             self.tableView.reloadData()
         }
+    }
+    
+    func deleteAccount() {
+        user?.delete(completion: { (error) in
+            if let error = error {
+                print(error)
+            } else {
+                let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                let PhoneSignInVC = storyboard.instantiateViewController(withIdentifier: "PhoneSignInVC")
+                //self.show(PhoneSignInVC, sender: nil)
+                self.present(PhoneSignInVC, animated: true, completion: nil)
+            }
+        })
+    }
+    
+    @objc func showSignOutAlert() {
+        let alert = UIAlertController(title: "Sign out".localized, message: "Are you sure you want to sign out?".localized, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Yes".localized, style: .destructive, handler: { [] (_) in
+            _ = self.navigationController?.popViewController(animated: true)
+            self.signOut()
+        }))
+        alert.addAction(UIAlertAction(title: "No".localized, style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     func signOut() {
@@ -140,7 +182,6 @@ class ProfileSettingsVC: UIViewController {
 }
 
 // TODO: CHANGE TABLE VIEW
-
 extension ProfileSettingsVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return events.count
