@@ -53,7 +53,6 @@ class AddPresentsVC: UIViewController {
         self.picker.delegate = self
         
         setUpView()
-        // addPresentBtnView.bindToKeyboard()
         hideKeyboard()
     }
     
@@ -71,8 +70,6 @@ class AddPresentsVC: UIViewController {
         linkTF.placeholder = "Link*".localized
         priceTF.placeholder = "Price".localized
         addPresentLbl.text = "Add Present".localized
-//        addPresentBtn.titleLabel?.text = "Add Present".localized
-//        cancelBtn.titleLabel?.text = "Cancel".localized
         addPresentBtn.setTitle("Add Present".localized, for: .normal)
         cancelBtn.setTitle("Cancel".localized, for: .normal)
     }
@@ -84,7 +81,7 @@ class AddPresentsVC: UIViewController {
         case .authorized: self.present(self.picker, animated: true, completion: nil)
         case .notDetermined:
             PHPhotoLibrary.requestAuthorization({ (newStatus) in print("status is \(newStatus)"); if newStatus == PHAuthorizationStatus.authorized { self.present(self.picker, animated: true, completion: nil) }})
-        case .restricted: print("User do not have access to photo album.")
+        case .restricted: print("User does not have access to photo album.")
         case .denied: print("User has denied the permission.")
         }
     }
@@ -103,26 +100,34 @@ class AddPresentsVC: UIViewController {
     }
     
     func check_input() -> Bool {
-        if presentNameTF.text != "" && priceTF.text != "" {
-            if priceTF.text?.last != "$" || priceTF.text?.last != "₽" {
-                priceTF.text?.append("$".localized)
-            }
-            DataService.instance.uploadMedia(img: img, imgType: MediaType.img) { ( url ) in
-                DataService.instance.uploadPresent(name: self.presentNameTF.text!, description: self.descriptionTF.text ?? " ", price: self.priceTF.text!, image: url!, senderid: self.user!.uid, link: self.linkTF.text!) { (success) in
-                    if success {
-                        NotificationCenter.default.post(name: Notification.Name(Notifications.presentAdded), object: nil)
-                        self.dismiss(animated: true, completion: nil)
-                    }
+        var outcome = false
+        guard let presentName = presentNameTF.text,
+            var price = priceTF.text,
+            let link = linkTF.text,
+            !presentName.isEmpty, !price.isEmpty
+        else {
+            showWrongDataAlert()
+            return outcome
+        }
+        
+        if price.last != "$" || price.last != "₽" {
+            price.append("$".localized)
+        }
+        
+        DataService.instance.uploadMedia(img: img, imgType: MediaType.img) { ( url ) in
+            DataService.instance.uploadPresent(name: presentName, description: self.descriptionTF.text ?? " ", price: price, image: url!, senderid: self.user!.uid, link: link) { (success) in
+                outcome = success
+                if success {
+                    NotificationCenter.default.post(name: Notification.Name(Notifications.presentAdded), object: nil)
+                    self.dismiss(animated: true, completion: nil)
+                } else {
+                    self.showTryAgainAlert()
                 }
             }
-            return true
-        } else {
-            // TODO: SHOW ALERT
-            return false
         }
+        return outcome
     }
-    
-    // MARK: Button Actions
+
     @IBAction func addBtnPressed(_ sender: Any) {
         add_new_present()
     }
@@ -133,6 +138,22 @@ class AddPresentsVC: UIViewController {
     
     @IBAction func addPhotoBtnPressed(_ sender: Any) {
         changeImage()
+    }
+    
+    func showWrongDataAlert() {
+        let alertController = UIAlertController(title: "Error".localized, message: "All fields are to be filled".localized, preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertController.addAction(defaultAction)
+        self.present(alertController, animated: true, completion: nil)
+        alertController.view.tintColor = #colorLiteral(red: 0.3647058824, green: 0.5921568627, blue: 0.7568627451, alpha: 1)
+    }
+    
+    func showTryAgainAlert() {
+        let alertController = UIAlertController(title: "Error".localized, message: "Please  try again later".localized, preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertController.addAction(defaultAction)
+        self.present(alertController, animated: true, completion: nil)
+        alertController.view.tintColor = #colorLiteral(red: 0.3647058824, green: 0.5921568627, blue: 0.7568627451, alpha: 1)
     }
 }
 

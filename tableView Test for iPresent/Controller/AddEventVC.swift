@@ -86,19 +86,23 @@ class AddEventVC: UIViewController {
     }
     
     func addEvent() -> Bool {
-        if eventNameTF.text != "" && dateTF.text != "" {
-            DataService.instance.uploadEvent(uid: user!.uid, title: eventNameTF.text!, description: eventDescriptionTF.text ?? "", date: dateTF.text!) { ( success ) in
-                if success {
-                    NotificationCenter.default.post(name: Notification.Name(Notifications.eventAdded), object: nil)
-                } else {
-                    // TODO: SHOW ALERT
-                }
-            }
-            return true
-        } else {
-            // TODO: SHOW ALERT
-            return false
+        var outcome = false
+        guard let eventName = eventNameTF.text,
+            let date = dateTF.text,
+            !eventName.isEmpty, !date.isEmpty
+        else {
+            showWrongDataAlert()
+            return outcome
         }
+        DataService.instance.uploadEvent(uid: user!.uid, title: eventName, description: eventDescriptionTF.text ?? " ", date: date) { ( success ) in
+            outcome = success
+            if success {
+                NotificationCenter.default.post(name: Notification.Name(Notifications.eventAdded), object: nil)
+            } else {
+                self.showTryAgainAlert()
+            }
+        }
+        return outcome
     }
     
     @IBAction func addEventBtnPressed(_ sender: Any) {
@@ -109,6 +113,22 @@ class AddEventVC: UIViewController {
     
     @IBAction func cancelBtnPressed(_ sender: Any) {
         self.dismiss(animated: true)
+    }
+    
+    func showWrongDataAlert() {
+        let alertController = UIAlertController(title: "Error".localized, message: "All fields are to be filled".localized, preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertController.addAction(defaultAction)
+        self.present(alertController, animated: true, completion: nil)
+        alertController.view.tintColor = #colorLiteral(red: 0.3647058824, green: 0.5921568627, blue: 0.7568627451, alpha: 1)
+    }
+    
+    func showTryAgainAlert() {
+        let alertController = UIAlertController(title: "Error".localized, message: "Please  try again later".localized, preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertController.addAction(defaultAction)
+        self.present(alertController, animated: true, completion: nil)
+        alertController.view.tintColor = #colorLiteral(red: 0.3647058824, green: 0.5921568627, blue: 0.7568627451, alpha: 1)
     }
 }
 
@@ -151,5 +171,3 @@ extension AddEventVC: UITextFieldDelegate {
         UIView.commitAnimations()
     }
 }
-
-// TODO: show all alerts 

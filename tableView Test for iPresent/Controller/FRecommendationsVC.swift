@@ -17,6 +17,12 @@ class FRecommendationsVC: UIViewController {
     var rUsers: [User] = []
     var chosenUser: User?
     
+    override func viewWillAppear(_ animated: Bool) {
+        if let selectionIndexPath = tableView.indexPathForSelectedRow {
+            self.tableView.deselectRow(at: selectionIndexPath, animated: animated)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -73,15 +79,15 @@ extension FRecommendationsVC: UITableViewDelegate, UITableViewDataSource {
             cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "basicCell")
         }
         cell?.textLabel?.text = rUsers[indexPath.row].name
-        
+        /*
         DispatchQueue.main.async {
             cell!.imageView!.loadImgWithURLString(urlString: url)
         }
-        
+ 
         let cellImageLayer: CALayer?  = cell?.imageView!.layer
         cellImageLayer!.cornerRadius = 35
         cellImageLayer!.masksToBounds = true
-        
+        */
         return cell!
     }
     

@@ -21,14 +21,14 @@ class UserVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
         if FriendSystem.instance.followsList.contains(user!) {
             following = true
         } else {
             following = false
         }
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
         getPresents()
         getFollowing()
     }

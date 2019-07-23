@@ -1,9 +1,9 @@
 //
-//  DataController.swift
-//  FirebaseFriendRequest
+//  FriendSystem.swift
+//  tableView Test for iPresent
 //
-//  Created by Kiran Kunigiri on 7/10/16.
-//  Copyright © 2016 Kiran. All rights reserved.
+//  Created by Georg on 17/03/2019.
+//  Copyright © 2019 Georg. All rights reserved.
 //
 
 import Foundation
@@ -92,8 +92,9 @@ class FriendSystem {
     
     //var followsList = [User]()
     var followsList = Set<User>()
-    func addFollowsObserver(_ currentUserID: String!, _ update: @escaping () -> Void) {
-        let currentUserFollowsRef = USER_REF.child(currentUserID).child("following")
+    func addFollowsObserver(_ currentUserID: String?, _ update: @escaping () -> Void) {
+        guard currentUserID != nil else { return }
+        let currentUserFollowsRef = USER_REF.child(currentUserID!).child("following")
         currentUserFollowsRef.observe(DataEventType.value, with: { (snapshot) in
             self.followsList.removeAll()
             for child in snapshot.children.allObjects as! [DataSnapshot] {

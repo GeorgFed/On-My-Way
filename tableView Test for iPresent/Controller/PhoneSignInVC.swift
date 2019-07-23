@@ -14,20 +14,21 @@ import PhoneNumberKit
 class PhoneSignInVC: UIViewController {
 
     @IBOutlet weak var phoneNumber: PhoneNumberTextField!
-    @IBOutlet weak var receiveCodeBtn: UIButton!
+    @IBOutlet weak var receiveCodeBtn: GradientButton!
     
     let segueId = "ShowPhoneVerifyVC"
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        receiveCodeBtn.alpha = 0.75
         phoneNumber.becomeFirstResponder()
         hideKeyboard()
     }
     
     @IBAction func receiveCodePressed(_ sender: Any) {
-        receiveCodeBtn.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
+        receiveCodeBtn.transform = CGAffineTransform(scaleX: 0.85, y: 0.85)
         
-        UIView.animate(withDuration: 2.0,
+        UIView.animate(withDuration: 1,
                        delay: 0,
                        usingSpringWithDamping: CGFloat(0.20),
                        initialSpringVelocity: CGFloat(6.0),
@@ -70,6 +71,7 @@ class PhoneSignInVC: UIViewController {
         let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alertController.addAction(defaultAction)
         present(alertController, animated: true, completion: nil)
+        alertController.view.tintColor = #colorLiteral(red: 0.3647058824, green: 0.5921568627, blue: 0.7568627451, alpha: 1)
     }
 }
 

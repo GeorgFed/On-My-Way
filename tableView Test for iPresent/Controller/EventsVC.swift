@@ -6,20 +6,6 @@
 //  Copyright © 2019 Georg. All rights reserved.
 //
 
-/*
- let keys = [
- CNContactFormatter.descriptorForRequiredKeys(for: .fullName),
- CNContactPhoneNumbersKey,
- CNContactEmailAddressesKey
- ] as [Any]
- 
- var store = CNContactStore()
- var contacts = [CNContact]()
- var phoneNumbers = [String]()
- var filteredNumbers = [String]()
- 
-*/
-
 import UIKit
 import Firebase
 
@@ -37,13 +23,16 @@ class EventsVC: UIViewController {
     let refreshControl = UIRefreshControl()
     
     override func viewWillAppear(_ animated: Bool) {
-        // FriendSystem.instance.addFollowsObserver(uid) { }
+        FriendSystem.instance.addFollowsObserver(uid) { }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        
+//        let colors: [UIColor] = [#colorLiteral(red: 0.3647058824, green: 0.5921568627, blue: 0.7568627451, alpha: 1), #colorLiteral(red: 0.4509803922, green: 0.6549019608, blue: 0.8588235294, alpha: 1)]
+//        navigationController?.navigationBar.setGradientBackground(colors: colors)
         
         refreshControl.addTarget(self, action: #selector(fetchData), for: .valueChanged)
         if #available(iOS 10.0, *) {
@@ -98,6 +87,7 @@ extension EventsVC: UITableViewDelegate, UITableViewDataSource {
         case 0:
             let cell: EventHeaderCell! = tableView.dequeueReusableCell(withIdentifier: "EventHeaderCell") as? EventHeaderCell
             cell.configureCell(date: events[indexPath.section].date, fname: friendForEvent[events[indexPath.section]]!.name, imgURL: friendForEvent[events[indexPath.section]]!.profileImgURL)
+            cell.selectionStyle = .none
             return cell
         case 1:
             let cell: EventTitleCell! = tableView.dequeueReusableCell(withIdentifier: "EventTitleCell") as? EventTitleCell

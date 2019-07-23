@@ -61,8 +61,8 @@ class ProfileSettingsVC: UIViewController {
     }
     
     func setUpView() {
-        // navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "sign-out slice"), style: .plain, target: self, action: #selector(showSignOutAlert))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "More PDF"), style: .plain, target: self, action: #selector(moreTapped))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "sign-out slice"), style: .plain, target: self, action: #selector(showSignOutAlert))
+        // navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "More PDF"), style: .plain, target: self, action: #selector(moreTapped))
         navigationItem.rightBarButtonItem?.tintColor = UIColor.white
         let userKey = "mainUser"
         if let username = mainUserNameCache.object(forKey: userKey as NSString) {
@@ -150,7 +150,6 @@ class ProfileSettingsVC: UIViewController {
             try firebaseAuth.signOut()
             let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
             let PhoneSignInVC = storyboard.instantiateViewController(withIdentifier: "PhoneSignInVC")
-            //self.show(PhoneSignInVC, sender: nil)
             self.present(PhoneSignInVC, animated: true, completion: nil)
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
@@ -163,7 +162,6 @@ class ProfileSettingsVC: UIViewController {
             try firebaseAuth.signOut()
             let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
             let PhoneSignInVC = storyboard.instantiateViewController(withIdentifier: "PhoneSignInVC")
-            //self.show(PhoneSignInVC, sender: nil)
             self.present(PhoneSignInVC, animated: true, completion: nil)
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)

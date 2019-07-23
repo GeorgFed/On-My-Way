@@ -26,7 +26,7 @@
 "Date" = "Дата";
 
 "You are following this user" = "Вы подписаны на этого пользователя";
-"You are not following this user" = "Вы подписаны на этого пользователя";
+"You are not following this user" = "Вы не подписаны на этого пользователя";
 "Unfollow" = "Отписаться";
 "Follow" = "Подписаться";
 
@@ -61,3 +61,6 @@
 
 "Sign out" = "Выход";
 "Are you sure you want to sign out?" = "Вы уверены, что хотите выйти из аккаунта?";
+
+"All fields are to be filled" = "Все поля должны быть заполнены";
+"Please try again later" = "Пожалуйста, повторите попытку позже";

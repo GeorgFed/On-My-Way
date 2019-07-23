@@ -53,6 +53,9 @@
 		5658FEAA22761CC0005463F7 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5658FEA922761CC0005463F7 /* ArrayExtension.swift */; };
 		565B04CB21E405C800409319 /* ReceiveImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565B04CA21E405C800409319 /* ReceiveImageExtension.swift */; };
 		565B04CD21E41F7500409319 /* CacheExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565B04CC21E41F7500409319 /* CacheExtension.swift */; };
+		567C13D922E592C400ED86E6 /* GradientExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567C13D822E592C400ED86E6 /* GradientExtension.swift */; };
+		567C13DB22E5B2B200ED86E6 /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567C13DA22E5B2B200ED86E6 /* GradientButton.swift */; };
+		567C13DD22E5EEBF00ED86E6 /* GradientNavigationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567C13DC22E5EEBF00ED86E6 /* GradientNavigationVC.swift */; };
 		568A53C5219E089D00772ED1 /* PresentInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568A53C3219E089D00772ED1 /* PresentInfoVC.swift */; };
 		568A53C6219E089D00772ED1 /* PresentInfoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 568A53C4219E089D00772ED1 /* PresentInfoVC.xib */; };
 		568A53C8219E090000772ED1 /* UserInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568A53C7219E090000772ED1 /* UserInfoVC.swift */; };
@@ -125,6 +128,9 @@
 		5658FEA922761CC0005463F7 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		565B04CA21E405C800409319 /* ReceiveImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveImageExtension.swift; sourceTree = "<group>"; };
 		565B04CC21E41F7500409319 /* CacheExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheExtension.swift; sourceTree = "<group>"; };
+		567C13D822E592C400ED86E6 /* GradientExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientExtension.swift; sourceTree = "<group>"; };
+		567C13DA22E5B2B200ED86E6 /* GradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
+		567C13DC22E5EEBF00ED86E6 /* GradientNavigationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientNavigationVC.swift; sourceTree = "<group>"; };
 		568A53C3219E089D00772ED1 /* PresentInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentInfoVC.swift; sourceTree = "<group>"; };
 		568A53C4219E089D00772ED1 /* PresentInfoVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PresentInfoVC.xib; sourceTree = "<group>"; };
 		568A53C7219E090000772ED1 /* UserInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoVC.swift; sourceTree = "<group>"; };
@@ -274,6 +280,9 @@
 				5619A4BC21876AEE00718C50 /* RoundedCorners.swift */,
 				563F0A60216D238800A27CA5 /* TapToHideKeyboard.swift */,
 				5619A4B12186248200718C50 /* ShadowView.swift */,
+				567C13D822E592C400ED86E6 /* GradientExtension.swift */,
+				567C13DA22E5B2B200ED86E6 /* GradientButton.swift */,
+				567C13DC22E5EEBF00ED86E6 /* GradientNavigationVC.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -499,6 +508,7 @@
 				5619A4B22186248200718C50 /* ShadowView.swift in Sources */,
 				5619A4BA218768AB00718C50 /* UIButtonBorderExt.swift in Sources */,
 				56095C9D22D6A42700CE3D7B /* FRecommendationsVC.swift in Sources */,
+				567C13DD22E5EEBF00ED86E6 /* GradientNavigationVC.swift in Sources */,
 				560C439D224407CE009B836E /* PresentCollectionCell.swift in Sources */,
 				563F0A51216D221100A27CA5 /* SearchVC.swift in Sources */,
 				568FE803217CDF14004E893B /* PresentCell.swift in Sources */,
@@ -510,6 +520,7 @@
 				5619A4BF2187BD4D00718C50 /* UIViewBindingExt.swift in Sources */,
 				560C43AB22469659009B836E /* EventDataExtension.swift in Sources */,
 				5617EA4F22678ABD00FB7A57 /* UserNameCell.swift in Sources */,
+				567C13DB22E5B2B200ED86E6 /* GradientButton.swift in Sources */,
 				560C43A72245342B009B836E /* UISearchBarExt.swift in Sources */,
 				560C43A1224407FD009B836E /* EventTitleCell.swift in Sources */,
 				563F0A5A216D22F700A27CA5 /* User.swift in Sources */,
@@ -520,6 +531,7 @@
 				560C43AD22470DC5009B836E /* ContactsService.swift in Sources */,
 				568FE7FD217CD57A004E893B /* PresentsVC.swift in Sources */,
 				5617EA5322678B4E00FB7A57 /* UserActionButtonCell.swift in Sources */,
+				567C13D922E592C400ED86E6 /* GradientExtension.swift in Sources */,
 				56F41B24218B6C750070B2CC /* ProfileSettingsVC.swift in Sources */,
 				560C43952242F975009B836E /* UITableViewExt.swift in Sources */,
 				563F0A3C216D20B500A27CA5 /* AppDelegate.swift in Sources */,

@@ -26,10 +26,16 @@ class SearchVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         searchBarAppearenceSetup()
+        
+        if let selectionIndexPath = tableView.indexPathForSelectedRow {
+            self.tableView.deselectRow(at: selectionIndexPath, animated: animated)
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        let colors: [UIColor] = [#colorLiteral(red: 0.3647058824, green: 0.5921568627, blue: 0.7568627451, alpha: 1), #colorLiteral(red: 0.4509803922, green: 0.6549019608, blue: 0.8588235294, alpha: 1)]
+//        navigationController?.navigationBar.setGradientBackground(colors: colors)
         guard let uid = uid else { return }
         getFollows()
         FriendSystem.instance.addFollowsObserver(uid) {
@@ -134,17 +140,23 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
         if searchActive {
             cell!.textLabel?.text = self.filteredUsers[indexPath.row].name
             url = self.filteredUsers[indexPath.row].profileImgURL
+            /*
             DispatchQueue.main.async {
                 cell!.imageView!.loadImgWithURLString(urlString: url)
             }
+            */
         } else {
             cell!.textLabel?.text = FriendSystem.instance.followsList[FriendSystem.instance.followsList.index(FriendSystem.instance.followsList.startIndex, offsetBy: indexPath.row)].name
             url = FriendSystem.instance.followsList[FriendSystem.instance.followsList.index(FriendSystem.instance.followsList.startIndex, offsetBy: indexPath.row)].profileImgURL
+            
+            // TODO: profile image bug
+            /*
             DispatchQueue.main.async {
                 cell!.imageView!.loadImgWithURLString(urlString: url)
             }
+             */
         }
-        
+        /*
         DispatchQueue.main.async {
             cell!.imageView!.loadImgWithURLString(urlString: url)
         }
@@ -152,7 +164,8 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
         let cellImageLayer: CALayer?  = cell?.imageView!.layer
         cellImageLayer!.cornerRadius = 35
         cellImageLayer!.masksToBounds = true
-        
+        */
+        cell?.selectionStyle = .default
         return cell!
     }
     

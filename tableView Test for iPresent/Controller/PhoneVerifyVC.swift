@@ -18,14 +18,15 @@ class PhoneVerifyVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        nextBtn.alpha = 0.75
         codeTF.becomeFirstResponder()
         hideKeyboard()
     }
     
     @IBAction func nextPressed(_ sender: Any) {
-        nextBtn.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
+        nextBtn.transform = CGAffineTransform(scaleX: 0.85, y: 0.85)
         
-        UIView.animate(withDuration: 2.0,
+        UIView.animate(withDuration: 1.0,
                        delay: 0,
                        usingSpringWithDamping: CGFloat(0.20),
                        initialSpringVelocity: CGFloat(6.0),
@@ -35,27 +36,25 @@ class PhoneVerifyVC: UIViewController {
         },
                        completion: { Void in()  }
         )
-        
-        if codeTF.text != "" {
-            PhoneAuthService.instance.regiserUser(verificationCode: codeTF.text!) { (success, error) in
-                if success {
-                    NotificationCenter.default.addObserver(self,
-                                                           selector: #selector(self.showPresentsVC),
-                                                           name: NSNotification.Name(Notifications.userExists),
-                                                           object: nil)
-                    NotificationCenter.default.addObserver(self,
-                                                           selector: #selector(self.showRegisterVC),
-                                                           name: NSNotification.Name(Notifications.newUser),
-                                                           object: nil)
-                } else {
-                    // MARK: VALIDTION ERROR
-                    print("Validation Error")
-                    self.showWrongCodeAlert()
-                }
-            }
-        } else {
+        guard let code = codeTF.text else {
             codeTF.resignFirstResponder()
             showNoCodeAlert()
+            return
+        }
+        
+        PhoneAuthService.instance.regiserUser(verificationCode: code) { (success, error) in
+            if success {
+                NotificationCenter.default.addObserver(self,
+                                                       selector: #selector(self.showPresentsVC),
+                                                       name: NSNotification.Name(Notifications.userExists),
+                                                       object: nil)
+                NotificationCenter.default.addObserver(self,
+                                                       selector: #selector(self.showRegisterVC),
+                                                       name: NSNotification.Name(Notifications.newUser),
+                                                       object: nil)
+            } else {
+                self.showWrongCodeAlert()
+            }
         }
     }
     
@@ -80,6 +79,7 @@ class PhoneVerifyVC: UIViewController {
         let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alertController.addAction(defaultAction)
         self.present(alertController, animated: true, completion: nil)
+        alertController.view.tintColor = #colorLiteral(red: 0.3647058824, green: 0.5921568627, blue: 0.7568627451, alpha: 1)
     }
     
     func showWrongCodeAlert() {
@@ -87,5 +87,6 @@ class PhoneVerifyVC: UIViewController {
         let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alertController.addAction(defaultAction)
         self.present(alertController, animated: true, completion: nil)
+        alertController.view.tintColor = #colorLiteral(red: 0.3647058824, green: 0.5921568627, blue: 0.7568627451, alpha: 1)
     }
 }

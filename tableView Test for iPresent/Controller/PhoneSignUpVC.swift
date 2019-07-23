@@ -13,6 +13,7 @@ class PhoneSignUpVC: UIViewController {
     @IBOutlet weak var firstName: UITextField!
     @IBOutlet weak var lastName: UITextField!
     @IBOutlet weak var birthdate: UITextField!
+    @IBOutlet weak var doneBtn: UIButton!
     
     let datePicker = UIDatePicker()
     let segueId = "presentsVCSegueId"
@@ -22,7 +23,8 @@ class PhoneSignUpVC: UIViewController {
         firstName.delegate = self
         lastName.delegate = self
         birthdate.delegate = self
-        
+        doneBtn.alpha = 0.75
+        doneBtn.layer.cornerRadius = 3
         firstName.placeholder = "First name".localized
         lastName.placeholder = "Last name".localized
         birthdate.placeholder = "Date of birth".localized
@@ -32,11 +34,22 @@ class PhoneSignUpVC: UIViewController {
     }
 
     @IBAction func donePressed(_ sender: Any) {
-        DataService.instance.updateDBUser(withUid: (Auth.auth().currentUser?.uid)!, firstName: firstName.text!, lastName: lastName.text!, birthdate: birthdate.text!, updateComplete: { (isUpdated) in
+        guard let firstName = firstName.text,
+            let lastName = lastName.text,
+            let birthdate = birthdate.text,
+            firstName.isAlphanumeric, lastName.isAlphanumeric,
+            !firstName.isEmpty, !lastName.isEmpty, !birthdate.isEmpty
+        else {
+            showWrongDataAlert()
+            return
+        }
+        
+        DataService.instance.updateDBUser(withUid: (Auth.auth().currentUser?.uid)!, firstName: firstName, lastName: lastName, birthdate: birthdate, updateComplete: { (isUpdated) in
             if isUpdated {
                 NotificationCenter.default.post(name: Notification.Name(Notifications.firstEntry), object: nil)
                 self.performSegue(withIdentifier: self.segueId, sender: nil)
             } else {
+                self.showTryAgainAlert()
                 print("UPDATE ERROR!")
             }
         })
@@ -49,6 +62,7 @@ class PhoneSignUpVC: UIViewController {
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(pickerDonePressed))
+        doneButton.tintColor = #colorLiteral(red: 0.3647058824, green: 0.5921568627, blue: 0.7568627451, alpha: 1)
         toolbar.setItems([doneButton], animated: true)
         birthdate.inputAccessoryView = toolbar
     }
@@ -61,6 +75,22 @@ class PhoneSignUpVC: UIViewController {
         birthdate.text = dateFormatter.string(from: datePicker.date)
         birthdate.resignFirstResponder()
         self.view.endEditing(true)
+    }
+    
+    func showWrongDataAlert() {
+        let alertController = UIAlertController(title: "Error".localized, message: "All fields are to be filled".localized, preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertController.addAction(defaultAction)
+        self.present(alertController, animated: true, completion: nil)
+        alertController.view.tintColor = #colorLiteral(red: 0.3647058824, green: 0.5921568627, blue: 0.7568627451, alpha: 1)
+    }
+    
+    func showTryAgainAlert() {
+        let alertController = UIAlertController(title: "Error".localized, message: "Please try again later".localized, preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertController.addAction(defaultAction)
+        self.present(alertController, animated: true, completion: nil)
+        alertController.view.tintColor = #colorLiteral(red: 0.3647058824, green: 0.5921568627, blue: 0.7568627451, alpha: 1)
     }
 }
 

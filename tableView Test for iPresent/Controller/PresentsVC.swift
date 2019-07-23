@@ -28,7 +28,7 @@ class PresentsVC: UIViewController, UIScrollViewDelegate {
         
         collectionView.delegate = self
         collectionView.dataSource = self
-
+        
         if mainUserPhotoURLCache.object(forKey: userKey as NSString) == nil {
             guard uid != nil else { print(Auth.auth().currentUser ?? print("no uid error")); return }
             DataService.instance.getUserInfo(forUid: uid!) { (user) in
@@ -61,14 +61,6 @@ class PresentsVC: UIViewController, UIScrollViewDelegate {
         } else {
             // MARK: PROBLEM CONDITION
             // getTestPresents()
-        }
-    }
-    
-    // MARK: TEST DATA
-    @objc func getTestPresents() {
-        TestDataService.instance.getPresent(forUid: "666") { ( returnedArray ) in
-            self.presentArray = returnedArray
-            self.collectionView.reloadData()
         }
     }
     
