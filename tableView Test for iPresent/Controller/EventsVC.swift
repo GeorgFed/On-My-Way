@@ -31,6 +31,9 @@ class EventsVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        if !Reachability.isConnectedToNetwork() {
+            tableView.setEmptyView(title: "No internet connection".localized, message: "", alertImage: .noInternet)
+        }
 //        let colors: [UIColor] = [#colorLiteral(red: 0.3647058824, green: 0.5921568627, blue: 0.7568627451, alpha: 1), #colorLiteral(red: 0.4509803922, green: 0.6549019608, blue: 0.8588235294, alpha: 1)]
 //        navigationController?.navigationBar.setGradientBackground(colors: colors)
         
@@ -45,6 +48,8 @@ class EventsVC: UIViewController {
             self.fetchData()
         }
     }
+    
+    
     
     @objc func fetchData() {
         for friend in FriendSystem.instance.followsList {
@@ -71,7 +76,9 @@ class EventsVC: UIViewController {
 extension EventsVC: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         if events.count == 0 {
-            tableView.setEmptyView(title: "No events yet".localized, message: "")
+            if Reachability.isConnectedToNetwork() {
+                tableView.setEmptyView(title: "No events yet".localized, message: "Here you will see the upcoming events of your friends".localized, alertImage: .noEvents)
+            }
         } else {
             tableView.restore()
         }

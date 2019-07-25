@@ -23,7 +23,7 @@ class SearchVC: UIViewController {
     var chosen_user: User?
     var status: userStatus?
     var searchActive = false
-    
+    var currentText: String?
     override func viewWillAppear(_ animated: Bool) {
         searchBarAppearenceSetup()
         
@@ -34,6 +34,15 @@ class SearchVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        if !Reachability.isConnectedToNetwork() {
+            tableView.setEmptyView(title: "No internet connection".localized, message: "", alertImage: .noInternet)
+            return
+        } else {
+            tableView.restore()
+        }
 //        let colors: [UIColor] = [#colorLiteral(red: 0.3647058824, green: 0.5921568627, blue: 0.7568627451, alpha: 1), #colorLiteral(red: 0.4509803922, green: 0.6549019608, blue: 0.8588235294, alpha: 1)]
 //        navigationController?.navigationBar.setGradientBackground(colors: colors)
         guard let uid = uid else { return }
@@ -42,8 +51,6 @@ class SearchVC: UIViewController {
             self.tableView.reloadData()
         }
         
-        tableView.delegate = self
-        tableView.dataSource = self
     }
     
     func searchBarAppearenceSetup() {
@@ -99,6 +106,7 @@ extension SearchVC: UISearchResultsUpdating, UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        currentText = searchText
         getFilteredUsers(forQuery: searchText)
     }
     
@@ -116,14 +124,20 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
         searchBarAppearenceSetup()
         if searchActive {
             if self.filteredUsers.count == 0 {
-                tableView.setEmptyView(title: "No search results for this query".localized, message: " ")
+                if Reachability.isConnectedToNetwork() {
+                    if currentText != nil && currentText != "" {
+                        tableView.setEmptyView(title: "No search results for this query".localized, message: " ", alertImage: .noResults)
+                    }
+                }
             } else {
                 tableView.restore()
             }
             return self.filteredUsers.count
         } else {
             if FriendSystem.instance.followsList.count == 0 {
-                tableView.setEmptyView(title: "You don't have any friends yet.".localized, message: "Your friends will be in here.".localized)
+                if Reachability.isConnectedToNetwork() {
+                    tableView.setEmptyView(title: "No friends added yet".localized, message: "Find people by their name or in recommendations from your contacts list".localized, alertImage: .noFriends)
+                }
             } else {
                 tableView.restore()
             }

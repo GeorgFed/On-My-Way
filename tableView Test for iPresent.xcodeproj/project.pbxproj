@@ -53,6 +53,7 @@
 		5658FEAA22761CC0005463F7 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5658FEA922761CC0005463F7 /* ArrayExtension.swift */; };
 		565B04CB21E405C800409319 /* ReceiveImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565B04CA21E405C800409319 /* ReceiveImageExtension.swift */; };
 		565B04CD21E41F7500409319 /* CacheExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565B04CC21E41F7500409319 /* CacheExtension.swift */; };
+		5667B0E022E8BFF0001EB5B6 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5667B0DF22E8BFF0001EB5B6 /* Reachability.swift */; };
 		567C13D922E592C400ED86E6 /* GradientExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567C13D822E592C400ED86E6 /* GradientExtension.swift */; };
 		567C13DB22E5B2B200ED86E6 /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567C13DA22E5B2B200ED86E6 /* GradientButton.swift */; };
 		567C13DD22E5EEBF00ED86E6 /* GradientNavigationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567C13DC22E5EEBF00ED86E6 /* GradientNavigationVC.swift */; };
@@ -128,6 +129,7 @@
 		5658FEA922761CC0005463F7 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		565B04CA21E405C800409319 /* ReceiveImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveImageExtension.swift; sourceTree = "<group>"; };
 		565B04CC21E41F7500409319 /* CacheExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheExtension.swift; sourceTree = "<group>"; };
+		5667B0DF22E8BFF0001EB5B6 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		567C13D822E592C400ED86E6 /* GradientExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientExtension.swift; sourceTree = "<group>"; };
 		567C13DA22E5B2B200ED86E6 /* GradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
 		567C13DC22E5EEBF00ED86E6 /* GradientNavigationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientNavigationVC.swift; sourceTree = "<group>"; };
@@ -315,6 +317,7 @@
 			children = (
 				568E5820221ED609008337C7 /* Constants.swift */,
 				56D94C5E224D0A8A002BFD25 /* StatusEnum.swift */,
+				5667B0DF22E8BFF0001EB5B6 /* Reachability.swift */,
 				563F0A5D216D234E00A27CA5 /* Extension */,
 				568E581F221ED592008337C7 /* Cache */,
 			);
@@ -506,6 +509,7 @@
 			files = (
 				568E5823221ED6BE008337C7 /* UserDataExtension.swift in Sources */,
 				5619A4B22186248200718C50 /* ShadowView.swift in Sources */,
+				5667B0E022E8BFF0001EB5B6 /* Reachability.swift in Sources */,
 				5619A4BA218768AB00718C50 /* UIButtonBorderExt.swift in Sources */,
 				56095C9D22D6A42700CE3D7B /* FRecommendationsVC.swift in Sources */,
 				567C13DD22E5EEBF00ED86E6 /* GradientNavigationVC.swift in Sources */,

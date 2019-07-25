@@ -29,6 +29,13 @@ class PresentsVC: UIViewController, UIScrollViewDelegate {
         collectionView.delegate = self
         collectionView.dataSource = self
         
+        if !Reachability.isConnectedToNetwork() {
+            collectionView.setEmptyView(title: "No internet connection".localized, message: "", alertImage: .noInternet)
+            return
+        } else {
+            collectionView.restore()
+        }
+        
         if mainUserPhotoURLCache.object(forKey: userKey as NSString) == nil {
             guard uid != nil else { print(Auth.auth().currentUser ?? print("no uid error")); return }
             DataService.instance.getUserInfo(forUid: uid!) { (user) in
@@ -110,7 +117,9 @@ extension PresentsVC: UICollectionViewDelegate, UICollectionViewDataSource, UICo
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if presentArray.count == 0 {
-            collectionView.setEmptyView(title: "No presents yet".localized, message: "Add presents to share your wishes with friends".localized)
+            if Reachability.isConnectedToNetwork() {
+                collectionView.setEmptyView(title: "No presents yet".localized, message: "Add presents to share your wishes with friends".localized, alertImage: .noPresents)
+            }
         } else {
             collectionView.restore()
         }

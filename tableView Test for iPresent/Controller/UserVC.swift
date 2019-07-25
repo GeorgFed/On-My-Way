@@ -24,6 +24,7 @@ class UserVC: UITableViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        
         if FriendSystem.instance.followsList.contains(user!) {
             following = true
         } else {

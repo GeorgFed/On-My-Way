@@ -46,6 +46,16 @@
 			<key>orderHint</key>
 			<integer>4</integer>
 		</dict>
+		<key>HGPlaceholders.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
+		<key>HGPlaceholders.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>11</integer>
+		</dict>
 		<key>PhoneNumberKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>

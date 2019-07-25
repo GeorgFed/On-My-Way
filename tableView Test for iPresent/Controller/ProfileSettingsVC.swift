@@ -36,6 +36,14 @@ class ProfileSettingsVC: UIViewController {
         self.tableView.dataSource = self
         self.picker.delegate = self
         
+        if !Reachability.isConnectedToNetwork() {
+            fullNameTxt.text = " "
+            tableView.setEmptyView(title: "No internet connection".localized, message: "", alertImage: .noInternet)
+            return
+        } else {
+            tableView.restore()
+        }
+        
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(changeImage(tapGestureRecognizer:)))
         userImg.isUserInteractionEnabled = true
         userImg.addGestureRecognizer(tapGestureRecognizer)
