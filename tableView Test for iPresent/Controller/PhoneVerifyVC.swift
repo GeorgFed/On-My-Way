@@ -41,8 +41,9 @@ class PhoneVerifyVC: UIViewController {
             showNoCodeAlert()
             return
         }
-        
+        let vSpinner = showSpinner(onView: self.view)
         PhoneAuthService.instance.regiserUser(verificationCode: code) { (success, error) in
+            self.removeSpinner(vSpinner: vSpinner)
             if success {
                 NotificationCenter.default.addObserver(self,
                                                        selector: #selector(self.showPresentsVC),

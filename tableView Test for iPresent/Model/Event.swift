@@ -23,6 +23,7 @@ class Event: Hashable {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd MMM yyyy"
         guard let date = dateFormatter.date(from: _date) else {
+            print(_date)
             fatalError("ERROR: Date conversion failed due to mismatched format.")
         }
         return date

@@ -18,10 +18,13 @@ class PhoneSignInVC: UIViewController {
     
     let segueId = "ShowPhoneVerifyVC"
     
+    let phoneNumberKit = PhoneNumberKit()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         receiveCodeBtn.alpha = 0.75
         phoneNumber.becomeFirstResponder()
+        phoneNumber.isPartialFormatterEnabled = true
         hideKeyboard()
     }
     
@@ -39,7 +42,12 @@ class PhoneSignInVC: UIViewController {
                        completion: { Void in()  }
         )
         
+        
+        
         if phoneNumber.text != "" && phoneNumber.isValidNumber {
+            if phoneNumber.text!.first != "+" {
+                phoneNumber.text!.insert("+", at: phoneNumber.text!.startIndex)
+            }
             authenticate(phone_number: phoneNumber.text!)
         } else {
             showEnterPhoneNumberAlert()
@@ -48,8 +56,11 @@ class PhoneSignInVC: UIViewController {
     
     // MARK: Send Code
     func authenticate(phone_number: String) {
+        let vSpinner = showSpinner(onView: self.view)
         PhoneAuthProvider.provider().verifyPhoneNumber(phone_number, uiDelegate: nil) { (verify, error) in
+            self.removeSpinner(vSpinner: vSpinner)
             if let error = error {
+                // TODO: Add Unknown Error
                 print(error)
                 return
             } else {
@@ -79,6 +90,16 @@ extension PhoneSignInVC: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        guard textField.text != nil else { return }
+        if textField.text!.count > 1 && textField.text?.first != "+" {
+            textField.text?.insert("+", at: textField.text!.startIndex)
+        }
+        if textField.text!.last == " " {
+            textField.text! = String(textField.text!.dropLast())
+        }
     }
 }
 

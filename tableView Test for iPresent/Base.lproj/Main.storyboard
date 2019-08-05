@@ -1133,7 +1133,7 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
-                                        <textInputTraits key="textInputTraits" textContentType="given-name"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" textContentType="given-name"/>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UTB-PI-cGv">
                                         <rect key="frame" x="0.0" y="34" width="263" height="1"/>
@@ -1160,7 +1160,7 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
-                                        <textInputTraits key="textInputTraits" textContentType="family-name"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" textContentType="family-name"/>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wvs-3W-u3i">
                                         <rect key="frame" x="0.0" y="34" width="263" height="1"/>
@@ -1355,7 +1355,7 @@
         <image name="notification inactive slice" width="54" height="66"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="vTD-Cr-hON"/>
+        <segue reference="gLF-j7-ZKM"/>
         <segue reference="FXE-Sa-Osx"/>
         <segue reference="6Rx-TE-kXc"/>
     </inferredMetricsTieBreakers>

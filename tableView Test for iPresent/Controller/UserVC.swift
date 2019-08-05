@@ -99,6 +99,8 @@ class UserVC: UITableViewController {
                 self.tableView.reloadData()
                 following = true
             } else {
+                NotificationCenter.default.post(name: Notification.Name("updateUsers"),
+                                                object: nil)
                 FriendSystem.instance.unfollowUser(currentUserID, user!.uid)
                 self.tableView.reloadData()
                 following = false

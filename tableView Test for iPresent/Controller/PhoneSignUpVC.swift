@@ -43,8 +43,9 @@ class PhoneSignUpVC: UIViewController {
             showWrongDataAlert()
             return
         }
-        
+        let vSpinner = showSpinner(onView: self.view)
         DataService.instance.updateDBUser(withUid: (Auth.auth().currentUser?.uid)!, firstName: firstName, lastName: lastName, birthdate: birthdate, updateComplete: { (isUpdated) in
+            self.removeSpinner(vSpinner: vSpinner)
             if isUpdated {
                 NotificationCenter.default.post(name: Notification.Name(Notifications.firstEntry), object: nil)
                 self.performSegue(withIdentifier: self.segueId, sender: nil)

@@ -54,6 +54,7 @@
 		565B04CB21E405C800409319 /* ReceiveImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565B04CA21E405C800409319 /* ReceiveImageExtension.swift */; };
 		565B04CD21E41F7500409319 /* CacheExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565B04CC21E41F7500409319 /* CacheExtension.swift */; };
 		5667B0E022E8BFF0001EB5B6 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5667B0DF22E8BFF0001EB5B6 /* Reachability.swift */; };
+		5667B0EA22F74605001EB5B6 /* SpinnerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5667B0E922F74605001EB5B6 /* SpinnerExt.swift */; };
 		567C13D922E592C400ED86E6 /* GradientExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567C13D822E592C400ED86E6 /* GradientExtension.swift */; };
 		567C13DB22E5B2B200ED86E6 /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567C13DA22E5B2B200ED86E6 /* GradientButton.swift */; };
 		567C13DD22E5EEBF00ED86E6 /* GradientNavigationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567C13DC22E5EEBF00ED86E6 /* GradientNavigationVC.swift */; };
@@ -130,6 +131,7 @@
 		565B04CA21E405C800409319 /* ReceiveImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveImageExtension.swift; sourceTree = "<group>"; };
 		565B04CC21E41F7500409319 /* CacheExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheExtension.swift; sourceTree = "<group>"; };
 		5667B0DF22E8BFF0001EB5B6 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		5667B0E922F74605001EB5B6 /* SpinnerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerExt.swift; sourceTree = "<group>"; };
 		567C13D822E592C400ED86E6 /* GradientExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientExtension.swift; sourceTree = "<group>"; };
 		567C13DA22E5B2B200ED86E6 /* GradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
 		567C13DC22E5EEBF00ED86E6 /* GradientNavigationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientNavigationVC.swift; sourceTree = "<group>"; };
@@ -285,6 +287,7 @@
 				567C13D822E592C400ED86E6 /* GradientExtension.swift */,
 				567C13DA22E5B2B200ED86E6 /* GradientButton.swift */,
 				567C13DC22E5EEBF00ED86E6 /* GradientNavigationVC.swift */,
+				5667B0E922F74605001EB5B6 /* SpinnerExt.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -548,6 +551,7 @@
 				5617EA4D2265D1BA00FB7A57 /* UserVC.swift in Sources */,
 				560C439822430B2A009B836E /* AddEventVC.swift in Sources */,
 				5617EA5122678B1200FB7A57 /* UserPresentsCollection.swift in Sources */,
+				5667B0EA22F74605001EB5B6 /* SpinnerExt.swift in Sources */,
 				560C43AF224AF715009B836E /* FriendSystem.swift in Sources */,
 				56F41B1C218B6B4A0070B2CC /* PhoneSignInVC.swift in Sources */,
 				560C439F224407EA009B836E /* EventHeaderCell.swift in Sources */,

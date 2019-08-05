@@ -44,6 +44,13 @@ class ProfileSettingsVC: UIViewController {
             tableView.restore()
         }
         
+        if mainUserPhotoURLCache.object(forKey: userKey as NSString) == nil {
+            guard userid != nil else { print(Auth.auth().currentUser ?? print("no uid error")); return }
+            DataService.instance.getUserInfo(forUid: userid!) { (user) in
+                mainUserPhotoURLCache.setObject(user.profileImgURL as NSString, forKey: "mainUser" as NSString)
+            }
+        }
+        
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(changeImage(tapGestureRecognizer:)))
         userImg.isUserInteractionEnabled = true
         userImg.addGestureRecognizer(tapGestureRecognizer)

@@ -32,6 +32,7 @@ class EventsVC: UIViewController {
         tableView.dataSource = self
         
         if !Reachability.isConnectedToNetwork() {
+            refreshControl.endRefreshing()
             tableView.setEmptyView(title: "No internet connection".localized, message: "", alertImage: .noInternet)
         }
 //        let colors: [UIColor] = [#colorLiteral(red: 0.3647058824, green: 0.5921568627, blue: 0.7568627451, alpha: 1), #colorLiteral(red: 0.4509803922, green: 0.6549019608, blue: 0.8588235294, alpha: 1)]
@@ -43,13 +44,19 @@ class EventsVC: UIViewController {
         } else {
             tableView.addSubview(refreshControl)
         }
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(update),
+                                               name: Notification.Name("updateUsers"),
+                                               object: nil)
+        update()
+    }
+    
+    @objc func update() {
         guard let uid = uid else { return }
         FriendSystem.instance.addFollowsObserver(uid) {
             self.fetchData()
         }
     }
-    
-    
     
     @objc func fetchData() {
         for friend in FriendSystem.instance.followsList {

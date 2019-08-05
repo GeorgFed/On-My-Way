@@ -160,6 +160,8 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
             }
             */
         } else {
+            
+            // TODO: CHECK BUG AFTER USER Delete
             cell!.textLabel?.text = FriendSystem.instance.followsList[FriendSystem.instance.followsList.index(FriendSystem.instance.followsList.startIndex, offsetBy: indexPath.row)].name
             url = FriendSystem.instance.followsList[FriendSystem.instance.followsList.index(FriendSystem.instance.followsList.startIndex, offsetBy: indexPath.row)].profileImgURL
             

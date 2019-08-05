@@ -22,6 +22,8 @@ class PresentsVC: UIViewController, UIScrollViewDelegate {
     let userKey = "mainUser"
     let uid = Auth.auth().currentUser?.uid
     
+    let refreshControl = UIRefreshControl()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         addPresentBtn.setTitle("Add Present".localized, for: .normal)
@@ -42,7 +44,7 @@ class PresentsVC: UIViewController, UIScrollViewDelegate {
                 mainUserPhotoURLCache.setObject(user.profileImgURL as NSString, forKey: self.userKey as NSString)
             }
         }
-        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.prefersLargeTitles = false
         getPresents()
     }
     
@@ -66,6 +68,7 @@ class PresentsVC: UIViewController, UIScrollViewDelegate {
                 }
             }
         } else {
+            // TODO: ADD Unkonown error
             // MARK: PROBLEM CONDITION
             // getTestPresents()
         }
