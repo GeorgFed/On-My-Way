@@ -1014,6 +1014,7 @@
                     <connections>
                         <outlet property="phoneNumber" destination="p8M-RP-YEQ" id="Rpk-wC-PkZ"/>
                         <outlet property="receiveCodeBtn" destination="1J4-9N-5c7" id="9yi-A5-XNK"/>
+                        <outlet property="separator" destination="HgZ-tT-7Kc" id="0Ob-Uk-2mF"/>
                         <segue destination="fsH-Nn-8JQ" kind="show" identifier="ShowPhoneVerifyVC" id="kcO-e7-dnR"/>
                     </connections>
                 </viewController>
@@ -1106,6 +1107,7 @@
                     <connections>
                         <outlet property="codeTF" destination="yEv-rf-UsT" id="mad-la-cdM"/>
                         <outlet property="nextBtn" destination="dqv-Tv-rpj" id="dKP-R8-WSi"/>
+                        <outlet property="separator" destination="zjz-aw-LzU" id="0pl-QD-VKE"/>
                         <segue destination="7ML-tF-g4T" kind="show" identifier="newUserSegueId" id="hfP-kF-d8Y"/>
                         <segue destination="acX-7C-xIb" kind="show" identifier="EntrySegue" id="vTD-Cr-hON"/>
                     </connections>
@@ -1243,10 +1245,13 @@
                         <viewLayoutGuide key="safeArea" id="Hj8-sK-ZTB"/>
                     </view>
                     <connections>
+                        <outlet property="bdSep" destination="MD9-Qw-0l0" id="A9I-JP-0Dr"/>
                         <outlet property="birthdate" destination="zKr-XM-Flr" id="26X-Se-ulH"/>
                         <outlet property="doneBtn" destination="bfK-yx-47H" id="DOc-Pj-gf2"/>
                         <outlet property="firstName" destination="yJw-wN-4PL" id="Se1-nN-C7O"/>
+                        <outlet property="fnameSep" destination="UTB-PI-cGv" id="5Bq-bZ-g52"/>
                         <outlet property="lastName" destination="dvZ-Et-pQi" id="94h-RO-yjM"/>
+                        <outlet property="lnameSep" destination="wvs-3W-u3i" id="bvC-g8-GDa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zw2-8Z-g6b" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1355,7 +1360,7 @@
         <image name="notification inactive slice" width="54" height="66"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gLF-j7-ZKM"/>
+        <segue reference="vTD-Cr-hON"/>
         <segue reference="FXE-Sa-Osx"/>
         <segue reference="6Rx-TE-kXc"/>
     </inferredMetricsTieBreakers>

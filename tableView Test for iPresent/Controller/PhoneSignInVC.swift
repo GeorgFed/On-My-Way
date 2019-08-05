@@ -16,13 +16,14 @@ class PhoneSignInVC: UIViewController {
     @IBOutlet weak var phoneNumber: PhoneNumberTextField!
     @IBOutlet weak var receiveCodeBtn: GradientButton!
     
+    @IBOutlet weak var separator: UIView!
     let segueId = "ShowPhoneVerifyVC"
-    
     let phoneNumberKit = PhoneNumberKit()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         receiveCodeBtn.alpha = 0.75
+        separator.activateField(leftColor: #colorLiteral(red: 0.568627451, green: 0.6549019608, blue: 1, alpha: 1), rightColor: #colorLiteral(red: 0.4745098039, green: 0.7764705882, blue: 0.9882352941, alpha: 1))
         phoneNumber.becomeFirstResponder()
         phoneNumber.isPartialFormatterEnabled = true
         hideKeyboard()
@@ -41,8 +42,6 @@ class PhoneSignInVC: UIViewController {
         },
                        completion: { Void in()  }
         )
-        
-        
         
         if phoneNumber.text != "" && phoneNumber.isValidNumber {
             if phoneNumber.text!.first != "+" {

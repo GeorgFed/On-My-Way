@@ -15,6 +15,11 @@ class PhoneSignUpVC: UIViewController {
     @IBOutlet weak var birthdate: UITextField!
     @IBOutlet weak var doneBtn: UIButton!
     
+    @IBOutlet weak var fnameSep: UIView!
+    @IBOutlet weak var lnameSep: UIView!
+    @IBOutlet weak var bdSep: UIView!
+    
+    
     let datePicker = UIDatePicker()
     let segueId = "presentsVCSegueId"
     
@@ -23,6 +28,9 @@ class PhoneSignUpVC: UIViewController {
         firstName.delegate = self
         lastName.delegate = self
         birthdate.delegate = self
+        
+        fnameSep.activateField(leftColor: #colorLiteral(red: 1, green: 0.7019607843, blue: 0.4274509804, alpha: 1), rightColor: #colorLiteral(red: 0.9411764706, green: 0.7568627451, blue: 0.5019607843, alpha: 1))
+        
         doneBtn.alpha = 0.75
         doneBtn.layer.cornerRadius = 3
         firstName.placeholder = "First name".localized
@@ -99,10 +107,14 @@ extension PhoneSignUpVC: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == firstName {
             textField.resignFirstResponder()
+            fnameSep.deactivateField()
             lastName.becomeFirstResponder()
+            fnameSep.activateField(leftColor: #colorLiteral(red: 1, green: 0.7019607843, blue: 0.4274509804, alpha: 1), rightColor: #colorLiteral(red: 0.9411764706, green: 0.7568627451, blue: 0.5019607843, alpha: 1))
         } else if textField == lastName {
             textField.resignFirstResponder()
+            lnameSep.deactivateField()
             birthdate.becomeFirstResponder()
+            fnameSep.activateField(leftColor: #colorLiteral(red: 1, green: 0.7019607843, blue: 0.4274509804, alpha: 1), rightColor: #colorLiteral(red: 0.9411764706, green: 0.7568627451, blue: 0.5019607843, alpha: 1))
         } else {
             textField.resignFirstResponder()
         }
