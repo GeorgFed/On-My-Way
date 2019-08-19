@@ -36,6 +36,8 @@ class ProfileSettingsVC: UIViewController {
         self.tableView.dataSource = self
         self.picker.delegate = self
         
+        handleConnection()
+        
         if !Reachability.isConnectedToNetwork() {
             fullNameTxt.text = " "
             tableView.setEmptyView(title: "No internet connection".localized, message: "", alertImage: .noInternet)
@@ -192,6 +194,22 @@ class ProfileSettingsVC: UIViewController {
                                                name: NSNotification.Name(Notifications.eventAdded),
                                                object: nil)
     }
+    
+    func handleConnection() {
+        NotificationCenter.default.addObserver(self, selector: #selector(networkRestored), name: Notification.Name(ConnectionKeys.cellular), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(networkRestored), name: Notification.Name(ConnectionKeys.wifi), object: nil)
+    }
+    
+    @objc func networkRestored() {
+        print("Network restored")
+        getEvents()
+        DataService.instance.getUserInfo(forUid: userid!) { (user) in
+            self.fullNameTxt.text = user.name
+            self.profileImgURL = user.profileImgURL
+        }
+        tableView.reloadData()
+        tableView.restore()
+    }
 }
 
 // TODO: CHANGE TABLE VIEW
@@ -204,8 +222,8 @@ extension ProfileSettingsVC: UITableViewDelegate, UITableViewDataSource {
         let cell: EventCell = tableView.dequeueReusableCell(withIdentifier: "EventCell") as! EventCell
         cell.name.text = events[indexPath.row].title
         cell.details.text = events[indexPath.row].description
-        cell.day.text = String(events[indexPath.row].date.prefix(2))
-        cell.month.text = String(events[indexPath.row].date.dropFirst(3).prefix(3))
+        cell.day.text = events[indexPath.row].day
+        cell.month.text = events[indexPath.row].month
         return cell
     }
     

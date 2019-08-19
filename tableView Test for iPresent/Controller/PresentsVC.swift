@@ -31,12 +31,15 @@ class PresentsVC: UIViewController, UIScrollViewDelegate {
         collectionView.delegate = self
         collectionView.dataSource = self
         
+        handleConnection()
+        
         if !Reachability.isConnectedToNetwork() {
             collectionView.setEmptyView(title: "No internet connection".localized, message: "", alertImage: .noInternet)
             return
         } else {
             collectionView.restore()
         }
+        
         
         if mainUserPhotoURLCache.object(forKey: userKey as NSString) == nil {
             guard uid != nil else { print(Auth.auth().currentUser ?? print("no uid error")); return }
@@ -54,6 +57,17 @@ class PresentsVC: UIViewController, UIScrollViewDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+    }
+    
+    func handleConnection() {
+        NotificationCenter.default.addObserver(self, selector: #selector(networkRestored), name: Notification.Name(ConnectionKeys.cellular), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(networkRestored), name: Notification.Name(ConnectionKeys.wifi), object: nil)
+    }
+    
+    @objc func networkRestored() {
+        print("Network restored")
+        getPresents()
+        collectionView.restore()
     }
     
     @objc func getPresents() {

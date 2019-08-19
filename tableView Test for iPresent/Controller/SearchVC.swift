@@ -37,14 +37,15 @@ class SearchVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        handleConnection()
+        
         if !Reachability.isConnectedToNetwork() {
             tableView.setEmptyView(title: "No internet connection".localized, message: "", alertImage: .noInternet)
             return
         } else {
             tableView.restore()
         }
-//        let colors: [UIColor] = [#colorLiteral(red: 0.3647058824, green: 0.5921568627, blue: 0.7568627451, alpha: 1), #colorLiteral(red: 0.4509803922, green: 0.6549019608, blue: 0.8588235294, alpha: 1)]
-//        navigationController?.navigationBar.setGradientBackground(colors: colors)
+        
         guard let uid = uid else { return }
         getFollows()
         FriendSystem.instance.addFollowsObserver(uid) {
@@ -95,8 +96,18 @@ class SearchVC: UIViewController {
         FriendSystem.instance.addFollowsObserver(uid) {
             self.tableView.reloadData()
         }
-        searchController.searchBar.becomeFirstResponder()
-        searchController.searchBar.resignFirstResponder()
+    }
+    
+    func handleConnection() {
+        NotificationCenter.default.addObserver(self, selector: #selector(networkRestored), name: Notification.Name(ConnectionKeys.cellular), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(networkRestored), name: Notification.Name(ConnectionKeys.wifi), object: nil)
+    }
+    
+    @objc func networkRestored() {
+        print("Network restored")
+        getFollows()
+        tableView.reloadData()
+        tableView.restore()
     }
 }
 

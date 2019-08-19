@@ -19,13 +19,59 @@ class Event: Hashable {
         hasher.combine(_uuid)
     }
     
+    var day: String {
+        let dayFormatter = DateFormatter()
+        dayFormatter.locale = Locale.autoupdatingCurrent
+        dayFormatter.dateFormat = "dd"
+        let day = dayFormatter.string(from: convertedDate)
+        return day
+    }
+    
+    var month: String {
+        let monthFormatter = DateFormatter()
+        monthFormatter.locale = Locale.autoupdatingCurrent
+        monthFormatter.dateFormat = "MMM"
+        let month = monthFormatter.string(from: convertedDate)
+        return month
+    }
+    
     var convertedDate: Date {
+        /*
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd MMM yyyy"
+        dateFormatter.locale = Locale(identifier: "en_US")
+        dateFormatter.dateFormat = "dd-MM-yyyy"
         guard let date = dateFormatter.date(from: _date) else {
             print(_date)
             fatalError("ERROR: Date conversion failed due to mismatched format.")
         }
+        */
+        let inputFormatter = DateFormatter()
+        inputFormatter.locale = Locale(identifier: "en_US")
+        inputFormatter.dateFormat = "dd-MM-yyyy"
+        guard let inputDate = inputFormatter.date(from: _date) else {
+            print(_date)
+            fatalError("ERROR: Date conversion failed due to mismatched format.")
+        }
+        
+        let outputFormatter = DateFormatter()
+        outputFormatter.locale = Locale.autoupdatingCurrent
+        outputFormatter.dateFormat = "dd MMM yyyy"
+        let outputDate = outputFormatter.string(from: inputDate)
+        guard let date = outputFormatter.date(from: outputDate) else {
+            print(outputDate)
+            fatalError("ERROR: Date conversion failed due to mismatched format.")
+        }
+        
+//        dateFormatter.locale = Locale.autoupdatingCurrent
+//        dateFormatter.dateFormat = "dd MMM yyyy"
+        print(date)
+       /*
+        
+        guard let date = dateFormatter.date(from: _date) else {
+            print(_date)
+            fatalError("ERROR: Date conversion failed due to mismatched format.")
+        }
+         */
         return date
     }
     

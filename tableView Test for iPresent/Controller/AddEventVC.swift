@@ -27,6 +27,7 @@ class AddEventVC: UIViewController {
     var img: UIImage!
     var imgName = "BackImg2"
     
+    var date: String?
     let datePicker = UIDatePicker()
     let user = Auth.auth().currentUser
     
@@ -80,7 +81,17 @@ class AddEventVC: UIViewController {
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .none
         dateFormatter.dateFormat = "dd MMM yyyy"
+        dateFormatter.locale = Locale.autoupdatingCurrent
+        
+        let uniFormatter = DateFormatter()
+        uniFormatter.dateStyle = .medium
+        uniFormatter.timeStyle = .none
+        uniFormatter.dateFormat = "dd-MM-yyyy"
+        uniFormatter.locale = Locale(identifier: "en_US")
+        
+        date = uniFormatter.string(from: datePicker.date)
         dateTF.text = dateFormatter.string(from: datePicker.date)
+        
         dateTF.resignFirstResponder()
         self.view.endEditing(true)
     }
@@ -88,7 +99,7 @@ class AddEventVC: UIViewController {
     func addEvent() -> Bool {
         var outcome = false
         guard let eventName = eventNameTF.text,
-            let date = dateTF.text,
+            let date = date,
             !eventName.isEmpty, !date.isEmpty
         else {
             showWrongDataAlert()

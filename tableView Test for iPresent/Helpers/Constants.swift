@@ -65,3 +65,10 @@ struct Notifications {
 struct UserDefaultsKeys {
     static let authentificationId = "authVerificationID"
 }
+
+struct ConnectionKeys {
+    static let wifi = "wifi"
+    static let cellular = "cellular"
+    static let unavailable = "unavailable"
+    static let none = "none"
+}

@@ -23,6 +23,8 @@ class PhoneSignUpVC: UIViewController {
     let datePicker = UIDatePicker()
     let segueId = "presentsVCSegueId"
     
+    var date: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         firstName.delegate = self
@@ -44,7 +46,7 @@ class PhoneSignUpVC: UIViewController {
     @IBAction func donePressed(_ sender: Any) {
         guard let firstName = firstName.text,
             let lastName = lastName.text,
-            let birthdate = birthdate.text,
+            let birthdate = date,
             firstName.isAlphanumeric, lastName.isAlphanumeric,
             !firstName.isEmpty, !lastName.isEmpty, !birthdate.isEmpty
         else {
@@ -77,11 +79,29 @@ class PhoneSignUpVC: UIViewController {
     }
     
     @objc func pickerDonePressed(){
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .none
+        dateFormatter.dateFormat = "dd MMM yyyy"
+        dateFormatter.locale = Locale.autoupdatingCurrent
+        
+        let uniFormatter = DateFormatter()
+        uniFormatter.dateStyle = .medium
+        uniFormatter.timeStyle = .none
+        uniFormatter.dateFormat = "dd-MM-yyyy"
+        uniFormatter.locale = Locale(identifier: "en_US")
+        
+        date = uniFormatter.string(from: datePicker.date)
+        birthdate.text = dateFormatter.string(from: datePicker.date)
+        
+        /*
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .none
         dateFormatter.dateFormat = "dd MMM yyyy"
         birthdate.text = dateFormatter.string(from: datePicker.date)
+        */
         birthdate.resignFirstResponder()
         self.view.endEditing(true)
     }

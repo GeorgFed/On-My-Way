@@ -16,7 +16,7 @@ import UserNotifications
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
     override init() {
         super.init()
         FirebaseApp.configure()
@@ -30,10 +30,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window?.makeKeyAndVisible()
             window?.rootViewController?.present(PhoneSignInVC, animated: true, completion: nil)
         }
+        
+        ConnectionManager.sharedInstance.observeReachability()
         return true
     }
-    
-    
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         // Pass device token to auth

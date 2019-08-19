@@ -10,7 +10,8 @@ import UIKit
 
 class EventHeaderCell: UITableViewCell {
 
-    @IBOutlet weak var date: UILabel!
+    @IBOutlet weak var day: UILabel!
+    @IBOutlet weak var month: UILabel!
     @IBOutlet weak var friendName: UILabel!
     @IBOutlet weak var eventImg: UIImageView!
     
@@ -18,9 +19,6 @@ class EventHeaderCell: UITableViewCell {
         super.awakeFromNib()
         eventImg.layer.cornerRadius = eventImg.frame.height / 2
         eventImg.clipsToBounds = true
-//        profileImg.layer.cornerRadius = profileImg.frame.height / 2
-//        profileImg.clipsToBounds = true
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -29,8 +27,9 @@ class EventHeaderCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    public func configureCell(date: String, fname: String, imgURL: String) {
-        self.date.text = date
+    public func configureCell(day: String, month: String, fname: String, imgURL: String) {
+        self.day.text = day
+        self.month.text = month
         self.friendName.text = fname
         self.eventImg.loadImgWithURLString(urlString: imgURL)
     }

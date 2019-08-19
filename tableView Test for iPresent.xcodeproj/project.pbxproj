@@ -73,6 +73,7 @@
 		568FE803217CDF14004E893B /* PresentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568FE802217CDF14004E893B /* PresentCell.swift */; };
 		5695D6C021A61289002608DB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5695D6BF21A61288002608DB /* GoogleService-Info.plist */; };
 		56D94C5F224D0A8A002BFD25 /* StatusEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D94C5E224D0A8A002BFD25 /* StatusEnum.swift */; };
+		56EBAFB8230AEF41006B34B2 /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EBAFB7230AEF41006B34B2 /* ConnectionManager.swift */; };
 		56F41B1C218B6B4A0070B2CC /* PhoneSignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F41B1B218B6B4A0070B2CC /* PhoneSignInVC.swift */; };
 		56F41B1E218B6BC50070B2CC /* PhoneVerifyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F41B1D218B6BC50070B2CC /* PhoneVerifyVC.swift */; };
 		56F41B20218B6C130070B2CC /* PhoneSignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F41B1F218B6C130070B2CC /* PhoneSignUpVC.swift */; };
@@ -152,6 +153,7 @@
 		5695D6BF21A61288002608DB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		56D94C5E224D0A8A002BFD25 /* StatusEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusEnum.swift; sourceTree = "<group>"; };
 		56DD8D8521AAF06600CF3570 /* tableView Test for iPresent.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "tableView Test for iPresent.entitlements"; sourceTree = "<group>"; };
+		56EBAFB7230AEF41006B34B2 /* ConnectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionManager.swift; sourceTree = "<group>"; };
 		56F41B1B218B6B4A0070B2CC /* PhoneSignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneSignInVC.swift; sourceTree = "<group>"; };
 		56F41B1D218B6BC50070B2CC /* PhoneVerifyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneVerifyVC.swift; sourceTree = "<group>"; };
 		56F41B1F218B6C130070B2CC /* PhoneSignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneSignUpVC.swift; sourceTree = "<group>"; };
@@ -324,6 +326,7 @@
 				568E5820221ED609008337C7 /* Constants.swift */,
 				56D94C5E224D0A8A002BFD25 /* StatusEnum.swift */,
 				5667B0DF22E8BFF0001EB5B6 /* Reachability.swift */,
+				56EBAFB7230AEF41006B34B2 /* ConnectionManager.swift */,
 				563F0A5D216D234E00A27CA5 /* Extension */,
 				568E581F221ED592008337C7 /* Cache */,
 			);
@@ -538,6 +541,7 @@
 				5628DEEE21A6176400DEC488 /* TestDataService.swift in Sources */,
 				56F41B20218B6C130070B2CC /* PhoneSignUpVC.swift in Sources */,
 				568E5825221EDB05008337C7 /* PresentDataExtension.swift in Sources */,
+				56EBAFB8230AEF41006B34B2 /* ConnectionManager.swift in Sources */,
 				560C43AD22470DC5009B836E /* ContactsService.swift in Sources */,
 				568FE7FD217CD57A004E893B /* PresentsVC.swift in Sources */,
 				5617EA5322678B4E00FB7A57 /* UserActionButtonCell.swift in Sources */,

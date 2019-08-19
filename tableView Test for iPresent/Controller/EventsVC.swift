@@ -31,12 +31,12 @@ class EventsVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        handleConnection()
+        
         if !Reachability.isConnectedToNetwork() {
             refreshControl.endRefreshing()
             tableView.setEmptyView(title: "No internet connection".localized, message: "", alertImage: .noInternet)
         }
-//        let colors: [UIColor] = [#colorLiteral(red: 0.3647058824, green: 0.5921568627, blue: 0.7568627451, alpha: 1), #colorLiteral(red: 0.4509803922, green: 0.6549019608, blue: 0.8588235294, alpha: 1)]
-//        navigationController?.navigationBar.setGradientBackground(colors: colors)
         
         refreshControl.addTarget(self, action: #selector(fetchData), for: .valueChanged)
         if #available(iOS 10.0, *) {
@@ -78,6 +78,17 @@ class EventsVC: UIViewController {
         refreshControl.endRefreshing()
         self.tableView.reloadData()
     }
+    
+    func handleConnection() {
+        NotificationCenter.default.addObserver(self, selector: #selector(networkRestored), name: Notification.Name(ConnectionKeys.cellular), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(networkRestored), name: Notification.Name(ConnectionKeys.wifi), object: nil)
+    }
+    
+    @objc func networkRestored() {
+        print("Network restored")
+        update()
+        tableView.restore()
+    }
 }
 
 extension EventsVC: UITableViewDelegate, UITableViewDataSource {
@@ -100,7 +111,8 @@ extension EventsVC: UITableViewDelegate, UITableViewDataSource {
         switch indexPath.row {
         case 0:
             let cell: EventHeaderCell! = tableView.dequeueReusableCell(withIdentifier: "EventHeaderCell") as? EventHeaderCell
-            cell.configureCell(date: events[indexPath.section].date, fname: friendForEvent[events[indexPath.section]]!.name, imgURL: friendForEvent[events[indexPath.section]]!.profileImgURL)
+            cell.configureCell(day: events[indexPath.section].day, month: events[indexPath.section].month, fname: friendForEvent[events[indexPath.section]]!.name, imgURL: friendForEvent[events[indexPath.section]]!.profileImgURL)
+            //cell.configureCell(date: events[indexPath.section].date, fname: friendForEvent[events[indexPath.section]]!.name, imgURL: friendForEvent[events[indexPath.section]]!.profileImgURL)
             cell.selectionStyle = .none
             return cell
         case 1:
