@@ -55,7 +55,7 @@ class PhoneSignInVC: UIViewController {
     
     // MARK: Send Code
     func authenticate(phone_number: String) {
-        let vSpinner = showSpinner(onView: self.view)
+        let vSpinner = showSpinner(onView: self.view, red: 0.5, green: 0.5, blue: 0.5, alpha: 0.3)
         PhoneAuthProvider.provider().verifyPhoneNumber(phone_number, uiDelegate: nil) { (verify, error) in
             self.removeSpinner(vSpinner: vSpinner)
             if let error = error {

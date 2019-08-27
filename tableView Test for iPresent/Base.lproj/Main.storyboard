@@ -635,17 +635,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="IU4-6F-Q4C">
-                                <rect key="frame" x="0.0" y="88" width="375" height="581"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="H2W-hG-HMm">
                                     <size key="itemSize" width="178" height="178"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="4" minY="4" maxX="4" maxY="4"/>
+                                    <inset key="sectionInset" minX="4" minY="8" maxX="4" maxY="8"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PresentCell" id="chb-ew-b9N" customClass="PresentCell" customModule="tableView_Test_for_iPresent" customModuleProvider="target">
-                                        <rect key="frame" x="4" y="4" width="175" height="265"/>
+                                        <rect key="frame" x="4" y="8" width="175" height="265"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="175" height="265"/>
@@ -716,52 +716,18 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" alpha="0.75" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8W9-ml-Zab" customClass="GradientButton" customModule="tableView_Test_for_iPresent" customModuleProvider="target">
-                                <rect key="frame" x="8" y="677" width="359" height="44"/>
-                                <color key="backgroundColor" red="0.51372549020000002" green="0.64705882349999999" blue="0.77647058820000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="XEW-N5-407"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
-                                <state key="normal" title="Add Present">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="3"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="0.0"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="topGradientColor">
-                                        <color key="value" red="0.36470588235294116" green="0.59215686274509804" blue="0.75686274509803919" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="bottomGradientColor">
-                                        <color key="value" red="0.36470588235294116" green="0.59215686274509804" blue="0.75686274509803919" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="acceptBtnPressed:" destination="Dgf-2W-IPP" eventType="touchUpInside" id="c6H-4C-fBR"/>
-                                    <action selector="addBtnPressed:" destination="S6u-o1-drc" eventType="touchUpInside" id="TzQ-As-Dp0"/>
-                                    <action selector="sendRequestBtnPressed:" destination="Dgf-2W-IPP" eventType="touchUpInside" id="ZOy-y2-z5Q"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="8W9-ml-Zab" firstAttribute="leading" secondItem="k1b-iL-bAv" secondAttribute="leading" constant="8" id="C56-k2-9GH"/>
                             <constraint firstItem="IU4-6F-Q4C" firstAttribute="leading" secondItem="k1b-iL-bAv" secondAttribute="leading" id="M4v-MY-bRy"/>
-                            <constraint firstItem="8W9-ml-Zab" firstAttribute="top" secondItem="IU4-6F-Q4C" secondAttribute="bottom" constant="8" id="R2c-Qh-que"/>
-                            <constraint firstItem="k1b-iL-bAv" firstAttribute="bottom" secondItem="8W9-ml-Zab" secondAttribute="bottom" constant="8" id="aDU-ue-RxN"/>
+                            <constraint firstItem="IU4-6F-Q4C" firstAttribute="bottom" secondItem="k1b-iL-bAv" secondAttribute="bottom" id="WVc-0Q-heB"/>
                             <constraint firstItem="k1b-iL-bAv" firstAttribute="trailing" secondItem="IU4-6F-Q4C" secondAttribute="trailing" id="hAM-Kk-fK0"/>
                             <constraint firstItem="IU4-6F-Q4C" firstAttribute="top" secondItem="k1b-iL-bAv" secondAttribute="top" id="ox6-vI-LPd"/>
-                            <constraint firstItem="k1b-iL-bAv" firstAttribute="trailing" secondItem="8W9-ml-Zab" secondAttribute="trailing" constant="8" id="u7x-rW-lVB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="k1b-iL-bAv"/>
                     </view>
                     <navigationItem key="navigationItem" title="Presents" largeTitleDisplayMode="always" id="891-sH-rNK" customClass="Prese"/>
                     <connections>
-                        <outlet property="addPresentBtn" destination="8W9-ml-Zab" id="EnZ-Np-DPw"/>
                         <outlet property="collectionView" destination="IU4-6F-Q4C" id="8Ny-Vb-s3H"/>
                     </connections>
                 </viewController>

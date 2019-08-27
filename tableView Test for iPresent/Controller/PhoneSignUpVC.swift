@@ -53,7 +53,7 @@ class PhoneSignUpVC: UIViewController {
             showWrongDataAlert()
             return
         }
-        let vSpinner = showSpinner(onView: self.view)
+        let vSpinner = showSpinner(onView: self.view, red: 0.5, green: 0.5, blue: 0.5, alpha: 0.3)
         DataService.instance.updateDBUser(withUid: (Auth.auth().currentUser?.uid)!, firstName: firstName, lastName: lastName, birthdate: birthdate, updateComplete: { (isUpdated) in
             self.removeSpinner(vSpinner: vSpinner)
             if isUpdated {

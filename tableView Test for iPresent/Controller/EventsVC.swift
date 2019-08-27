@@ -19,6 +19,7 @@ class EventsVC: UIViewController {
     var events = [Event]()
     var friendForEvent = [Event : User]()
     var chosen_user: User?
+    var loaded: Bool?
     
     let refreshControl = UIRefreshControl()
     
@@ -48,6 +49,9 @@ class EventsVC: UIViewController {
                                                selector: #selector(update),
                                                name: Notification.Name("updateUsers"),
                                                object: nil)
+        // setLoadingScreen()
+        LoadingService.instance.setLoadingScreen(tableView: tableView, navHeight: (navigationController?.navigationBar.frame.height)!)
+        loaded = false
         update()
     }
     
@@ -75,7 +79,24 @@ class EventsVC: UIViewController {
                 self.tableView.reloadData()
             }
         }
+        // removeLoadingScreen()
+        let group = DispatchGroup()
+        group.enter()
+        
+        DispatchQueue.main.async {
+            LoadingService.instance.removeLoadingScreen()
+        }
+        
         refreshControl.endRefreshing()
+        
+        group.notify(queue: .main) {
+            if self.events.count == 0 {
+                self.tableView.setEmptyView(title: "No events yet".localized, message: "Here you will see the upcoming events of your friends".localized, alertImage: .noEvents)
+            } else {
+                self.tableView.restore()
+            }
+        }
+        
         self.tableView.reloadData()
     }
     
@@ -93,13 +114,6 @@ class EventsVC: UIViewController {
 
 extension EventsVC: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        if events.count == 0 {
-            if Reachability.isConnectedToNetwork() {
-                tableView.setEmptyView(title: "No events yet".localized, message: "Here you will see the upcoming events of your friends".localized, alertImage: .noEvents)
-            }
-        } else {
-            tableView.restore()
-        }
         return events.count
     }
     

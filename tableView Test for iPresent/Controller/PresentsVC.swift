@@ -13,20 +13,29 @@ import ContactsUI
 import PhoneNumberKit
 
 class PresentsVC: UIViewController, UIScrollViewDelegate {
-    
     //MARK: Outlets
     @IBOutlet weak var collectionView: UICollectionView!
     var presentArray = [Present]()
-
-    @IBOutlet weak var addPresentBtn: UIButton!
+    // @IBOutlet weak var addPresentBtn: UIButton!
     let userKey = "mainUser"
     let uid = Auth.auth().currentUser?.uid
-    
     let refreshControl = UIRefreshControl()
+    let fabImageName = "fab"
+    var floatingButton: UIButton?
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        floatingButton = UIButton(type: .custom)
+        let leadingValue = (tabBarController?.tabBar.frame.size.height)!
+        FloatingButton.instance.createFloatingButton(floatingButton: floatingButton, floatingButtonImageName: fabImageName, leadingValue: leadingValue + 16.0)
+        floatingButton?.addTarget(self, action: #selector(addFabPressed), for: .touchUpInside)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addPresentBtn.setTitle("Add Present".localized, for: .normal)
+//        addPresentBtn.setTitle("Add Present".localized, for: .normal)
+//        addPresentBtn.isHidden = true
+//        addPresentBtn.isEnabled = false
         
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -48,11 +57,21 @@ class PresentsVC: UIViewController, UIScrollViewDelegate {
             }
         }
         navigationController?.navigationBar.prefersLargeTitles = false
+        LoadingService.instance.setLoadingScreen(collectionView: collectionView, navHeight: (navigationController?.navigationBar.frame.height)!)
         getPresents()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        hideButton()
         super.viewWillDisappear(animated)
+    }
+    
+    func hideButton() {
+        guard floatingButton?.superview != nil else {  return }
+        DispatchQueue.main.async {
+            self.floatingButton?.removeFromSuperview()
+            self.floatingButton = nil
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -66,6 +85,7 @@ class PresentsVC: UIViewController, UIScrollViewDelegate {
     
     @objc func networkRestored() {
         print("Network restored")
+        LoadingService.instance.setLoadingScreen(collectionView: collectionView, navHeight: (navigationController?.navigationBar.frame.height)!)
         getPresents()
         collectionView.restore()
     }
@@ -82,16 +102,42 @@ class PresentsVC: UIViewController, UIScrollViewDelegate {
                 }
             }
         } else {
-            // TODO: ADD Unkonown error
             // MARK: PROBLEM CONDITION
-            // getTestPresents()
+            collectionView.setEmptyView(title: "An unknown error has occured".localized, message: "", alertImage: .unknown)
         }
+        // removeLoadingScreen()
+        let group = DispatchGroup()
+        group.enter()
+        
+        DispatchQueue.main.async {
+            LoadingService.instance.removeLoadingScreen()
+        }
+        
+        group.notify(queue: .main) {
+            if self.presentArray.count == 0 {
+                if Reachability.isConnectedToNetwork() {
+                    self.collectionView.setEmptyView(title: "No presents yet".localized, message: "Add presents to share your wishes with friends".localized, alertImage: .noPresents)
+                }
+            } else {
+                self.collectionView.restore()
+            }
+        }
+    }
+    
+    @objc func addFabPressed() {
+        let _addPresentsVC = AddPresentsVC()
+        _addPresentsVC.modalPresentationStyle = .fullScreen
+        present(_addPresentsVC, animated: true, completion: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(getPresents),
+                                               name: NSNotification.Name(Notifications.presentAdded),
+                                               object: nil)
     }
     
     // MARK: Toolbar Button Action
     @IBAction func addBtnPressed(_ sender: Any) {
         let _addPresentsVC = AddPresentsVC()
-        _addPresentsVC.modalPresentationStyle = .custom
+        _addPresentsVC.modalPresentationStyle = .fullScreen
         present(_addPresentsVC, animated: true, completion: nil)
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(getPresents),
@@ -133,14 +179,6 @@ extension PresentsVC: UICollectionViewDelegate, UICollectionViewDataSource, UICo
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if presentArray.count == 0 {
-            if Reachability.isConnectedToNetwork() {
-                collectionView.setEmptyView(title: "No presents yet".localized, message: "Add presents to share your wishes with friends".localized, alertImage: .noPresents)
-            }
-        } else {
-            collectionView.restore()
-        }
-        
         return presentArray.count
     }
     
@@ -161,7 +199,7 @@ extension PresentsVC: UICollectionViewDelegate, UICollectionViewDataSource, UICo
         let current_present = presentArray[indexPath.row]
         let _presentInfoVC = PresentInfoVC(nibName: "PresentInfoVC", bundle: nil)
         _presentInfoVC.selected_item = current_present
-        _presentInfoVC.modalPresentationStyle = .custom
+        _presentInfoVC.modalPresentationStyle = .fullScreen
         present(_presentInfoVC, animated: true, completion: nil)
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(getPresents),

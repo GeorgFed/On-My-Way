@@ -48,6 +48,8 @@
 		563F0A5C216D231F00A27CA5 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563F0A5B216D231F00A27CA5 /* UserCell.swift */; };
 		563F0A61216D238800A27CA5 /* TapToHideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563F0A60216D238800A27CA5 /* TapToHideKeyboard.swift */; };
 		5644883F223E796400948694 /* EventsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5644883E223E796300948694 /* EventsVC.swift */; };
+		564D49E7231482730064D88B /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564D49E6231482730064D88B /* FloatingButton.swift */; };
+		564D49E92314B1740064D88B /* ImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564D49E82314B1740064D88B /* ImageViewExtension.swift */; };
 		5658FE9C2272634E005463F7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5658FE9E2272634E005463F7 /* Localizable.strings */; };
 		5658FEA8227271C6005463F7 /* AddPresentsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5658FEA7227271C6005463F7 /* AddPresentsVC.xib */; };
 		5658FEAA22761CC0005463F7 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5658FEA922761CC0005463F7 /* ArrayExtension.swift */; };
@@ -74,6 +76,7 @@
 		5695D6C021A61289002608DB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5695D6BF21A61288002608DB /* GoogleService-Info.plist */; };
 		56D94C5F224D0A8A002BFD25 /* StatusEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D94C5E224D0A8A002BFD25 /* StatusEnum.swift */; };
 		56EBAFB8230AEF41006B34B2 /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EBAFB7230AEF41006B34B2 /* ConnectionManager.swift */; };
+		56EBAFBA230CD03A006B34B2 /* LoadingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EBAFB9230CD03A006B34B2 /* LoadingService.swift */; };
 		56F41B1C218B6B4A0070B2CC /* PhoneSignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F41B1B218B6B4A0070B2CC /* PhoneSignInVC.swift */; };
 		56F41B1E218B6BC50070B2CC /* PhoneVerifyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F41B1D218B6BC50070B2CC /* PhoneVerifyVC.swift */; };
 		56F41B20218B6C130070B2CC /* PhoneSignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F41B1F218B6C130070B2CC /* PhoneSignUpVC.swift */; };
@@ -124,6 +127,8 @@
 		563F0A5B216D231F00A27CA5 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		563F0A60216D238800A27CA5 /* TapToHideKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TapToHideKeyboard.swift; sourceTree = "<group>"; };
 		5644883E223E796300948694 /* EventsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsVC.swift; sourceTree = "<group>"; };
+		564D49E6231482730064D88B /* FloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
+		564D49E82314B1740064D88B /* ImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewExtension.swift; sourceTree = "<group>"; };
 		5658FE992272625F005463F7 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		5658FE9D2272634E005463F7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5658FE9F22726356005463F7 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -154,6 +159,7 @@
 		56D94C5E224D0A8A002BFD25 /* StatusEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusEnum.swift; sourceTree = "<group>"; };
 		56DD8D8521AAF06600CF3570 /* tableView Test for iPresent.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "tableView Test for iPresent.entitlements"; sourceTree = "<group>"; };
 		56EBAFB7230AEF41006B34B2 /* ConnectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionManager.swift; sourceTree = "<group>"; };
+		56EBAFB9230CD03A006B34B2 /* LoadingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingService.swift; sourceTree = "<group>"; };
 		56F41B1B218B6B4A0070B2CC /* PhoneSignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneSignInVC.swift; sourceTree = "<group>"; };
 		56F41B1D218B6BC50070B2CC /* PhoneVerifyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneVerifyVC.swift; sourceTree = "<group>"; };
 		56F41B1F218B6C130070B2CC /* PhoneSignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneSignUpVC.swift; sourceTree = "<group>"; };
@@ -293,6 +299,7 @@
 				567C13DC22E5EEBF00ED86E6 /* GradientNavigationVC.swift */,
 				5667B0E922F74605001EB5B6 /* SpinnerExt.swift */,
 				5667B0EB22F8A848001EB5B6 /* ColorTransition.swift */,
+				564D49E82314B1740064D88B /* ImageViewExtension.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -327,8 +334,10 @@
 				56D94C5E224D0A8A002BFD25 /* StatusEnum.swift */,
 				5667B0DF22E8BFF0001EB5B6 /* Reachability.swift */,
 				56EBAFB7230AEF41006B34B2 /* ConnectionManager.swift */,
+				56EBAFB9230CD03A006B34B2 /* LoadingService.swift */,
 				563F0A5D216D234E00A27CA5 /* Extension */,
 				568E581F221ED592008337C7 /* Cache */,
+				564D49E6231482730064D88B /* FloatingButton.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -538,6 +547,7 @@
 				560C43A1224407FD009B836E /* EventTitleCell.swift in Sources */,
 				563F0A5A216D22F700A27CA5 /* User.swift in Sources */,
 				565B04CB21E405C800409319 /* ReceiveImageExtension.swift in Sources */,
+				564D49E92314B1740064D88B /* ImageViewExtension.swift in Sources */,
 				5628DEEE21A6176400DEC488 /* TestDataService.swift in Sources */,
 				56F41B20218B6C130070B2CC /* PhoneSignUpVC.swift in Sources */,
 				568E5825221EDB05008337C7 /* PresentDataExtension.swift in Sources */,
@@ -547,7 +557,9 @@
 				5617EA5322678B4E00FB7A57 /* UserActionButtonCell.swift in Sources */,
 				567C13D922E592C400ED86E6 /* GradientExtension.swift in Sources */,
 				56F41B24218B6C750070B2CC /* ProfileSettingsVC.swift in Sources */,
+				56EBAFBA230CD03A006B34B2 /* LoadingService.swift in Sources */,
 				560C43952242F975009B836E /* UITableViewExt.swift in Sources */,
+				564D49E7231482730064D88B /* FloatingButton.swift in Sources */,
 				563F0A3C216D20B500A27CA5 /* AppDelegate.swift in Sources */,
 				565B04CD21E41F7500409319 /* CacheExtension.swift in Sources */,
 				56F41B1E218B6BC50070B2CC /* PhoneVerifyVC.swift in Sources */,

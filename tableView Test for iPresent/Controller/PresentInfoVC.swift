@@ -11,6 +11,7 @@ import Firebase
 
 class PresentInfoVC: UIViewController {
     
+    @IBOutlet weak var presentPrice: UILabel!
     @IBOutlet weak var presentImg: UIImageView!
     @IBOutlet weak var presentName: UILabel!
     @IBOutlet weak var presentDescription: UILabel!
@@ -25,6 +26,7 @@ class PresentInfoVC: UIViewController {
         if selected_item != nil {
             presentName.text = selected_item!.name
             presentDescription.text = selected_item!.details
+            presentPrice.text = selected_item!.price
             if let url = selected_item?.imageName {
                 presentImg.loadImgWithURLString(urlString: url)
             }
@@ -32,6 +34,9 @@ class PresentInfoVC: UIViewController {
             print("error")
             return
         }
+        cancelBtn.alpha = 0.75
+        self.view.bringSubviewToFront(deletePresentBtn)
+        presentImg.roundCorners([.bottomRight], radius: 75)
     }
     
     override func viewDidLoad() {
@@ -59,6 +64,20 @@ class PresentInfoVC: UIViewController {
     }
     
     @IBAction func deletePresentBtnPressed(_ sender: Any) {
+        showDeletePresentAlert()
+    }
+    
+    func showDeletePresentAlert() {
+        let alert = UIAlertController(title: "Delete present".localized, message: "Are you sure you want to delete present?".localized, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Yes".localized, style: .destructive, handler: { [] (_) in
+            _ = self.navigationController?.popViewController(animated: true)
+            self.deletePresent()
+        }))
+        alert.addAction(UIAlertAction(title: "No".localized, style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func deletePresent() {
         let key = selected_item!.uuid
         if key != "" {
             DataService.instance.removePresent(uid: uid!, uuid: key) { ( deleted ) in
@@ -69,5 +88,4 @@ class PresentInfoVC: UIViewController {
             }
         }
     }
-    
 }
