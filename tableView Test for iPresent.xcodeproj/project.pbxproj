@@ -36,6 +36,7 @@
 		5628DEEE21A6176400DEC488 /* TestDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5628DEED21A6176400DEC488 /* TestDataService.swift */; };
 		5628DEF021A6190700DEC488 /* PhoneAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5628DEEF21A6190600DEC488 /* PhoneAuthService.swift */; };
 		562D3A6F23159DBB00A48085 /* DeleteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562D3A6E23159DBB00A48085 /* DeleteService.swift */; };
+		562D3A712316D67E00A48085 /* ErrorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562D3A702316D67D00A48085 /* ErrorExtension.swift */; };
 		563217CA21BC0D330012F75B /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563217C921BC0D330012F75B /* StringExtensions.swift */; };
 		563F0A3C216D20B500A27CA5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563F0A3B216D20B500A27CA5 /* AppDelegate.swift */; };
 		563F0A3E216D20B500A27CA5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563F0A3D216D20B500A27CA5 /* ViewController.swift */; };
@@ -114,6 +115,7 @@
 		5628DEED21A6176400DEC488 /* TestDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDataService.swift; sourceTree = "<group>"; };
 		5628DEEF21A6190600DEC488 /* PhoneAuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneAuthService.swift; sourceTree = "<group>"; };
 		562D3A6E23159DBB00A48085 /* DeleteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteService.swift; sourceTree = "<group>"; };
+		562D3A702316D67D00A48085 /* ErrorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorExtension.swift; sourceTree = "<group>"; };
 		563217C921BC0D330012F75B /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		563F0A38216D20B500A27CA5 /* tableView Test for iPresent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tableView Test for iPresent.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		563F0A3B216D20B500A27CA5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -326,6 +328,7 @@
 				560C43942242F975009B836E /* UITableViewExt.swift */,
 				560C43A62245342B009B836E /* UISearchBarExt.swift */,
 				5658FEA922761CC0005463F7 /* ArrayExtension.swift */,
+				562D3A702316D67D00A48085 /* ErrorExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -338,9 +341,9 @@
 				5667B0DF22E8BFF0001EB5B6 /* Reachability.swift */,
 				56EBAFB7230AEF41006B34B2 /* ConnectionManager.swift */,
 				56EBAFB9230CD03A006B34B2 /* LoadingService.swift */,
+				564D49E6231482730064D88B /* FloatingButton.swift */,
 				563F0A5D216D234E00A27CA5 /* Extension */,
 				568E581F221ED592008337C7 /* Cache */,
-				564D49E6231482730064D88B /* FloatingButton.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -569,6 +572,7 @@
 				56F41B1E218B6BC50070B2CC /* PhoneVerifyVC.swift in Sources */,
 				560C43A52244625A009B836E /* PresentEventCollectionCell.swift in Sources */,
 				560C439B2244050A009B836E /* EventCell.swift in Sources */,
+				562D3A712316D67E00A48085 /* ErrorExtension.swift in Sources */,
 				563F0A44216D20B500A27CA5 /* tableView_Test_for_iPresent.xcdatamodeld in Sources */,
 				568A53CB219E179800772ED1 /* ReservePresentVC.swift in Sources */,
 				5667B0EC22F8A848001EB5B6 /* ColorTransition.swift in Sources */,

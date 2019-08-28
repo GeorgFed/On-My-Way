@@ -76,3 +76,7 @@
 
 "Delete present" = "Удалить подарок";
 "Are you sure you want to delete present?" = "Вы уверены, что хотите удалить подарок?";
+
+"Too many requests. Try again later." = "Слишком много запросов. Попробуйте позже.";
+"Unknown error. Try again later." = "Неизвестная ошибка. Попробуйте позже.";
+"SMS code" = "SMS код";

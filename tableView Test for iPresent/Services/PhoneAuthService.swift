@@ -24,16 +24,27 @@ class PhoneAuthService {
                 userCreationComplete(false, error)
                 return
             }
+            
+            guard let phoneNumber = user.phoneNumber else { return }
+            DataService.instance.checkPhoneNumber(phoneNumber: phoneNumber, handler: { (exists) in
+                if exists {
+                    NotificationCenter.default.post(name: Notification.Name(Notifications.userExists), object: nil)
+                } else {
+                     NotificationCenter.default.post(name: Notification.Name(Notifications.newUser), object: nil)
+                }
+            })
+            /*
             var query = [String]()
             query.append(user.phoneNumber!)
+            
             DataService.instance.getUsersByPhoneNumber(phoneNumbers: query) { (returnedUsers) in
                 if returnedUsers.count == 0 {
-                    print("found user wtf\n")
                     NotificationCenter.default.post(name: Notification.Name(Notifications.newUser), object: nil)
                 } else {
                     NotificationCenter.default.post(name: Notification.Name(Notifications.userExists), object: nil)
                 }
             }
+             */
             let userData = [UserKeys.provider : user.providerID, UserKeys.phoneNumber : user.phoneNumber]
             DataService.instance.createDBUser(uid: user.uid, userData: userData as Dictionary<String, Any>)
             userCreationComplete(true, nil)

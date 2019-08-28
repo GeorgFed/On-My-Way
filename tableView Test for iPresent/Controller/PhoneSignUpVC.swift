@@ -129,13 +129,14 @@ extension PhoneSignUpVC: UITextFieldDelegate {
             textField.resignFirstResponder()
             fnameSep.deactivateField()
             lastName.becomeFirstResponder()
-            fnameSep.activateField(leftColor: #colorLiteral(red: 1, green: 0.7019607843, blue: 0.4274509804, alpha: 1), rightColor: #colorLiteral(red: 0.9411764706, green: 0.7568627451, blue: 0.5019607843, alpha: 1))
+            lnameSep.activateField(leftColor: #colorLiteral(red: 1, green: 0.7019607843, blue: 0.4274509804, alpha: 1), rightColor: #colorLiteral(red: 0.9411764706, green: 0.7568627451, blue: 0.5019607843, alpha: 1))
         } else if textField == lastName {
             textField.resignFirstResponder()
             lnameSep.deactivateField()
             birthdate.becomeFirstResponder()
-            fnameSep.activateField(leftColor: #colorLiteral(red: 1, green: 0.7019607843, blue: 0.4274509804, alpha: 1), rightColor: #colorLiteral(red: 0.9411764706, green: 0.7568627451, blue: 0.5019607843, alpha: 1))
+            bdSep.activateField(leftColor: #colorLiteral(red: 1, green: 0.7019607843, blue: 0.4274509804, alpha: 1), rightColor: #colorLiteral(red: 0.9411764706, green: 0.7568627451, blue: 0.5019607843, alpha: 1))
         } else {
+            bdSep.deactivateField()
             textField.resignFirstResponder()
         }
         return true

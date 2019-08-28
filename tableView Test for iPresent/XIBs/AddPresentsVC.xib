@@ -18,6 +18,7 @@
                 <outlet property="cancelBtn" destination="aYV-eS-03j" id="hOZ-cK-UTg"/>
                 <outlet property="descriptionTF" destination="pD0-MS-g3d" id="hwU-6g-YQW"/>
                 <outlet property="linkTF" destination="AEs-9Y-2j7" id="nvU-F0-nXC"/>
+                <outlet property="presentBG" destination="Jvs-Df-7gR" id="DJ7-dS-3Kt"/>
                 <outlet property="presentNameTF" destination="415-h7-4Mb" id="8Ui-Ay-7M3"/>
                 <outlet property="priceTF" destination="tqx-1s-Ary" id="aEi-Pk-cDQ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -33,6 +34,7 @@
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="topRight" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PresentBackground" translatesAutoresizingMaskIntoConstraints="NO" id="Jvs-Df-7gR">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="196"/>
+                            <color key="backgroundColor" red="0.84705882349999995" green="0.3865325577" blue="0.59063702559999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="196" id="ziH-Zb-azO"/>
                             </constraints>
@@ -152,27 +154,6 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="beV-gY-lnH">
-                                    <rect key="frame" x="275" y="-40" width="64" height="64"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="64" id="ea9-R7-ghO"/>
-                                        <constraint firstAttribute="height" constant="64" id="iiL-l6-xqN"/>
-                                    </constraints>
-                                    <state key="normal" image="AddPhoto">
-                                        <color key="titleColor" red="0.42352941179999998" green="0.50588235290000005" blue="0.60784313729999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </state>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                            <real key="value" value="5"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                            <real key="value" value="0.0"/>
-                                        </userDefinedRuntimeAttribute>
-                                    </userDefinedRuntimeAttributes>
-                                    <connections>
-                                        <action selector="addPhotoBtnPressed:" destination="-1" eventType="touchUpInside" id="hDY-cd-HQl"/>
-                                    </connections>
-                                </button>
                                 <button opaque="NO" alpha="0.75" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ggL-VI-045" customClass="GradientButton" customModule="tableView_Test_for_iPresent" customModuleProvider="target">
                                     <rect key="frame" x="8" y="220.33333333333331" width="359" height="44"/>
                                     <color key="backgroundColor" red="0.51372549020000002" green="0.64705882349999999" blue="0.77647058820000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -213,8 +194,6 @@
                                 <constraint firstItem="ggL-VI-045" firstAttribute="leading" secondItem="fMF-ha-JUK" secondAttribute="leading" constant="8" id="Vx8-Vm-Bdc"/>
                                 <constraint firstAttribute="trailing" secondItem="ggL-VI-045" secondAttribute="trailing" constant="8" id="XKs-SI-xb0"/>
                                 <constraint firstItem="3L1-ZN-NlX" firstAttribute="top" secondItem="hcS-dV-DFj" secondAttribute="bottom" constant="12" id="cfK-pp-bAl"/>
-                                <constraint firstItem="beV-gY-lnH" firstAttribute="top" secondItem="fMF-ha-JUK" secondAttribute="top" constant="-40" id="fnN-k3-bpu"/>
-                                <constraint firstAttribute="trailing" secondItem="beV-gY-lnH" secondAttribute="trailing" constant="36" id="wDR-BO-61a"/>
                             </constraints>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -222,15 +201,38 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="beV-gY-lnH">
+                            <rect key="frame" x="275" y="144" width="64" height="64"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="64" id="ea9-R7-ghO"/>
+                                <constraint firstAttribute="height" constant="64" id="iiL-l6-xqN"/>
+                            </constraints>
+                            <state key="normal" image="AddPhoto">
+                                <color key="titleColor" red="0.42352941179999998" green="0.50588235290000005" blue="0.60784313729999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                    <real key="value" value="0.0"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="addPhotoBtnPressed:" destination="-1" eventType="touchUpInside" id="hDY-cd-HQl"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="Jvs-Df-7gR" secondAttribute="trailing" id="2BX-BH-uJB"/>
                         <constraint firstAttribute="trailing" secondItem="fMF-ha-JUK" secondAttribute="trailing" id="42k-5J-Wq9"/>
                         <constraint firstItem="fMF-ha-JUK" firstAttribute="leading" secondItem="rUs-sK-feT" secondAttribute="leading" id="7NS-05-Dy5"/>
+                        <constraint firstAttribute="trailing" secondItem="beV-gY-lnH" secondAttribute="trailing" constant="36" id="GYu-5e-OPy"/>
                         <constraint firstItem="fMF-ha-JUK" firstAttribute="top" secondItem="Jvs-Df-7gR" secondAttribute="bottom" constant="-12" id="MpA-YS-qp8"/>
                         <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="fMF-ha-JUK" secondAttribute="bottom" constant="16" id="aC2-3L-bsB"/>
                         <constraint firstItem="Jvs-Df-7gR" firstAttribute="leading" secondItem="rUs-sK-feT" secondAttribute="leading" id="xRh-m4-9gb"/>
+                        <constraint firstItem="beV-gY-lnH" firstAttribute="top" secondItem="fMF-ha-JUK" secondAttribute="top" constant="-40" id="xi2-bw-hTe"/>
                         <constraint firstItem="Jvs-Df-7gR" firstAttribute="top" secondItem="rUs-sK-feT" secondAttribute="top" id="y37-js-ums"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>

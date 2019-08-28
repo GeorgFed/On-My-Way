@@ -77,3 +77,7 @@
 
 "Delete present" = "Delete present";
 "Are you sure you want to delete present?" = "Are you sure you want to delete present?";
+
+"Too many requests. Try again later." = "Too many requests. Try again later.";
+"Unknown error. Try again later." = "Unknown error. Try again later.";
+"SMS code" = "SMS code";

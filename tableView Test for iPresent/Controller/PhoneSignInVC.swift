@@ -47,6 +47,9 @@ class PhoneSignInVC: UIViewController {
             if phoneNumber.text!.first != "+" {
                 phoneNumber.text!.insert("+", at: phoneNumber.text!.startIndex)
             }
+            if phoneNumber.text!.last == " " {
+                phoneNumber.text! = String(phoneNumber.text!.dropLast())
+            }
             authenticate(phone_number: phoneNumber.text!)
         } else {
             showEnterPhoneNumberAlert()
@@ -60,6 +63,14 @@ class PhoneSignInVC: UIViewController {
             self.removeSpinner(vSpinner: vSpinner)
             if let error = error {
                 // TODO: Add Unknown Error
+                // check for too many requests
+                if error.code == 17010 && error.domain == "FIRAuthErrorDomain" {
+                    self.showAtemptsErrorAlert()
+                } else if !Reachability.isConnectedToNetwork() {
+                    self.showNoInternetErrorAlert()
+                } else {
+                    self.showUnknownErrorAlert()
+                }
                 print(error)
                 return
             } else {
@@ -78,6 +89,30 @@ class PhoneSignInVC: UIViewController {
     
     func showEnterPhoneNumberAlert() {
         let alertController = UIAlertController(title: "Error".localized, message: "Please enter your phone number".localized, preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertController.addAction(defaultAction)
+        present(alertController, animated: true, completion: nil)
+        alertController.view.tintColor = #colorLiteral(red: 0.3647058824, green: 0.5921568627, blue: 0.7568627451, alpha: 1)
+    }
+    
+    func showAtemptsErrorAlert() {
+        let alertController = UIAlertController(title: "Error".localized, message: "Too many requests. Try again later.".localized, preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertController.addAction(defaultAction)
+        present(alertController, animated: true, completion: nil)
+        alertController.view.tintColor = #colorLiteral(red: 0.3647058824, green: 0.5921568627, blue: 0.7568627451, alpha: 1)
+    }
+    
+    func showUnknownErrorAlert() {
+        let alertController = UIAlertController(title: "Error".localized, message: "Unknown error. Try again later.".localized, preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertController.addAction(defaultAction)
+        present(alertController, animated: true, completion: nil)
+        alertController.view.tintColor = #colorLiteral(red: 0.3647058824, green: 0.5921568627, blue: 0.7568627451, alpha: 1)
+    }
+    
+    func showNoInternetErrorAlert() {
+        let alertController = UIAlertController(title: "Error".localized, message: "No internet connection".localized, preferredStyle: .alert)
         let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alertController.addAction(defaultAction)
         present(alertController, animated: true, completion: nil)

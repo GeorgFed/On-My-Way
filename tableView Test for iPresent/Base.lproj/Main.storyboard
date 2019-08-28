@@ -457,11 +457,11 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WqX-FR-tmH">
-                                                    <rect key="frame" x="311" y="14" width="64" height="22"/>
+                                                    <rect key="frame" x="311" y="14.000000000000002" width="64" height="24.666666666666671"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="64" id="Njj-Z8-Zg4"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -502,8 +502,8 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fll-CV-pjD">
-                                                    <rect key="frame" x="16" y="5.6666666666666679" width="343" height="33"/>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="24"/>
+                                                    <rect key="frame" x="16" y="8.3333333333333339" width="343" height="27.333333333333329"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1029,7 +1029,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="HIr-ho-nfj">
                                 <rect key="frame" x="56" y="337.66666666666669" width="263" height="37"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="220448" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yEv-rf-UsT">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yEv-rf-UsT">
                                         <rect key="frame" x="0.0" y="0.0" width="263" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="263" id="LrD-bI-cH6"/>
@@ -1415,7 +1415,7 @@
         <image name="ProfileIcon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gLF-j7-ZKM"/>
+        <segue reference="vTD-Cr-hON"/>
         <segue reference="iMW-CE-nmR"/>
         <segue reference="ycV-pl-cVP"/>
     </inferredMetricsTieBreakers>

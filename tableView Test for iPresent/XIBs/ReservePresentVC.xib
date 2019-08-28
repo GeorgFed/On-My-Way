@@ -30,7 +30,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iPhone Xr" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rCM-sG-uA2">
-                            <rect key="frame" x="16" y="452" width="114" height="33"/>
+                            <rect key="frame" x="16" y="452" width="343" height="33"/>
                             <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="24"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -42,7 +42,7 @@
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="White" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P4K-RM-7aa">
-                            <rect key="frame" x="16" y="487" width="54" height="27.5"/>
+                            <rect key="frame" x="16" y="487" width="343" height="27.5"/>
                             <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
@@ -92,8 +92,10 @@
                     <constraints>
                         <constraint firstItem="rCM-sG-uA2" firstAttribute="top" secondItem="6Pd-DA-ecf" secondAttribute="bottom" constant="24" id="Him-sx-SIU"/>
                         <constraint firstItem="rCM-sG-uA2" firstAttribute="leading" secondItem="rMU-Pf-kho" secondAttribute="leading" constant="16" id="ITf-BH-vl1"/>
+                        <constraint firstAttribute="trailing" secondItem="P4K-RM-7aa" secondAttribute="trailing" constant="16" id="Ip4-FQ-T71"/>
                         <constraint firstItem="P4K-RM-7aa" firstAttribute="top" secondItem="rCM-sG-uA2" secondAttribute="bottom" constant="2" id="JeI-Yu-l87"/>
                         <constraint firstAttribute="bottom" secondItem="ToW-nt-dHf" secondAttribute="bottom" constant="16" id="Nmj-54-rUx"/>
+                        <constraint firstAttribute="trailing" secondItem="rCM-sG-uA2" secondAttribute="trailing" constant="16" id="Rt0-jY-WFT"/>
                         <constraint firstItem="P4K-RM-7aa" firstAttribute="leading" secondItem="rMU-Pf-kho" secondAttribute="leading" constant="16" id="SPU-US-Un4"/>
                         <constraint firstItem="6Pd-DA-ecf" firstAttribute="top" secondItem="rMU-Pf-kho" secondAttribute="top" id="edM-FO-laE"/>
                         <constraint firstItem="eyy-uP-tOW" firstAttribute="top" secondItem="rMU-Pf-kho" secondAttribute="topMargin" id="fki-7L-7Dd"/>

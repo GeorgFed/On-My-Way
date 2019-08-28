@@ -30,11 +30,12 @@ class LoadingService {
         // Sets loading text
         loadingLabel.textColor = .gray
         loadingLabel.textAlignment = .center
-        loadingLabel.text = "Loading..."
+        loadingLabel.text = ""
         loadingLabel.frame = CGRect(x: 0, y: 0, width: 140, height: 30)
         // Sets spinner
+        
         spinner.style = .gray
-        spinner.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        spinner.frame = CGRect(x: (loadingView.frame.width / 2) - 15, y: 0, width: 30, height: 30)
         spinner.startAnimating()
         // Adds text and spinner to the view
         loadingView.addSubview(spinner)
@@ -54,11 +55,11 @@ class LoadingService {
         // Sets loading text
         loadingLabel.textColor = .gray
         loadingLabel.textAlignment = .center
-        loadingLabel.text = "Loading..."
+        loadingLabel.text = ""
         loadingLabel.frame = CGRect(x: 0, y: 0, width: 140, height: 30)
         // Sets spinner
         spinner.style = .gray
-        spinner.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        spinner.frame = CGRect(x: (loadingView.frame.width / 2) - 15, y: 0, width: 30, height: 30)
         spinner.startAnimating()
         // Adds text and spinner to the view
         loadingView.addSubview(spinner)

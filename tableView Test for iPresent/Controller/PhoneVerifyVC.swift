@@ -22,6 +22,7 @@ class PhoneVerifyVC: UIViewController {
         nextBtn.alpha = 0.75
         separator.activateField(leftColor: #colorLiteral(red: 1, green: 0.4274509804, blue: 0.5764705882, alpha: 1), rightColor: #colorLiteral(red: 0.9411764706, green: 0.5019607843, blue: 0.5098039216, alpha: 1))
         codeTF.becomeFirstResponder()
+        codeTF.placeholder = "SMS code".localized
         hideKeyboard()
     }
     

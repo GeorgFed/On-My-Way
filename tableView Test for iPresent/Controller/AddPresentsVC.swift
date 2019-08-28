@@ -15,6 +15,7 @@ class AddPresentsVC: UIViewController {
     
     private let blurEffect = (NSClassFromString("_UICustomBlurEffect") as! UIBlurEffect.Type).init()
     
+    @IBOutlet weak var presentBG: UIImageView!
     @IBOutlet weak var addPresentLbl: UILabel!
     @IBOutlet weak var addPresentBtn: UIButton!
     @IBOutlet weak var cancelBtn: UIButton!
@@ -46,6 +47,8 @@ class AddPresentsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // self.presentBG.image = UIImage(named: "fab")
+        
         presentNameTF.delegate = self
         descriptionTF.delegate = self
         priceTF.delegate = self
@@ -71,10 +74,10 @@ class AddPresentsVC: UIViewController {
         view.addSubview(blurEffectView)
         view.sendSubviewToBack(blurEffectView)
         
-        presentNameTF.placeholder = "Present name".localized
+        presentNameTF.placeholder = "Present name*".localized
         descriptionTF.placeholder = "Description".localized
-        linkTF.placeholder = "Link*".localized
-        priceTF.placeholder = "Price".localized
+        linkTF.placeholder = "Link".localized
+        priceTF.placeholder = "Price*".localized
         addPresentLbl.text = "Add Present".localized
         addPresentBtn.setTitle("Add Present".localized, for: .normal)
         cancelBtn.setTitle("Cancel".localized, for: .normal)
@@ -97,6 +100,7 @@ class AddPresentsVC: UIViewController {
         self.picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
         self.picker.allowsEditing = true
         checkPermission()
+        
     }
     
     func add_new_present() {
@@ -219,11 +223,17 @@ extension AddPresentsVC: UIImagePickerControllerDelegate, UINavigationController
         }
         
         if let selectedImg = selectedPickerImg {
+            print(selectedImg)
             self.img = selectedImg
+            self.presentBG.contentMode = .scaleAspectFill
+            self.presentBG.image = self.img
         }
+        
         
         self.dismiss(animated: true, completion: nil)
     }
+    
+    
     
     @objc func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         print("canceled")

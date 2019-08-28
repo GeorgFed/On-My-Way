@@ -58,6 +58,25 @@ class DataService {
         }
     }
     
+    func checkPhoneNumber(phoneNumber phone: String, handler: @escaping(_ exists: Bool) -> ()) {
+        var exists = false
+        REF_USERS.queryOrdered(byChild: UserKeys.phoneNumber).queryEqual(toValue: phone).observeSingleEvent(of: .value) { (snapshot) in
+            guard let userSnapshot = snapshot.children.allObjects as? [DataSnapshot] else { return }
+            if userSnapshot.count > 0 {
+                print(userSnapshot)
+            }
+            for snap in userSnapshot {
+                let value = snap.value as? NSDictionary
+                let birthdate = value?[UserKeys.birthdate] as? String ?? ""
+                // print("\(fullName) -- \(self.CURRENT_USER_ID)")
+                if birthdate != "Deleted" {
+                    exists = true
+                }
+            }
+            handler(exists)
+        }
+    }
+    
     func getUsersByPhoneNumber(phoneNumbers query: [String], handler: @escaping(_ uidArray: [String]) -> ()) {
         // var userArray = [User]()
         var uidArray = [String]()
