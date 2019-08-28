@@ -50,6 +50,12 @@ class AddPresentsVC: UIViewController {
         descriptionTF.delegate = self
         priceTF.delegate = self
         linkTF.delegate = self
+        
+        presentNameTF.autocorrectionType = .no
+        descriptionTF.autocorrectionType = .no
+        priceTF.autocorrectionType = .no
+        linkTF.autocorrectionType = .no
+
         self.picker.delegate = self
         
         setUpView()

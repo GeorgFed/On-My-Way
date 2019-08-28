@@ -10,6 +10,7 @@ import UIKit
 
 class ReservePresentVC: UIViewController {
 
+    @IBOutlet weak var presentPrice: UILabel!
     @IBOutlet weak var presentImg: UIImageView!
     @IBOutlet weak var presentName: UILabel!
     @IBOutlet weak var presentDescription: UILabel!
@@ -26,6 +27,10 @@ class ReservePresentVC: UIViewController {
             if let url = chosen_present?.imageName {
                 presentImg.loadImgWithURLString(urlString: url)
             }
+            presentPrice.text = chosen_present!.price
+            cancelBtn.alpha = 0.75
+            self.view.bringSubviewToFront(linkBtn)
+            presentImg.roundCorners([.bottomRight], radius: 75)
         }
     }
     

@@ -28,6 +28,7 @@ class PhoneAuthService {
             query.append(user.phoneNumber!)
             DataService.instance.getUsersByPhoneNumber(phoneNumbers: query) { (returnedUsers) in
                 if returnedUsers.count == 0 {
+                    print("found user wtf\n")
                     NotificationCenter.default.post(name: Notification.Name(Notifications.newUser), object: nil)
                 } else {
                     NotificationCenter.default.post(name: Notification.Name(Notifications.userExists), object: nil)

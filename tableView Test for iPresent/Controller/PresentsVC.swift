@@ -93,9 +93,9 @@ class PresentsVC: UIViewController, UIScrollViewDelegate {
     @objc func getPresents() {
         if let user = Auth.auth().currentUser {
             DataService.instance.getPresents(forUid: user.uid) { ( returnedArray ) in
+                LoadingService.instance.removeLoadingScreen()
                 if returnedArray.count == 0 {
-                    self.presentArray = returnedArray
-                    self.collectionView.reloadData()
+                    self.collectionView.setEmptyView(title: "No presents yet".localized, message: "Add presents to share your wishes with friends".localized, alertImage: .noPresents)
                 } else {
                     self.presentArray = returnedArray
                     self.collectionView.reloadData()
@@ -106,22 +106,29 @@ class PresentsVC: UIViewController, UIScrollViewDelegate {
             collectionView.setEmptyView(title: "An unknown error has occured".localized, message: "", alertImage: .unknown)
         }
         // removeLoadingScreen()
+        /*
         let group = DispatchGroup()
         group.enter()
         
         DispatchQueue.main.async {
             LoadingService.instance.removeLoadingScreen()
+            print("Loading stopped")
+            group.leave()
         }
+        */
         
+        /*
         group.notify(queue: .main) {
             if self.presentArray.count == 0 {
                 if Reachability.isConnectedToNetwork() {
+                    print(self.presentArray.count)
                     self.collectionView.setEmptyView(title: "No presents yet".localized, message: "Add presents to share your wishes with friends".localized, alertImage: .noPresents)
                 }
             } else {
                 self.collectionView.restore()
             }
         }
+        */
     }
     
     @objc func addFabPressed() {
@@ -179,6 +186,9 @@ extension PresentsVC: UICollectionViewDelegate, UICollectionViewDataSource, UICo
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if presentArray.count > 0 && Reachability.isConnectedToNetwork() {
+            collectionView.restore()
+        }
         return presentArray.count
     }
     

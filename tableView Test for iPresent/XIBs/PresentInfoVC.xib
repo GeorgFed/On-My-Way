@@ -69,7 +69,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1og-qj-BK5">
-                            <rect key="frame" x="16" y="24" width="36" height="36"/>
+                            <rect key="frame" x="16" y="28" width="36" height="36"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="36" id="Od1-6i-Cvg"/>
                                 <constraint firstAttribute="height" constant="36" id="kwk-rK-OOv"/>
@@ -102,7 +102,7 @@
                         <constraint firstAttribute="trailing" secondItem="e1Y-Lc-W0P" secondAttribute="trailing" id="gq4-o4-QGl"/>
                         <constraint firstItem="e1Y-Lc-W0P" firstAttribute="leading" secondItem="HMe-U4-EFf" secondAttribute="leading" id="hwp-vO-1gc"/>
                         <constraint firstItem="e1Y-Lc-W0P" firstAttribute="centerX" secondItem="HMe-U4-EFf" secondAttribute="centerX" id="nPT-P2-2Tl"/>
-                        <constraint firstItem="1og-qj-BK5" firstAttribute="top" secondItem="HMe-U4-EFf" secondAttribute="top" constant="24" id="q7y-Wg-6vO"/>
+                        <constraint firstItem="1og-qj-BK5" firstAttribute="top" secondItem="HMe-U4-EFf" secondAttribute="topMargin" id="q7y-Wg-6vO"/>
                         <constraint firstAttribute="trailing" secondItem="voa-Bw-UBX" secondAttribute="trailing" constant="16" id="qCa-Zo-3QQ"/>
                         <constraint firstItem="e1Y-Lc-W0P" firstAttribute="top" secondItem="HMe-U4-EFf" secondAttribute="top" id="vem-BG-4vt"/>
                         <constraint firstAttribute="trailing" secondItem="qNi-uk-6Mm" secondAttribute="trailing" constant="16" id="zyb-xY-oea"/>
@@ -115,12 +115,12 @@
                 </view>
             </subviews>
             <constraints>
-                <constraint firstItem="HMe-U4-EFf" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="1Ey-dG-aqV"/>
+                <constraint firstItem="HMe-U4-EFf" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottom" id="1Ey-dG-aqV"/>
                 <constraint firstItem="HMe-U4-EFf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="NaZ-ri-l71"/>
-                <constraint firstItem="HMe-U4-EFf" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="PjE-VM-Ar1"/>
+                <constraint firstItem="HMe-U4-EFf" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="PjE-VM-Ar1"/>
                 <constraint firstItem="HMe-U4-EFf" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="kXH-QB-UbQ"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <viewLayoutGuide key="safeArea" id="k8f-AE-hbm"/>
             <point key="canvasLocation" x="32.799999999999997" y="69.715142428785612"/>
         </view>
     </objects>

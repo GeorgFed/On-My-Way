@@ -78,8 +78,8 @@ class ProfileSettingsVC: UIViewController {
     }
     
     func setUpView() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "sign-out slice"), style: .plain, target: self, action: #selector(showSignOutAlert))
-        // navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "More PDF"), style: .plain, target: self, action: #selector(moreTapped))
+        // navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "sign-out slice"), style: .plain, target: self, action: #selector(showSignOutAlert))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "More PDF"), style: .plain, target: self, action: #selector(moreTapped))
         navigationItem.rightBarButtonItem?.tintColor = UIColor.white
         let userKey = "mainUser"
         if let username = mainUserNameCache.object(forKey: userKey as NSString) {
@@ -89,7 +89,7 @@ class ProfileSettingsVC: UIViewController {
             self.userImg.loadImgWithURLString(urlString: (photourl as NSString) as String)
         }
         if userid == nil {
-            fullNameTxt.text = "Test Test"
+            fullNameTxt.text = "Unknown"
         } else {
             DataService.instance.getUserInfo(forUid: userid!) { (user) in
                 self.fullNameTxt.text = user.name
@@ -139,16 +139,19 @@ class ProfileSettingsVC: UIViewController {
     }
     
     func deleteAccount() {
-        user?.delete(completion: { (error) in
-            if let error = error {
-                print(error)
-            } else {
-                let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-                let PhoneSignInVC = storyboard.instantiateViewController(withIdentifier: "PhoneSignInVC")
-                //self.show(PhoneSignInVC, sender: nil)
-                self.present(PhoneSignInVC, animated: true, completion: nil)
-            }
-        })
+//        user?.delete(completion: { (error) in
+//            if let error = error {
+//                print(error)
+//            } else {
+//                let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+//                let PhoneSignInVC = storyboard.instantiateViewController(withIdentifier: "PhoneSignInVC")
+//                //self.show(PhoneSignInVC, sender: nil)
+//                self.present(PhoneSignInVC, animated: true, completion: nil)
+//            }
+//        })
+        guard let uid = userid else { return }
+        DataService.instance.deleteUser(uid: uid)
+        signOut()
     }
     
     @objc func showSignOutAlert() {
@@ -174,6 +177,7 @@ class ProfileSettingsVC: UIViewController {
     }
     
     @IBAction func signOutBtnPressed(_ sender: Any) {
+        
         let firebaseAuth = Auth.auth()
         do {
             try firebaseAuth.signOut()

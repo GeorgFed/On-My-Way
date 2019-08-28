@@ -85,6 +85,7 @@ class EventsVC: UIViewController {
         
         DispatchQueue.main.async {
             LoadingService.instance.removeLoadingScreen()
+            group.leave()
         }
         
         refreshControl.endRefreshing()

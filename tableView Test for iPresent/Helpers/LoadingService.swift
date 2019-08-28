@@ -19,6 +19,7 @@ class LoadingService {
     let loadingLabel = UILabel()
 
     public func setLoadingScreen(collectionView: UICollectionView, navHeight: CGFloat) {
+        print("Loading screen is set")
         // Sets the view which contains the loading text and the spinner
         let width: CGFloat = 120
         let height: CGFloat = 30

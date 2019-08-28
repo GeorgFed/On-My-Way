@@ -32,8 +32,8 @@ class FriendSystem {
                 let fullName = value?[UserKeys.name] as? String ?? ""
                 let birthdate = value?[UserKeys.birthdate] as? String ?? ""
                 let profileImgURL = value?[UserKeys.profileImg] as? String ?? ""
-                let user = User(name: fullName, birthdate: birthdate, uid: uid, profileImgURL: profileImgURL)
-                if uid != currentUserID {
+                if uid != currentUserID && birthdate != "Deleted" {
+                    let user = User(name: fullName, birthdate: birthdate, uid: uid, profileImgURL: profileImgURL)
                     userArray.append(user)
                 }
             }
@@ -55,9 +55,9 @@ class FriendSystem {
                 let fullName = value?[UserKeys.name] as? String ?? ""
                 let birthdate = value?[UserKeys.birthdate] as? String ?? ""
                 let profileImgURL = value?[UserKeys.profileImg] as? String ?? ""
-                let user = User(name: fullName, birthdate: birthdate, uid: uid, profileImgURL: profileImgURL)
                 // print("\(fullName) -- \(self.CURRENT_USER_ID)")
-                if uid != currentUserID {
+                if uid != currentUserID && birthdate != "Deleted" {
+                    let user = User(name: fullName, birthdate: birthdate, uid: uid, profileImgURL: profileImgURL)
                     userArray.append(user)
                 }
             }
