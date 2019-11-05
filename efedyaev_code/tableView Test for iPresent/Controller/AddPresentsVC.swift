@@ -11,6 +11,8 @@ import Firebase
 import Photos
 import PhotosUI
 
+import MobileCoreServices
+
 class AddPresentsVC: UIViewController {
     
     private let blurEffect = (NSClassFromString("_UICustomBlurEffect") as! UIBlurEffect.Type).init()
@@ -66,7 +68,10 @@ class AddPresentsVC: UIViewController {
     }
     
     func setUpView() {
-        img = UIImage(named: imgName)
+        // MARK: TEST
+        let images = [PresentImageKeys.blue, PresentImageKeys.red, PresentImageKeys.yellow]
+        img = images[Int(arc4random()) % Int(3)]
+        //img = UIImage(named: imgName)
         let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.extraLight)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = view.bounds
@@ -97,7 +102,8 @@ class AddPresentsVC: UIViewController {
     
     func changeImage() {
         self.picker.sourceType = .photoLibrary
-        self.picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+        self.picker.mediaTypes = [kUTTypeImage as String] 
+        // self.picker.mediaTypes =  UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
         self.picker.allowsEditing = true
         checkPermission()
         
@@ -123,7 +129,8 @@ class AddPresentsVC: UIViewController {
         if price.last != "$" || price.last != "₽" {
             price.append("$".localized)
         }
-        
+        // MARK: - Check spinner
+        let vSpinner = showSpinner(onView: self.view, red: 0.5, green: 0.5, blue: 0.5, alpha: 0.3)
         DataService.instance.uploadMedia(img: img, imgType: MediaType.img) { ( url ) in
             DataService.instance.uploadPresent(name: presentName, description: self.descriptionTF.text ?? " ", price: price, image: url!, senderid: self.user!.uid, link: link) { (success) in
                 outcome = success
@@ -133,6 +140,7 @@ class AddPresentsVC: UIViewController {
                 } else {
                     self.showTryAgainAlert()
                 }
+                self.removeSpinner(vSpinner: vSpinner)
             }
         }
         return outcome

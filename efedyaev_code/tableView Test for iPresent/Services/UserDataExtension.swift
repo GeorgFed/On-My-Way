@@ -38,11 +38,13 @@ extension DataService {
         }
     }
     
-    func addUserImg(forUid uid: String, img: UIImage) {
+    func addUserImg(forUid uid: String, img: UIImage,  handler: @escaping (_ success: Bool) -> ()) {
         DataService.instance.uploadMedia(img: img, imgType: MediaType.img) { (url) in
             guard let url = url else { return }
             let ref = self.REF_USERS.child(uid)
             ref.updateChildValues([UserKeys.profileImg : url])
+            handler(true)
+            print("!!! updated now !!!")
         }
     }
 }

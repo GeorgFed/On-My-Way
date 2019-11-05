@@ -116,8 +116,13 @@ class ProfileSettingsVC: UIViewController {
             print("User click Dismiss button")
         }))
         
-        self.present(alert, animated: true, completion: nil)
-    }
+        // self.present(alert, animated: true, completion: nil)
+        if let popover = alert.popoverPresentationController {
+             popover.barButtonItem  = self.navigationItem.rightBarButtonItem
+             popover.permittedArrowDirections = .up
+        }
+
+        self.present(alert, animated: true, completion: nil)    }
     
     func showDeleteAlert() {
         let alert = UIAlertController(title: "Delete Account".localized, message: "Are you sure you want to delete your account?".localized, preferredStyle: .alert)
@@ -262,7 +267,8 @@ extension ProfileSettingsVC: UIImagePickerControllerDelegate, UINavigationContro
         
         if let selectedImg = selectedPickerImg {
             self.userImg.image = selectedImg
-            DataService.instance.addUserImg(forUid: userid!, img: selectedImg)
+            //DataService.instance.addUserImg(forUid: userid!, img: selectedImg)
+            DataService.instance.addUserImg(forUid: userid!, img: selectedImg) { (success) in }
         }
         
         self.dismiss(animated: true, completion: nil)

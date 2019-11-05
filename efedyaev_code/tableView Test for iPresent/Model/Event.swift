@@ -36,15 +36,6 @@ class Event: Hashable {
     }
     
     var convertedDate: Date {
-        /*
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US")
-        dateFormatter.dateFormat = "dd-MM-yyyy"
-        guard let date = dateFormatter.date(from: _date) else {
-            print(_date)
-            fatalError("ERROR: Date conversion failed due to mismatched format.")
-        }
-        */
         let inputFormatter = DateFormatter()
         inputFormatter.locale = Locale(identifier: "en_US")
         inputFormatter.dateFormat = "dd-MM-yyyy"
@@ -61,17 +52,7 @@ class Event: Hashable {
             print(outputDate)
             fatalError("ERROR: Date conversion failed due to mismatched format.")
         }
-        
-//        dateFormatter.locale = Locale.autoupdatingCurrent
-//        dateFormatter.dateFormat = "dd MMM yyyy"
         print(date)
-       /*
-        
-        guard let date = dateFormatter.date(from: _date) else {
-            print(_date)
-            fatalError("ERROR: Date conversion failed due to mismatched format.")
-        }
-         */
         return date
     }
     

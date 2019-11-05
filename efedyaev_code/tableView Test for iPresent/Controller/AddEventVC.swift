@@ -105,8 +105,10 @@ class AddEventVC: UIViewController {
             showWrongDataAlert()
             return outcome
         }
+        let vSpinner = showSpinner(onView: self.view, red: 0.5, green: 0.5, blue: 0.5, alpha: 0.3)
         DataService.instance.uploadEvent(uid: user!.uid, title: eventName, description: eventDescriptionTF.text ?? " ", date: date) { ( success ) in
             outcome = success
+            self.removeSpinner(vSpinner: vSpinner)
             if success {
                 NotificationCenter.default.post(name: Notification.Name(Notifications.eventAdded), object: nil)
             } else {

@@ -66,6 +66,10 @@ class PresentsVC: UIViewController, UIScrollViewDelegate {
         super.viewWillDisappear(animated)
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent // .default
+    }
+    
     func hideButton() {
         guard floatingButton?.superview != nil else {  return }
         DispatchQueue.main.async {
@@ -105,35 +109,11 @@ class PresentsVC: UIViewController, UIScrollViewDelegate {
             // MARK: PROBLEM CONDITION
             collectionView.setEmptyView(title: "An unknown error has occured".localized, message: "", alertImage: .unknown)
         }
-        // removeLoadingScreen()
-        /*
-        let group = DispatchGroup()
-        group.enter()
-        
-        DispatchQueue.main.async {
-            LoadingService.instance.removeLoadingScreen()
-            print("Loading stopped")
-            group.leave()
-        }
-        */
-        
-        /*
-        group.notify(queue: .main) {
-            if self.presentArray.count == 0 {
-                if Reachability.isConnectedToNetwork() {
-                    print(self.presentArray.count)
-                    self.collectionView.setEmptyView(title: "No presents yet".localized, message: "Add presents to share your wishes with friends".localized, alertImage: .noPresents)
-                }
-            } else {
-                self.collectionView.restore()
-            }
-        }
-        */
     }
     
     @objc func addFabPressed() {
         let _addPresentsVC = AddPresentsVC()
-        _addPresentsVC.modalPresentationStyle = .fullScreen
+        _addPresentsVC.modalPresentationStyle = .formSheet
         present(_addPresentsVC, animated: true, completion: nil)
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(getPresents),
@@ -144,7 +124,7 @@ class PresentsVC: UIViewController, UIScrollViewDelegate {
     // MARK: Toolbar Button Action
     @IBAction func addBtnPressed(_ sender: Any) {
         let _addPresentsVC = AddPresentsVC()
-        _addPresentsVC.modalPresentationStyle = .fullScreen
+        _addPresentsVC.modalPresentationStyle = .pageSheet
         present(_addPresentsVC, animated: true, completion: nil)
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(getPresents),
@@ -209,7 +189,7 @@ extension PresentsVC: UICollectionViewDelegate, UICollectionViewDataSource, UICo
         let current_present = presentArray[indexPath.row]
         let _presentInfoVC = PresentInfoVC(nibName: "PresentInfoVC", bundle: nil)
         _presentInfoVC.selected_item = current_present
-        _presentInfoVC.modalPresentationStyle = .fullScreen
+        _presentInfoVC.modalPresentationStyle = .pageSheet
         present(_presentInfoVC, animated: true, completion: nil)
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(getPresents),

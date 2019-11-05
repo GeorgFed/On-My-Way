@@ -78,16 +78,18 @@ class FriendSystem {
     }
 
     
-    func followUser(_ currentUserID: String!, _ userID: String!) {
+    func followUser(_ currentUserID: String!, _ userID: String!, handler: @escaping (_ success: Bool) -> ()) {
         let currentUserRef = USER_REF.child(currentUserID)
         currentUserRef.child("following").child(userID).setValue(true)
         USER_REF.child(userID).child("followers").child(currentUserID).setValue(true)
+        handler(true)
     }
     
-    func unfollowUser(_ currentUserID: String!, _ userID: String!) {
+    func unfollowUser(_ currentUserID: String!, _ userID: String!, handler: @escaping (_ success: Bool) -> ()) {
         let currentUserRef = USER_REF.child(currentUserID)
         currentUserRef.child("following").child(userID).removeValue()
         USER_REF.child(userID).child("followers").child(currentUserID).removeValue()
+        handler(true)
     }
     
     //var followsList = [User]()

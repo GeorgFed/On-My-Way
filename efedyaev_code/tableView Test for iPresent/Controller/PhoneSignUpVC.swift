@@ -64,6 +64,16 @@ class PhoneSignUpVC: UIViewController {
                 print("UPDATE ERROR!")
             }
         })
+        
+        // MARK: TEST MODE
+        let images = [ProfileImageKeys.blue, ProfileImageKeys.blueFill, ProfileImageKeys.orange, ProfileImageKeys.orangeFill, ProfileImageKeys.red, ProfileImageKeys.redFill]
+        let chosen = images[Int(arc4random()) % Int(6)]
+        
+        DataService.instance.addUserImg(forUid: (Auth.auth().currentUser?.uid)!, img: chosen) { (success) in
+            if success {
+                print("image successfully added!")
+            }
+        }
     }
     
     func createDatePicker() {

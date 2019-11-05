@@ -31,7 +31,6 @@ class EventsVC: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        
         handleConnection()
         
         if !Reachability.isConnectedToNetwork() {
@@ -53,6 +52,10 @@ class EventsVC: UIViewController {
         LoadingService.instance.setLoadingScreen(tableView: tableView, navHeight: (navigationController?.navigationBar.frame.height)!)
         loaded = false
         update()
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent // .default
     }
     
     @objc func update() {

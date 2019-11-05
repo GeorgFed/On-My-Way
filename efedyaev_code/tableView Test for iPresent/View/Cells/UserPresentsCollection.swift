@@ -64,7 +64,6 @@ extension UserPresentsCollection: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        // return CGSize(width: screenWidth / 2 - 2, height: screenWidth / 2 - 2)
         let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
         let totalSpace = flowLayout.sectionInset.left
             + flowLayout.sectionInset.right
@@ -76,15 +75,9 @@ extension UserPresentsCollection: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let current_present = presentArray[indexPath.row]
-        /*
-        let _ReservePresentVC = ReservePresentVC(nibName: "ReservePresentVC", bundle: nil)
-        _ReservePresentVC.chosen_present = current_present
-        _ReservePresentVC.modalPresentationStyle = .custom
-        self.window?.rootViewController?.present(_ReservePresentVC, animated: true, completion: nil)
-        */
         let _rpVC = ReservePresentVC(nibName: "ReservePresentVC", bundle: nil)
         _rpVC.chosen_present = current_present
-        _rpVC.modalPresentationStyle = .custom
+        _rpVC.modalPresentationStyle = .pageSheet
         DispatchQueue.main.async {
             self.getTopMostViewController()?.present(_rpVC, animated: true, completion: nil)
         }

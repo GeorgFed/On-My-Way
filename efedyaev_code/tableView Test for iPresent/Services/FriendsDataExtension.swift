@@ -27,11 +27,8 @@ extension DataService {
         var fuidArray = [String]()
         ref.observe(.value) { (friendSnapshot) in
             guard let friendSnapshot = friendSnapshot.children.allObjects as? [DataSnapshot] else { return }
-            // print(friendSnapshot)
             friendSnapshot.forEach({ (dataSnap) in
-                // print(dataSnap)
                 let fuid = dataSnap.childSnapshot(forPath: FriendKeys.friendUid).value as? String
-                //print(fuid)
                 fuidArray.append(fuid!)
             })
         }

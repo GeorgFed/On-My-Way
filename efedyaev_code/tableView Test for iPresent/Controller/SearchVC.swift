@@ -25,8 +25,8 @@ class SearchVC: UIViewController {
     var searchActive = false
     var currentText: String?
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         searchBarAppearenceSetup()
-        
         if let selectionIndexPath = tableView.indexPathForSelectedRow {
             self.tableView.deselectRow(at: selectionIndexPath, animated: animated)
         }
@@ -36,7 +36,6 @@ class SearchVC: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        
         handleConnection()
         
         if !Reachability.isConnectedToNetwork() {
@@ -54,26 +53,63 @@ class SearchVC: UIViewController {
         
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     func searchBarAppearenceSetup() {
-        self.searchController.obscuresBackgroundDuringPresentation = false
-        self.searchController.searchResultsUpdater = self
+        if #available(iOS 13.0, *) {
+            let appearance = UINavigationBarAppearance()
+            appearance.backgroundColor = #colorLiteral(red: 0.4509803922, green: 0.6549019608, blue: 0.8588235294, alpha: 1)
+            appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+            navigationItem.standardAppearance = appearance
+            navigationItem.scrollEdgeAppearance = appearance
+            self.searchController.obscuresBackgroundDuringPresentation = false
+            let scb = self.searchController.searchBar
+            let searchField = scb.searchTextField
+            UITextField.appearance(whenContainedInInstancesOf: [type(of: searchController.searchBar)]).tintColor = .darkGray
+            searchField.backgroundColor = .white
+            scb.tintColor = UIColor.white
+            scb.barTintColor = UIColor.darkGray
+            searchController.searchResultsUpdater = self
+            scb.isTranslucent = false
+            scb.delegate = self
+            definesPresentationContext = true
+            self.navigationItem.searchController = searchController
+            scb.setClearButton(color: .lightGray)
+            scb.setPlaceholderText(color: .lightGray)
+            scb.setSearchImage(color: .lightGray)
+            scb.setText(color: .black)
+        } else {
+            self.searchController.obscuresBackgroundDuringPresentation = false
+            self.searchController.searchResultsUpdater = self
+            let scb = self.searchController.searchBar
+            // scb.setTextField(color: UIColor.white)
+            scb.setText(color: UIColor.black)
+            scb.setPlaceholderText(color: UIColor.lightGray)
+            scb.setSearchImage(color: UIColor.lightGray)
+            scb.tintColor = UIColor.white
+            scb.barTintColor = UIColor.white
+            scb.isTranslucent = false
+            self.definesPresentationContext = true
+            self.navigationItem.searchController = searchController
+            self.navigationItem.hidesSearchBarWhenScrolling = true
+            scb.delegate = self
+            
+            if let textfield = scb.value(forKey: "searchField") as? UITextField {
+                textfield.textColor = UIColor.darkGray
+                textfield.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+            }
+                
+            scb.isTranslucent = true
+            UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).backgroundColor = .white
+        }
         
-        let scb = self.searchController.searchBar
-        scb.setTextField(color: UIColor.white)
-        scb.setText(color: UIColor.black)
-        scb.setPlaceholderText(color: UIColor.lightGray)
-        scb.setSearchImage(color: UIColor.lightGray)
-        scb.tintColor = UIColor.white
-        scb.barTintColor = UIColor.white
         
-        scb.searchBarStyle = .default
-        self.definesPresentationContext = true
-        self.navigationItem.searchController = searchController
-        self.navigationItem.hidesSearchBarWhenScrolling = true
-        scb.delegate = self
         
         let recommendNavBtn = UIButton(type: .custom)
-        recommendNavBtn.setImage(UIImage(named: "friend_recommendation"), for: .normal)
+        // recommendNavBtn.setImage(UIImage(named: "friend_recommendation"), for: .normal)
+        recommendNavBtn.setImage(UIImage(named: "Suggestions"), for: .normal)
         recommendNavBtn.frame = CGRect(x: 0, y: 0, width: 20, height: 24)
         recommendNavBtn.addTarget(self, action: #selector(showFriendRecommendations), for: .touchUpInside)
         let item = UIBarButtonItem(customView: recommendNavBtn)
@@ -113,6 +149,7 @@ class SearchVC: UIViewController {
 
 extension SearchVC: UISearchResultsUpdating, UISearchBarDelegate {
     func updateSearchResults(for searchController: UISearchController) {
+        tableView.backgroundColor = .white
         tableView.reloadData()
     }
     
@@ -163,6 +200,9 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
         }
         var url: String!
         if searchActive {
+            print("Search is active")
+            print(indexPath.row)
+            print(self.filteredUsers[indexPath.row].name)
             cell!.textLabel?.text = self.filteredUsers[indexPath.row].name
             url = self.filteredUsers[indexPath.row].profileImgURL
             /*
@@ -171,8 +211,13 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
             }
             */
         } else {
-            
             // TODO: CHECK BUG AFTER USER Delete
+            print("Search is inactive")
+            print(indexPath.row)
+        print(FriendSystem.instance.followsList[FriendSystem.instance.followsList.index(FriendSystem.instance.followsList.startIndex, offsetBy: indexPath.row)].name)
+            
+            print(FriendSystem.instance.followsList)
+            
             cell!.textLabel?.text = FriendSystem.instance.followsList[FriendSystem.instance.followsList.index(FriendSystem.instance.followsList.startIndex, offsetBy: indexPath.row)].name
             url = FriendSystem.instance.followsList[FriendSystem.instance.followsList.index(FriendSystem.instance.followsList.startIndex, offsetBy: indexPath.row)].profileImgURL
             
@@ -199,8 +244,14 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if searchActive {
             self.chosen_user = self.filteredUsers[indexPath.row]
+            print("chose user from search")
+            print(indexPath.row)
+            print(self.chosen_user)
         } else {
             self.chosen_user = FriendSystem.instance.followsList[FriendSystem.instance.followsList.index(FriendSystem.instance.followsList.startIndex, offsetBy: indexPath.row)]
+            print("chose user from follows")
+            print(indexPath.row)
+            print(self.chosen_user)
         }
         self.performSegue(withIdentifier: "newUserSegue", sender: self)
     }
@@ -213,7 +264,25 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+extension UINavigationController {
+   open override var preferredStatusBarStyle: UIStatusBarStyle {
+        return topViewController?.preferredStatusBarStyle ?? .default
+   }
+}
 
+/*
+extension UITabBarController {
+   open override var childForStatusBarStyle: UIViewController? {
+        return selectedViewController
+    }
+}
+
+extension UINavigationController {
+   open override var childForStatusBarStyle: UIViewController? {
+        return visibleViewController
+    }
+}
+*/
 // TODO: async / sync + dispatch threads to show images straight ahead
 // TODO: clean up code, clear funcs that are not used
 // TODO: add right nav bar item "recommendations" -> show contacts friends

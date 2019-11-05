@@ -28,8 +28,20 @@ class FRecommendationsVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        if #available(iOS 13.0, *) {
+            let appearance = UINavigationBarAppearance()
+            appearance.backgroundColor = #colorLiteral(red: 0.4509803922, green: 0.6549019608, blue: 0.8588235294, alpha: 1)
+            appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+            navigationItem.standardAppearance = appearance
+            navigationItem.scrollEdgeAppearance = appearance
+        }
+        
         self.navigationItem.title = "Recommendations".localized
         getRecommendations()
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent // .default
     }
     
     func getRecommendations() {

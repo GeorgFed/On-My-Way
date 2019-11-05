@@ -48,6 +48,7 @@ class PhoneVerifyVC: UIViewController {
         PhoneAuthService.instance.regiserUser(verificationCode: code) { (success, error) in
             self.removeSpinner(vSpinner: vSpinner)
             if success {
+                print("successfully registered user!! adds obsevers on user type")
                 NotificationCenter.default.addObserver(self,
                                                        selector: #selector(self.showPresentsVC),
                                                        name: NSNotification.Name(Notifications.userExists),
@@ -65,6 +66,7 @@ class PhoneVerifyVC: UIViewController {
     @objc func showRegisterVC() {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let PhoneSignUpVC = storyboard.instantiateViewController(withIdentifier: self.newUserSegue)
+        PhoneSignUpVC.modalPresentationStyle = .fullScreen
         self.show(PhoneSignUpVC, sender: nil)
     }
     

@@ -31,25 +31,32 @@ extension UIView {
         gradientChangeAnimation.fillMode = CAMediaTimingFillMode.forwards
         gradientChangeAnimation.isRemovedOnCompletion = false
         gradient.add(gradientChangeAnimation, forKey: nil)
-        /*
-        let gradient = CAGradientLayer(layer: self.layer)
-        gradient.colors = [leftColor.cgColor, rightColor.cgColor]
-        gradient.locations = [0, 1]
-        gradient.startPoint = CGPoint(x: 0, y: 1)
-        gradient.endPoint = CGPoint(x: 1, y: 1)
-        gradient.frame = self.bounds
-        self.layer.insertSublayer(gradient, at: 0)
-        
-        let animation = CABasicAnimation(keyPath: "opacity")
-        animation.fromValue = 0.0
-        animation.toValue = 1.0
-        animation.duration = 0.2
-        animation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
-        gradient.add(animation, forKey: nil)
-         */
     }
 
     public func deactivateField() {
         self.layer.sublayers?.removeAll()
     }
+    
+    public func addBlurToView() {
+        var blurEffect: UIBlurEffect!
+        if #available(iOS 10.0, *) {
+            blurEffect = UIBlurEffect(style: .dark)
+        } else {
+            blurEffect = UIBlurEffect(style: .light)
+        }
+        let blurredEffectView = UIVisualEffectView(effect: blurEffect)
+        blurredEffectView.frame = self.bounds
+        blurredEffectView.alpha = 0.9
+        blurredEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        self.addSubview(blurredEffectView)
+    }
+    
+    public func removeBlurFromView() {
+        for subview in self.subviews {
+            if subview is UIVisualEffectView {
+                subview.removeFromSuperview()
+            }
+        }
+    }
+    
 }

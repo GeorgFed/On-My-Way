@@ -20,32 +20,25 @@ class PhoneAuthService {
             verificationCode: verificationCode)
         
         Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
+            print("should sign in")
             guard let user = authResult?.user else {
                 userCreationComplete(false, error)
                 return
             }
             
             guard let phoneNumber = user.phoneNumber else { return }
+            print(phoneNumber)
             DataService.instance.checkPhoneNumber(phoneNumber: phoneNumber, handler: { (exists) in
                 if exists {
+                    print("exists!!!!!!")
                     NotificationCenter.default.post(name: Notification.Name(Notifications.userExists), object: nil)
                 } else {
+                    print("This is a new user!!!!")
                      NotificationCenter.default.post(name: Notification.Name(Notifications.newUser), object: nil)
                 }
             })
-            /*
-            var query = [String]()
-            query.append(user.phoneNumber!)
-            
-            DataService.instance.getUsersByPhoneNumber(phoneNumbers: query) { (returnedUsers) in
-                if returnedUsers.count == 0 {
-                    NotificationCenter.default.post(name: Notification.Name(Notifications.newUser), object: nil)
-                } else {
-                    NotificationCenter.default.post(name: Notification.Name(Notifications.userExists), object: nil)
-                }
-            }
-             */
             let userData = [UserKeys.provider : user.providerID, UserKeys.phoneNumber : user.phoneNumber]
+            print("should go to create user")
             DataService.instance.createDBUser(uid: user.uid, userData: userData as Dictionary<String, Any>)
             userCreationComplete(true, nil)
         }

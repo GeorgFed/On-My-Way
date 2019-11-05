@@ -15,10 +15,10 @@
 "Last name" = "Last name";
 "Date of birth" = "Date of birth";
 
-"Present name" = "Present name";
+"Present name*" = "Present name*";
 "Description" = "Description";
-"Link*" = "Link*";
-"Price" = "Price";
+"Link" = "Link";
+"Price*" = "Price*";
 "$" = "$";
 
 "Event name" = "Event name";
@@ -81,3 +81,10 @@
 "Too many requests. Try again later." = "Too many requests. Try again later.";
 "Unknown error. Try again later." = "Unknown error. Try again later.";
 "SMS code" = "SMS code";
+"Profile" = "Profile";
+
+"Change profile picture" = "Change profile picture";
+"Save" = "Save";
+"Edit Profile" = "Edit Profile";
+"Personal info" = "Personal info";
+"Account" = "Account";

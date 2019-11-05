@@ -21,8 +21,19 @@ class UserVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if #available(iOS 13.0, *) {
+            let appearance = UINavigationBarAppearance()
+            appearance.backgroundColor = #colorLiteral(red: 0.4509803922, green: 0.6549019608, blue: 0.8588235294, alpha: 1)
+            appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+            navigationItem.standardAppearance = appearance
+            navigationItem.scrollEdgeAppearance = appearance
+        }
     }
 
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent // .default
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         
         if FriendSystem.instance.followsList.contains(user!) {
@@ -94,16 +105,22 @@ class UserVC: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 2 {
+            let vSpinner = showSpinner(onView: self.view, red: 0.5, green: 0.5, blue: 0.5, alpha: 0.3)
             if !following {
-                FriendSystem.instance.followUser(currentUserID, user!.uid)
-                self.tableView.reloadData()
-                following = true
+                // FriendSystem.instance.followUser(currentUserID, user!.uid)
+                FriendSystem.instance.followUser(currentUserID, user!.uid) { (success) in
+                    self.tableView.reloadData()
+                    self.removeSpinner(vSpinner: vSpinner)
+                    self.following = true
+                }
             } else {
-                NotificationCenter.default.post(name: Notification.Name("updateUsers"),
-                                                object: nil)
-                FriendSystem.instance.unfollowUser(currentUserID, user!.uid)
-                self.tableView.reloadData()
-                following = false
+                FriendSystem.instance.unfollowUser(currentUserID, user!.uid) { (success) in
+                    NotificationCenter.default.post(name: Notification.Name("updateUsers"),
+                                                    object: nil)
+                    self.tableView.reloadData()
+                    self.removeSpinner(vSpinner: vSpinner)
+                    self.following = false
+                }
             }
         }
     }

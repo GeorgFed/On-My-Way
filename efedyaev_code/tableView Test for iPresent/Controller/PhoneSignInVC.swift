@@ -50,6 +50,7 @@ class PhoneSignInVC: UIViewController {
             if phoneNumber.text!.last == " " {
                 phoneNumber.text! = String(phoneNumber.text!.dropLast())
             }
+            print("is going to authentificate")
             authenticate(phone_number: phoneNumber.text!)
         } else {
             showEnterPhoneNumberAlert()
@@ -69,11 +70,14 @@ class PhoneSignInVC: UIViewController {
                 } else if !Reachability.isConnectedToNetwork() {
                     self.showNoInternetErrorAlert()
                 } else {
+                    print("FATAL ERROR: \(error.localizedDescription)")
                     self.showUnknownErrorAlert()
                 }
                 print(error)
                 return
             } else {
+                print("should show verify vc")
+                print(verify)
                 UserDefaults.standard.set(verify, forKey: UserDefaultsKeys.authentificationId)
                 self.showVerifyVC()
             }
@@ -84,6 +88,7 @@ class PhoneSignInVC: UIViewController {
     func showVerifyVC() {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let PhoneVerifyVC = storyboard.instantiateViewController(withIdentifier: segueId)
+        PhoneVerifyVC.modalPresentationStyle = .fullScreen
         self.show(PhoneVerifyVC, sender: nil)
     }
     

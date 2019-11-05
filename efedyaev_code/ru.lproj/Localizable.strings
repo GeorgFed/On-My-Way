@@ -14,19 +14,20 @@
 "First name" = "Имя";
 "Last name" = "Фамилия";
 "Date of birth" = "Дата рождения";
+"Birthdate" = "Дата рождения";
 
-"Present name" = "Название подарка";
+"Present name*" = "Название подарка*";
 "Description" = "Описание";
-"Link*" = "Ссылка*";
-"Price" = "Цена";
+"Link" = "Ссылка";
+"Price*" = "Цена*";
 "$" = "₽";
 
 "Event name" = "Название события";
 "Description" = "Описание";
 "Date" = "Дата";
 
-"You are following this user" = "Вы подписаны на этого пользователя";
-"You are not following this user" = "Вы не подписаны на этого пользователя";
+"You are following this user" = "Вы подписаны на пользователя";
+"You are not following this user" = "Вы не подписаны на пользователя";
 "Unfollow" = "Отписаться";
 "Follow" = "Подписаться";
 
@@ -80,3 +81,12 @@
 "Too many requests. Try again later." = "Слишком много запросов. Попробуйте позже.";
 "Unknown error. Try again later." = "Неизвестная ошибка. Попробуйте позже.";
 "SMS code" = "SMS код";
+
+"Profile" = "Профиль";
+"Change profile picture" = "Изменить фотографию";
+"Save" = "Сохранить";
+"Edit Profile" = "Настройки";
+
+"First name" = "Имя";
+"Personal info" = "Личная информация";
+"Account" = "Аккаунт";

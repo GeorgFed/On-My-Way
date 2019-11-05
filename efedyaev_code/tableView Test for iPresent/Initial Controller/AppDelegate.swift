@@ -28,6 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
             let PhoneSignInVC = storyboard.instantiateViewController(withIdentifier: "PhoneSignInVC")
             window?.makeKeyAndVisible()
+            window?.rootViewController?.modalPresentationStyle = .fullScreen
             window?.rootViewController?.present(PhoneSignInVC, animated: true, completion: nil)
         }
         

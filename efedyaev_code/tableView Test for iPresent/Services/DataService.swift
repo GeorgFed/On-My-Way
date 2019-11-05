@@ -38,12 +38,7 @@ class DataService {
                 guard let birthdate = user.childSnapshot(forPath: "birthdate").value as? String else { continue }
                 guard let uid = user.childSnapshot(forPath: "userId").value as? String else { continue }
                 let profileImgURL = user.childSnapshot(forPath: "profileImgURL").value as? String ?? "defaultProfileImg"
-//                if query.isAlphanumeric {
-//                    if name.contains(query) && name != Auth.auth().currentUser?.displayName {
-//                        let returned_user = User(name: name, birthdate: birthdate, uid: uid, profileImgURL: profileImgURL)
-//                        userArray.append(returned_user)
-//                    }
-//                }
+                
                 if allUsers {
                     let returned_user = User(name: name, birthdate: birthdate, uid: uid, profileImgURL: profileImgURL)
                     userArray.append(returned_user)
@@ -62,14 +57,19 @@ class DataService {
         var exists = false
         REF_USERS.queryOrdered(byChild: UserKeys.phoneNumber).queryEqual(toValue: phone).observeSingleEvent(of: .value) { (snapshot) in
             guard let userSnapshot = snapshot.children.allObjects as? [DataSnapshot] else { return }
+        
             if userSnapshot.count > 0 {
                 print(userSnapshot)
             }
             for snap in userSnapshot {
                 let value = snap.value as? NSDictionary
+                print(value)
                 let birthdate = value?[UserKeys.birthdate] as? String ?? ""
+                let name = value?[UserKeys.name] as? String ?? ""
+                print(birthdate)
+                print(name)
                 // print("\(fullName) -- \(self.CURRENT_USER_ID)")
-                if birthdate != "Deleted" {
+                if birthdate != "Deleted" && name != "" {
                     exists = true
                 }
             }
@@ -84,18 +84,6 @@ class DataService {
             guard let userSnapshot = userSnapshot.children.allObjects as? [DataSnapshot] else { return }
             for user in userSnapshot {
                 guard let phoneNum = user.childSnapshot(forPath: "phoneNumber").value as? String else { continue }
-                /*
-                if query.contains(phoneNum) {
-                    guard let name = user.childSnapshot(forPath: "name").value as? String else { continue }
-                    guard let birthdate = user.childSnapshot(forPath: "birthdate").value as? String else { continue }
-                    guard let uid = user.childSnapshot(forPath: "userId").value as? String else { continue }
-                    let profileImgURL = user.childSnapshot(forPath: "profileImgURL").value as? String ?? "defaultProfileImg"
-                    
-                    let returned_user = User(name: name, birthdate: birthdate, uid: uid, profileImgURL: profileImgURL)
-                    print("User found with phone number:\(name)!!")
-                    userArray.append(returned_user)
-                }
-                */
                 if query.contains(phoneNum) {
                     guard let uid = user.childSnapshot(forPath: "userId").value as? String else { continue }
                     print("User found with uid:\(uid)!!")

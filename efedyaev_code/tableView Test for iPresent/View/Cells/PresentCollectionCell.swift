@@ -83,7 +83,7 @@ extension PresentCollectionCell: UICollectionViewDelegate, UICollectionViewDataS
         let current_present = presentArray[indexPath.row]
         let _ReservePresentVC = ReservePresentVC(nibName: "ReservePresentVC", bundle: nil)
         _ReservePresentVC.chosen_present = current_present
-        _ReservePresentVC.modalPresentationStyle = .custom
+        _ReservePresentVC.modalPresentationStyle = .pageSheet
         DispatchQueue.main.async {
             self.getTopMostViewController()?.present(_ReservePresentVC, animated: true, completion: nil)
         }
